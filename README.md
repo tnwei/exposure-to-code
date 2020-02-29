@@ -4,4 +4,4 @@ Exposure to code is an introductory coding class for beginners using Python 3. O
 
 Details:
 + Course website: [https://tnwei.github.io/exposure-to-code/](https://tnwei.github.io/exposure-to-code/)
-+ Syllabus: [pdf](syllabus/class-syllabus.md)
++ Syllabus: [pdf](syllabus/class-syllabus.pdf)
