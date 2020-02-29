@@ -1,0 +1,469 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Week 1 : Introduction to Python &#8212; Exposure to Code 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Welcome to Exposure to Code!" href="index.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to Exposure to Code!"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Exposure to Code 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="week-1-introduction-to-python">
+<h1>Week 1 : Introduction to Python<a class="headerlink" href="#week-1-introduction-to-python" title="Permalink to this headline">¶</a></h1>
+<p>Outcome: Students will be able to perform simple calculations with Python</p>
+<dl class="simple">
+<dt>What we will do:</dt><dd><ul class="simple">
+<li><p>Setup: Install Anaconda and get familiar with Spyder</p></li>
+<li><p>Variables &amp; primitives</p></li>
+<li><p>Doing simple algebra</p></li>
+<li><p>Exercise: Python as a calculator</p></li>
+<li><p>Lists in Python</p></li>
+</ul>
+</dd>
+</dl>
+<div class="section" id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<p>You will need to install Anaconda Python on your PC by following the instructions at <a class="reference external" href="https://docs.anaconda.com/anaconda/install/windows/">https://docs.anaconda.com/anaconda/install/windows/</a>. If you are not using Windows, Google for “Anaconda Python installation on &lt;Mac OS or Linux&gt;” and follow the procedures.</p>
+<dl class="simple">
+<dt>While you go through these two things, we’ll talk about:</dt><dd><ul class="simple">
+<li><dl class="simple">
+<dt>What this course is about</dt><dd></dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>What is coding</dt><dd></dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>What is Python</dt><dd></dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Overview of what you can expect</dt><dd></dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="spyder">
+<h2>Spyder<a class="headerlink" href="#spyder" title="Permalink to this headline">¶</a></h2>
+<p>The most important thing we need to run Python code is the Python interpreter itself. We can edit Python code in any text editor. However, it helps to have the assistance of an Integrated Development Environment, or IDE, especially for beginners. For the purpose of this course, we will be using Spyder, which comes installed with Anaconda Python. (If you already know what an IDE is, feel free to use your favourite option!)</p>
+<p>We begin by launching <cite>Spyder</cite>. If you are on Windows, search for <cite>Spyder</cite> in the Start Menu. Once Spyder has fully loaded, you will see something similar to the interface below.</p>
+<div class="figure align-default" id="id2">
+<img alt="Spyder interface upon launch" src="_images/spyder1.png" />
+<p class="caption"><span class="caption-text">This is what you should see after Spyder is launched.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<p>First things first, take a look around Spyder, under <cite>Help</cite> –&gt; <cite>Interactive Tours</cite> –&gt; <cite>Introduction tour</cite>. Spyder will briefly introduce the windows in your workspace.</p>
+<div class="section" id="hello-world">
+<h3>Hello World<a class="headerlink" href="#hello-world" title="Permalink to this headline">¶</a></h3>
+<p>We will now get started with coding by writing your very first program, Hello World. It is a classic first program for beginners to code, originating from programming books in the 1970s.</p>
+<p>In the code editor, type in the exact phrase below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>`print(&#39;Hello World!&#39;)`
+</pre></div>
+</div>
+<p>Press F5 to run. You should see the output <cite>Hello World!</cite> being displayed in the IPython console. You have just run your very first program!</p>
+<p>(If this is your very first time running code in Spyder, Spyder will pop up a little menu asking you about options for running files. Just press Yes and move on.)</p>
+</div>
+<div class="section" id="print">
+<h3><cite>print</cite><a class="headerlink" href="#print" title="Permalink to this headline">¶</a></h3>
+<p>The <cite>print()</cite> statement in Hello World allows you to output to the IPython console. In the older days, computers physically printed their output on paper, thus the term ‘print’. Go ahead and replace “Hello, World!” with “Goodbye, World!”, and run the code again. You should see the console output change to <cite>Goodbye, World!”</cite></p>
+</div>
+</div>
+<div class="section" id="variables-primitives">
+<h2>Variables &amp; primitives<a class="headerlink" href="#variables-primitives" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="variables">
+<h3>Variables<a class="headerlink" href="#variables" title="Permalink to this headline">¶</a></h3>
+<p>In Python, we use <em>variables</em> to store values. Let’s do “Hello, World” again, but this time, type the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;Hello, World!&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><cite>a</cite> is a variable. It represents ‘Hello, World!’. Notice that <cite>print(a)</cite> returns the same thing as <cite>print(‘Hello World’)</cite>. We <em>assign</em> ‘Hello, World!’ to <cite>a</cite> using the equals sign.</p>
+<p>Now, if you do the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="mi">1234</span>
+<span class="n">c</span> <span class="o">=</span> <span class="mf">1234.0</span>
+<span class="n">d</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">e</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">f</span> <span class="o">=</span> <span class="s1">&#39;True&#39;</span>
+<span class="n">g</span> <span class="o">=</span> <span class="s1">&#39;1234&#39;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You should see the following output, where the corresponding values assigned to the variables are printed:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Hello</span> <span class="n">World</span>
+<span class="mi">1234</span>
+<span class="mf">1234.0</span>
+<span class="kc">True</span>
+<span class="kc">False</span>
+<span class="kc">True</span>
+<span class="mi">1234</span>
+</pre></div>
+</div>
+<p>We see three sets of <cite>1234</cite> in the output. However, they DON’T all represent one thousand two hundred and thirty-four. Let’s see why.</p>
+</div>
+<div class="section" id="primitives">
+<h3>Primitives<a class="headerlink" href="#primitives" title="Permalink to this headline">¶</a></h3>
+<p>Values in Python have multiple data types, revealed by typing <cite>type(variable)</cite>. You could check the data types for the variables from before by running:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">d</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">g</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>But to make it easier to visualize, print the variables before the type instead like so:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">d</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">g</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Look at your output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Hello, World! &lt;class &#39;str&#39;&gt;
+1234 &lt;class &#39;int&#39;&gt;
+1234.0 &lt;class &#39;float&#39;&gt;
+True &lt;class &#39;bool&#39;&gt;
+False &lt;class &#39;bool&#39;&gt;
+True &lt;class &#39;str&#39;&gt;
+1234 &lt;class &#39;str&#39;&gt;
+</pre></div>
+</div>
+<p>Notice that there’s <cite>1234</cite> with <cite>&lt;class ‘int’&gt;</cite>, <cite>&lt;class ‘float’&gt;</cite> and <cite>&lt;class ‘str’&gt;</cite>.</p>
+<dl class="simple">
+<dt>Briefly explaining each data type one by one:</dt><dd><ul class="simple">
+<li><p><cite>int</cite>: Integers, from -infinity to positive infinity</p></li>
+<li><p><cite>float</cite>: Floating-point numbers, any rational number within limit</p></li>
+<li><p><cite>bool</cite>: Boolean i.e. True / False values</p></li>
+<li><p><cite>str</cite>: A sequence of characters, in other words, a <em>string</em>.</p></li>
+</ul>
+</dd>
+<dt>To keep things simple, just remember them as such:</dt><dd><ul class="simple">
+<li><p>Integers are any whole numbers with no decimal points</p></li>
+<li><p>Floats are any numbers involving decimal points</p></li>
+<li><p>Booleans are any <cite>True</cite> and <cite>False</cite> values. These are special values, and thus Spyder highlights them differently compared to other text, unless you mistyped them.</p></li>
+<li><p>Strings are all characters encased in single quotes <cite>‘</cite> or double quotes <cite>“</cite>.</p></li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="data-types-exercise">
+<h3>Data Types Exercise<a class="headerlink" href="#data-types-exercise" title="Permalink to this headline">¶</a></h3>
+<p>Change the following inputs:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="s1">&#39;True&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="mf">900.0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="s1">&#39;9873.0&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="s1">&#39;false&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="mi">140</span> <span class="o">+</span> <span class="mf">150.0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="s1">&#39;754&#39;</span> <span class="o">+</span> <span class="s1">&#39;987&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="mi">100</span> <span class="o">-</span> <span class="mi">50</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="mi">100</span> <span class="o">/</span> <span class="mi">50</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>To get the following outputs:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;bool&#39;&gt;
+&lt;class &#39;str&#39;&gt;
+&lt;class &#39;int&#39;&gt;
+&lt;class &#39;bool&#39;&gt;
+&lt;class &#39;int&#39;&gt;
+&lt;class &#39;int&#39;&gt;
+&lt;class &#39;float&#39;&gt;
+&lt;class &#39;float&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="doing-simple-algebra">
+<h2>Doing simple algebra<a class="headerlink" href="#doing-simple-algebra" title="Permalink to this headline">¶</a></h2>
+<p>Did the last few items throw you for a loop there? There’s more, but we’ll go over it from the beginning.</p>
+<dl class="simple">
+<dt>Explore a bit and figure out how to do the following:</dt><dd><ul class="simple">
+<li><p>100 plus 100</p></li>
+<li><p>200 minus 100</p></li>
+<li><p>7 multiplied with 3</p></li>
+<li><p>200 divided by 10</p></li>
+<li><p>300 raised to the power of 20</p></li>
+</ul>
+</dd>
+</dl>
+<p>Answer:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">100</span> <span class="o">+</span> <span class="mi">100</span>
+<span class="mi">200</span> <span class="o">-</span> <span class="mi">100</span>
+<span class="mi">7</span> <span class="o">*</span> <span class="mi">3</span>
+<span class="mi">200</span> <span class="o">/</span> <span class="mi">10</span>
+<span class="mi">300</span> <span class="o">**</span> <span class="mi">20</span>
+</pre></div>
+</div>
+<p>All algebraic operations (plus, minus, multiply, divide) work as you know them. For raising exponents, use two asterisks <cite>**</cite>.</p>
+<dl class="simple">
+<dt>Repeat the exercise, but make the numbers all floats this time.</dt><dd><ul class="simple">
+<li><p>100 plus 100</p></li>
+<li><p>200 minus 100</p></li>
+<li><p>7 multiplied with 3</p></li>
+<li><p>200 divided by 10</p></li>
+<li><p>300 raised to the power of 20</p></li>
+</ul>
+</dd>
+</dl>
+<p>Answer:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">100.0</span> <span class="o">+</span> <span class="mf">100.00</span>
+<span class="mf">200.0</span> <span class="o">-</span> <span class="mf">100.0</span>
+<span class="mf">7.0</span> <span class="o">*</span> <span class="mf">3.0</span>
+<span class="mf">200.0</span> <span class="o">/</span> <span class="mf">10.0</span>
+<span class="mf">300.0</span> <span class="o">**</span> <span class="mf">20.0</span>
+</pre></div>
+</div>
+<p>Notice that floats have the same interactions with mathematical operators as integers, i.e. you don’t need to bother about floats vs integers when it comes to getting math done.</p>
+<dl class="simple">
+<dt>You do need to watch out for two things:</dt><dd><ul class="simple">
+<li><p>any mathematical operation involving floats will automatically convert the end product into floats.</p></li>
+<li><p>all division operations result in floats regardless of input.</p></li>
+</ul>
+</dd>
+</dl>
+<p>See for yourself.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="mi">100</span> <span class="o">+</span> <span class="mf">100.00</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="mf">200.0</span> <span class="o">-</span> <span class="mi">100</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="mf">7.0</span> <span class="o">*</span> <span class="mi">30</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="mi">2000</span> <span class="o">/</span> <span class="mf">10.0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="mf">300.0</span> <span class="o">**</span> <span class="mi">20</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>The above gives:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;float&#39;&gt;
+&lt;class &#39;float&#39;&gt;
+&lt;class &#39;float&#39;&gt;
+&lt;class &#39;float&#39;&gt;
+&lt;class &#39;float&#39;&gt;
+</pre></div>
+</div>
+<p>Now try and do the same thing with Booleans. Run the following code.</p>
+<p>If any line throws an error, comment out the code by typing a pound sign before the code. This tells Python to ignore it. Our code examples will use comments from this point onwards.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mathematical operators on Boolean values</span>
+<span class="nb">print</span><span class="p">(</span><span class="kc">True</span> <span class="o">+</span> <span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="kc">False</span> <span class="o">-</span> <span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="kc">True</span> <span class="o">*</span> <span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="kc">True</span> <span class="o">/</span> <span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="kc">False</span> <span class="o">/</span> <span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="kc">True</span> <span class="o">**</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If you are surprised, note that Python internally treats <cite>True</cite> and <cite>False</cite> as integers 0 and 1.</p>
+<p>Now let’s do strings.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mathematical operators on strings</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;python&#39;</span> <span class="o">+</span> <span class="s1">&#39;is easy&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;phone&quot;</span> <span class="o">-</span> <span class="s2">&quot;no battery&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;why is&#39;</span> <span class="o">*</span> <span class="s2">&quot;wifi slow&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;why are we&quot;</span> <span class="o">/</span> <span class="s2">&quot;typing so much?&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;when will&quot;</span> <span class="o">**</span> <span class="s2">&quot;class end?&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Any surprises?</p>
+</div>
+<div class="section" id="exercise-python-as-a-calculator">
+<h2>Exercise: Python as a calculator<a class="headerlink" href="#exercise-python-as-a-calculator" title="Permalink to this headline">¶</a></h2>
+<p>Use your phone or a online stopwatch to record the time it takes for you to complete this section. In the IPython console, key in the following. Press Enter after each line to run the code. :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">time</span> <span class="mi">22</span><span class="o">/</span><span class="mi">7</span>
+<span class="o">%</span><span class="n">time</span> <span class="mi">31</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span>
+<span class="o">%</span><span class="n">time</span> <span class="p">(</span><span class="mi">7</span> <span class="o">**</span> <span class="mi">7</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">4</span> <span class="o">**</span> <span class="mi">9</span><span class="p">)</span>
+<span class="o">%</span><span class="n">time</span> <span class="mi">355</span> <span class="o">/</span> <span class="mi">113</span>
+<span class="o">%</span><span class="n">time</span> <span class="p">(</span><span class="mi">2143</span> <span class="o">/</span> <span class="mi">22</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The above code calculates the approximations to <cite>pi</cite>. Compare the time it took for you to key in the code, i.e. give the computer the instructions on what to do, and the time it takes for the computer to actually do it. What have you learnt?</p>
+</div>
+<div class="section" id="lists-in-python">
+<h2>Lists in Python<a class="headerlink" href="#lists-in-python" title="Permalink to this headline">¶</a></h2>
+<p>Let’s say we are observing weather data, more specifically the ambient temperature at noon every day. If we want to use this data inside Python, we will not create a variable for every temperature measurement that we have. Instead, we will deal with the data in bulk. One such data type in Python, is the list.</p>
+<p>Explore the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># How to make a list</span>
+<span class="n">my_first_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+
+<span class="c1"># Lists can contain anything</span>
+<span class="n">my_second_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">]</span>
+
+<span class="c1"># What does printing a list look like?</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_first_list</span><span class="p">)</span>
+
+<span class="c1"># List type</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">my_first_list</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>So now that we have information stored in a list, how do we use that information? We do something called list indexing.</p>
+<div class="figure align-default" id="id3">
+<img alt="List indices from `https://yourpcfriend.com/python-lists/ &lt;https://yourpcfriend.com/python-lists/&gt;`_" src="_images/lists-indexing-and-splitting.png" />
+<p class="caption"><span class="caption-text">List indices from <a class="reference external" href="https://yourpcfriend.com/python-lists/">https://yourpcfriend.com/python-lists/</a></span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+<div class="figure align-default" id="id4">
+<img alt="Explanation on how this works from `https://www.geeksforgeeks.org/python-list/ &lt;https://www.geeksforgeeks.org/python-list/&gt;`_" src="_images/List-Slicing.jpg" />
+<p class="caption"><span class="caption-text">Explanation on how this works from <a class="reference external" href="https://www.geeksforgeeks.org/python-list/">https://www.geeksforgeeks.org/python-list/</a></span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
+<p>Try for yourself:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print the first item</span>
+<span class="n">a</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="s1">&#39;V&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">)</span>
+
+<span class="c1"># Print the second &#39;twinkle&#39; and &#39;star&#39;</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;twinkle&#39;</span><span class="p">,</span> <span class="s1">&#39;twinkle&#39;</span><span class="p">,</span> <span class="s1">&#39;little&#39;</span><span class="p">,</span> <span class="s1">&#39;star&#39;</span><span class="p">]</span>
+
+<span class="c1"># Print just the last word</span>
+<span class="n">c</span> <span class="o">=</span> <span class="s2">&quot;Simon says go&quot;</span>
+</pre></div>
+</div>
+<p>Example solution to the above:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">11</span><span class="p">:])</span>
+</pre></div>
+</div>
+<p>Did you notice that variable <cite>c</cite> did not contain a list, but a string?</p>
+<p>Final exercise!</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make the code print:</span>
+<span class="c1"># &#39;So,&#39;</span>
+<span class="c1"># &#39;actually strings&#39;</span>
+<span class="c1"># &#39;are&#39;</span>
+<span class="c1"># &#39;also&#39;</span>
+<span class="c1"># &#39;lists!&#39;</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="s2">&quot;So, legend says that you can&quot;</span>
+<span class="n">e</span> <span class="o">=</span> <span class="s2">&quot;actually take cello strings and&quot;</span>
+<span class="n">f</span> <span class="o">=</span> <span class="s2">&quot;cook them. You are welcome! &quot;</span>
+<span class="n">g</span> <span class="o">=</span> <span class="s2">&quot;By the way, you can also&quot;</span>
+<span class="n">h</span> <span class="o">=</span> <span class="s2">&quot;list frogs for sale on Lazada!&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
+<p>Take-away message for these week: Computers are a lot faster than humans at calculations. It is advantageous for us to phrase problems in code for computers to solve on our behalf :)</p>
+</div>
+<div class="section" id="further-reading">
+<h2>Further reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Textbook reference for this week: Python Crash Course: A Hands-on, Project-based Introduction to Programming by Eric Matthes.</dt><dd><ul>
+<li><p>Chapter 1: Getting Started</p></li>
+<li><p>Chapter 2: Variables and Simple Data Types</p></li>
+<li><p>Chapter 3: Introducing Lists</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Learn more about the history of Hello, World: <a class="reference external" href="https://en.wikipedia.org/wiki/&quot;Hello,_World!&quot;_program">https://en.wikipedia.org/wiki/”Hello,_World!”_program</a></p></li>
+<li><p>How <cite>print</cite> actually works in Python: <a class="reference external" href="https://docs.python.org/3.6/reference/datamodel.html#object.__str__">https://docs.python.org/3.6/reference/datamodel.html#object.__str__</a></p></li>
+<li><p>Following up, <cite>repr</cite> vs <cite>str</cite> methods: <a class="reference external" href="https://dbader.org/blog/python-repr-vs-str">https://dbader.org/blog/python-repr-vs-str</a></p></li>
+<li><p>A good resource explaining floating point numbers: <a class="reference external" href="https://floating-point-gui.de/formats/fp/">https://floating-point-gui.de/formats/fp/</a></p></li>
+<li><p>More on Boolean algebra: <a class="reference external" href="http://openbookproject.net/thinkcs/python/english3e/conditionals.html">http://openbookproject.net/thinkcs/python/english3e/conditionals.html</a></p></li>
+<li><p>Reference for lists: <a class="reference external" href="https://www.geeksforgeeks.org/python-list/">https://www.geeksforgeeks.org/python-list/</a></p></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Week 1 : Introduction to Python</a><ul>
+<li><a class="reference internal" href="#setup">Setup</a></li>
+<li><a class="reference internal" href="#spyder">Spyder</a><ul>
+<li><a class="reference internal" href="#hello-world">Hello World</a></li>
+<li><a class="reference internal" href="#print"><cite>print</cite></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#variables-primitives">Variables &amp; primitives</a><ul>
+<li><a class="reference internal" href="#variables">Variables</a></li>
+<li><a class="reference internal" href="#primitives">Primitives</a></li>
+<li><a class="reference internal" href="#data-types-exercise">Data Types Exercise</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#doing-simple-algebra">Doing simple algebra</a></li>
+<li><a class="reference internal" href="#exercise-python-as-a-calculator">Exercise: Python as a calculator</a></li>
+<li><a class="reference internal" href="#lists-in-python">Lists in Python</a></li>
+<li><a class="reference internal" href="#conclusion">Conclusion</a></li>
+<li><a class="reference internal" href="#further-reading">Further reading</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to Exposure to Code!</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/01_intro.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to Exposure to Code!"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Exposure to Code 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright PERMATA STEM Talent, 2020.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.1.
+    </div>
+  </body>
+</html>
