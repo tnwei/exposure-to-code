@@ -1,0 +1,110 @@
+Week 2: Loops with `for` and `while`
+====================================
+Outcome: Students will learn basic control flow structures, `for` and `while` for repeating code execution under certain conditions. Students will also be exposed to basic cryptography, and its strong relationship to computation.
+.. Instructor notes
+.. Message: for / while loops for iteration, use code to calculate wayy faster than humans on problems that can be iterated, intro to cryptography as a field greatly assisted by coding.
+
+What we will do:
+	* Concept of `for` loops and `while` loops
+	* Exercise: Prime solver (change to finder, find below doc)
+	* Exercise: Caesar cipher
+	.. * (Adv Exercise: Brute force guessing)
+
+Concept of `for` loops and `while` loops
+----------------------------------------
+.. Instructor notes
+.. Estimated time: 30 mins
+.. [] Redo last weeks exercise with a very long list of numbers,  but with the power of 'for' loops. Use this example to walk through for loops. In the process, show range() constructor.
+.. [ ] Show list comprehension, which is for loops in lists, specific for Python.
+.. [ ] Show while loops
+
+To start off, let's recap on some printing exercises. Let's try printing these numbers on your console.
+
+0
+1
+2
+3
+4
+5
+
+As we can see, typing print("number") for each number is exhausting and does take more time that we would want. Here we'll introduce for loops! For loops are amazing in a sense that they make repetitive task a piece of cake. Let's type this into Spyder
+
+for x in range(6):
+	print (x)
+
+As we can see, it gives the same exact output that we wanted to achieve without us typing print("number") for each and every number
+
+Now, remember how we created lists?
+
+my_first_list = [1, 2, 3, 4]
+
+And how we printed lists before was:
+
+print(my_first_list)
+
+The output was as follows:
+
+[1, 2, 3, 4]
+
+Now, let's say we want to print out our list, but not in a [1, 2, 3, 4] format but rather something like below:
+
+1
+2
+3
+4
+
+In short, we want to print each number in the list as it comes and process them separately. We can achieve this by typing into Spyder as follows:
+
+for i in my_first_list:
+    print (i)
+
+
+There is also another way on how to write loops and this is the while loop. The main difference between the for loop and the while loop is when you know how many times you want to loop a function. For example, if you know how many times you want to loop, you should use for, however, if you don't know exactly how many times to loop, then it's best to use the while loop.
+
+This is because a while loops ends when a specific condition is met while a for loop ends when a the number of iterations end. Now, let's look at the syntax of while loops to see what this means. Let's use the same objective we had before with the for loop, i.e to print numbers 0-5.
+
+i=0
+while(i<6):
+	print (i)
+	i = i+1
+
+Note that:
+
+1. i is already defined in the for loops syntax, that means we don't have to instantiate i before we do the for loop. This is different with while loop in which we have to clearly instantiate i before the while loop or it won't work.
+2. In the for loop, there is no condition, we loop until we finish the amount of repetition. This is different with the while loop in which we have to clearly state the condition (i<6) so that it will end when i>=6.
+3. In the for loop, we don't have to increase the i number as a counter. It again follows the fundamental of repitition. However, in the while loop, we have to clearly increase the counter of i otherwise, we might go into an infinite loop.
+
+
+Exercise: Prime solver
+----------------------
+.. Instructor notes
+.. Estimated time: 30 mins
+.. [ ] Segue into the topic by talking about the applications of looping, which is anywhere that needs to iterate (repeat) through stuff. Checking whether a number is a prime number is a good way.
+.. [ ] Explain what is a prime number.
+.. [ ] Explain one simple way to determine if a number is prime or not. For each number, loop to check if it is divisible by all integers smaller than it, except for 1. If at any point it is fully divisible, can return status as not prime. If we go through the whole loop and no divisor works, it is therefore prime.
+.. [ ] Note: Need to write instructor solution and show at the end
+.. [ ] Note: From instructor solution, extract skeleton code for if/else, since we've not touched on it yet.
+.. [ ] Ask students to find all primes up to 100 as class exercise. Note time required.
+.. [ ] Then do it again for 10000 primes and note down time required.
+.. Message: Speed is the whole point of doing it using computers compared to humans. Code enables computation at speeds way faster than humans. Code helps us to solve problems that we can frame as a coding problem.
+
+Exercise: Caesar cipher
+-----------------------------------------
+.. Instructor notes
+.. Estimated time: 30 mins
+.. [ ] Move on to next class exercise, segue into cryptography, one of the fields in computer science. Code breaking. Very calculation-intensive, greatly assisted by coding. Computers had essential roles. Note down historical importance - Allies in WW2 breaking the Enigma cipher - security in encryption where algorithms are mathematically designed that computers CANNOT break them! Ahaa ... Establish that computation
+.. [ ] Today we will be looking at one of the earliest cryptographic methods - Caesar cipher. Intro on Caesar. Find pictures. Give students text strings input, and have them run nested for loops to print out all 26 shifts, shifting character by character. Visually identify the correct unscrambled sentence.
+.. [ ] Definitely need to work out an instructor solution for this to see how this is going to work.
+.. [ ] Also need to supply text strings and decoded examples.
+
+.. Super secret advanced exercise : Brute force guessing
+.. -----------------------------------------------------
+.. Instructor notes
+.. Estimated time: For students who finish 20 mins early
+.. [ ] Supply instructor-written function that takes a certain input string. Get students to loop over all possible alphanumeric digits to get the solution. To keep the function secret, the value probably has to be hashed and tucked away in a packaged module. Umm think about this later.
+
+
+Conclusion
+----------
+.. Instructor notes
+.. [ ] Recap and re-emphasize message of the day

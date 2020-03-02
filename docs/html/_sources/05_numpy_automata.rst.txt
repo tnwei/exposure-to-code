@@ -1,0 +1,31 @@
+Week 5 : `Numpy` vectors & cellular automata
+============================================
+
+Outcome: Students will learn the basics of using `numpy`, Python's numerical computing library for array calculations. Students will also be introduced to the concept of cellular automata, one of the many interesting concepts in computer science.
+
+What we will do:
+	* Introduction to `numpy`
+    * 1D arrays in `numpy`
+	* Exercise: 1D fluid simulation by cellular automata
+	* (Adv Exercise: Conway's Game of Life)
+
+TODO: End w/ emergence (images, example applications)
+
+Introduction to numpy
+---------------------
+
+1D arrays
+---------
+
+Exercise: 1D fluid simulation by cellular automata
+--------------------------------------------------
+
+Adv Exercise: Conway's Game of Life
+-----------------------------------
+
+Conclusion
+----------
+.. Estimated time: <5 mins
+.. Section objective: Recap and re-emphasize message
+Message of the day: xxxxxxxxxxxxxxxx
+

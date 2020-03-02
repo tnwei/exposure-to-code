@@ -1,0 +1,190 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Week 2: Loops with for and while &#8212; Exposure to Code 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Week 1 : Introduction to Python" href="01_intro.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="01_intro.html" title="Week 1 : Introduction to Python"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Exposure to Code 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="week-2-loops-with-for-and-while">
+<h1>Week 2: Loops with <cite>for</cite> and <cite>while</cite><a class="headerlink" href="#week-2-loops-with-for-and-while" title="Permalink to this headline">¶</a></h1>
+<p>Outcome: Students will learn basic control flow structures, <cite>for</cite> and <cite>while</cite> for repeating code execution under certain conditions. Students will also be exposed to basic cryptography, and its strong relationship to computation.
+.. Instructor notes
+.. Message: for / while loops for iteration, use code to calculate wayy faster than humans on problems that can be iterated, intro to cryptography as a field greatly assisted by coding.</p>
+<dl class="simple">
+<dt>What we will do:</dt><dd><ul class="simple">
+<li><p>Concept of <cite>for</cite> loops and <cite>while</cite> loops</p></li>
+<li><p>Exercise: Prime solver (change to finder, find below doc)</p></li>
+<li><p>Exercise: Caesar cipher</p></li>
+</ul>
+</dd>
+</dl>
+<div class="section" id="concept-of-for-loops-and-while-loops">
+<h2>Concept of <cite>for</cite> loops and <cite>while</cite> loops<a class="headerlink" href="#concept-of-for-loops-and-while-loops" title="Permalink to this headline">¶</a></h2>
+<p>To start off, let’s recap on some printing exercises. Picture what you need to do to print these numbers on your console.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span>
+<span class="mi">1</span>
+<span class="mi">2</span>
+<span class="mi">3</span>
+<span class="mi">4</span>
+<span class="mi">5</span>
+</pre></div>
+</div>
+<p>You will need to type <cite>print(n)</cite> for each number <cite>n</cite>. Doing this can get exhausting and does take more time that we would want. Here we’ll introduce for loops!</p>
+<div class="section" id="for-loops">
+<h3><cite>for</cite> loops<a class="headerlink" href="#for-loops" title="Permalink to this headline">¶</a></h3>
+<p>For loops are amazing in a sense that they make repetitive tasks a piece of cake. Type this into the editor:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>As we can see, it gives the same exact output that we wanted to achieve without us typing <cite>print(n)</cite> for each and every number <cite>n</cite>.</p>
+<p>Now, remember how we created lists?</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">my_first_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>And how we printed lists before was:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">my_first_list</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The output was as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Now, let’s say we want to print out our list, but not in a [1, 2, 3, 4] format but rather something like below:</p>
+<p>1
+2
+3
+4</p>
+<p>In short, we want to print each number in the list as it comes and process them separately. We can achieve this by typing into Spyder as follows:</p>
+<dl class="simple">
+<dt>for i in my_first_list:</dt><dd><p>print (i)</p>
+</dd>
+</dl>
+<p>There is also another way on how to write loops and this is the while loop. The main difference between the for loop and the while loop is when you know how many times you want to loop a function. For example, if you know how many times you want to loop, you should use for, however, if you don’t know exactly how many times to loop, then it’s best to use the while loop.</p>
+<p>This is because a while loops ends when a specific condition is met while a for loop ends when a the number of iterations end. Now, let’s look at the syntax of while loops to see what this means. Let’s use the same objective we had before with the for loop, i.e to print numbers 0-5.</p>
+<p>i=0
+while(i&lt;6):</p>
+<blockquote>
+<div><p>print (i)
+i = i+1</p>
+</div></blockquote>
+<p>Note that:</p>
+<ol class="arabic simple">
+<li><p>i is already defined in the for loops syntax, that means we don’t have to instantiate i before we do the for loop. This is different with while loop in which we have to clearly instantiate i before the while loop or it won’t work.</p></li>
+<li><p>In the for loop, there is no condition, we loop until we finish the amount of repetition. This is different with the while loop in which we have to clearly state the condition (i&lt;6) so that it will end when i&gt;=6.</p></li>
+<li><p>In the for loop, we don’t have to increase the i number as a counter. It again follows the fundamental of repitition. However, in the while loop, we have to clearly increase the counter of i otherwise, we might go into an infinite loop.</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="exercise-prime-solver">
+<h2>Exercise: Prime solver<a class="headerlink" href="#exercise-prime-solver" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="exercise-caesar-cipher">
+<h2>Exercise: Caesar cipher<a class="headerlink" href="#exercise-caesar-cipher" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="further-reading">
+<h2>Further Reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">¶</a></h2>
+<dl class="simple">
+<dt>_Python Crash Course: A Hands-on, Project-based Introduction to <a href="#id1"><span class="problematic" id="id2">Programming_</span></a>. Eric Matthes.</dt><dd><ul class="simple">
+<li><p>Chapter 4: Working with Lists</p></li>
+</ul>
+</dd>
+</dl>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Week 2: Loops with <cite>for</cite> and <cite>while</cite></a><ul>
+<li><a class="reference internal" href="#concept-of-for-loops-and-while-loops">Concept of <cite>for</cite> loops and <cite>while</cite> loops</a><ul>
+<li><a class="reference internal" href="#for-loops"><cite>for</cite> loops</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#exercise-prime-solver">Exercise: Prime solver</a></li>
+<li><a class="reference internal" href="#exercise-caesar-cipher">Exercise: Caesar cipher</a></li>
+<li><a class="reference internal" href="#conclusion">Conclusion</a></li>
+<li><a class="reference internal" href="#further-reading">Further Reading</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="01_intro.html"
+                        title="previous chapter">Week 1 : Introduction to Python</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/02_forwhile.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="01_intro.html" title="Week 1 : Introduction to Python"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Exposure to Code 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright PERMATA STEM Talent, 2020.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.3.
+    </div>
+  </body>
+</html>
