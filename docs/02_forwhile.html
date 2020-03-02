@@ -13,7 +13,8 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Week 1 : Introduction to Python" href="01_intro.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -21,6 +22,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="01_intro.html" title="Week 1 : Introduction to Python"
+             accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Exposure to Code 1.0 documentation</a> &#187;</li> 
       </ul>
     </div>  
@@ -32,37 +36,242 @@
             
   <div class="section" id="week-2-loops-with-for-and-while">
 <h1>Week 2: Loops with <cite>for</cite> and <cite>while</cite><a class="headerlink" href="#week-2-loops-with-for-and-while" title="Permalink to this headline">¶</a></h1>
-<p>Outcome: Students will learn basic control flow structures, <cite>for</cite> and <cite>while</cite> for repeating code execution under certain conditions. Students will also be exposed to basic cryptography, and its strong relationship to computation.
-.. Instructor notes
-.. Message: for / while loops for iteration, use code to calculate wayy faster than humans on problems that can be iterated, intro to cryptography as a field greatly assisted by coding.</p>
+<p>Outcome: Students will learn basic control flow structures, <cite>for</cite> and <cite>while</cite> for repeating code execution under certain conditions. Students will also be exposed to basic cryptography, and its strong relationship to computation.</p>
 <dl class="simple">
 <dt>What we will do:</dt><dd><ul class="simple">
 <li><p>Concept of <cite>for</cite> loops and <cite>while</cite> loops</p></li>
-<li><p>Exercise: Prime solver (change to finder, find below doc)</p></li>
+<li><p>Exercise: ASCII Animation</p></li>
+<li><p>Exercise: Prime solver</p></li>
 <li><p>Exercise: Caesar cipher</p></li>
 </ul>
 </dd>
 </dl>
 <div class="section" id="concept-of-for-loops-and-while-loops">
 <h2>Concept of <cite>for</cite> loops and <cite>while</cite> loops<a class="headerlink" href="#concept-of-for-loops-and-while-loops" title="Permalink to this headline">¶</a></h2>
+<p>To start off, let’s recap on some printing exercises. Picture what you need to do to print these numbers on your console.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span>
+<span class="mi">1</span>
+<span class="mi">2</span>
+<span class="mi">3</span>
+<span class="o">...</span>
+<span class="o">...</span>
+<span class="mi">99</span>
+<span class="mi">100</span>
+</pre></div>
+</div>
+<p>You will need to type <cite>print(n)</cite> for each number <cite>n</cite>. Image doing this for numbers 0 to 100. Doing this can get exhausting and does take more time that we would want. Here, we’ll introduce for loops!</p>
+<div class="section" id="for-loops">
+<h3><cite>for</cite> loops<a class="headerlink" href="#for-loops" title="Permalink to this headline">¶</a></h3>
+<p>For loops are amazing in a sense that they make repetitive tasks a piece of cake. First, type this into the editor:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>As we can see, it gives the same exact output that we wanted to achieve without us typing <cite>print(n)</cite> for each and every number <cite>n</cite>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <cite>range</cite> constructor allows you to iterate over an integer <em>range</em>. The format is <cite>range(start, stop)</cite> or <cite>range(stop)</cite>, with the latter beginning from 0. For more info, Google it :)</p>
+</div>
+<p>Now, remember how we created lists?</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">my_zoo</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;elephant&#39;</span><span class="p">,</span> <span class="s1">&#39;tiger&#39;</span><span class="p">,</span> <span class="s1">&#39;dinosaur&#39;</span><span class="p">,</span> <span class="s1">&#39;dolphin&#39;</span><span class="p">,</span> <span class="s1">&#39;flamingo&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>And how we printed lists before was:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">my_zoo</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Which gives:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;elephant&#39;</span><span class="p">,</span> <span class="s1">&#39;tiger&#39;</span><span class="p">,</span> <span class="s1">&#39;dinosaur&#39;</span><span class="p">,</span> <span class="s1">&#39;dolphin&#39;</span><span class="p">,</span> <span class="s1">&#39;flamingo&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Now, let’s say we want to print out the contents of our list, but with each item on its own line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">elephant</span>
+<span class="n">tiger</span>
+<span class="n">dinosaur</span>
+<span class="n">dolphin</span>
+<span class="n">flamingo</span>
+</pre></div>
+</div>
+<p>In short, we want to look at each number process them separately. We can achieve this by typing into Spyder as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">animal</span> <span class="ow">in</span> <span class="n">my_zoo</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">animal</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>At this point, have you pieced together the syntax for <cite>for</cite> loops? Here is the breakdown.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">iterable</span><span class="p">:</span>
+    <span class="c1"># This indent is important! Use the Tab key to indent</span>
+    <span class="c1"># It tells Python to loop over the chunk of code here</span>
+    <span class="c1"># &#39;var&#39; is a variable that exists within the loop</span>
+    <span class="c1"># it refers to the nth item in the iterable, in the nth loop</span>
+    <span class="c1"># Do something with &#39;var&#39;, such as the following</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">var</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You will want to be careful with your variable names inside and outside the <cite>for</cite> loop. Try the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># We define x outside the for loop</span>
+<span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;I am x outside the for loop!&#39;</span>
+<span class="n">list_of_x</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;I am x!&#39;</span><span class="p">,</span> <span class="s1">&#39;I am also x!!&#39;</span><span class="p">,</span> <span class="s1">&#39;Me three x!!!&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># We re-use &#39;x&#39; as the loop variable:</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">list_of_x</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># So ... what is &#39;x&#39; now?</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You should see the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>I am x!
+I am also x!!
+Me three x!!!
+Me three x!!!
+</pre></div>
+</div>
+<p>Therefore, we see that loop variables will persist i.e. still remain after the loop is completed. For this reason, we conventionally like to reserve <cite>i</cite> as a loop variable.</p>
+</div>
+<div class="section" id="nested-for-loops">
+<h3>Nested for loops<a class="headerlink" href="#nested-for-loops" title="Permalink to this headline">¶</a></h3>
+<p>What if we want to do a <cite>for</cite> loop in a <cite>for</cite> loop? These are what we call <em>nested</em> <cite>for</cite> loops.</p>
+<p>Let’s say you want to open a potion shop, and want all potions to have a bipartite name (i.e. two parts). You think of a list of words that are suitable in front, and a list of words suitable at the back. You want to see all combinations of words and choose your potion names from there. The fact that your newfound knowledge in Python will come in handy fills you with determination.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">words_in_front</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;lemongrass&#39;</span><span class="p">,</span> <span class="s1">&#39;eternal&#39;</span><span class="p">,</span> <span class="s1">&#39;kampung-style&#39;</span><span class="p">,</span> <span class="s1">&#39;unbelievable&#39;</span><span class="p">,</span> <span class="s1">&#39;gypsy&#39;</span><span class="p">]</span>
+<span class="n">words_at_back</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;zing&#39;</span><span class="p">,</span> <span class="s1">&#39;spice&#39;</span><span class="p">,</span> <span class="s1">&#39;danger&#39;</span><span class="p">,</span> <span class="s1">&#39;espresso&#39;</span><span class="p">]</span>
+<span class="c1">## YOUR CODE HERE</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="while-loops">
+<h3><cite>while</cite> loops<a class="headerlink" href="#while-loops" title="Permalink to this headline">¶</a></h3>
+<p>We’ve seen how you can use <cite>for</cite> loops to iterate over a known range. But … what if you don’t know the range in advance?</p>
+<p>There is another way to write loops, by using the <cite>while</cite> loop. If you know how many times you want to loop, by all means use <cite>for</cite> loops. However, if you don’t know exactly how many times to loop, then it’s best to use <cite>while</cite> loops. <cite>while</cite> loops ends when a specific condition is met while <cite>for</cite> loops end when the number of iterations are met. Now, let’s look at the syntax of while loops to see what this means.</p>
+<p>Let’s use the same objective we had before with the for loop, i.e to print all numbers from 0 to 100. This is how we would put it in a <cite>while</cite> loop:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># We need to instantiate, i.e. create &#39;i&#39;</span>
+<span class="c1"># Last time the &#39;for&#39; loop created it for us</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1"># While the condition is True, keep going!</span>
+<span class="k">while</span><span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">):</span>
+    <span class="c1"># Do something</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+    <span class="c1"># In this case, we keep a counter</span>
+    <span class="c1"># &#39;for&#39; loops do this automatically</span>
+    <span class="c1"># What happens if we don&#39;t have a counter?</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>The danger with <cite>while</cite> loops is that your loop <em>might</em> never end, as the end state is never met. Wonder what will happen if you try the following?</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">while</span><span class="p">(</span><span class="kc">True</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Press <cite>Ctrl</cite> + <cite>C</cite> to interrupt the console. This is equivalent to pressing the red stop square above Spyder’s IPython console. If the console still does not respond, restart the console in Spyder from the menu bar. If somehow nothing is working, turn your computer off and on again.</p>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-ascii-animation-i">
+<h2>Exercise: ASCII Animation I<a class="headerlink" href="#exercise-ascii-animation-i" title="Permalink to this headline">¶</a></h2>
+<p>Use Python to animate the ball moving from the left to right by printing the ball’s position on console. Refer to the examples below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ball starting at the left</span>
+<span class="c1"># For your convenience, it&#39;s 20 characters</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;[O___________________]&#39;</span><span class="p">)</span>
+
+<span class="c1"># Ball moving to the right</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;[_________O__________]&#39;</span><span class="p">)</span>
+
+<span class="c1"># Ball arrived at the right</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;[___________________O]&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>There are many methods to solve this problem. Begin with the following template:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LENGTH</span> <span class="o">=</span> <span class="mi">20</span> <span class="c1"># Use this as length of animation</span>
+<span class="n">PAUSE</span> <span class="o">=</span> <span class="mf">0.1</span>
+
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="c1"># Use time.sleep(PAUSE) after printing a line</span>
+<span class="c1"># to prevent the computer from going too fast!</span>
+
+<span class="c1">## YOUR CODE HERE</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="exercise-ascii-animation-ii">
+<h2>Exercise: ASCII Animation II<a class="headerlink" href="#exercise-ascii-animation-ii" title="Permalink to this headline">¶</a></h2>
+<dl class="simple">
+<dt>Repeat ASCII Animation I, but</dt><dd><ol class="lowerroman simple">
+<li><p>make the ball rebound from the right to left, and</p></li>
+<li><p>make the animation loop indefintely.</p></li>
+</ol>
+</dd>
+</dl>
 </div>
 <div class="section" id="exercise-prime-solver">
 <h2>Exercise: Prime solver<a class="headerlink" href="#exercise-prime-solver" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="exercise-caesar-cipher">
-<h2>Exercise: Caesar cipher<a class="headerlink" href="#exercise-caesar-cipher" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="conclusion">
-<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="further-reading">
-<h2>Further Reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">¶</a></h2>
+<p>To repeat the message at the beginning of today’s class, using loops is great when it comes to <em>iterating</em>, or in other words, repeating. One useful application is to check whether a number is a prime number.</p>
+<p>A prime number is an integer greater than 1 that can only be divided by 1 and itself. A simple method to determine whether a number is prime or not, is to check all potential divisors one by one. All potential divisors for a number are basically all integers smaller than it, up to one. If the number is fully divisible by any number, we then know it is not a prime number. If we go through all possible divisors, and no divisor works, the number is therefore prime.</p>
 <dl class="simple">
-<dt>_Python Crash Course: A Hands-on, Project-based Introduction to <a href="#id1"><span class="problematic" id="id2">Programming_</span></a>. Eric Matthes.</dt><dd><ul class="simple">
-<li><p>Chapter 4: Working with Lists</p></li>
+<dt>Given the description above, find all primes up to 1000 using the following tips:</dt><dd><ul class="simple">
+<li><p><cite>%</cite> is the modulo operator. If <cite>a % b == 0</cite>, this means that <cite>a</cite> can be fully divisible by <cite>b</cite>. Keep in mind the definition of a prime number.</p></li>
+<li><p>For your reference, first eight primes are: 2, 3, 5, 7, 11, 13, 17, 19. If you can get these eight right, then your code should be okay.</p></li>
 </ul>
 </dd>
 </dl>
+<p>Use the boilerplate code below as we haven’t covered <cite>if/else</cite> yet:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">NUM</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="c1">## YOUR CODE HERE</span>
+<span class="c1"># For loop to iterate over each number</span>
+        <span class="n">is_prime</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="c1">## YOUR CODE HERE</span>
+        <span class="c1"># Logic for prime checking</span>
+
+        <span class="k">if</span> <span class="n">is_prime</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; is prime&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="exercise-caesar-cipher">
+<h2>Exercise: Caesar cipher<a class="headerlink" href="#exercise-caesar-cipher" title="Permalink to this headline">¶</a></h2>
+<p>As we get to the end of the class, let’s look at one field that has greatly relied on computation: cryptography. In oversimplified terms, it is the art of sending coded messages.</p>
+<p>Just to show a peek into the field, from <a class="reference external" href="https://en.wikipedia.org/wiki/Key_size">Wikipedia</a>:</p>
+<blockquote>
+<div><p>A key should, therefore, be large enough that a brute-force attack (possible against any encryption algorithm) is infeasible – i.e. would take too long to execute. Shannon’s work on information theory showed that to achieve so-called perfect secrecy, the key length must be at least as large as the message and only used once (this algorithm is called the one-time pad). In light of this, and the practical difficulty of managing such long keys, modern cryptographic practice has discarded the notion of perfect secrecy as a requirement for encryption, and instead focuses on computational security, under which the computational requirements of breaking an encrypted text must be infeasible for an attacker.</p>
+</div></blockquote>
+<p>Today, we will be looking at one of the earliest cryptographic methods: the Caesar cipher, best known to be used by Julius Caesar. It works by shifting all letters in the message by a set number down the alphabet. For example, to encode “roses are red” with a shift of 3, we replace A with D, B with E, C with F, etc.</p>
+<blockquote>
+<div><p>Plaintext:  ROSES ARE RED</p>
+<p>Ciphertext: URVHV DUH UHG</p>
+</div></blockquote>
+<p>To translate ciphertext back to plaintext, we simply shift the letters back to the left by three letters.</p>
+<p>In this exercise, use <cite>for</cite> loops to decipher the following ciphertext, as well as identify the shift:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cipher1</span> <span class="o">=</span> <span class="s2">&quot;Jhlzhy jpwolyz jhu il jyhjrlk if mylxblujf huhsfzpz&quot;</span>
+<span class="n">cipher2</span> <span class="o">=</span> <span class="s2">&quot;lo yv yorqb clozfkd xii mlppfyib pefcq zljyfkxqflkp&quot;</span>
+<span class="n">cipher3</span> <span class="o">=</span> <span class="s2">&quot;fsqoxobo mszrobc swzbyfo ezyx mkockb mszrobc li&quot;</span>
+<span class="n">cipher4</span> <span class="o">=</span> <span class="s2">&quot;caqvo i lqnnmzmvb apqnb ib mikp xwaqbqwv qv bpm bmfb&quot;</span>
+<span class="n">cipher5</span> <span class="o">=</span> <span class="s2">&quot;sldmprslyrcjw uc ugjj lm em mtcp rfc bcrygjq md tgeclcpc agnfcpq&quot;</span>
+<span class="n">cipher6</span> <span class="o">=</span> <span class="s2">&quot;qtrpjht rdktgxcv iwtb lxaa gtfjxgt sdjqat iwt pkpxapqat raphh ixbt&quot;</span>
+<span class="n">cipher7</span> <span class="o">=</span> <span class="s2">&quot;exw wkdwv zkb zh kdyh d olvw ri olqnv xqghu wkh ixuwkhu uhdglqj vhfwlrq&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
+<p>Take-away message for these week: Problems that can be iterated can be solved by looping, which allows us to make use of the computational advantage of computers :)</p>
+</div>
+<div class="section" id="further-reading">
+<h2>Further Reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Prime numbers: <a class="reference external" href="https://en.wikipedia.org/wiki/Prime_number">https://en.wikipedia.org/wiki/Prime_number</a></p></li>
+<li><p>Wikipedia article discussing key size for encryption: <a class="reference external" href="https://en.wikipedia.org/wiki/Key_size">https://en.wikipedia.org/wiki/Key_size</a></p></li>
+<li><p>More about the Enigma machine, which Germany used in World War II to secure their military transmissions: <a class="reference external" href="https://en.wikipedia.org/wiki/Enigma_machine">https://en.wikipedia.org/wiki/Enigma_machine</a></p></li>
+<li><p>The Ultra programme, wherein the Allies were able to crack the Enigma machine’s encryption: <a class="reference external" href="https://en.wikipedia.org/wiki/Ultra">https://en.wikipedia.org/wiki/Ultra</a></p></li>
+<li><p>Caesar cipher: <a class="reference external" href="http://practicalcryptography.com/ciphers/caesar-cipher/">http://practicalcryptography.com/ciphers/caesar-cipher/</a></p></li>
+<li><p>Vigenere cipher: <a class="reference external" href="https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher">https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher</a></p></li>
+<li><p>Looping operations can be sped up through vectorization: <a class="reference external" href="https://en.wikipedia.org/wiki/Array_programming">https://en.wikipedia.org/wiki/Array_programming</a></p></li>
+</ul>
 </div>
 </div>
 
@@ -75,7 +284,14 @@
   <h3><a href="index.html">Table of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Week 2: Loops with <cite>for</cite> and <cite>while</cite></a><ul>
-<li><a class="reference internal" href="#concept-of-for-loops-and-while-loops">Concept of <cite>for</cite> loops and <cite>while</cite> loops</a></li>
+<li><a class="reference internal" href="#concept-of-for-loops-and-while-loops">Concept of <cite>for</cite> loops and <cite>while</cite> loops</a><ul>
+<li><a class="reference internal" href="#for-loops"><cite>for</cite> loops</a></li>
+<li><a class="reference internal" href="#nested-for-loops">Nested for loops</a></li>
+<li><a class="reference internal" href="#while-loops"><cite>while</cite> loops</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#exercise-ascii-animation-i">Exercise: ASCII Animation I</a></li>
+<li><a class="reference internal" href="#exercise-ascii-animation-ii">Exercise: ASCII Animation II</a></li>
 <li><a class="reference internal" href="#exercise-prime-solver">Exercise: Prime solver</a></li>
 <li><a class="reference internal" href="#exercise-caesar-cipher">Exercise: Caesar cipher</a></li>
 <li><a class="reference internal" href="#conclusion">Conclusion</a></li>
@@ -84,6 +300,9 @@
 </li>
 </ul>
 
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="01_intro.html"
+                        title="previous chapter">Week 1 : Introduction to Python</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -111,12 +330,15 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="01_intro.html" title="Week 1 : Introduction to Python"
+             >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Exposure to Code 1.0 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright PERMATA STEM Talent, 2020.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.3.
     </div>
   </body>
 </html>
