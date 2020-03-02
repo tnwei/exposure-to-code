@@ -67,3 +67,7 @@ Further reading
 _Python Crash Course: A Hands-on, Project-based Introduction to Programming_. Eric Matthes. 
     * Chapter 5: If Statements
     * Chapter 8: Functions
+
+
+BEFORE PORTING GDRIVE CHANGES:
+    * Add Fizzbuzz! Classic programming challenge! 
