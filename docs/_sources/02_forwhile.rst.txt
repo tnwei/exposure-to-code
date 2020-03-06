@@ -199,8 +199,23 @@ Exercise: ASCII Animation II
 	* Review solutions before proceeding. 
 
 Repeat ASCII Animation I, but 
-	i. make the ball rebound from the right to left, and
-	ii. make the animation loop indefintely.
+	i. make your code print on the same line:
+	::
+		# `line` contains your string to print
+		
+		# Original
+		# print(line)
+
+		# Change to the following
+		print(line + '\r', end='')
+
+	ii. make the ball rebound from the right to left, and
+	iii. make the animation loop indefinitely.
+
+.. note :: 
+	* `\\r` is the carriage return character. It moves the cursor to the beginning of the line. 
+	* `print` automatically ends with `\\n`, the newline character, making each `print` call begin on its own line. Thus, Specifying `end = ''` in `print` means the cursor will not advance to the next line.
+	* Combined, this causes each successive call to `print` to overwrite the existing line, giving the impression of animation! 
 
 Exercise: Prime solver
 ----------------------

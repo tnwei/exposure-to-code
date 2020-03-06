@@ -199,13 +199,31 @@ Me three x!!!
 </div>
 <div class="section" id="exercise-ascii-animation-ii">
 <h2>Exercise: ASCII Animation II<a class="headerlink" href="#exercise-ascii-animation-ii" title="Permalink to this headline">¶</a></h2>
-<dl class="simple">
-<dt>Repeat ASCII Animation I, but</dt><dd><ol class="lowerroman simple">
+<dl>
+<dt>Repeat ASCII Animation I, but</dt><dd><p>i. make your code print on the same line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># `line` contains your string to print</span>
+
+<span class="c1"># Original</span>
+<span class="c1"># print(line)</span>
+
+<span class="c1"># Change to the following</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">line</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\r</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="lowerroman simple" start="2">
 <li><p>make the ball rebound from the right to left, and</p></li>
-<li><p>make the animation loop indefintely.</p></li>
+<li><p>make the animation loop indefinitely.</p></li>
 </ol>
 </dd>
 </dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p><cite>\r</cite> is the carriage return character. It moves the cursor to the beginning of the line.</p></li>
+<li><p><cite>print</cite> automatically ends with <cite>\n</cite>, the newline character, making each <cite>print</cite> call begin on its own line. Thus, Specifying <cite>end = ‘’</cite> in <cite>print</cite> means the cursor will not advance to the next line.</p></li>
+<li><p>Combined, this causes each successive call to <cite>print</cite> to overwrite the existing line, giving the impression of animation!</p></li>
+</ul>
+</div>
 </div>
 <div class="section" id="exercise-prime-solver">
 <h2>Exercise: Prime solver<a class="headerlink" href="#exercise-prime-solver" title="Permalink to this headline">¶</a></h2>
