@@ -135,6 +135,8 @@ Output:
 .. figure:: images/week2-ascii2.svg
    :alt: GIF not found
 
+   TODO: Still need this GIF! 
+
 Exercise: Prime finder
 ----------------------
 Code:

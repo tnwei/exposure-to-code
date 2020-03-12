@@ -8,6 +8,7 @@
 
 Week 2: Advanced Exercises
 ==========================
+Advanced exercises are designed for advanced learners that are ready to take on extra challenges. These exercises are made accessible to all after the class. Note that these exercises typically require more knowledge than what was presented in class.
 
 Adv Exercise : ASCII animation III
 ----------------------------------
@@ -41,7 +42,9 @@ Adv Exercise : ASCII animation IV
 ---------------------------------
 .. warning :: Training wheels off! The material in today's class is not enough to solve this problem. 
 
-Repeat ASCII Animation III, but now the tadpole swims at variable speeds:
+Repeat ASCII Animation III, but now the tadpole swims at variable speeds in a probabilistic manner:
 	* The tadpole will move 1 unit every 1 out of 4 timesteps on average. 
 	* The tadpole will choose to not move every 2 out of 4 timesteps on average. 
 	* The tadpole will swim a short burst of 2 units every 1 out of 4 timesteps on average. 
+
+.. Add Markov chain
