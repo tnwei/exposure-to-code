@@ -14,6 +14,7 @@
     <script src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Week 2: Class Exercise solutions" href="02_forwhile_sols.html" />
     <link rel="prev" title="Week 1 : Introduction to Python" href="01_intro.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
@@ -22,6 +23,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="02_forwhile_sols.html" title="Week 2: Class Exercise solutions"
+             accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="01_intro.html" title="Week 1 : Introduction to Python"
              accesskey="P">previous</a> |</li>
@@ -59,7 +63,7 @@
 <span class="mi">100</span>
 </pre></div>
 </div>
-<p>You will need to type <cite>print(n)</cite> for each number <cite>n</cite>. Image doing this for numbers 0 to 100. Doing this can get exhausting and does take more time that we would want. Here, we’ll introduce for loops!</p>
+<p>You will need to type <cite>print(n)</cite> for each number <cite>n</cite>. Imagine doing this for numbers 0 to 100. Doing this can get exhausting and does take more time that we would want. Here, we’ll introduce for loops!</p>
 <div class="section" id="for-loops">
 <h3><cite>for</cite> loops<a class="headerlink" href="#for-loops" title="Permalink to this headline">¶</a></h3>
 <p>For loops are amazing in a sense that they make repetitive tasks a piece of cake. First, type this into the editor:</p>
@@ -122,7 +126,8 @@
 </pre></div>
 </div>
 <p>You should see the following:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>I am x!
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>I am x outside the for loop!
+I am x!
 I am also x!!
 Me three x!!!
 Me three x!!!
@@ -173,24 +178,37 @@ Me three x!!!
 </div>
 <div class="section" id="exercise-ascii-animation-i">
 <h2>Exercise: ASCII Animation I<a class="headerlink" href="#exercise-ascii-animation-i" title="Permalink to this headline">¶</a></h2>
-<p>Use Python to animate the ball moving from the left to right by printing the ball’s position on console. Refer to the examples below:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ball starting at the left</span>
-<span class="c1"># For your convenience, it&#39;s 20 characters</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;[O___________________]&#39;</span><span class="p">)</span>
-
-<span class="c1"># Ball moving to the right</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;[_________O__________]&#39;</span><span class="p">)</span>
-
-<span class="c1"># Ball arrived at the right</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;[___________________O]&#39;</span><span class="p">)</span>
+<p>Use Python to animate the ball moving from the left to right by printing the ball’s position on console. We want the code to output the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">O___________________</span><span class="p">]</span>
+<span class="p">[</span><span class="n">_O__________________</span><span class="p">]</span>
+<span class="p">[</span><span class="n">__O_________________</span><span class="p">]</span>
+<span class="p">[</span><span class="n">___O________________</span><span class="p">]</span>
+<span class="p">[</span><span class="n">____O_______________</span><span class="p">]</span>
+<span class="p">[</span><span class="n">_____O______________</span><span class="p">]</span>
+<span class="p">[</span><span class="n">______O_____________</span><span class="p">]</span>
+<span class="p">[</span><span class="n">_______O____________</span><span class="p">]</span>
+<span class="p">[</span><span class="n">________O___________</span><span class="p">]</span>
+<span class="p">[</span><span class="n">_________O__________</span><span class="p">]</span>
+<span class="p">[</span><span class="n">__________O_________</span><span class="p">]</span>
+<span class="p">[</span><span class="n">___________O________</span><span class="p">]</span>
+<span class="p">[</span><span class="n">____________O_______</span><span class="p">]</span>
+<span class="p">[</span><span class="n">_____________O______</span><span class="p">]</span>
+<span class="p">[</span><span class="n">______________O_____</span><span class="p">]</span>
+<span class="p">[</span><span class="n">_______________O____</span><span class="p">]</span>
+<span class="p">[</span><span class="n">________________O___</span><span class="p">]</span>
+<span class="p">[</span><span class="n">_________________O__</span><span class="p">]</span>
+<span class="p">[</span><span class="n">__________________O_</span><span class="p">]</span>
+<span class="p">[</span><span class="n">___________________O</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>There are many methods to solve this problem. Begin with the following template:</p>
+<p>The output shown above has the character ‘O’ move from left to right, for every next line printed.</p>
+<p>There are many methods to solve this problem. Hint: You can do <cite>5 * ‘_’</cite> to output <cite>_____</cite>, which is 5 underscores in a row.</p>
+<p>Begin with the following template, and pay attention to the comments:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LENGTH</span> <span class="o">=</span> <span class="mi">20</span> <span class="c1"># Use this as length of animation</span>
 <span class="n">PAUSE</span> <span class="o">=</span> <span class="mf">0.1</span>
 
 <span class="kn">import</span> <span class="nn">time</span>
-<span class="c1"># Use time.sleep(PAUSE) after printing a line</span>
+<span class="c1"># Use `time.sleep(PAUSE)` after printing a line</span>
 <span class="c1"># to prevent the computer from going too fast!</span>
 
 <span class="c1">## YOUR CODE HERE</span>
@@ -200,14 +218,24 @@ Me three x!!!
 <div class="section" id="exercise-ascii-animation-ii">
 <h2>Exercise: ASCII Animation II<a class="headerlink" href="#exercise-ascii-animation-ii" title="Permalink to this headline">¶</a></h2>
 <dl>
-<dt>Repeat ASCII Animation I, but</dt><dd><p>i. make your code print on the same line:</p>
+<dt>Repeat ASCII Animation I, following the instructions below carefully:</dt><dd><p>i. make your code print on the same line:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># `line` contains your string to print</span>
 
 <span class="c1"># Original</span>
 <span class="c1"># print(line)</span>
 
 <span class="c1"># Change to the following</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">line</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\r</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="c1"># You actually only need to introduce the line carraige character at the end,</span>
+<span class="c1"># shouldn&#39;t matter how you do it. Spyder has known issues with this though:</span>
+<span class="c1"># https://github.com/spyder-ide/spyder/issues/195</span>
+<span class="c1">#</span>
+<span class="c1"># To see this in Spyder, select in the menu bar:</span>
+<span class="c1"># Tools -&gt; Preferences -&gt; Run -&gt; Execute in an external system terminal</span>
+<span class="c1">#</span>
+<span class="c1"># To revert to normal, do:</span>
+<span class="c1"># Tools -&gt; Preferences -&gt; Run -&gt; Execute in current console</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\r</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <ol class="lowerroman simple" start="2">
@@ -220,13 +248,13 @@ Me three x!!!
 <p class="admonition-title">Note</p>
 <ul class="simple">
 <li><p><cite>\r</cite> is the carriage return character. It moves the cursor to the beginning of the line.</p></li>
-<li><p><cite>print</cite> automatically ends with <cite>\n</cite>, the newline character, making each <cite>print</cite> call begin on its own line. Thus, Specifying <cite>end = ‘’</cite> in <cite>print</cite> means the cursor will not advance to the next line.</p></li>
+<li><p><cite>print</cite> automatically ends with <cite>\n</cite>, the newline character, making each <cite>print</cite> call begin on its own line. Thus, Specifying <cite>end = ‘r’</cite> in <cite>print</cite> means the cursor will be moved to the front of the line for the next line.</p></li>
 <li><p>Combined, this causes each successive call to <cite>print</cite> to overwrite the existing line, giving the impression of animation!</p></li>
 </ul>
 </div>
 </div>
-<div class="section" id="exercise-prime-solver">
-<h2>Exercise: Prime solver<a class="headerlink" href="#exercise-prime-solver" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="exercise-prime-finder">
+<h2>Exercise: Prime finder<a class="headerlink" href="#exercise-prime-finder" title="Permalink to this headline">¶</a></h2>
 <p>To repeat the message at the beginning of today’s class, using loops is great when it comes to <em>iterating</em>, or in other words, repeating. One useful application is to check whether a number is a prime number.</p>
 <p>A prime number is an integer greater than 1 that can only be divided by 1 and itself. A simple method to determine whether a number is prime or not, is to check all potential divisors one by one. All potential divisors for a number are basically all integers smaller than it, up to one. If the number is fully divisible by any number, we then know it is not a prime number. If we go through all possible divisors, and no divisor works, the number is therefore prime.</p>
 <dl class="simple">
@@ -264,8 +292,60 @@ Me three x!!!
 <p>Ciphertext: URVHV DUH UHG</p>
 </div></blockquote>
 <p>To translate ciphertext back to plaintext, we simply shift the letters back to the left by three letters.</p>
-<p>In this exercise, use <cite>for</cite> loops to decipher the following ciphertext, as well as identify the shift:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cipher1</span> <span class="o">=</span> <span class="s2">&quot;Jhlzhy jpwolyz jhu il jyhjrlk if mylxblujf huhsfzpz&quot;</span>
+<p>In this exercise, use <cite>for</cite> loops to decipher the following ciphertext, as well as identify the shift. Run the following code for hints:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Converting letters to their integer representation</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Converting integers to letters</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="mi">97</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="mi">98</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="mi">99</span><span class="p">))</span>
+
+<span class="c1"># Example: Shifting &#39;g&#39; to the right by 4 to get &#39;k&#39;</span>
+<span class="n">shift</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">k_num</span> <span class="o">=</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;g&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">shift</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="n">k_num</span><span class="p">))</span>
+
+<span class="c1"># Example: Shifting &#39;x&#39; to the right by 5 to get &#39;c&#39;</span>
+<span class="n">shift</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">x_num</span> <span class="o">=</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">shift</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="n">x_num</span><span class="p">))</span>
+
+<span class="c1"># Oops!</span>
+<span class="c1"># Pay attention to where the alphabets begin and end!</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">))</span>
+
+<span class="c1"># One more time!</span>
+<span class="c1"># Remember that we have 26 letters in the alphabet</span>
+<span class="c1"># Example: Shifting &#39;x&#39; to the right by 5 to get &#39;c&#39;</span>
+<span class="n">shift</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">x_num</span> <span class="o">=</span> <span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span> <span class="o">-</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">shift</span><span class="p">)</span> <span class="o">%</span> <span class="mi">26</span> <span class="o">+</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="n">x_num</span><span class="p">))</span>
+
+<span class="c1"># Printing each character in a string</span>
+<span class="c1"># Remember that a string is basically a list of characters?</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="s1">&#39;this should be printed on a single line!&#39;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="c1"># Note that a blank space has a number too!</span>
+<span class="c1"># You will want to skip spaces to not confuse yourselves</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">))</span>
+
+<span class="c1"># This is how to skip spaces</span>
+<span class="n">string_with_spaces</span> <span class="o">=</span> <span class="s1">&#39;this is how to skip spaces&#39;</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">string_with_spaces</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="s1">&#39; &#39;</span><span class="p">:</span>
+                <span class="k">continue</span>
+        <span class="k">else</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Go ahead and get started with the ciphers below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cipher1</span> <span class="o">=</span> <span class="s2">&quot;jhlzhy jpwolyz jhu il jyhjrlk if mylxblujf huhsfzpz&quot;</span>
 <span class="n">cipher2</span> <span class="o">=</span> <span class="s2">&quot;lo yv yorqb clozfkd xii mlppfyib pefcq zljyfkxqflkp&quot;</span>
 <span class="n">cipher3</span> <span class="o">=</span> <span class="s2">&quot;fsqoxobo mszrobc swzbyfo ezyx mkockb mszrobc li&quot;</span>
 <span class="n">cipher4</span> <span class="o">=</span> <span class="s2">&quot;caqvo i lqnnmzmvb apqnb ib mikp xwaqbqwv qv bpm bmfb&quot;</span>
@@ -310,7 +390,7 @@ Me three x!!!
 </li>
 <li><a class="reference internal" href="#exercise-ascii-animation-i">Exercise: ASCII Animation I</a></li>
 <li><a class="reference internal" href="#exercise-ascii-animation-ii">Exercise: ASCII Animation II</a></li>
-<li><a class="reference internal" href="#exercise-prime-solver">Exercise: Prime solver</a></li>
+<li><a class="reference internal" href="#exercise-prime-finder">Exercise: Prime finder</a></li>
 <li><a class="reference internal" href="#exercise-caesar-cipher">Exercise: Caesar cipher</a></li>
 <li><a class="reference internal" href="#conclusion">Conclusion</a></li>
 <li><a class="reference internal" href="#further-reading">Further Reading</a></li>
@@ -321,6 +401,9 @@ Me three x!!!
   <h4>Previous topic</h4>
   <p class="topless"><a href="01_intro.html"
                         title="previous chapter">Week 1 : Introduction to Python</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="02_forwhile_sols.html"
+                        title="next chapter">Week 2: Class Exercise solutions</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -348,6 +431,9 @@ Me three x!!!
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="02_forwhile_sols.html" title="Week 2: Class Exercise solutions"
+             >next</a> |</li>
         <li class="right" >
           <a href="01_intro.html" title="Week 1 : Introduction to Python"
              >previous</a> |</li>

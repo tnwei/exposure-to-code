@@ -32,7 +32,7 @@ To start off, let's recap on some printing exercises. Picture what you need to d
 	99
 	100
 
-You will need to type `print(n)` for each number `n`. Image doing this for numbers 0 to 100. Doing this can get exhausting and does take more time that we would want. Here, we'll introduce for loops! 
+You will need to type `print(n)` for each number `n`. Imagine doing this for numbers 0 to 100. Doing this can get exhausting and does take more time that we would want. Here, we'll introduce for loops! 
 
 `for` loops
 ^^^^^^^^^^^
@@ -98,7 +98,8 @@ You will want to be careful with your variable names inside and outside the `for
 
 You should see the following:
 :: 
-	I am x!
+	I am x outside the for loop!
+	I am x! 
 	I am also x!!
 	Me three x!!!
 	Me three x!!!
@@ -165,25 +166,40 @@ Exercise: ASCII Animation I
 	* Before moving on, review multiple solutions to this problem. 
 	* Encourage those who finish early to move onto the next one. 
 
-Use Python to animate the ball moving from the left to right by printing the ball's position on console. Refer to the examples below:
+Use Python to animate the ball moving from the left to right by printing the ball's position on console. We want the code to output the following:
 ::
-	# Ball starting at the left
-	# For your convenience, it's 20 characters
-	print('[O___________________]')
+	[O___________________]
+	[_O__________________]
+	[__O_________________]
+	[___O________________]
+	[____O_______________]
+	[_____O______________]
+	[______O_____________]
+	[_______O____________]
+	[________O___________]
+	[_________O__________]
+	[__________O_________]
+	[___________O________]
+	[____________O_______]
+	[_____________O______]
+	[______________O_____]
+	[_______________O____]
+	[________________O___]
+	[_________________O__]
+	[__________________O_]
+	[___________________O]
 
-	# Ball moving to the right
-	print('[_________O__________]')
+The output shown above has the character 'O' move from left to right, for every next line printed. 
 
-	# Ball arrived at the right
-	print('[___________________O]')
+There are many methods to solve this problem. Hint: You can do `5 * '_'` to output `_____`, which is 5 underscores in a row. 
 
-There are many methods to solve this problem. Begin with the following template:
+Begin with the following template, and pay attention to the comments:
 ::
 	LENGTH = 20 # Use this as length of animation
 	PAUSE = 0.1
 
 	import time
-	# Use time.sleep(PAUSE) after printing a line 
+	# Use `time.sleep(PAUSE)` after printing a line 
 	# to prevent the computer from going too fast! 
 
 	## YOUR CODE HERE
@@ -198,7 +214,7 @@ Exercise: ASCII Animation II
 	* Again, need to be on the move talking to students to stimulate their thinking. 
 	* Review solutions before proceeding. 
 
-Repeat ASCII Animation I, but 
+Repeat ASCII Animation I, following the instructions below carefully:
 	i. make your code print on the same line:
 	::
 		# `line` contains your string to print
@@ -207,17 +223,27 @@ Repeat ASCII Animation I, but
 		# print(line)
 
 		# Change to the following
-		print(line + '\r', end='')
+		# You actually only need to introduce the line carraige character at the end,
+		# shouldn't matter how you do it. Spyder has known issues with this though:
+		# https://github.com/spyder-ide/spyder/issues/195
+		# 
+		# To see this in Spyder, select in the menu bar: 
+		# Tools -> Preferences -> Run -> Execute in an external system terminal
+		# 
+		# To revert to normal, do: 
+		# Tools -> Preferences -> Run -> Execute in current console
+
+		print(line, end='\r')
 
 	ii. make the ball rebound from the right to left, and
 	iii. make the animation loop indefinitely.
 
 .. note :: 
 	* `\\r` is the carriage return character. It moves the cursor to the beginning of the line. 
-	* `print` automatically ends with `\\n`, the newline character, making each `print` call begin on its own line. Thus, Specifying `end = ''` in `print` means the cursor will not advance to the next line.
+	* `print` automatically ends with `\\n`, the newline character, making each `print` call begin on its own line. Thus, Specifying `end = '\r'` in `print` means the cursor will be moved to the front of the line for the next line.
 	* Combined, this causes each successive call to `print` to overwrite the existing line, giving the impression of animation! 
 
-Exercise: Prime solver
+Exercise: Prime finder
 ----------------------
 .. Instructor notes
 .. Estimated time: 15 mins
@@ -252,7 +278,7 @@ Use the boilerplate code below as we haven't covered `if/else` yet:
 			print(str(i) + ' is prime')
 
 .. Instructor solution:
-	NUM = 100
+	NUM = 1000
 
 	for i in range(2, NUM):
 		is_prime = True
@@ -266,7 +292,7 @@ Use the boilerplate code below as we haven't covered `if/else` yet:
 		## YOUR CODE ABOVE
 
 		if is_prime is True:
-			print(str(i) + ' is prime')
+			print(i)
 
 .. [ ] Then do it again for 10000 primes and note down time required.
 .. Message: Speed is the whole point of doing it using computers compared to humans. Code enables computation at speeds way faster than humans. Code helps us to solve problems that we can frame as a coding problem. 
@@ -297,9 +323,61 @@ Today, we will be looking at one of the earliest cryptographic methods: the Caes
 
 To translate ciphertext back to plaintext, we simply shift the letters back to the left by three letters. 
 
-In this exercise, use `for` loops to decipher the following ciphertext, as well as identify the shift: 
+In this exercise, use `for` loops to decipher the following ciphertext, as well as identify the shift. Run the following code for hints:
 ::
-	cipher1 = "Jhlzhy jpwolyz jhu il jyhjrlk if mylxblujf huhsfzpz"
+	# Converting letters to their integer representation
+	print(ord('a'))
+	print(ord('b'))
+	print(ord('c'))
+	print(ord('a') + 2)
+		
+	# Converting integers to letters
+	print(chr(97))
+	print(chr(98))
+	print(chr(99))
+
+	# Example: Shifting 'g' to the right by 4 to get 'k'
+	shift = 4
+	k_num = ord('g') + shift
+	print(chr(k_num))
+
+	# Example: Shifting 'x' to the right by 5 to get 'c'
+	shift = 5
+	x_num = ord('x') + shift
+	print(chr(x_num))
+
+	# Oops! 
+	# Pay attention to where the alphabets begin and end!
+	print(ord('a'))
+	print(ord('z'))
+
+	# One more time! 
+	# Remember that we have 26 letters in the alphabet
+	# Example: Shifting 'x' to the right by 5 to get 'c'
+	shift = 5
+	x_num = (ord('x') - ord('a') + shift) % 26 + ord('a')
+	print(chr(x_num))
+
+	# Printing each character in a string
+	# Remember that a string is basically a list of characters?
+	for i in 'this should be printed on a single line!':
+		print(i, end='')
+	
+	# Note that a blank space has a number too! 
+	# You will want to skip spaces to not confuse yourselves
+	print(ord(' '))
+
+	# This is how to skip spaces
+	string_with_spaces = 'this is how to skip spaces'
+	for i in string_with_spaces:
+		if i == ' ':
+			continue
+		else:
+			print(i, end='')
+
+Go ahead and get started with the ciphers below:
+::
+	cipher1 = "jhlzhy jpwolyz jhu il jyhjrlk if mylxblujf huhsfzpz"
 	cipher2 = "lo yv yorqb clozfkd xii mlppfyib pefcq zljyfkxqflkp"
 	cipher3 = "fsqoxobo mszrobc swzbyfo ezyx mkockb mszrobc li"
 	cipher4 = "caqvo i lqnnmzmvb apqnb ib mikp xwaqbqwv qv bpm bmfb"

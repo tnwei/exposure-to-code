@@ -1,0 +1,393 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Week 2: Class Exercise solutions &#8212; Exposure to Code 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Week 2: Advanced Exercises" href="02_forwhile_EX.html" />
+    <link rel="prev" title="Week 2: Loops with for and while" href="02_forwhile.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="02_forwhile_EX.html" title="Week 2: Advanced Exercises"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="02_forwhile.html" title="Week 2: Loops with for and while"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Exposure to Code 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="week-2-class-exercise-solutions">
+<h1>Week 2: Class Exercise solutions<a class="headerlink" href="#week-2-class-exercise-solutions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="nested-for-loops">
+<h2>Nested for loops<a class="headerlink" href="#nested-for-loops" title="Permalink to this headline">¶</a></h2>
+<p>Code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Nested For Loops (Instructor Solution)</span>
+<span class="c1"># Created: Mar 12, 2020 Thu</span>
+<span class="c1"># Author: Tan Nian Wei</span>
+
+<span class="n">words_in_front</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;lemongrass&#39;</span><span class="p">,</span> <span class="s1">&#39;eternal&#39;</span><span class="p">,</span> <span class="s1">&#39;kampung-style&#39;</span><span class="p">,</span> <span class="s1">&#39;unbelievable&#39;</span><span class="p">,</span> <span class="s1">&#39;gypsy&#39;</span><span class="p">]</span>
+<span class="n">words_at_back</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;zing&#39;</span><span class="p">,</span> <span class="s1">&#39;spice&#39;</span><span class="p">,</span> <span class="s1">&#39;danger&#39;</span><span class="p">,</span> <span class="s1">&#39;espresso&#39;</span><span class="p">]</span>
+
+<span class="c1">## YOUR CODE HERE</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">words_in_front</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">words_at_back</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">j</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lemongrass</span> <span class="n">zing</span>
+<span class="n">lemongrass</span> <span class="n">spice</span>
+<span class="n">lemongrass</span> <span class="n">danger</span>
+<span class="n">lemongrass</span> <span class="n">espresso</span>
+<span class="n">eternal</span> <span class="n">zing</span>
+<span class="n">eternal</span> <span class="n">spice</span>
+<span class="n">eternal</span> <span class="n">danger</span>
+<span class="n">eternal</span> <span class="n">espresso</span>
+<span class="n">kampung</span><span class="o">-</span><span class="n">style</span> <span class="n">zing</span>
+<span class="n">kampung</span><span class="o">-</span><span class="n">style</span> <span class="n">spice</span>
+<span class="n">kampung</span><span class="o">-</span><span class="n">style</span> <span class="n">danger</span>
+<span class="n">kampung</span><span class="o">-</span><span class="n">style</span> <span class="n">espresso</span>
+<span class="n">unbelievable</span> <span class="n">zing</span>
+<span class="n">unbelievable</span> <span class="n">spice</span>
+<span class="n">unbelievable</span> <span class="n">danger</span>
+<span class="n">unbelievable</span> <span class="n">espresso</span>
+<span class="n">gypsy</span> <span class="n">zing</span>
+<span class="n">gypsy</span> <span class="n">spice</span>
+<span class="n">gypsy</span> <span class="n">danger</span>
+<span class="n">gypsy</span> <span class="n">espresso</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="exercise-ascii-animation-i">
+<h2>Exercise: ASCII Animation I<a class="headerlink" href="#exercise-ascii-animation-i" title="Permalink to this headline">¶</a></h2>
+<p>Code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ASCII Animation I (Instructor Solution)</span>
+<span class="c1"># Created: Mar 12, 2020 Thu</span>
+<span class="c1"># Author: Tan Nian Wei</span>
+
+<span class="n">LENGTH</span> <span class="o">=</span> <span class="mi">20</span> <span class="c1"># Use this as length of animation</span>
+<span class="n">PAUSE</span> <span class="o">=</span> <span class="mf">0.1</span>
+
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="c1"># Use `time.sleep(PAUSE)` after printing a line</span>
+<span class="c1"># to prevent the computer from going too fast!</span>
+
+<span class="c1">## YOUR CODE HERE</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">LENGTH</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="c1"># Realize that with each line, we are simply moving</span>
+        <span class="c1"># underscores on the left of &#39;O&#39; to the right of &#39;O&#39;</span>
+        <span class="c1"># one by one!</span>
+        <span class="c1"># We need to iterate to LENGTH + 1, because</span>
+        <span class="c1"># range(n) generates 0 to (n-1)!</span>
+
+        <span class="n">before_ball</span> <span class="o">=</span> <span class="s1">&#39;_&#39;</span> <span class="o">*</span> <span class="n">i</span>
+        <span class="n">after_ball</span> <span class="o">=</span> <span class="s1">&#39;_&#39;</span> <span class="o">*</span> <span class="p">(</span><span class="n">LENGTH</span> <span class="o">-</span> <span class="n">i</span><span class="p">)</span>
+
+        <span class="c1"># In Week 1, we&#39;ve established that you can add strings!</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="s1">&#39;[&#39;</span> <span class="o">+</span> <span class="n">before_ball</span> <span class="o">+</span> <span class="s1">&#39;O&#39;</span> <span class="o">+</span> <span class="n">after_ball</span> <span class="o">+</span> <span class="s1">&#39;]&#39;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+
+        <span class="c1"># Slow down terminal printout</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">O____________________</span><span class="p">]</span>
+<span class="p">[</span><span class="n">_O___________________</span><span class="p">]</span>
+<span class="p">[</span><span class="n">__O__________________</span><span class="p">]</span>
+<span class="p">[</span><span class="n">___O_________________</span><span class="p">]</span>
+<span class="p">[</span><span class="n">____O________________</span><span class="p">]</span>
+<span class="p">[</span><span class="n">_____O_______________</span><span class="p">]</span>
+<span class="p">[</span><span class="n">______O______________</span><span class="p">]</span>
+<span class="p">[</span><span class="n">_______O_____________</span><span class="p">]</span>
+<span class="p">[</span><span class="n">________O____________</span><span class="p">]</span>
+<span class="p">[</span><span class="n">_________O___________</span><span class="p">]</span>
+<span class="p">[</span><span class="n">__________O__________</span><span class="p">]</span>
+<span class="p">[</span><span class="n">___________O_________</span><span class="p">]</span>
+<span class="p">[</span><span class="n">____________O________</span><span class="p">]</span>
+<span class="p">[</span><span class="n">_____________O_______</span><span class="p">]</span>
+<span class="p">[</span><span class="n">______________O______</span><span class="p">]</span>
+<span class="p">[</span><span class="n">_______________O_____</span><span class="p">]</span>
+<span class="p">[</span><span class="n">________________O____</span><span class="p">]</span>
+<span class="p">[</span><span class="n">_________________O___</span><span class="p">]</span>
+<span class="p">[</span><span class="n">__________________O__</span><span class="p">]</span>
+<span class="p">[</span><span class="n">___________________O_</span><span class="p">]</span>
+<span class="p">[</span><span class="n">____________________O</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="exercise-ascii-animation-ii">
+<h2>Exercise: ASCII Animation II<a class="headerlink" href="#exercise-ascii-animation-ii" title="Permalink to this headline">¶</a></h2>
+<p>Code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ASCII Animation II (Instructor Solution)</span>
+<span class="c1"># Created: Mar 12, 2020 Thu</span>
+<span class="c1"># Author: Tan Nian Wei</span>
+
+<span class="n">LENGTH</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">PAUSE</span> <span class="o">=</span> <span class="mf">0.1</span>
+
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+
+        <span class="c1"># Run left-to-right ...</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">LENGTH</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+                <span class="n">before_ball</span> <span class="o">=</span> <span class="s1">&#39;_&#39;</span> <span class="o">*</span> <span class="n">i</span>
+                <span class="n">after_ball</span> <span class="o">=</span> <span class="s1">&#39;_&#39;</span> <span class="o">*</span> <span class="p">(</span><span class="n">LENGTH</span> <span class="o">-</span> <span class="n">i</span><span class="p">)</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="s1">&#39;[&#39;</span> <span class="o">+</span> <span class="n">before_ball</span> <span class="o">+</span> <span class="s1">&#39;O&#39;</span> <span class="o">+</span> <span class="n">after_ball</span> <span class="o">+</span> <span class="s1">&#39;]&#39;</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\r</span><span class="s1">&#39;</span><span class="p">)</span>
+                <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+
+        <span class="c1"># Then run right-to-left ...</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">LENGTH</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+                <span class="n">before_ball</span> <span class="o">=</span> <span class="s1">&#39;_&#39;</span> <span class="o">*</span> <span class="p">(</span><span class="n">LENGTH</span> <span class="o">-</span> <span class="n">i</span><span class="p">)</span>
+                <span class="n">after_ball</span> <span class="o">=</span> <span class="s1">&#39;_&#39;</span> <span class="o">*</span> <span class="n">i</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="s1">&#39;[&#39;</span> <span class="o">+</span> <span class="n">before_ball</span> <span class="o">+</span> <span class="s1">&#39;O&#39;</span> <span class="o">+</span> <span class="n">after_ball</span> <span class="o">+</span> <span class="s1">&#39;]&#39;</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\r</span><span class="s1">&#39;</span><span class="p">)</span>
+                <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+
+        <span class="c1"># And put it in a loop to run forever!</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="figure align-default">
+<img alt="GIF not found" src="images/week2-ascii2.svg" /></div>
+</div>
+<div class="section" id="exercise-prime-finder">
+<h2>Exercise: Prime finder<a class="headerlink" href="#exercise-prime-finder" title="Permalink to this headline">¶</a></h2>
+<p>Code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Prime finder (Instructor Solution)</span>
+<span class="c1"># Created: Mar 12, 2020 Thu</span>
+<span class="c1"># Author: Tan Nian Wei</span>
+
+<span class="n">NUM</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">NUM</span><span class="p">):</span>
+        <span class="n">is_prime</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="c1">## YOUR CODE HERE</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+                <span class="c1"># If i can be fully divisible by j</span>
+                <span class="c1"># Means i cannot be prime</span>
+                <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="n">j</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="n">is_prime</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="c1">## YOUR CODE ABOVE</span>
+
+        <span class="k">if</span> <span class="n">is_prime</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span>
+<span class="mi">3</span>
+<span class="mi">5</span>
+<span class="mi">7</span>
+<span class="mi">11</span>
+<span class="mi">13</span>
+<span class="mi">17</span>
+<span class="mi">19</span>
+<span class="mi">23</span>
+<span class="mi">29</span>
+<span class="mi">31</span>
+<span class="mi">37</span>
+<span class="mi">41</span>
+<span class="o">...</span>
+<span class="o">...</span>
+<span class="mi">937</span>
+<span class="mi">941</span>
+<span class="mi">947</span>
+<span class="mi">953</span>
+<span class="mi">967</span>
+<span class="mi">971</span>
+<span class="mi">977</span>
+<span class="mi">983</span>
+<span class="mi">991</span>
+<span class="mi">997</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="exercise-caesar-cipher">
+<h2>Exercise: Caesar Cipher<a class="headerlink" href="#exercise-caesar-cipher" title="Permalink to this headline">¶</a></h2>
+<p>Code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Caesar Cipher (Instructor Solution)</span>
+<span class="c1"># Created: Mar 12, 2020 Thu</span>
+<span class="c1"># Author: Tan Nian Wei</span>
+
+<span class="n">cipher1</span> <span class="o">=</span> <span class="s2">&quot;jhlzhy jpwolyz jhu il jyhjrlk if mylxblujf huhsfzpz&quot;</span>
+<span class="n">cipher2</span> <span class="o">=</span> <span class="s2">&quot;lo yv yorqb clozfkd xii mlppfyib pefcq zljyfkxqflkp&quot;</span>
+<span class="n">cipher3</span> <span class="o">=</span> <span class="s2">&quot;fsqoxobo mszrobc swzbyfo ezyx mkockb mszrobc li&quot;</span>
+<span class="n">cipher4</span> <span class="o">=</span> <span class="s2">&quot;caqvo i lqnnmzmvb apqnb ib mikp xwaqbqwv qv bpm bmfb&quot;</span>
+<span class="n">cipher5</span> <span class="o">=</span> <span class="s2">&quot;sldmprslyrcjw uc ugjj lm em mtcp rfc bcrygjq md tgeclcpc agnfcpq&quot;</span>
+<span class="n">cipher6</span> <span class="o">=</span> <span class="s2">&quot;qtrpjht rdktgxcv iwtb lxaa gtfjxgt sdjqat iwt pkpxapqat raphh ixbt&quot;</span>
+<span class="n">cipher7</span> <span class="o">=</span> <span class="s2">&quot;exw wkdwv zkb zh kdyh d olvw ri olqnv xqghu wkh ixuwkhu uhdglqj vhfwlrq&quot;</span>
+
+<span class="c1"># For each possible shift value</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">26</span><span class="p">):</span>
+        <span class="n">shift</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Shift number: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">shift</span><span class="p">))</span>
+
+        <span class="c1"># For each character in the string</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">cipher1</span><span class="p">:</span>
+
+                <span class="c1"># If it&#39;s a space ...</span>
+                <span class="k">if</span> <span class="n">j</span> <span class="o">==</span> <span class="s1">&#39; &#39;</span><span class="p">:</span>
+                        <span class="c1"># Print space again!</span>
+                        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+                <span class="c1"># If it&#39;s a character ...</span>
+                <span class="k">else</span><span class="p">:</span>
+                        <span class="c1"># Print the shifted character!</span>
+                        <span class="n">num</span> <span class="o">=</span> <span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">j</span><span class="p">)</span> <span class="o">-</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">shift</span><span class="p">)</span> <span class="o">%</span> <span class="mi">26</span> <span class="o">+</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
+                        <span class="nb">print</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="n">num</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Print a new line to keep it tidy</span>
+        <span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Just showing <cite>cipher1</cite> only:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Shift</span> <span class="n">number</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">kimaiz</span> <span class="n">kqxpmza</span> <span class="n">kiv</span> <span class="n">jm</span> <span class="n">kziksml</span> <span class="n">jg</span> <span class="n">nzmycmvkg</span> <span class="n">ivitgaqa</span>
+<span class="n">Shift</span> <span class="n">number</span><span class="p">:</span> <span class="mi">2</span>
+<span class="n">ljnbja</span> <span class="n">lryqnab</span> <span class="n">ljw</span> <span class="n">kn</span> <span class="n">lajltnm</span> <span class="n">kh</span> <span class="n">oanzdnwlh</span> <span class="n">jwjuhbrb</span>
+<span class="n">Shift</span> <span class="n">number</span><span class="p">:</span> <span class="mi">3</span>
+<span class="n">mkockb</span> <span class="n">mszrobc</span> <span class="n">mkx</span> <span class="n">lo</span> <span class="n">mbkmuon</span> <span class="n">li</span> <span class="n">pboaeoxmi</span> <span class="n">kxkvicsc</span>
+<span class="n">Shift</span> <span class="n">number</span><span class="p">:</span> <span class="mi">4</span>
+<span class="n">nlpdlc</span> <span class="n">ntaspcd</span> <span class="n">nly</span> <span class="n">mp</span> <span class="n">nclnvpo</span> <span class="n">mj</span> <span class="n">qcpbfpynj</span> <span class="n">lylwjdtd</span>
+<span class="n">Shift</span> <span class="n">number</span><span class="p">:</span> <span class="mi">5</span>
+<span class="n">omqemd</span> <span class="n">oubtqde</span> <span class="n">omz</span> <span class="n">nq</span> <span class="n">odmowqp</span> <span class="n">nk</span> <span class="n">rdqcgqzok</span> <span class="n">mzmxkeue</span>
+<span class="n">Shift</span> <span class="n">number</span><span class="p">:</span> <span class="mi">6</span>
+<span class="n">pnrfne</span> <span class="n">pvcuref</span> <span class="n">pna</span> <span class="ow">or</span> <span class="n">penpxrq</span> <span class="n">ol</span> <span class="n">serdhrapl</span> <span class="n">nanylfvf</span>
+<span class="n">Shift</span> <span class="n">number</span><span class="p">:</span> <span class="mi">7</span>
+<span class="n">qosgof</span> <span class="n">qwdvsfg</span> <span class="n">qob</span> <span class="n">ps</span> <span class="n">qfoqysr</span> <span class="n">pm</span> <span class="n">tfseisbqm</span> <span class="n">obozmgwg</span>
+<span class="n">Shift</span> <span class="n">number</span><span class="p">:</span> <span class="mi">8</span>
+<span class="n">rpthpg</span> <span class="n">rxewtgh</span> <span class="n">rpc</span> <span class="n">qt</span> <span class="n">rgprzts</span> <span class="n">qn</span> <span class="n">ugtfjtcrn</span> <span class="n">pcpanhxh</span>
+<span class="n">Shift</span> <span class="n">number</span><span class="p">:</span> <span class="mi">9</span>
+<span class="n">squiqh</span> <span class="n">syfxuhi</span> <span class="n">sqd</span> <span class="n">ru</span> <span class="n">shqsaut</span> <span class="n">ro</span> <span class="n">vhugkudso</span> <span class="n">qdqboiyi</span>
+<span class="n">Shift</span> <span class="n">number</span><span class="p">:</span> <span class="mi">10</span>
+<span class="n">trvjri</span> <span class="n">tzgyvij</span> <span class="n">tre</span> <span class="n">sv</span> <span class="n">tirtbvu</span> <span class="n">sp</span> <span class="n">wivhlvetp</span> <span class="n">rercpjzj</span>
+<span class="n">Shift</span> <span class="n">number</span><span class="p">:</span> <span class="mi">11</span>
+<span class="n">uswksj</span> <span class="n">uahzwjk</span> <span class="n">usf</span> <span class="n">tw</span> <span class="n">ujsucwv</span> <span class="n">tq</span> <span class="n">xjwimwfuq</span> <span class="n">sfsdqkak</span>
+<span class="n">Shift</span> <span class="n">number</span><span class="p">:</span> <span class="mi">12</span>
+<span class="n">vtxltk</span> <span class="n">vbiaxkl</span> <span class="n">vtg</span> <span class="n">ux</span> <span class="n">vktvdxw</span> <span class="n">ur</span> <span class="n">ykxjnxgvr</span> <span class="n">tgterlbl</span>
+<span class="n">Shift</span> <span class="n">number</span><span class="p">:</span> <span class="mi">13</span>
+<span class="n">wuymul</span> <span class="n">wcjbylm</span> <span class="n">wuh</span> <span class="n">vy</span> <span class="n">wluweyx</span> <span class="n">vs</span> <span class="n">zlykoyhws</span> <span class="n">uhufsmcm</span>
+<span class="n">Shift</span> <span class="n">number</span><span class="p">:</span> <span class="mi">14</span>
+<span class="n">xvznvm</span> <span class="n">xdkczmn</span> <span class="n">xvi</span> <span class="n">wz</span> <span class="n">xmvxfzy</span> <span class="n">wt</span> <span class="n">amzlpzixt</span> <span class="n">vivgtndn</span>
+<span class="n">Shift</span> <span class="n">number</span><span class="p">:</span> <span class="mi">15</span>
+<span class="n">ywaown</span> <span class="n">yeldano</span> <span class="n">ywj</span> <span class="n">xa</span> <span class="n">ynwygaz</span> <span class="n">xu</span> <span class="n">bnamqajyu</span> <span class="n">wjwhuoeo</span>
+<span class="n">Shift</span> <span class="n">number</span><span class="p">:</span> <span class="mi">16</span>
+<span class="n">zxbpxo</span> <span class="n">zfmebop</span> <span class="n">zxk</span> <span class="n">yb</span> <span class="n">zoxzhba</span> <span class="n">yv</span> <span class="n">cobnrbkzv</span> <span class="n">xkxivpfp</span>
+<span class="n">Shift</span> <span class="n">number</span><span class="p">:</span> <span class="mi">17</span>
+<span class="n">aycqyp</span> <span class="n">agnfcpq</span> <span class="n">ayl</span> <span class="n">zc</span> <span class="n">apyaicb</span> <span class="n">zw</span> <span class="n">dpcosclaw</span> <span class="n">ylyjwqgq</span>
+<span class="n">Shift</span> <span class="n">number</span><span class="p">:</span> <span class="mi">18</span>
+<span class="n">bzdrzq</span> <span class="n">bhogdqr</span> <span class="n">bzm</span> <span class="n">ad</span> <span class="n">bqzbjdc</span> <span class="n">ax</span> <span class="n">eqdptdmbx</span> <span class="n">zmzkxrhr</span>
+<span class="n">Shift</span> <span class="n">number</span><span class="p">:</span> <span class="mi">19</span>
+<span class="n">caesar</span> <span class="n">ciphers</span> <span class="n">can</span> <span class="n">be</span> <span class="n">cracked</span> <span class="n">by</span> <span class="n">frequency</span> <span class="n">analysis</span>
+<span class="n">Shift</span> <span class="n">number</span><span class="p">:</span> <span class="mi">20</span>
+<span class="n">dbftbs</span> <span class="n">djqifst</span> <span class="n">dbo</span> <span class="n">cf</span> <span class="n">dsbdlfe</span> <span class="n">cz</span> <span class="n">gsfrvfodz</span> <span class="n">bobmztjt</span>
+<span class="n">Shift</span> <span class="n">number</span><span class="p">:</span> <span class="mi">21</span>
+<span class="n">ecguct</span> <span class="n">ekrjgtu</span> <span class="n">ecp</span> <span class="n">dg</span> <span class="n">etcemgf</span> <span class="n">da</span> <span class="n">htgswgpea</span> <span class="n">cpcnauku</span>
+<span class="n">Shift</span> <span class="n">number</span><span class="p">:</span> <span class="mi">22</span>
+<span class="n">fdhvdu</span> <span class="n">flskhuv</span> <span class="n">fdq</span> <span class="n">eh</span> <span class="n">fudfnhg</span> <span class="n">eb</span> <span class="n">iuhtxhqfb</span> <span class="n">dqdobvlv</span>
+<span class="n">Shift</span> <span class="n">number</span><span class="p">:</span> <span class="mi">23</span>
+<span class="n">geiwev</span> <span class="n">gmtlivw</span> <span class="n">ger</span> <span class="n">fi</span> <span class="n">gvegoih</span> <span class="n">fc</span> <span class="n">jviuyirgc</span> <span class="n">erepcwmw</span>
+<span class="n">Shift</span> <span class="n">number</span><span class="p">:</span> <span class="mi">24</span>
+<span class="n">hfjxfw</span> <span class="n">hnumjwx</span> <span class="n">hfs</span> <span class="n">gj</span> <span class="n">hwfhpji</span> <span class="n">gd</span> <span class="n">kwjvzjshd</span> <span class="n">fsfqdxnx</span>
+<span class="n">Shift</span> <span class="n">number</span><span class="p">:</span> <span class="mi">25</span>
+<span class="n">igkygx</span> <span class="n">iovnkxy</span> <span class="n">igt</span> <span class="n">hk</span> <span class="n">ixgiqkj</span> <span class="n">he</span> <span class="n">lxkwaktie</span> <span class="n">gtgreyoy</span>
+<span class="n">Shift</span> <span class="n">number</span><span class="p">:</span> <span class="mi">26</span>
+<span class="n">jhlzhy</span> <span class="n">jpwolyz</span> <span class="n">jhu</span> <span class="n">il</span> <span class="n">jyhjrlk</span> <span class="k">if</span> <span class="n">mylxblujf</span> <span class="n">huhsfzpz</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Week 2: Class Exercise solutions</a><ul>
+<li><a class="reference internal" href="#nested-for-loops">Nested for loops</a></li>
+<li><a class="reference internal" href="#exercise-ascii-animation-i">Exercise: ASCII Animation I</a></li>
+<li><a class="reference internal" href="#exercise-ascii-animation-ii">Exercise: ASCII Animation II</a></li>
+<li><a class="reference internal" href="#exercise-prime-finder">Exercise: Prime finder</a></li>
+<li><a class="reference internal" href="#exercise-caesar-cipher">Exercise: Caesar Cipher</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="02_forwhile.html"
+                        title="previous chapter">Week 2: Loops with <cite>for</cite> and <cite>while</cite></a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="02_forwhile_EX.html"
+                        title="next chapter">Week 2: Advanced Exercises</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/02_forwhile_sols.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="02_forwhile_EX.html" title="Week 2: Advanced Exercises"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="02_forwhile.html" title="Week 2: Loops with for and while"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Exposure to Code 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright PERMATA STEM Talent, 2020.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.3.
+    </div>
+  </body>
+</html>

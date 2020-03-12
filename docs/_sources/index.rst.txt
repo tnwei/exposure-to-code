@@ -27,7 +27,9 @@ Contents
    :maxdepth: 2
 
    01_intro.rst
-   02_forwhile.rst 
+   02_forwhile.rst
+   02_forwhile_sols.rst
+   02_forwhile_EX.rst
    .. (02a_forwhile_secret.rst)
    .. 03_ifelse_fxns.rst
    .. 04_matplotlib.rst
