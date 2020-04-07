@@ -7,8 +7,8 @@ Outcome: Students will continue to learn basic control flow structures, specific
 
 What we will do:
     * If, else and elif
-	* Functions
-	* Exercise: Quadratic solver
+    * Functions
+    * Exercise: Fizz buzz
     * Exercise: Morse code reader
     .. * (Adv Exercise: Morse code writer)
 
