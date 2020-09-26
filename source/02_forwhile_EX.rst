@@ -7,11 +7,11 @@
 .. [ ] Supply instructor-written function that takes a certain input string. Get students to loop over all possible alphanumeric digits to get the solution. To keep the function secret, the value probably has to be hashed and tucked away in a packaged module. Umm think about this later. 
 
 Week 2: Advanced Exercises
-==========================
+--------------------------
 Advanced exercises are designed for advanced learners that are ready to take on extra challenges. These exercises are made accessible to all after the class. Note that these exercises typically require more knowledge than what was presented in class.
 
 Adv Exercise : ASCII animation III
-----------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. warning :: Training wheels off! The material in today's class is not enough to solve this problem. 
 
 Repeat ASCII Animation II, but now the ball is a tadpole! Replace the underscores with spaces to reflect the fact that tadpoles swim in water instead of climbing on land. 
@@ -39,7 +39,7 @@ Repeat ASCII Animation II, but now the ball is a tadpole! Replace the underscore
 	print('[        Oo--         ]')
 
 Adv Exercise : ASCII animation IV
----------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. warning :: Training wheels off! The material in today's class is not enough to solve this problem. 
 
 Repeat ASCII Animation III, but now the tadpole swims at variable speeds in a probabilistic manner:
