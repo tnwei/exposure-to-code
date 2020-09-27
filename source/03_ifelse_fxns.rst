@@ -8,9 +8,9 @@ Outcome: Students will continue to learn basic control flow structures, specific
 What we will do: 
     * If, else and elif
     * Functions
+    * Exercise: Quadratic solver
     * Exercise: Fizz buzz
-    * Exercise: Morse code reader
-    .. * (Adv Exercise: Morse code writer)
+
 
 If, else, and elif
 ------------------
@@ -184,14 +184,14 @@ In-class exercise: functions
 Write a function called `what_int` that takes an integer as input. The function checks if the integer provided is negative, positive, or equal to zero, then prints the corresponding output. We want the function to be able to produce the following output:
 ::
 
->>> what_int(1)
-1 is positive
+    >>> what_int(1)
+    1 is positive
 
->>> what_int(-3)
--3 is negative
+    >>> what_int(-3)
+    -3 is negative
 
->>> what_int(0)
-0 is not positive or negative!
+    >>> what_int(0)
+    0 is not positive or negative!
 
 Let's take a few minutes to work on this. 
 
@@ -216,7 +216,7 @@ Given this info, we get to work by writing a function to decide if a number is p
         else:
             print(x, " is prime")
 
-This allows us to be able to run a prime checked in a single line of code. Imagine if we need to copy-paste the logic above for every time we want to use a prime solver!
+This allows us to be able to run a prime checked in a single line of code. Imagine if we need to copy-paste the logic above for every time we want to use a prime checker!
 ::
     is_prime(1)
     # Output: 1  is not prime
@@ -229,44 +229,46 @@ This allows us to be able to run a prime checked in a single line of code. Imagi
 
 .. [X]Btw, would it be nice to introduce recursion in this topic since we are talking about functions? Or is that a little too advanced at this point? --> Thought of recursion actually! But yea might not have enough time to cover, so left it as an advanced exercise.
 
-Exercise: Fizz Buzz
--------------------
+Exercise: Quadratic solver
+--------------------------
 .. Instructor notes: 
 .. Estimated time: 20 mins
-.. Section objective: Introduce students to a classic programming problem that requires good understanding of if/else to solve, and put into practice combining applications of if/else and functions in the same exercise.
-.. [ ] Fizz buzz problem statement
-.. [ ] Fizz buzz instructor solution
+.. Section objective: Combine application of if-else and functions on a topic familiar for high schoolers
+.. [X]Problem description
 
-Exercise: Morse code reader
--------------------------------
-.. Instructor notes: 
-.. Estimated time: 30 mins
-.. Section objective: Cement if/else and function concepts with an un-orthodox exercise! 
-.. [ ] Provide context: what is morse code? How does it work?
-.. [ ] Problem statement: Given morse code, convert to alphabet. 
-.. [ ] Need to provide the conversion table and example, else everyone's format is going to be different! We should stick to using letters and spaces only. 
-.. [ ] Instructor solution for taking in alphabets and translating them into Morse code. String samples can only contain alphabets and spaces. 
-.. [ ] Instructor solution needed to check that the morse code reader from above works!! 
-.. [ ] Write next few emails for the course in Morse code (???) 
+Implement a function that solves for the roots of quadratic equations, given the known values of the quadratic equation, `a`, `b` and `c`. As a reminder, the formula is:
+
+.. math::
+
+    x = \frac{-b\pm\sqrt{b^2-4ac}}{2a}
+
+Python can deal with imaginary numbers, so you don't need branching logic to check if the determinant is larger than zero or smaller than zero. However, you will still require some logic to check if the determinant is equal to zero, because in that case there is only one root. 
+
+.. [X]Instructor solution on solving quadratic eqn. Takes a, b, c and outputs roots. Gotta try because not sure how the system deals w/ imaginary roots! --> moved to 03_ifelse_fxns_sols.rst
+
+Exercise: Fizz Buzz
+-------------------
+.. Instructor notes: Learned about this from https://wiki.c2.com/?FizzBuzzTest. Apparently it's an underdog stumbling block.
+.. Estimated time: 20 mins
+.. Section objective: Introduce students to a classic programming problem that requires good understanding of if/else to solve, and put into practice combining applications of if/else and functions in the same exercise.
+.. [X]Fizz buzz problem statement
+
+Loop to print the numbers from 1 to 100. If the number is a multiple of 3, print "Fizz" instead. If the number is a multiple of 5, print "Buzz". If the number is a multiple of both 3 and 5, print "FizzBuzz". 
+
+.. [X]Fizz buzz instructor solution --> moved to 03_ifelse_fxns_sols.rst
+
 
 Conclusion
 ----------
 .. Instructor notes
 .. Estimated time: <5 mins
 .. Section objective: Recap and re-emphasize message
-.. [ ] Recap and re-emphasize message of the day
+.. [X]Recap and re-emphasize message of the day
+
+Take-away message for this week: If-else allows coders to write branching flow logic, and functions allow re-using code elegantly. 
 
 Further reading
 ---------------
-_Python Crash Course: A Hands-on, Project-based Introduction to Programming_. Eric Matthes. 
+Python Crash Course: A Hands-on, Project-based Introduction to Programming. Eric Matthes. 
     * Chapter 5: If Statements
     * Chapter 8: Functions
-
-.. Kept in reserve due to time constraints!
-.. Exercise: Quadratic solver
-.. --------------------------
-.. Instructor notes: 
-.. Estimated time: 20 mins
-.. Section objective: Combine application of if-else and functions on a topic familiar for high schoolers
-.. [ ] Problem description
-.. [ ] Instructor solution on solving quadratic eqn. Takes a, b, c and outputs roots. Gotta try because not sure how the system deals w/ imaginary roots! 

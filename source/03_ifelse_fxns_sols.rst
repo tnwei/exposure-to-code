@@ -66,7 +66,7 @@ Output:
 	Food waste is not for recycling!
 
 In-class exercise: functions
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------
 Code:
 ::
     # In-class exercise: functions (instructor solution)
@@ -89,3 +89,72 @@ Output:
     1 is positive
     -3 is negative
     0 is not positive or negative!
+
+
+Exercise: Fizz Buzz
+-------------------
+Code:
+::
+
+    for i in range(1, 101):
+        if (i % 3 == 0) and (i % 5 == 0):
+            print("FizzBuzz")
+        elif (i % 3 == 0):
+            print("Fizz")
+        elif (i % 5 == 0):
+            print("Buzz")
+        else:
+            print(i)
+        
+
+Output:
+::
+    1
+    2
+    Fizz
+    4
+    Buzz
+    Fizz
+    7
+    8
+    Fizz
+    Buzz
+    11
+    Fizz
+    13
+    14
+    FizzBuzz
+    16
+    17
+    
+    ...
+    ...
+    ...
+
+    89
+    FizzBuzz
+    91
+    92
+    Fizz
+    94
+    Buzz
+    Fizz
+    97
+    98
+    Fizz
+    Buzz
+
+Exercise: Quadratic solver
+--------------------------
+Code:
+::
+    
+    def solve_root(a, b, c);
+        discr = b ** 2 - 4 * a * c
+
+        if discr == 0:
+            return (-b + discr ** 0.5) / (2 * a)
+        else:
+            x1 = (-b + discr ** 0.5) / (2 * a)
+            x2 = (-b - discr ** 0.5) / (2 * a)
+            return x1, x2
