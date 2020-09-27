@@ -13,8 +13,11 @@
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Week 3: Advanced Exercises" href="03_ifelse_fxns_EX.html" />
+    <link rel="prev" title="Week 2: Advanced Exercises" href="02_forwhile_EX.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -22,6 +25,12 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="03_ifelse_fxns_EX.html" title="Week 3: Advanced Exercises"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="02_forwhile_EX.html" title="Week 2: Advanced Exercises"
+             accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Exposure to Code 1.0 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Week 3: If/else, Functions</a></li> 
       </ul>
@@ -39,206 +48,207 @@
 <dt>What we will do:</dt><dd><ul class="simple">
 <li><p>If, else and elif</p></li>
 <li><p>Functions</p></li>
+<li><p>Exercise: Quadratic solver</p></li>
 <li><p>Exercise: Fizz buzz</p></li>
-<li><p>Exercise: Morse code reader</p></li>
 </ul>
 </dd>
 </dl>
 <div class="section" id="if-else-and-elif">
 <h2>If, else, and elif<a class="headerlink" href="#if-else-and-elif" title="Permalink to this headline">¶</a></h2>
-<p>Today, we’ll be introducing a new topic. The conditional statement of if and else. Picture this! It’s a hot and sunny Saturday and it’s lunchtime. You have two things you usually do. 1. Make hot water and fill up your handy Maggi TomYam Cup OR 2. Go downstairs to the Dewan Makan and eat like everyone else.</p>
-<p>However, we know that you’ll choose those two options depending on what the situation is. Let’s say it is exactly 1.15pm and usually the Dewan Makan is full of people at that time. You don’t like to wait, but you need to line up like everyone else to get your food. In this case, you’ll just make you Maggi HotCup.
-But, if it is not 1.15pm, the line would be far less shorter, so you could go to the Dewan Makan and just eat instead of a Maggi.</p>
+<p>Today, we’ll be introducing a new topic. The conditional statement of if and else. Picture this! It’s a sunny Saturday morning, and it’s time for breakfast. You have two things you usually do. 1. Make hot water and fill up your handy Maggi TomYam Cup OR 2. Go downstairs to the Dewan Makan and eat like everyone else.</p>
+<p>However, we know that you’ll choose those two options depending on what the situation is. If you woke up late, the Dewan Makan will already be full of other hungry students like you queuing up for food. Since you don’t like to wait, in this case you’ll just make your Maggi HotCup. But, if you woke up on time, the queues for breakfast would be far less shorter, so you could go to the Dewan Makan and have breakfast instead of a Maggi.</p>
 <p>This is an example of a conditional statement. Easily put:</p>
-<dl class="simple">
-<dt>If it is 1.15pm</dt><dd><p>Then Make Maggi</p>
-</dd>
-</dl>
-<p>Else Go eat &#64; Dewan Makan.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">If</span> <span class="n">you</span> <span class="n">woke</span> <span class="n">up</span> <span class="n">late</span>
+    <span class="n">Then</span> <span class="n">Make</span> <span class="n">Maggi</span>
+<span class="n">Else</span> <span class="n">Go</span> <span class="n">eat</span> <span class="o">@</span> <span class="n">Dewan</span> <span class="n">Makan</span><span class="o">.</span>
+</pre></div>
+</div>
 <p>Here’s how we do it in Python!</p>
-<dl class="simple">
-<dt>if (TIME==1.15pm):</dt><dd><p>print(“Eat Maggi”)</p>
-</dd>
-<dt>else:</dt><dd><p>print(“Eat food at Dewan Makan”)</p>
-</dd>
-</dl>
-<p>Now, the previous example is quite simple right? But, what if our thought process is more complicated than that? (Most often it is!). Let’s extend from the previous example.</p>
-<dl class="simple">
-<dt>If it is 1.15pm, you have two choices of foods to eat. If Weather is Sunny, eat Maggi Asam Laksa. If Weather is Rainy, eat TomYam.</dt><dd><p>Else, if not 1.15pm, eat at Dewan Makan</p>
-</dd>
-</dl>
-<p>solution blueprint:</p>
-<p># These variable can be changed
-TIME=1.15
-WEATHER=RAINY</p>
-<dl class="simple">
-<dt>if(TIME==1.15):</dt><dd><dl class="simple">
-<dt>if(WEATHER==SUNNY):</dt><dd><p>print(“Eat Maggi Asam Laksa”)</p>
-</dd>
-<dt>if(WEATHER==RAINY):</dt><dd><p>print(“Eat Maggi TomYam”)</p>
-</dd>
-</dl>
-</dd>
-<dt>else:</dt><dd><p>print(“Eat At Dewan Makan”)</p>
-</dd>
-</dl>
-<p>Now, let’s say we want to build a computer program that compares if number x is bigger than a few conditions.
-Here are our few conditions. Let’s try programming it to find out!</p>
-<p>Condition 1: If x &gt; 5 print larger than 5, else print not
-Condition 2: If x &lt;= -1 print less than or equal to -1, else print Not
-Condition 3: If x &gt; 7 print larger than 7, else print not
-Condition 4: If x &gt; 9 print larger than 9, else print not.</p>
-<p>From what you have learnt, you would produce 4 separate if elses to compare each one. But, did you know there’s an easier way.</p>
-<p>Introducing elif! Our savior</p>
-<p>elif which means ‘else if’ gives us the ability to make comparisons in the same block of code instead of having 4 separate block doing 4 separate things. This is how the code would look like</p>
-<p>x=0</p>
-<dl class="simple">
-<dt>if x&gt;5:</dt><dd><p>print (“larger than 5”)</p>
-</dd>
-<dt>elif x&lt;=-1:</dt><dd><p>print (“less than or equal to -1”)</p>
-</dd>
-<dt>elif x&gt;7:</dt><dd><p>print (“larger than 7”)</p>
-</dd>
-<dt>elif x&gt;9:</dt><dd><p>print (“larger than 9”)</p>
-</dd>
-<dt>else:</dt><dd><p>print (“x is 0 to 5”)</p>
-</dd>
-</dl>
-<p>As we can see from above, we need far less comparisons than before to achieve similar(not exactly same) results.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># If the condition to evaluate is True:</span>
+<span class="k">if</span> <span class="n">woke_up_late</span><span class="p">:</span>
+    <span class="c1"># Run code indented after the above</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Eat Maggi Cup for breakfast&quot;</span><span class="p">)</span>
+<span class="c1"># if not true</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># Run code here instead!</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Breakfast at Dewan Makan&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><cite>else</cite> is an optional keyword! <cite>if</cite> can work on its own. The following code is valid:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">woke_up_late</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Eat Maggi Cup for breakfast&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="in-class-exercise-multiple-conditions-for-if-else">
+<h3>In-class exercise: multiple conditions for if-else<a class="headerlink" href="#in-class-exercise-multiple-conditions-for-if-else" title="Permalink to this headline">¶</a></h3>
+<p>Now, the previous example is quite simple right? But, what if our thought process is more complicated than that? (Most often it is!). Let’s extend from the previous example and assume that you have picky taste buds.</p>
+<p>If you woke up late and it’s a rainy day, you prefer to eat Maggi Tomyam so the spice warms you up. It you woke up late and the morning is sunny, you prefer to have Maggi Asam Laksa instead. If you woke up on time, you don’t bother with Maggi and go straight to Dewan Makan.</p>
+<p>Let’s take a few minutes to implement this as an if-else, we’ll go over the solution in a bit. Start with the code given below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">woke_up_late</span> <span class="o">=</span> <span class="kc">True</span> <span class="c1"># or False</span>
+<span class="n">weather</span> <span class="o">=</span> <span class="s2">&quot;rainy&quot;</span> <span class="c1"># or &quot;sunny&quot;</span>
+<span class="c1"># YOUR CODE BELOW</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="elif">
+<h3>elif<a class="headerlink" href="#elif" title="Permalink to this headline">¶</a></h3>
+<p>Now, let’s say we want to write a programme to decide how to recycle waste material. Here are our few conditions. Let’s try programming it to find out!</p>
+<ul class="simple">
+<li><p>Condition 1: If <cite>item</cite> == “glass”, print “Put glass in brown bin”</p></li>
+<li><p>Condition 2: If <cite>item</cite> == “paper”, print “Put paper in blue bin”</p></li>
+<li><p>Condition 3: If <cite>item</cite> == “aluminium”, print “Put aluninium cans in orange bin”</p></li>
+<li><p>Condition 4: If <cite>item</cite> == “plastic”, print “Put plastic in orange bin”</p></li>
+<li><p>Condition 5: If <cite>item</cite> == “food waste”, print “Food waste is not for recycling!”</p></li>
+</ul>
+<p>Let’s take a few minutes to implement this, starting with the code given below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">item</span> <span class="o">=</span> <span class="s2">&quot;food waste&quot;</span> <span class="c1"># Can be substituted with other items as above</span>
+<span class="c1"># YOUR CODE BELOW</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="functions">
 <h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
-<p>Now, we are going to do introduce functions, but as always, let’s see how hard is it to do things without functions first so we can appreciate a little.
-Remember, no copy and pasting allowed in this section.</p>
-<p>Print My name is Abu
-Print My name is Chan
-Print My name is Priya
-Print My name is Roman
-Print My name is Shaspreet
-Print My name is R2-D2</p>
-<p>Now, it took some time to type ALL that down right. Now, let’s introduce our all helpful functions!
-But, before that, what are functions? Function are a section of code to help with doing things certain things that you use a lot in code. Our previous example was a repetition of My name is + name. Surely there should be an easier way to do this than going through print statements one by one. Here’s an example:</p>
-<p>Solution 1:</p>
+<p>Now, we are going to do introduce functions, but as always, let’s see how hard is it to do things without functions first so we can appreciate a little. Let’s say we want to print out the names and favourite hobbies of a group of people:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Abu likes to sing&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Chan likes to read&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Priya likes to hike&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Romain likes to go rock climbing&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Shaspreet likes to go cycling&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R2D2 likes to make beeping sounds&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>It looks like we are doing something similar for every line of code. In coding, we try to re-use code whenever possible. Surely there must be an easier way to repeat well-defined behaviour?</p>
+<p>Enter functions.</p>
+<div class="section" id="functions-example">
+<h3>Functions example<a class="headerlink" href="#functions-example" title="Permalink to this headline">¶</a></h3>
+<p>Function bundles your code to make it easier to run repeatable logic. Our previous example was a repetition of “<cite>name</cite> likes to <cite>hobby</cite>”. We can define a function to do that.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">introduce</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">hobby</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot; likes to&quot;</span> <span class="o">+</span> <span class="n">hobby</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <dl class="simple">
-<dt>def my_funtion(name):</dt><dd><p>print (“My name is ” + name)</p>
+<dt>Pay attention to the syntax:</dt><dd><ul class="simple">
+<li><p>The <cite>def</cite> keyword tells Python that you are defining a function.</p></li>
+<li><p>The function name is then written, followed by parentheses.</p></li>
+<li><p>Parentheses contain the name of the arguments to pass to the function. In short, arguments represent information the function needs to perform what it’s written to do.</p></li>
+<li><p>Place a colon (<cite>:</cite>) after the parentheses ends, and write the function’s code below with one indent.</p></li>
+<li><p><cite>return</cite> tells the function to finish running, and _return_ the variable right after it.</p></li>
+<li><p><cite>return</cite> is a keyword specific for functions only. If you don’t specify a <cite>return</cite>, the function will automatically return None.</p></li>
+</ul>
 </dd>
 </dl>
-<p>my_function(“Abu”)
-my_function(“Chan”)
-my_function(“Priya”)
-my_function(“Roman”)
-my_function(“Shaspreet”)
-my_function(“R2-D2”)</p>
-<p>Now, the previous function is a good implementation in solving the problem. However, is there an easier way to solve this? (Hint: Combine lists and for loop)
-Solution 2:</p>
-<dl class="simple">
-<dt>def my_function(name):</dt><dd><p>print (“My name is ” + name)</p>
-</dd>
-</dl>
-<p>names = [“Abu”,”Chan”,”Priya”,”Roman”,”Shaspreet”, “R2-D2”]</p>
-<dl class="simple">
-<dt>for x in names:</dt><dd><p>my_function(x)</p>
-</dd>
-</dl>
-<p>This looks really simple and elegant! It uses several things we learnt in the past: lists, for loops and now functions!</p>
-<p>Note that when we start a function, we have to define it first! Hence the word ‘def’. The indentation of what is contained in the function is exactly the same as everything we’ve done before this. Everything should be indented if it is meant to be under the function.
-But, what if we want to use a function for a calculation and return the number being calculated. Is there anything special we need to write down. Yes, there is!</p>
-<p>Introducing return!</p>
-<p>Let’s try creating a function that accepts a number and return the number * 5</p>
-<dl class="simple">
-<dt>def times_five(number):</dt><dd><p>return number * 5</p>
-</dd>
-</dl>
-<p>By typing return, the function will return to whatever code that called it the number * 5. It is important to note that by typing return, code that is written after return does not get executed.
-We can run this code to look at what actually happens</p>
-<dl class="simple">
-<dt>def return_five(number):</dt><dd><p>return number * 5
-number = 1</p>
-</dd>
-</dl>
-<p>print(return_five(10))</p>
-<p>This will return 50 and not 1. This is because we returned the number * 5, and any code after return will not be executed.</p>
-<p>Here’s a little exercise. Write a function called number_identification that evaluates and prints if a number is negative or positive or equals to zero. Here are the numbers to evaluates</p>
-<p>1
-2
-7
--3
-100
--100000
-0
-69420</p>
-<p>Here’s what we’re aiming to achieve in our console:</p>
-<p>1  is positive
-2  is positive
-7  is positive
--3  is negative
-100  is positive
--100000  is negative
-0  is zero
-69420  is positive</p>
-<p>#Solution:
-def number_identification(number):</p>
-<blockquote>
-<div><dl class="simple">
-<dt>if(number&lt;0):</dt><dd><p>print(number , ” is negative”)</p>
-</dd>
-<dt>elif(number==0):</dt><dd><p>print(number , ” is zero”)</p>
-</dd>
-<dt>else:</dt><dd><p>print(number , ” is positive”)</p>
-</dd>
-</dl>
-</div></blockquote>
-<p>numbers =[1,2,7,-3,100,-100000,0,69420]</p>
-<dl class="simple">
-<dt>for x in numbers:</dt><dd><p>number_identification(x)</p>
-</dd>
-</dl>
-<p>Now, let’s say we want to expand the previous problem. Don’t worry, you don’t have to do this. In our number_identification function, before we identify the numbers, let’s try seeing if a number is prime first, if it is prime, we can print it and skip number identification, if it is not prime, we can print not prime and continue with the number identification. Let’s look at this!</p>
-<dl>
-<dt>def isPrime(number):</dt><dd><p>#insert code here to evaluate prime with bool prime</p>
-<dl class="simple">
-<dt>if(prime==True):</dt><dd><p>print(number ,” is Prime”)</p>
-</dd>
-<dt>else:</dt><dd><p>print(number , ” is not Prime”)</p>
-</dd>
-</dl>
-</dd>
-<dt>def number_identification(number):</dt><dd><dl class="simple">
-<dt>if(isPrime(number)):</dt><dd><p>continue</p>
-</dd>
-<dt>else:</dt><dd><dl class="simple">
-<dt>if(number&lt;0):</dt><dd><p>print(number , ” is negative”)</p>
-</dd>
-<dt>elif(number==0):</dt><dd><p>print(number , ” is zero”)</p>
-</dd>
-<dt>else:</dt><dd><p>print(number , ” is positive”)</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd>
-</dl>
-<p>numbers =[1,2,7,-3,100,-100000,0,69420]</p>
-<dl class="simple">
-<dt>for x in numbers:</dt><dd><p>number_identification(x)</p>
-</dd>
-</dl>
-<p>Note that since isPrime function is called in number_identification function, isPrime has to be defined BEFORE number_identification, otherwise this error will appear
-‘NameError: name ‘is_Prime’ is not defined’</p>
+</div>
+<p>Thus we can do the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">introduce</span><span class="p">(</span><span class="s2">&quot;Abu&quot;</span><span class="p">,</span> <span class="s2">&quot;sing&quot;</span><span class="p">)</span>
+<span class="n">introduce</span><span class="p">(</span><span class="s2">&quot;Chan&quot;</span><span class="p">,</span> <span class="s2">&quot;read&quot;</span><span class="p">)</span>
+<span class="n">introduce</span><span class="p">(</span><span class="s2">&quot;Priya&quot;</span><span class="p">,</span> <span class="s2">&quot;hike&quot;</span><span class="p">)</span>
+<span class="n">introduce</span><span class="p">(</span><span class="s2">&quot;Roman&quot;</span><span class="p">,</span> <span class="s2">&quot;go rock climbing&quot;</span><span class="p">)</span>
+<span class="n">introduce</span><span class="p">(</span><span class="s2">&quot;Shaspreet&quot;</span><span class="p">,</span> <span class="s2">&quot;go cycling&quot;</span><span class="p">)</span>
+<span class="n">introduce</span><span class="p">(</span><span class="s2">&quot;R2-D2&quot;</span><span class="p">,</span> <span class="s2">&quot;make beeping sounds&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now let’s say we want to get the full sentence and print them later.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sentence</span> <span class="o">=</span> <span class="n">introduce</span><span class="p">(</span><span class="s2">&quot;Abu&quot;</span><span class="p">,</span> <span class="s2">&quot;sing&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The sentence stored is:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Was the output what you expected? What happens if you check in the interpreter the value of <cite>sentence</cite>?</p>
+</div>
+<div class="section" id="functions-and-return">
+<h3>Functions and return<a class="headerlink" href="#functions-and-return" title="Permalink to this headline">¶</a></h3>
+<p>The function above did something, but did not store the value. To be able to pass the output of the function around, we need to use the <cite>return</cite> keyword. Modify the function as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">introduce</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">hobby</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">name</span> <span class="o">+</span> <span class="s2">&quot; likes to&quot;</span> <span class="o">+</span> <span class="n">hobby</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p><cite>return</cite> tells the function to finish running, and _returns_ the variable right after it.</p></li>
+<li><p><cite>return</cite> is a keyword specific for functions only. If you don’t specify a <cite>return</cite>, the function will automatically <cite>return None</cite>.</p></li>
+</ul>
+</div>
+<p>Now the code will work:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sentence</span> <span class="o">=</span> <span class="n">introduce</span><span class="p">(</span><span class="s2">&quot;Abu&quot;</span><span class="p">,</span> <span class="s2">&quot;sing&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The sentence stored is:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span>
+
+<span class="c1"># Outputs:</span>
+<span class="c1"># The sentence stored is:</span>
+<span class="c1"># Abu likes to sing</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="in-class-exercise-functions">
+<h3>In-class exercise: functions<a class="headerlink" href="#in-class-exercise-functions" title="Permalink to this headline">¶</a></h3>
+<p>Write a function called <cite>what_int</cite> that takes an integer as input. The function checks if the integer provided is negative, positive, or equal to zero, then prints the corresponding output. We want the function to be able to produce the following output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">what_int</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">1 is positive</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">what_int</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">-3 is negative</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">what_int</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="go">0 is not positive or negative!</span>
+</pre></div>
+</div>
+<p>Let’s take a few minutes to work on this.</p>
+</div>
+<div class="section" id="how-functions-simplify-coding">
+<h3>How functions simplify coding<a class="headerlink" href="#how-functions-simplify-coding" title="Permalink to this headline">¶</a></h3>
+<p>Now, let’s say we want to expand the previous problem. Not only we want to check if the integer provided is positive, negative, or neither, if the number is positive, we also want to know if it is a prime number!</p>
+<p>Given this info, we get to work by writing a function to decide if a number is prime:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_prime</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s2">&quot; is not prime&quot;</span><span class="p">)</span>
+        <span class="k">break</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s2">&quot; is not prime&quot;</span><span class="p">)</span>
+            <span class="k">break</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s2">&quot; is prime&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This allows us to be able to run a prime checked in a single line of code. Imagine if we need to copy-paste the logic above for every time we want to use a prime checker!</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">is_prime</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># Output: 1  is not prime</span>
+
+<span class="n">is_prime</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+<span class="c1"># Output: 7  is prime</span>
+
+<span class="n">is_prime</span><span class="p">(</span><span class="mi">29</span><span class="p">)</span>
+<span class="c1"># Output: 29  is prime</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-quadratic-solver">
+<h2>Exercise: Quadratic solver<a class="headerlink" href="#exercise-quadratic-solver" title="Permalink to this headline">¶</a></h2>
+<p>Implement a function that solves for the roots of quadratic equations, given the known values of the quadratic equation, <cite>a</cite>, <cite>b</cite> and <cite>c</cite>. As a reminder, the formula is:</p>
+<div class="math notranslate nohighlight">
+\[x = \frac{-b\pm\sqrt{b^2-4ac}}{2a}\]</div>
+<p>Python can deal with imaginary numbers, so you don’t need branching logic to check if the determinant is larger than zero or smaller than zero. However, you will still require some logic to check if the determinant is equal to zero, because in that case there is only one root.</p>
 </div>
 <div class="section" id="exercise-fizz-buzz">
 <h2>Exercise: Fizz Buzz<a class="headerlink" href="#exercise-fizz-buzz" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="exercise-morse-code-reader">
-<h2>Exercise: Morse code reader<a class="headerlink" href="#exercise-morse-code-reader" title="Permalink to this headline">¶</a></h2>
+<p>Loop to print the numbers from 1 to 100. If the number is a multiple of 3, print “Fizz” instead. If the number is a multiple of 5, print “Buzz”. If the number is a multiple of both 3 and 5, print “FizzBuzz”.</p>
 </div>
 <div class="section" id="conclusion">
 <h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
+<p>Take-away message for this week: If-else allows coders to write branching flow logic, and functions allow re-using code elegantly.</p>
 </div>
 <div class="section" id="further-reading">
 <h2>Further reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">¶</a></h2>
 <dl class="simple">
-<dt>_Python Crash Course: A Hands-on, Project-based Introduction to <a href="#id1"><span class="problematic" id="id2">Programming_</span></a>. Eric Matthes.</dt><dd><ul class="simple">
+<dt>Python Crash Course: A Hands-on, Project-based Introduction to Programming. Eric Matthes.</dt><dd><ul class="simple">
 <li><p>Chapter 5: If Statements</p></li>
 <li><p>Chapter 8: Functions</p></li>
 </ul>
@@ -257,16 +267,32 @@ def number_identification(number):</p>
   <h3><a href="index.html">Table of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Week 3: If/else, Functions</a><ul>
-<li><a class="reference internal" href="#if-else-and-elif">If, else, and elif</a></li>
-<li><a class="reference internal" href="#functions">Functions</a></li>
+<li><a class="reference internal" href="#if-else-and-elif">If, else, and elif</a><ul>
+<li><a class="reference internal" href="#in-class-exercise-multiple-conditions-for-if-else">In-class exercise: multiple conditions for if-else</a></li>
+<li><a class="reference internal" href="#elif">elif</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#functions">Functions</a><ul>
+<li><a class="reference internal" href="#functions-example">Functions example</a></li>
+<li><a class="reference internal" href="#functions-and-return">Functions and return</a></li>
+<li><a class="reference internal" href="#in-class-exercise-functions">In-class exercise: functions</a></li>
+<li><a class="reference internal" href="#how-functions-simplify-coding">How functions simplify coding</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#exercise-quadratic-solver">Exercise: Quadratic solver</a></li>
 <li><a class="reference internal" href="#exercise-fizz-buzz">Exercise: Fizz Buzz</a></li>
-<li><a class="reference internal" href="#exercise-morse-code-reader">Exercise: Morse code reader</a></li>
 <li><a class="reference internal" href="#conclusion">Conclusion</a></li>
 <li><a class="reference internal" href="#further-reading">Further reading</a></li>
 </ul>
 </li>
 </ul>
 
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="02_forwhile_EX.html"
+                        title="previous chapter">Week 2: Advanced Exercises</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="03_ifelse_fxns_EX.html"
+                        title="next chapter">Week 3: Advanced Exercises</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -294,6 +320,12 @@ def number_identification(number):</p>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="03_ifelse_fxns_EX.html" title="Week 3: Advanced Exercises"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="02_forwhile_EX.html" title="Week 2: Advanced Exercises"
+             >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Exposure to Code 1.0 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Week 3: If/else, Functions</a></li> 
       </ul>

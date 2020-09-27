@@ -1,0 +1,252 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Week 3: Class Exercise solutions &#8212; Exposure to Code 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="index.html">Exposure to Code 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Week 3: Class Exercise solutions</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="week-3-class-exercise-solutions">
+<h1>Week 3: Class Exercise solutions<a class="headerlink" href="#week-3-class-exercise-solutions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="in-class-exercise-multiple-conditions-for-if-else">
+<h2>In-class exercise: multiple conditions for if-else<a class="headerlink" href="#in-class-exercise-multiple-conditions-for-if-else" title="Permalink to this headline">¶</a></h2>
+<p>Code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="c1"># In-class exercise: multiple conditions for if-else (Instructor Solution)</span>
+    <span class="c1"># Author: Safwan Zulfazli and Tan Nian Wei</span>
+
+<span class="n">woke_up_late</span> <span class="o">=</span> <span class="kc">True</span> <span class="c1"># or False</span>
+<span class="n">weather</span> <span class="o">=</span> <span class="s2">&quot;rainy&quot;</span> <span class="c1"># or &quot;sunny&quot;</span>
+
+<span class="k">if</span> <span class="n">woke_up_late</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">weather</span> <span class="o">==</span> <span class="s2">&quot;rainy&quot;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Eat Maggi TomYam&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Eat Maggi Asam Laksa&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Eat At Dewan Makan&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Eat</span> <span class="n">Maggi</span> <span class="n">TomYam</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="elif">
+<h2>elif<a class="headerlink" href="#elif" title="Permalink to this headline">¶</a></h2>
+<p>Code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="c1"># In-class exercise: multiple conditions for if-else (Instructor Solution)</span>
+    <span class="c1"># Author: Safwan Zulfazli and Tan Nian Wei</span>
+
+<span class="n">item</span> <span class="o">=</span> <span class="s2">&quot;food waste&quot;</span> <span class="c1"># Can be substituted with other items as above</span>
+
+<span class="c1"># Did you write the following?</span>
+<span class="k">if</span> <span class="n">item</span> <span class="o">==</span> <span class="s2">&quot;glass&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Put glass in brown bin&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">item</span> <span class="o">==</span> <span class="s2">&quot;paper&quot;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Put paper in blue bin&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">item</span> <span class="o">==</span> <span class="s2">&quot;aluminium&quot;</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Put aluninium cans in orange bin&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">item</span> <span class="o">==</span> <span class="s2">&quot;plastic&quot;</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Put plastic in orange bin&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Food waste is not for recycling!&quot;</span><span class="p">)</span>
+
+<span class="c1"># Use elifs makes it much cleaner!</span>
+<span class="k">if</span> <span class="n">item</span> <span class="o">==</span> <span class="s2">&quot;glass&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Put glass in brown bin&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">item</span> <span class="o">==</span> <span class="s2">&quot;paper&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Put paper in blue bin&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">item</span> <span class="o">==</span> <span class="s2">&quot;aluminium&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Put aluninium cans in orange bin&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">item</span> <span class="o">==</span> <span class="s2">&quot;plastic&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Put plastic in orange bin&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">item</span> <span class="o">==</span> <span class="s2">&quot;food waste&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Food waste is not for recycling!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Food waste is not for recycling!
+</pre></div>
+</div>
+</div>
+<div class="section" id="in-class-exercise-functions">
+<h2>In-class exercise: functions<a class="headerlink" href="#in-class-exercise-functions" title="Permalink to this headline">¶</a></h2>
+<p>Code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># In-class exercise: functions (instructor solution)</span>
+    <span class="c1"># Author: Safwan Zulfazli and Tan Nian Wei</span>
+
+<span class="k">def</span> <span class="nf">what_int</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s2">&quot; is negative&quot;</span><span class="p">)</span>
+    <span class="k">elif</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s2">&quot; is positive&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="p">,</span> <span class="s2">&quot; is not positive or negative!&quot;</span><span class="p">)</span>
+
+<span class="n">what_int</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">what_int</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">what_int</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1 is positive
+-3 is negative
+0 is not positive or negative!
+</pre></div>
+</div>
+</div>
+<div class="section" id="exercise-fizz-buzz">
+<h2>Exercise: Fizz Buzz<a class="headerlink" href="#exercise-fizz-buzz" title="Permalink to this headline">¶</a></h2>
+<p>Code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">101</span><span class="p">):</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">i</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;FizzBuzz&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="p">(</span><span class="n">i</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fizz&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="p">(</span><span class="n">i</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Buzz&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>
+<span class="mi">2</span>
+<span class="n">Fizz</span>
+<span class="mi">4</span>
+<span class="n">Buzz</span>
+<span class="n">Fizz</span>
+<span class="mi">7</span>
+<span class="mi">8</span>
+<span class="n">Fizz</span>
+<span class="n">Buzz</span>
+<span class="mi">11</span>
+<span class="n">Fizz</span>
+<span class="mi">13</span>
+<span class="mi">14</span>
+<span class="n">FizzBuzz</span>
+<span class="mi">16</span>
+<span class="mi">17</span>
+
+<span class="o">...</span>
+<span class="o">...</span>
+<span class="o">...</span>
+
+<span class="mi">89</span>
+<span class="n">FizzBuzz</span>
+<span class="mi">91</span>
+<span class="mi">92</span>
+<span class="n">Fizz</span>
+<span class="mi">94</span>
+<span class="n">Buzz</span>
+<span class="n">Fizz</span>
+<span class="mi">97</span>
+<span class="mi">98</span>
+<span class="n">Fizz</span>
+<span class="n">Buzz</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="exercise-quadratic-solver">
+<h2>Exercise: Quadratic solver<a class="headerlink" href="#exercise-quadratic-solver" title="Permalink to this headline">¶</a></h2>
+<p>Code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">solve_root</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">);</span>
+    <span class="n">discr</span> <span class="o">=</span> <span class="n">b</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">a</span> <span class="o">*</span> <span class="n">c</span>
+
+    <span class="k">if</span> <span class="n">discr</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">+</span> <span class="n">discr</span> <span class="o">**</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">a</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">x1</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">+</span> <span class="n">discr</span> <span class="o">**</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">a</span><span class="p">)</span>
+        <span class="n">x2</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">-</span> <span class="n">discr</span> <span class="o">**</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">a</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x1</span><span class="p">,</span> <span class="n">x2</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Week 3: Class Exercise solutions</a><ul>
+<li><a class="reference internal" href="#in-class-exercise-multiple-conditions-for-if-else">In-class exercise: multiple conditions for if-else</a></li>
+<li><a class="reference internal" href="#elif">elif</a></li>
+<li><a class="reference internal" href="#in-class-exercise-functions">In-class exercise: functions</a></li>
+<li><a class="reference internal" href="#exercise-fizz-buzz">Exercise: Fizz Buzz</a></li>
+<li><a class="reference internal" href="#exercise-quadratic-solver">Exercise: Quadratic solver</a></li>
+</ul>
+</li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/03_ifelse_fxns_sols.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="index.html">Exposure to Code 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Week 3: Class Exercise solutions</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright PERMATA STEM Talent, 2020.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+    </div>
+  </body>
+</html>

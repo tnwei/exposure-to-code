@@ -8,282 +8,267 @@ Outcome: Students will continue to learn basic control flow structures, specific
 What we will do: 
     * If, else and elif
     * Functions
+    * Exercise: Quadratic solver
     * Exercise: Fizz buzz
-    * Exercise: Morse code reader
-    .. * (Adv Exercise: Morse code writer)
+
 
 If, else, and elif
 ------------------
 .. Instructor notes: 
 .. Estimated time: 20 mins
 .. Section objective: Introduce students to the concepts of if, else and elif
-.. [ ] How to do things depending on how things go? If and else! Evaluates True / False - Can use any conditional statement
+.. [X]How to do things depending on how things go? If and else! Evaluates True / False - Can use any conditional statement
 
-Today, we'll be introducing a new topic. The conditional statement of if and else. Picture this! It's a hot and sunny Saturday and it's lunchtime. You have two things you usually do. 1. Make hot water and fill up your handy Maggi TomYam Cup OR 2. Go downstairs to the Dewan Makan and eat like everyone else.
+Today, we'll be introducing a new topic. The conditional statement of if and else. Picture this! It's a sunny Saturday morning, and it's time for breakfast. You have two things you usually do. 1. Make hot water and fill up your handy Maggi TomYam Cup OR 2. Go downstairs to the Dewan Makan and eat like everyone else.
 
-However, we know that you'll choose those two options depending on what the situation is. Let's say it is exactly 1.15pm and usually the Dewan Makan is full of people at that time. You don't like to wait, but you need to line up like everyone else to get your food. In this case, you'll just make you Maggi HotCup.
-But, if it is not 1.15pm, the line would be far less shorter, so you could go to the Dewan Makan and just eat instead of a Maggi.
+However, we know that you'll choose those two options depending on what the situation is. If you woke up late, the Dewan Makan will already be full of other hungry students like you queuing up for food. Since you don't like to wait, in this case you'll just make your Maggi HotCup. But, if you woke up on time, the queues for breakfast would be far less shorter, so you could go to the Dewan Makan and have breakfast instead of a Maggi.
 
 This is an example of a conditional statement. Easily put:
+::
 
-If it is 1.15pm
-  Then Make Maggi
-Else Go eat @ Dewan Makan.
+    If you woke up late
+        Then Make Maggi
+    Else Go eat @ Dewan Makan.
 
-.. [ ] Format of if-else (indent after colon, un-indent to signify end) - add some examples
+.. [X]Format of if-else (indent after colon, un-indent to signify end) - add some examples
 
 Here's how we do it in Python!
+::
 
-if (TIME==1.15pm):
-  print("Eat Maggi")
-else:
-  print("Eat food at Dewan Makan")
+    # If the condition to evaluate is True:
+    if woke_up_late:
+        # Run code indented after the above
+        print("Eat Maggi Cup for breakfast")
+    # if not true
+    else:
+        # Run code here instead!
+        print("Breakfast at Dewan Makan")
 
-.. [ ] Perform in-class exercise that leads to students realizing you can nest if-elses! Phrase a problem in word form and have them practice translating it into code. 
+.. note ::
+    `else` is an optional keyword! `if` can work on its own. The following code is valid:
+    ::
+        if woke_up_late:
+            print("Eat Maggi Cup for breakfast")
 
-Now, the previous example is quite simple right? But, what if our thought process is more complicated than that? (Most often it is!). Let's extend from the previous example.
+In-class exercise: multiple conditions for if-else
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. [X]Perform in-class exercise that leads to students realizing you can nest if-elses! Phrase a problem in word form and have them practice translating it into code. 
 
-If it is 1.15pm, you have two choices of foods to eat. If Weather is Sunny, eat Maggi Asam Laksa. If Weather is Rainy, eat TomYam.
-  Else, if not 1.15pm, eat at Dewan Makan
+Now, the previous example is quite simple right? But, what if our thought process is more complicated than that? (Most often it is!). Let's extend from the previous example and assume that you have picky taste buds.
 
-solution blueprint:
+If you woke up late and it's a rainy day, you prefer to eat Maggi Tomyam so the spice warms you up. It you woke up late and the morning is sunny, you prefer to have Maggi Asam Laksa instead. If you woke up on time, you don't bother with Maggi and go straight to Dewan Makan. 
 
-# These variable can be changed
-TIME=1.15
-WEATHER=RAINY
+Let's take a few minutes to implement this as an if-else, we'll go over the solution in a bit. Start with the code given below:
+::
+    woke_up_late = True # or False
+    weather = "rainy" # or "sunny"
+    # YOUR CODE BELOW
 
+elif
+^^^^
+.. [X]Have students do exercise that would be great with elif, using only if-else. After experiencing the hassle, then students will be able to appreciate elif! 
 
-if(TIME==1.15):
-  if(WEATHER==SUNNY):
-    print("Eat Maggi Asam Laksa")
-  if(WEATHER==RAINY):
-    print("Eat Maggi TomYam")
-else:
-  print("Eat At Dewan Makan")
+Now, let's say we want to write a programme to decide how to recycle waste material. Here are our few conditions. Let's try programming it to find out!
 
+* Condition 1: If `item` == "glass", print "Put glass in brown bin"
+* Condition 2: If `item` == "paper", print "Put paper in blue bin"
+* Condition 3: If `item` == "aluminium", print "Put aluninium cans in orange bin"
+* Condition 4: If `item` == "plastic", print "Put plastic in orange bin"
+* Condition 5: If `item` == "food waste", print "Food waste is not for recycling!"
 
-.. [ ] Have students do exercise that would be great with elif, using only if-else. After experiencing the hassle, then students will be able to appreciate elif! 
+Let's take a few minutes to implement this, starting with the code given below:
+::
 
-Now, let's say we want to build a computer program that compares if number x is bigger than a few conditions.
-Here are our few conditions. Let's try programming it to find out!
+    item = "food waste" # Can be substituted with other items as above
+    # YOUR CODE BELOW
 
-Condition 1: If x > 5 print larger than 5, else print not
-Condition 2: If x <= -1 print less than or equal to -1, else print Not
-Condition 3: If x > 7 print larger than 7, else print not
-Condition 4: If x > 9 print larger than 9, else print not.
+.. [ ]Show how above's repeated comparisons can be reduced by using elif (Hidden for live explanation, upload after class, basically explained upon the corresponding solution page)
 
-From what you have learnt, you would produce 4 separate if elses to compare each one. But, did you know there's an easier way.
-
-Introducing elif! Our savior
-
-elif which means 'else if' gives us the ability to make comparisons in the same block of code instead of having 4 separate block doing 4 separate things. This is how the code would look like
-
-x=0
-
-if x>5:
-  print ("larger than 5")
-elif x<=-1:
-  print ("less than or equal to -1")
-elif x>7:
-  print ("larger than 7")
-elif x>9:
-  print ("larger than 9")
-else:
-  print ("x is 0 to 5")
-
-.. [ ] Show how above's repeated comparisons can be reduced by using elif
-
-As we can see from above, we need far less comparisons than before to achieve similar(not exactly same) results.
+.. As we can see from above, we need far less comparisons than before to achieve similar(not exactly same) results.
 
 Functions
 ---------
 .. Instructor notes: 
 .. Estimated time: 20 mins
 .. Section objective: Introduce students to the concepts of functions, and the value of abstraction
-.. [ ] Get students to do hands-on example, where the same code chunk needs to be repeated multiple times to do something slightly different every time. 
+.. [-]Get students to do hands-on example, where the same code chunk needs to be repeated multiple times to do something slightly different every time. 
+.. Notes: Saving some time here by directly going to the concept instead of doing the hands-on.
 
-Now, we are going to do introduce functions, but as always, let's see how hard is it to do things without functions first so we can appreciate a little.
-Remember, no copy and pasting allowed in this section.
+Now, we are going to do introduce functions, but as always, let's see how hard is it to do things without functions first so we can appreciate a little. Let's say we want to print out the names and favourite hobbies of a group of people:
+::
 
-Print My name is Abu
-Print My name is Chan
-Print My name is Priya
-Print My name is Roman
-Print My name is Shaspreet
-Print My name is R2-D2
+    print("Abu likes to sing")
+    print("Chan likes to read")
+    print("Priya likes to hike")
+    print("Romain likes to go rock climbing")
+    print("Shaspreet likes to go cycling")
+    print("R2D2 likes to make beeping sounds")
 
-.. [ ] Solve the problem again but w/ functions. Demonstrate how simple it is to change things up on the fly through parameters. 
+.. [ ]Solve the problem again but w/ functions. Demonstrate how simple it is to change things up on the fly through parameters. 
 
-Now, it took some time to type ALL that down right. Now, let's introduce our all helpful functions!
-But, before that, what are functions? Function are a section of code to help with doing things certain things that you use a lot in code. Our previous example was a repetition of My name is + name. Surely there should be an easier way to do this than going through print statements one by one. Here's an example:
+It looks like we are doing something similar for every line of code. In coding, we try to re-use code whenever possible. Surely there must be an easier way to repeat well-defined behaviour?
 
-Solution 1:
+Enter functions.
 
-def my_funtion(name):
-  print ("My name is " + name)
+Functions example
+^^^^^^^^^^^^^^^^^
 
-my_function("Abu")
-my_function("Chan")
-my_function("Priya")
-my_function("Roman")
-my_function("Shaspreet")
-my_function("R2-D2")
+Function bundles your code to make it easier to run repeatable logic. Our previous example was a repetition of "`name` likes to `hobby`". We can define a function to do that. 
+::
 
-Now, the previous function is a good implementation in solving the problem. However, is there an easier way to solve this? (Hint: Combine lists and for loop)
-Solution 2:
+    def introduce(name, hobby):
+        print(name + " likes to" + hobby)
 
-def my_function(name):
-  print ("My name is " + name)
 
-names = ["Abu","Chan","Priya","Roman","Shaspreet", "R2-D2"]
+.. note ::
+    Pay attention to the syntax:
+        * The `def` keyword tells Python that you are defining a function.
+        * The function name is then written, followed by parentheses.
+        * Parentheses contain the name of the arguments to pass to the function. In short, arguments represent information the function needs to perform what it's written to do.
+        * Place a colon (`:`) after the parentheses ends, and write the function's code below with one indent.
+        * `return` tells the function to finish running, and _return_ the variable right after it.
+        * `return` is a keyword specific for functions only. If you don't specify a `return`, the function will automatically return None. 
 
-for x in names:
-    my_function(x)
+Thus we can do the following:
+::
 
-This looks really simple and elegant! It uses several things we learnt in the past: lists, for loops and now functions!
-
+    introduce("Abu", "sing")
+    introduce("Chan", "read")
+    introduce("Priya", "hike")
+    introduce("Roman", "go rock climbing")
+    introduce("Shaspreet", "go cycling")
+    introduce("R2-D2", "make beeping sounds")
 
 .. [ ] Format of functions (def keyword, indentation) - small example to show what does the return keyword do
 
-Note that when we start a function, we have to define it first! Hence the word 'def'. The indentation of what is contained in the function is exactly the same as everything we've done before this. Everything should be indented if it is meant to be under the function.
-But, what if we want to use a function for a calculation and return the number being calculated. Is there anything special we need to write down. Yes, there is!
+Now let's say we want to get the full sentence and print them later. 
+::
 
-Introducing return!
+    sentence = introduce("Abu", "sing")
+    print("The sentence stored is:")
+    print(sentence)
 
-Let's try creating a function that accepts a number and return the number * 5
+Was the output what you expected? What happens if you check in the interpreter the value of `sentence`?
 
-def times_five(number):
-  return number * 5
+Functions and return
+^^^^^^^^^^^^^^^^^^^^
 
-By typing return, the function will return to whatever code that called it the number * 5. It is important to note that by typing return, code that is written after return does not get executed.
-We can run this code to look at what actually happens
+The function above did something, but did not store the value. To be able to pass the output of the function around, we need to use the `return` keyword. Modify the function as follows:
 
-def return_five(number):
-    return number * 5
-    number = 1
+::
 
-print(return_five(10))
-
-This will return 50 and not 1. This is because we returned the number * 5, and any code after return will not be executed.
+    def introduce(name, hobby):
+        return name + " likes to" + hobby
 
 
-.. [ ] Little in-class exercise on what to phrase as inputs to function, and what to return
-.. [ ] In-class exercise, phrase a problem in word form and have students build a function to solve it. 
+.. note ::
+    * `return` tells the function to finish running, and _returns_ the variable right after it.
+    * `return` is a keyword specific for functions only. If you don't specify a `return`, the function will automatically `return None`. 
 
-Here's a little exercise. Write a function called number_identification that evaluates and prints if a number is negative or positive or equals to zero. Here are the numbers to evaluates
+Now the code will work:
+::
 
-1
-2
-7
--3
-100
--100000
-0
-69420
+    sentence = introduce("Abu", "sing")
+    print("The sentence stored is:")
+    print(sentence)
 
-Here's what we're aiming to achieve in our console:
+    # Outputs:
+    # The sentence stored is:
+    # Abu likes to sing
 
-1  is positive
-2  is positive
-7  is positive
--3  is negative
-100  is positive
--100000  is negative
-0  is zero
-69420  is positive
+In-class exercise: functions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. [-]Little in-class exercise on what to phrase as inputs to function, and what to return --> combined w/ below
+.. [X]In-class exercise, phrase a problem in word form and have students build a function to solve it. 
 
+Write a function called `what_int` that takes an integer as input. The function checks if the integer provided is negative, positive, or equal to zero, then prints the corresponding output. We want the function to be able to produce the following output:
+::
 
-#Solution:
-def number_identification(number):
-    if(number<0):
-        print(number , " is negative")
-    elif(number==0):
-        print(number , " is zero")
-    else:
-        print(number , " is positive")
+    >>> what_int(1)
+    1 is positive
 
-numbers =[1,2,7,-3,100,-100000,0,69420]
+    >>> what_int(-3)
+    -3 is negative
 
-for x in numbers:
-    number_identification(x)
+    >>> what_int(0)
+    0 is not positive or negative!
+
+Let's take a few minutes to work on this. 
 
 
-.. [ ] Expand the problem, and show that by breaking problems down into functions, things are much easier to handle! Perhaps this just show, not do. 
+How functions simplify coding
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. [X]Expand the problem, and show that by breaking problems down into functions, things are much easier to handle! Perhaps this just show, not do. 
 
-Now, let's say we want to expand the previous problem. Don't worry, you don't have to do this. In our number_identification function, before we identify the numbers, let's try seeing if a number is prime first, if it is prime, we can print it and skip number identification, if it is not prime, we can print not prime and continue with the number identification. Let's look at this!
+Now, let's say we want to expand the previous problem. Not only we want to check if the integer provided is positive, negative, or neither, if the number is positive, we also want to know if it is a prime number! 
 
-def isPrime(number):
-  #insert code here to evaluate prime with bool prime
+Given this info, we get to work by writing a function to decide if a number is prime:
+::
 
-  if(prime==True):
-    print(number ," is Prime")
-  else:
-    print(number , " is not Prime")
+    def is_prime(x):
+        if x < 2:
+            print(x, " is not prime")
+            break
+        for i in range(2, x-1):
+            if x % i == 0:
+                print(x, " is not prime")
+                break
+        else:
+            print(x, " is prime")
 
+This allows us to be able to run a prime checked in a single line of code. Imagine if we need to copy-paste the logic above for every time we want to use a prime checker!
+::
+    is_prime(1)
+    # Output: 1  is not prime
 
-def number_identification(number):
-  if(isPrime(number)):
-    continue
-  else:
-    if(number<0):
-        print(number , " is negative")
-    elif(number==0):
-        print(number , " is zero")
-    else:
-        print(number , " is positive")
+    is_prime(7)
+    # Output: 7  is prime
 
-numbers =[1,2,7,-3,100,-100000,0,69420]
+    is_prime(29)
+    # Output: 29  is prime
 
-for x in numbers:
-    number_identification(x)
+.. [X]Btw, would it be nice to introduce recursion in this topic since we are talking about functions? Or is that a little too advanced at this point? --> Thought of recursion actually! But yea might not have enough time to cover, so left it as an advanced exercise.
 
+Exercise: Quadratic solver
+--------------------------
+.. Instructor notes: 
+.. Estimated time: 20 mins
+.. Section objective: Combine application of if-else and functions on a topic familiar for high schoolers
+.. [X]Problem description
 
-Note that since isPrime function is called in number_identification function, isPrime has to be defined BEFORE number_identification, otherwise this error will appear
-'NameError: name 'is_Prime' is not defined'
+Implement a function that solves for the roots of quadratic equations, given the known values of the quadratic equation, `a`, `b` and `c`. As a reminder, the formula is:
 
+.. math::
 
-.. [] Btw, would it be nice to introduce recursion in this topic since we are talking about functions? Or is that a little too advanced at this point?
+    x = \frac{-b\pm\sqrt{b^2-4ac}}{2a}
+
+Python can deal with imaginary numbers, so you don't need branching logic to check if the determinant is larger than zero or smaller than zero. However, you will still require some logic to check if the determinant is equal to zero, because in that case there is only one root. 
+
+.. [X]Instructor solution on solving quadratic eqn. Takes a, b, c and outputs roots. Gotta try because not sure how the system deals w/ imaginary roots! --> moved to 03_ifelse_fxns_sols.rst
 
 Exercise: Fizz Buzz
 -------------------
-.. Instructor notes: 
+.. Instructor notes: Learned about this from https://wiki.c2.com/?FizzBuzzTest. Apparently it's an underdog stumbling block.
 .. Estimated time: 20 mins
 .. Section objective: Introduce students to a classic programming problem that requires good understanding of if/else to solve, and put into practice combining applications of if/else and functions in the same exercise.
-.. [ ] Fizz buzz problem statement
-.. [ ] Fizz buzz instructor solution
+.. [X]Fizz buzz problem statement
 
-Exercise: Morse code reader
--------------------------------
-.. Instructor notes: 
-.. Estimated time: 30 mins
-.. Section objective: Cement if/else and function concepts with an un-orthodox exercise! 
-.. [ ] Provide context: what is morse code? How does it work?
-.. [ ] Problem statement: Given morse code, convert to alphabet. 
-.. [ ] Need to provide the conversion table and example, else everyone's format is going to be different! We should stick to using letters and spaces only. 
-.. [ ] Instructor solution for taking in alphabets and translating them into Morse code. String samples can only contain alphabets and spaces. 
-.. [ ] Instructor solution needed to check that the morse code reader from above works!! 
-.. [ ] Write next few emails for the course in Morse code (???) 
+Loop to print the numbers from 1 to 100. If the number is a multiple of 3, print "Fizz" instead. If the number is a multiple of 5, print "Buzz". If the number is a multiple of both 3 and 5, print "FizzBuzz". 
+
+.. [X]Fizz buzz instructor solution --> moved to 03_ifelse_fxns_sols.rst
+
 
 Conclusion
 ----------
 .. Instructor notes
 .. Estimated time: <5 mins
 .. Section objective: Recap and re-emphasize message
-.. [ ] Recap and re-emphasize message of the day
+.. [X]Recap and re-emphasize message of the day
+
+Take-away message for this week: If-else allows coders to write branching flow logic, and functions allow re-using code elegantly. 
 
 Further reading
 ---------------
-_Python Crash Course: A Hands-on, Project-based Introduction to Programming_. Eric Matthes. 
+Python Crash Course: A Hands-on, Project-based Introduction to Programming. Eric Matthes. 
     * Chapter 5: If Statements
     * Chapter 8: Functions
-
-
-
-.. Kept in reserve due to time constraints!
-.. Exercise: Quadratic solver
-.. --------------------------
-.. Instructor notes: 
-.. Estimated time: 20 mins
-.. Section objective: Combine application of if-else and functions on a topic familiar for high schoolers
-.. [ ] Problem description
-.. [ ] Instructor solution on solving quadratic eqn. Takes a, b, c and outputs roots. Gotta try because not sure how the system deals w/ imaginary roots! 

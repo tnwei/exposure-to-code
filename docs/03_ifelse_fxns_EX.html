@@ -13,8 +13,10 @@
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Week 3: If/else, Functions" href="03_ifelse_fxns.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -22,6 +24,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="03_ifelse_fxns.html" title="Week 3: If/else, Functions"
+             accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Exposure to Code 1.0 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Week 3: Advanced Exercises</a></li> 
       </ul>
@@ -37,21 +42,9 @@
 <p>Advanced exercises are designed for advanced learners that are ready to take on extra challenges. These exercises are made accessible to all after the class. Note that these exercises typically require more knowledge than what was presented in class.</p>
 <div class="section" id="adv-exercise-finding-fibonacci-numbers-by-recursion">
 <h2>Adv Exercise: Finding Fibonacci numbers by recursion<a class="headerlink" href="#adv-exercise-finding-fibonacci-numbers-by-recursion" title="Permalink to this headline">¶</a></h2>
-<dl class="citation">
-<dt class="label" id="x"><span class="brackets">X</span></dt>
-<dd><p>Explain Fibonacci numbers</p>
-</dd>
-<dt class="label" id="id1"><span class="brackets">X</span></dt>
-<dd><p>Explain the concept of recursive functions, getting a function to call itself</p>
-</dd>
-<dt class="label" id="id2"><span class="brackets">X</span></dt>
-<dd><p>Problem statement: Find Fibonacci numbers up to N, using recursion</p>
-</dd>
-</dl>
-</div>
 <div class="section" id="fibonacci">
-<h2>Fibonacci<a class="headerlink" href="#fibonacci" title="Permalink to this headline">¶</a></h2>
-<p>A number in a Fibonacci sequence is defined by the sum of the previous two numbers before it. The sequence starts with initial terms F(1)=1, and F(2)=1. See example below:</p>
+<h3>Fibonacci<a class="headerlink" href="#fibonacci" title="Permalink to this headline">¶</a></h3>
+<p>A number in a Fibonacci sequence is defined by the sum of the previous two numbers before it. The sequence starts with initial terms <cite>F(1)=1</cite>, and <cite>F(2)=1</cite>. See example below:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># F(n-2) + F(n-1) = F(n)</span>
 <span class="c1"># F(1) + F(2) = F(3)</span>
 <span class="c1"># F(2) + F(3) = F(4)</span>
@@ -67,23 +60,23 @@
 <p>For a more detailed definition of Fibonacci numbers, refer to its Wikipedia page: <a class="reference external" href="https://en.wikipedia.org/wiki/Fibonacci_number">https://en.wikipedia.org/wiki/Fibonacci_number</a></p>
 </div>
 <div class="section" id="recursion">
-<h2>Recursion<a class="headerlink" href="#recursion" title="Permalink to this headline">¶</a></h2>
+<h3>Recursion<a class="headerlink" href="#recursion" title="Permalink to this headline">¶</a></h3>
 <p>In simple terms, a <em>recursive</em> function is a function that can call itself. Writing recursive functions require a bit more thought than usual, as your function needs to be able to handle its own output as input!</p>
 <p>Read this for more info and exapmles on writing recursive functions: <a class="reference external" href="https://www.educba.com/recursive-function-in-python/">https://www.educba.com/recursive-function-in-python/</a></p>
 <p>If the concept of recursion itself intrigues you, take a look at this Wikipedia page: <a class="reference external" href="https://en.wikipedia.org/wiki/Recursion_(computer_science)">https://en.wikipedia.org/wiki/Recursion_(computer_science)</a></p>
 </div>
 <div class="section" id="fibonacci-and-recursion">
-<h2>Fibonacci and recursion<a class="headerlink" href="#fibonacci-and-recursion" title="Permalink to this headline">¶</a></h2>
-<p>Note that finding the Nth Fibonacci number requires finding the (N-1)th and (N-2)th number. And to find these numbers, you would need to find the previous numbers that lead to them, eventually tracing your way up to the first two ones in the sequence. If you’ve did your reading on recursion above, you should notice that finding the next Fibonacci number is quite a recursive process.</p>
+<h3>Fibonacci and recursion<a class="headerlink" href="#fibonacci-and-recursion" title="Permalink to this headline">¶</a></h3>
+<p>Finding the <a href="#id1"><span class="problematic" id="id2">`</span></a>N`th Fibonacci number requires finding the <a href="#id3"><span class="problematic" id="id4">`</span></a>(N-1)`th and <a href="#id5"><span class="problematic" id="id6">`</span></a>(N-2)`th number. And to find these numbers, you would need to find the previous numbers that lead to them, eventually tracing your way up to the first two ones in the sequence. If you’ve did your reading on recursion above, you should notice that finding the next Fibonacci number is quite a recursive process.</p>
 <dl class="simple">
 <dt>Do the following:</dt><dd><ol class="lowerroman simple">
-<li><p>Write a recursive function to find the Nth Fibonacci number.</p></li>
-<li><p>Write a recursive function to find all Fibonacci numbers up to N.</p></li>
+<li><p>Write a recursive function to find the <a href="#id7"><span class="problematic" id="id8">`</span></a>N`th Fibonacci number.</p></li>
+<li><p>Write a recursive function to find all Fibonacci numbers up to <cite>N</cite>.</p></li>
 </ol>
 </dd>
 <dt>Hints:</dt><dd><ol class="arabic simple">
-<li><p>Task i is solvable in &lt;5 lines of code!</p></li>
-<li><p>Task ii is trickier than it seems! Once recursion gets from N to the first two Fibonacci numbers, you need to collect and pass the found Fibonacci numbers all the way back to calculations of the Nth number!</p></li>
+<li><p>Task i is solvable in &lt;5 lines of code.</p></li>
+<li><p>Task ii is trickier than it seems. Once recursion gets from N to the first two Fibonacci numbers, you need to collect and pass the found Fibonacci numbers all the way back to calculations of the Nth number!</p></li>
 <li><dl class="simple">
 <dt>General guidelines the instructors personally found useful in writing recursive functions:</dt><dd><ol class="loweralpha simple">
 <li><p>Write a function that carries out the recursion without considering the base condition, i.e. when the recursion stops.</p></li>
@@ -97,14 +90,15 @@
 </dd>
 </dl>
 </div>
-<div class="section" id="adv-exercise-solving-sudoku-with-pycosat">
-<h2>Adv Exercise : Solving sudoku with pycosat<a class="headerlink" href="#adv-exercise-solving-sudoku-with-pycosat" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="adv-exercise-solve-tower-of-hanoi">
+<h2>Adv Exercise: Solve Tower of Hanoi<a class="headerlink" href="#adv-exercise-solve-tower-of-hanoi" title="Permalink to this headline">¶</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Training wheels off! The material in today’s class is not enough to solve this problem.</p>
+<p>Training wheels off! The material in today’s class is enough to solve this problem, but will take significant effort.</p>
 </div>
-<p>Sudoku is</p>
-<p>For more details on Sudoku, please Google it yourself.</p>
+<p>Tower of Hanoi is a popular game where there are three rods and a stack of disks on the leftmost rod. The goal of the game is to transfer all the disks to the rightmost rod. You can only move one disk at a time, and only smaller disks can be stacked on top of bigger disks. This game would be trivial if the disks were stacked with the smallest disks at the bottom and the largest disks at the top, however this game is interesting precisely because it is the opposite.</p>
+<p>Write a function that can solve Tower of Hanoi for any number of disks. You are welcome to refer to its [wikipedia page](<a class="reference external" href="https://en.wikipedia.org/wiki/Tower_of_Hanoi">https://en.wikipedia.org/wiki/Tower_of_Hanoi</a>).</p>
 </div>
 </div>
 
@@ -118,15 +112,20 @@
   <h3><a href="index.html">Table of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Week 3: Advanced Exercises</a><ul>
-<li><a class="reference internal" href="#adv-exercise-finding-fibonacci-numbers-by-recursion">Adv Exercise: Finding Fibonacci numbers by recursion</a></li>
+<li><a class="reference internal" href="#adv-exercise-finding-fibonacci-numbers-by-recursion">Adv Exercise: Finding Fibonacci numbers by recursion</a><ul>
 <li><a class="reference internal" href="#fibonacci">Fibonacci</a></li>
 <li><a class="reference internal" href="#recursion">Recursion</a></li>
 <li><a class="reference internal" href="#fibonacci-and-recursion">Fibonacci and recursion</a></li>
-<li><a class="reference internal" href="#adv-exercise-solving-sudoku-with-pycosat">Adv Exercise : Solving sudoku with pycosat</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#adv-exercise-solve-tower-of-hanoi">Adv Exercise: Solve Tower of Hanoi</a></li>
 </ul>
 </li>
 </ul>
 
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="03_ifelse_fxns.html"
+                        title="previous chapter">Week 3: If/else, Functions</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -154,6 +153,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="03_ifelse_fxns.html" title="Week 3: If/else, Functions"
+             >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Exposure to Code 1.0 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Week 3: Advanced Exercises</a></li> 
       </ul>
