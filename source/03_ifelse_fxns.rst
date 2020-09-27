@@ -3,9 +3,9 @@ Week 3: If/else, Functions
 Outcome: Students will continue to learn basic control flow structures, specifically `if`/`else` statements. Students will also learn how to package repeatable code in functions.
 
 .. Instructor notes
-.. Message: Functions are really powerful when it comes to solving problems. Not different from copy-pasting code, but ease of use! Remember that code is to make things faster and easier! Writing good code makes you a lot more effective than writing bad code! 
+.. Message: Functions are really powerful when it comes to solving problems. Not different from copy-pasting code, but ease of use! Remember that code is to make things faster and easier! Writing good code makes you a lot more effective than writing bad code!
 
-What we will do: 
+What we will do:
     * If, else and elif
     * Functions
     * Exercise: Quadratic solver
@@ -14,7 +14,7 @@ What we will do:
 
 If, else, and elif
 ------------------
-.. Instructor notes: 
+.. Instructor notes:
 .. Estimated time: 20 mins
 .. Section objective: Introduce students to the concepts of if, else and elif
 .. [X]How to do things depending on how things go? If and else! Evaluates True / False - Can use any conditional statement
@@ -86,9 +86,11 @@ Let's take a few minutes to implement this, starting with the code given below:
 
 .. As we can see from above, we need far less comparisons than before to achieve similar(not exactly same) results.
 
+As we can see from above, we need far less comparisons than before to achieve similar(not exactly same) results.
+
 Functions
 ---------
-.. Instructor notes: 
+.. Instructor notes:
 .. Estimated time: 20 mins
 .. Section objective: Introduce students to the concepts of functions, and the value of abstraction
 .. [-]Get students to do hands-on example, where the same code chunk needs to be repeated multiple times to do something slightly different every time. 
