@@ -31,8 +31,8 @@ Contents
    02_forwhile_sols.rst
    02_forwhile_EX.rst
    03_ifelse_fxns.rst
-   .. 03_ifelse_fxns_sols.rst
    03_ifelse_fxns_EX.rst
+   03_ifelse_fxns_sols.rst
    .. 04_matplotlib.rst
    .. 05_numpy_automata.rst
    .. 06_numpy_chaos.rst
