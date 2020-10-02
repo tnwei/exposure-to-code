@@ -210,7 +210,7 @@ Given this info, we get to work by writing a function to decide if a number is p
     def is_prime(x):
         if x < 2:
             print(x, " is not prime")
-            break
+            return
         for i in range(2, x-1):
             if x % i == 0:
                 print(x, " is not prime")
