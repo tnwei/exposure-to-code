@@ -1,0 +1,9 @@
+name: e2c
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - sphinx
+  - matplotlib
+  - numpy
+prefix: /home/tnwei/miniconda3/envs/e2c
