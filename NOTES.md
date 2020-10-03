@@ -20,4 +20,12 @@ Given that github.io renders all pages in `docs/`, none of the generated pages a
 
 ## Requirements
 
-Sphinx 3.2.1
+Refer to `environment.yml`
+
+## RST syntax quirks
++ Use "::" right after another line, then open a newline and indent one tab to insert a code chunk. The code chunk must be preceded by a blank line, then followed by a blank line. 
++ Stick to using 4 spaces as tab instead of the tab character. 
++ Comments are prefaced w/ ".." but not sure how the behaviour works!
+    + This is commented out correctly: .. [ ] Show how above's repeated comparisons can be reduced by using elif
+    + But this is not: .. [X] Format of if-else (indent after colon, un-indent to signify end) - add some examples
+    + But removing the trailing space after the bracket does: .. [X]Format of if-else (indent after colon, un-indent to signify end) - add some examples
