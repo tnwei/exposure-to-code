@@ -332,7 +332,7 @@ The lines of code we added has introduced changes to the plot like so:
 
 Slightly more advanced styling
 ------------------------------
-.. Instructor notes: 
+.. Instructor notes: Adding plt xlim and plt ylim after class
 .. Estimated time: 20 mins
 .. Section objective: Introduce students to the specific advanced styling options used in the world health chart exercise later. 
 .. [X]Plotting data on a log scale using `plt.xscale`
@@ -341,10 +341,37 @@ Slightly more advanced styling
 
 Now we will look at slightly more advanced styling options that are not as commonly used as the above.
 
+Setting plot limits
+^^^^^^^^^^^^^^^^^^^
+`matplotlib` will automatically adjust the plot limits based on the data plotted. If you want to manually adjust the plot limits, you can use `plt.xlim` and `plt.ylim`. They take two arguments each to specify the low limit and the high limit, as the example below:
+::
+
+	x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+	y = [820, 800, 840, 790, 770, 790, 800, 830, 810, 820, 800]
+	plt.plot(x, y)
+	plt.show()
+
+.. figure:: images/matplotlib16.png
+   :alt: `Auto plot limits`
+
+From the plot above, it appears that the data has quite some amount of variation. However, if the plot limits are manually set from 0 to 1000 as below, the variation looks a lot less! Setting the appropriate plot limits are important to ensure your visualization is produced with the intended message. 
+
+::
+
+	x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+	y = [820, 800, 840, 790, 770, 790, 800, 830, 810, 820, 800]
+	plt.plot(x, y)
+	plt.ylim(0, 1000)
+	plt.show()
+
+.. figure:: images/matplotlib17.png
+   :alt: `Manually set plot limits`
+
 Setting scale for log axis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 Occasionally we will run into data that are only meaningful when displayed on the logarithmic scale. Look at the code and the subsequent output below that demonstrates how to set the scale for plotting exponential data:
 ::
+
 	x = list(range(1, 51))
 
 	y = []
@@ -361,6 +388,7 @@ Occasionally we will run into data that are only meaningful when displayed on th
 
 In this plot above, we have drawn straight lines to represent the values on the y-axis. Notice that scale is too big to meaningfully display data from x=0 to 30! If we modify the plotting code to use a log scale, we will be able to better represent the range of data:
 ::
+
 	plt.plot(x, y)
 	plt.yscale("log")
 	plt.show()
@@ -426,7 +454,7 @@ Data used in the chart for 2020 has been retrieved in advance. Use the link prov
 	import matplotlib.pyplot as plt
 	import pandas as pd
 
-	# Importing data
+	# Import data into the variable `df`
 	# YOUR CODE BELOW
 
 	# Making variables for convenience
@@ -448,20 +476,22 @@ Our workflow will be as below:
 	
 	4. Set x-axis to be log scale.
 	
-	5. Specify scatter size by using population, measured in millions (i.e. divide by 1e6).
+	5. Set the x-limits to (200, 151000), and the y-limits to (20, 90).
+
+	6. Specify scatter size by using population, measured in millions (i.e. divide by 1e6).
 	
-	6. Specify color by continents! Paste the following as part of the plotting function:
+	7. Specify color by continents! Paste the following as part of the plotting function:
 
 	::
 	
-		c=cont_nums, cmap="tab10", alpha=0.6
+		c=cont, cmap="tab10", alpha=0.6
 
-	7. Label the following:
+	8. Label the following:
 		* x-axis with `Income per person (GDP/capita, PPP$ inflation-adjusted`
 		* y-axis with `Life expectancy (years)`
 		* title with `World Health Map - 2020`
-	8. Add grid lines to both x-axis and y-axis, with 0.3 transparency.
-	9. Package this as a function, so that we can use this for data from different years.
+	9. Add grid lines to both x-axis and y-axis, with 0.3 transparency.
+	10. Package this as a function, so that we can use this for data from different years.
 
 Conclusion
 ----------
@@ -469,6 +499,8 @@ Conclusion
 .. Estimated time: <5 mins
 .. Section objective: Recap and re-emphasize message
 .. [ ] Recap on things learnt
+
+Coding is not all about logic, surprisingly you can use code to draw!
 
 Further reading
 ---------------

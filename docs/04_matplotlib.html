@@ -338,6 +338,30 @@
 <div class="section" id="slightly-more-advanced-styling">
 <h2>Slightly more advanced styling<a class="headerlink" href="#slightly-more-advanced-styling" title="Permalink to this headline">¶</a></h2>
 <p>Now we will look at slightly more advanced styling options that are not as commonly used as the above.</p>
+<div class="section" id="setting-plot-limits">
+<h3>Setting plot limits<a class="headerlink" href="#setting-plot-limits" title="Permalink to this headline">¶</a></h3>
+<p><cite>matplotlib</cite> will automatically adjust the plot limits based on the data plotted. If you want to manually adjust the plot limits, you can use <cite>plt.xlim</cite> and <cite>plt.ylim</cite>. They take two arguments each to specify the low limit and the high limit, as the example below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">820</span><span class="p">,</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">840</span><span class="p">,</span> <span class="mi">790</span><span class="p">,</span> <span class="mi">770</span><span class="p">,</span> <span class="mi">790</span><span class="p">,</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">830</span><span class="p">,</span> <span class="mi">810</span><span class="p">,</span> <span class="mi">820</span><span class="p">,</span> <span class="mi">800</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="`Auto plot limits`" src="_images/matplotlib16.png" />
+</div>
+<p>From the plot above, it appears that the data has quite some amount of variation. However, if the plot limits are manually set from 0 to 1000 as below, the variation looks a lot less! Setting the appropriate plot limits are important to ensure your visualization is produced with the intended message.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">820</span><span class="p">,</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">840</span><span class="p">,</span> <span class="mi">790</span><span class="p">,</span> <span class="mi">770</span><span class="p">,</span> <span class="mi">790</span><span class="p">,</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">830</span><span class="p">,</span> <span class="mi">810</span><span class="p">,</span> <span class="mi">820</span><span class="p">,</span> <span class="mi">800</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="`Manually set plot limits`" src="_images/matplotlib17.png" />
+</div>
+</div>
 <div class="section" id="setting-scale-for-log-axis">
 <h3>Setting scale for log axis<a class="headerlink" href="#setting-scale-for-log-axis" title="Permalink to this headline">¶</a></h3>
 <p>Occasionally we will run into data that are only meaningful when displayed on the logarithmic scale. Look at the code and the subsequent output below that demonstrates how to set the scale for plotting exponential data:</p>
@@ -420,7 +444,7 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-<span class="c1"># Importing data</span>
+<span class="c1"># Import data into the variable `df`</span>
 <span class="c1"># YOUR CODE BELOW</span>
 
 <span class="c1"># Making variables for convenience</span>
@@ -440,13 +464,14 @@
 <li><p>Understand the elements on the original plot</p></li>
 <li><p>Scatter of income on x-axis, and life expectancy on y-axis.</p></li>
 <li><p>Set x-axis to be log scale.</p></li>
+<li><p>Set the x-limits to (200, 151000), and the y-limits to (20, 90).</p></li>
 <li><p>Specify scatter size by using population, measured in millions (i.e. divide by 1e6).</p></li>
 <li><p>Specify color by continents! Paste the following as part of the plotting function:</p></li>
 </ol>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">=</span><span class="n">cont_nums</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;tab10&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">=</span><span class="n">cont</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;tab10&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="7">
+<ol class="arabic simple" start="8">
 <li><dl class="simple">
 <dt>Label the following:</dt><dd><ul class="simple">
 <li><p>x-axis with <cite>Income per person (GDP/capita, PPP$ inflation-adjusted</cite></p></li>
@@ -464,6 +489,7 @@
 </div>
 <div class="section" id="conclusion">
 <h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
+<p>Coding is not all about logic, surprisingly you can use code to draw!</p>
 </div>
 <div class="section" id="further-reading">
 <h2>Further reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">¶</a></h2>
@@ -499,6 +525,7 @@
 </li>
 <li><a class="reference internal" href="#basic-styling">Basic styling</a></li>
 <li><a class="reference internal" href="#slightly-more-advanced-styling">Slightly more advanced styling</a><ul>
+<li><a class="reference internal" href="#setting-plot-limits">Setting plot limits</a></li>
 <li><a class="reference internal" href="#setting-scale-for-log-axis">Setting scale for log axis</a></li>
 <li><a class="reference internal" href="#representing-more-than-two-dimensions-of-data-through-scaling-point-size-on-scatter-plots">Representing more than two dimensions of data through scaling point size on scatter plots</a></li>
 <li><a class="reference internal" href="#displaying-grid-lines">Displaying grid lines</a></li>
