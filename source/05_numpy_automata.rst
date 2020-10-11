@@ -15,7 +15,7 @@ What we will do:
 Introduction to numpy + setup check
 -----------------------------------
 .. Instructor notes: 
-.. Estimated time: 15 mins
+.. Estimated time: 10 mins
 .. Section objective: Introduce students to numpy. 
 
 .. [X]What is numpy and what do people use it for: scientific computing
@@ -37,7 +37,7 @@ If you can run the following code chunk without errors, you are good to go for t
 Basic `numpy` operations
 ------------------------
 .. Instructor notes: 
-.. Estimated time: 30 mins
+.. Estimated time: 35 mins
 .. Section objective: Introduce students to basic 1D array operations in numpy. 
 
 First things first, what are arrays?
@@ -119,20 +119,118 @@ We will stick with 1D arrays for the rest of the class, next week is when we wil
 
 Array indexing
 ^^^^^^^^^^^^^^
-.. [ ]Access individual numbers in an array via array indexing
-.. [ ]Assign individual numbers in an array via array indexing
-.. [ ]Colon operator for accessing multiple numbers, just like lists! Also works forward and backwards
-.. [ ]Indexing with conditionals
+.. [X]Access individual numbers in an array via array indexing
+.. [X]Assign individual numbers in an array via array indexing
+.. [X]Colon operator for accessing multiple numbers, just like lists! Also works forward and backwards
+
+We can access the individual values in arrays via indexing. As a quick refresher, indices in Python start at 0. For 1D arrays, array indexing is similar to list indexing. 
+
+Go ahead and do the following: 
+	1. Print the 1st number in `arr_a`.
+	2. Print the 3rd number from the end in `arr_a`.
+	3. Replace the 7th number in `arr_a` with 0.
+	4. Replace the 9th number from the end in `arr_a` with 100.
+	5. Print the 5th to 7th numbers in `arr_a`. Notice that the selection output is also an array.
+	6. Replace the last 3 numbers in `arr_a` with 100. For this, we'll show you the code to do it:
+	::
+		arr_a[-3:] = 100
+
+.. Solution
+.. print(arr_a[0])
+.. print(arr_a[-3])
+.. arr_a[6] = 0
+.. arr_a[-9] = 100
+.. print(arr_a[4:7])
+.. arr_a[-3:] = 100
+
 
 Array operations
 ^^^^^^^^^^^^^^^^
-.. [ ]Array arithmetic with constants
-.. [ ]Array arithmetic with other arrays
-.. [ ]sum(), mean(), max(), argmax()
-.. [ ]Do array arithmetic but w/o arrays! Hmmmm the tedium ...
+.. [X]Array arithmetic with constants
+
+The code provided for Q6 in the Array Indexing section above might have got some of you thinking. We were replacing three numbers, but we only had to specify it once! Under the hood, `numpy` does `array` broadcasting to "broadcast" the addition of a constant to all of the elements involved. If we used a Python list, we would have gotten an error instead. 
+
+Array broadcasting means that we can perform arithmetic between arrays and numbers fairly easily:
+::
+
+	print("Addition between array and number:")
+	print(arr_a + 10)
+	print("Multiplication between array and number:")
+	print(arr_a * 10)
+	print("Even the modulo operation works!")
+	print(arr_a % 10)
+
+.. [X]sum(), mean(), max(), min(), argmax()
+
+`numpy` arrays also come with some built-in functions that simplifies numerical work. 
+
+The following code shows, in order:
+	1. Finding the sum of an array
+	2. Finding the mean of an array
+	3. Finding the max and min of an array
+	4. Finding the location (i.e. index) of the max and min value of an array
+
+::
+
+	print(arr_a.sum())
+	print(arr_a.mean())
+	print(arr_a.max(), arr_a.min())
+	print(arr_a.argmax(), arr_a.argmin())
+
+Array conditionals
+^^^^^^^^^^^^^^^^^^
+.. [X]Indexing with conditionals
+
+Run the following and observe the outcome:
+::
+
+	print(arr_a > 100)
+
+This code displays an array of the same shape as `arr_a`, but instead of numbers as values, they are Booleans. This is array broadcasting in action once again, where the comparison with 100 is checked for every value in the array. For each statement where the value is greater than 100, `numpy` records True in the array returned. 
+
+This is surprisingly useful for us, because array indexing also allows us to do this:
+::
+
+	print(arr_a[arr_a > 100])
+
+Earlier we have looked at array indexing using numbers. The code chunk above shows that we can also use conditionals to do the same! Every element where the conditional evaluates to True will be kept, while every element where the conditional evalutes to False will be discarded. Effectively, we have told Python to return us `arr_a`, but excluding values where the conditional is False, i.e. are not larger than 100. 
+
+What would the following code return? Did they return results as expected?
+::
+
+	print(arr_a[True])
+	print(arr_a[False])
+	print(arr_a[arr_a < 0])
 
 Exercise: Thinking in array indices
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Before we end our section on `numpy` arrays, following are a few exercises to get you attuned to thinking in array indices:
+	1. Write a function that moves all of the elements in an array one step to the right. Example: an array of `X = np.array([1, 2, 3, 4])` should become `array([4, 1, 2, 3])`. Notice that the rightmost element is rolled back to the beginning. In other words, the element at index -1 is moved to index 0. Use the following code as the starting point, and get your function to replicate the example output below:
+	::
+
+		import numpy as np
+
+		def roll_array(arr):
+			# YOUR CODE HERE
+
+		# If your example replicates this output, it is good to go
+		a = np.array([2, 3, 4, 1])
+		roll_array(a)
+		# Should get output: `array([1, 2, 3, 4]) 
+
+	2. Write a function that adds one to each element with even-numbered indices, and subtracts one from each element with odd-numbered indices. 
+	::
+
+		import numpy as np
+
+		def odd_even(arr):
+			# YOUR CODE HERE
+
+		# If your example replicates this output, it is good to go
+		b = 5 * np.ones(shape=(6, )) # Initialize an array with all 5's
+		c = odd_even(b) # Should get output: `array([6, 4, 6, 4, 6, 4])
+		d = odd_even(c) # Should get output: `array([7, 3, 7, 3, 7, 3])
+		
 
 Cellular Automata
 -----------------
