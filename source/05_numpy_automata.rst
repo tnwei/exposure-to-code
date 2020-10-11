@@ -7,10 +7,10 @@ Week 5 : `Numpy` vectors & cellular automata
 Outcome: Students will learn the basics of using `numpy`, Python's numerical computing library for array calculations. Students will also be introduced to the concept of cellular automata, one of the many interesting concepts in computer science.
 
 What we will do:
-	* Introduction to `numpy`
-	* 1D arrays in `numpy`
-	* Exercise: 1D fluid simulation by cellular automata
-	* (Adv Exercise: Conway's Game of Life)
+	* Introduction to `numpy` + setup check
+	* Basic `numpy` operations
+	* Cellular automata
+	* Exercise: Conway’s Game of Life, in one dimension
 
 Introduction to numpy + setup check
 -----------------------------------
@@ -232,20 +232,58 @@ Before we end our section on `numpy` arrays, following are a few exercises to ge
 		d = odd_even(c) # Should get output: `array([7, 3, 7, 3, 7, 3])
 		
 
-Cellular Automata
+Cellular automata
 -----------------
 .. Instructor notes: 
 .. Estimated time: 20 mins
 .. Section objective: Show the concept of cellular automata. 
-.. [ ] What are cellular automata
-.. [ ] Summarize the basic concepts of cellular automata
 
-Exercise: 1D fluid simulation by cellular automata
+.. [ ]Setting the context
+
+.. We will begin this section by first discussing flocking behaviour in animals. 
+
+.. Start with showing flocking algorithms
+.. Individual units make decisions based on their neighbors
+.. Touch on the topic of emergence and its definition 
+
+.. [ ]Intro to cellular automata
+
+.. The word "cell": appropriate since we are looking at grids in computing. It is similar to flocking algorithms constrained to grids and simpler rules. Arrays are all about grids! 
+
+.. [ ]What are cellular automata
+
+.. Go into the history a bit
+.. Show some examples, Langton's ant and Conway's game of life
+.. Summarize the basic concepts of cellular automata
+
+Exercise: Conway's Game of Life, in one dimension
 --------------------------------------------------
-.. Instructor notes: 
 .. Estimated time: 40 mins
-.. Section objective: Use numpy to create a fluid simulation, using cellular automata. 
-.. [ ] Instructor solution, then break down prompt into segments. Else it will be too complex!
+.. Section objective: 
+.. Instructor notes
+.. [ ] Find a way to package this such that students can legitimately complete this in a short period of time. Might need to pre-write the visualizer? Jake Vanderplas has sth awesome on this as usual: http://jakevdp.github.io/blog/2013/08/07/conways-game-of-life/
+
+We have briefly explained Conway's Game of Life above. Now we will implement a 1D version of Game of Life. In this class, we will implement a one-dimensional version of the Game of Life. 
+
+The rules that we will use are as follows:
+	+ A cell can see two neighbors to its left and two neighbors to its right. 
+	+ If a cell is dead, it will be reborn if it has 2 or 3 neighbors, else it remains dead.
+	+ If a cell is alive, it will continue to survive if it has 2 or 4 neighbors, else it will perish. 
+	+ Rules referred from `http://jonmillen.com/1dlife/index.html <http://jonmillen.com/1dlife/index.html>`_
+
+We will use a 1D `numpy` array to represent the state of the cells. A cell is alive if it is set to 1, and dead if set to 0. 
+
+Follow the instructions below:
+
+1. Set constants `N=20` and `ITERATIONS=60`.
+2. Initialize a numpy array with one-dimension and length N. Set this array to have 1's and 0's at your choice. Name this array `state`.
+3. Initialize a blank numpy array that also has length N, but is all zeros. Name this array `next_state`.
+4. Create a for-loop that iterates over 2 to N-2, which corresponds to the cells in `state` except for the boundary cells. In each loop, implement the Game of Life logic above, and set the corresponding cell in `next_state` to be 1 if the cell survives, or 0 if the cell dies. 
+5. Implement logic that covers the boundary cells with indices 0, 1, N-2, and N-1. These cells follow the same rules, but don't have the same number of neighbors as all other cells further from the boundary.
+6. Wrap everything in steps 3 and 4 in a bigger for-loop, that loops over `ITERATIONS`. Inside this bigger for-loop, add under the previous for-loop the following:
+	+ update `state` by running `state = next_state.copy()`
+	+ print `state`
+
 
 Conclusion
 ----------
@@ -253,7 +291,7 @@ Conclusion
 .. Section objective: Recap and re-emphasize message
 .. Message of the day: 
 
-Further reading
----------------
+.. Further reading
+.. ---------------
 .. Official `matplotlib` documentation by Matplotlib development team: https://matplotlib.org/contents.html
 .. https://www.youtube.com/watch?v=NptnmWvkbTw
