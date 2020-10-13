@@ -15,7 +15,8 @@
     <script src="_static/language_data.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Week 5 : Numpy vectors &amp; cellular automata" href="05_numpy_automata.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -23,6 +24,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="05_numpy_automata.html" title="Week 5 : Numpy vectors &amp; cellular automata"
+             accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Exposure to Code 1.0 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Week 5: Advanced Exercises</a></li> 
       </ul>
@@ -36,11 +40,87 @@
   <div class="section" id="week-5-advanced-exercises">
 <h1>Week 5: Advanced Exercises<a class="headerlink" href="#week-5-advanced-exercises" title="Permalink to this headline">¶</a></h1>
 <p>Advanced exercises are designed for advanced learners that are ready to take on extra challenges. These exercises are made accessible to all after the class. Note that these exercises typically require more knowledge than what was presented in class.</p>
-<div class="section" id="adv-exercise-conway-s-game-of-life">
-<h2>Adv Exercise: Conway’s Game of Life<a class="headerlink" href="#adv-exercise-conway-s-game-of-life" title="Permalink to this headline">¶</a></h2>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Training wheels off! The material in today’s class is not enough to solve this problem.</p>
+<div class="section" id="adv-exercise-1d-fluid-simulation-by-cellular-automata">
+<h2>Adv Exercise: 1D fluid simulation by cellular automata<a class="headerlink" href="#adv-exercise-1d-fluid-simulation-by-cellular-automata" title="Permalink to this headline">¶</a></h2>
+<p>This week, we’ve learnt that we program cellular automata by specifying rules that will be run by each cell. We will use this property to write a 1D fluid simulation.</p>
+<div class="section" id="explanation-of-logic">
+<h3>Explanation of logic<a class="headerlink" href="#explanation-of-logic" title="Permalink to this headline">¶</a></h3>
+<p>Use a 1D array to represent the height of water columns in a tank, with each cell representing a column of water in the tank. We will specify rules so that the water will be passed between columns naturally. We will iterate the whole logic over a range of timesteps. At each timestep, we will iterate through each cell and calculate the height of the cell at the next timestep.</p>
+<p>The logic is simple to put in words. We check the difference in flow potential for each cell to decide how much fluid flows between the cells in the next timestep. We calculate this by taking the difference between potential energy from height of water, and also the difference in fluid momentum between cells.</p>
+</div>
+<div class="section" id="instructions">
+<h3>Instructions<a class="headerlink" href="#instructions" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><p>Set <cite>N = 15</cite>, <cite>GRAV = 2</cite>, and <cite>DAMP = 0.5</cite>. <cite>N</cite> represents grid length, <cite>GRAV</cite> represents the gravity multiplier, and <cite>DAMP</cite> represents the damping coefficient for fluid momentum.</p></li>
+<li><dl class="simple">
+<dt>Initialize four <cite>numpy</cite> arrays called <cite>water</cite>, <cite>mo_left</cite>, <cite>mo_right</cite>, and <cite>dwater</cite>, with length set to <cite>N=15</cite>.</dt><dd><ul class="simple">
+<li><p>Initialize <cite>water</cite> with the values <cite>[100, 100, 100, 80, 70, 60, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20]</cite></p></li>
+<li><p>Initialize the other arrays with all zeros.</p></li>
+<li><p><cite>water</cite> will be used to store the height of the water column.</p></li>
+<li><p><cite>mo_left</cite> will store the flow of each cell to its neighbor on the left in the previous timestep, representing flow momentum to the left.</p></li>
+<li><p><cite>mo_right</cite> will store the flow of each cell to its neighbor on the right in the previous timestep, representing flow momentum to the right.</p></li>
+<li><p><cite>dwater</cite> stores the change in water height for the next timestep.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Write a for-loop that iterates from 1 to N-1, excluding 0 and N which represents the boundary cells. In this for-loop, calculate for the current cell:</dt><dd><ul class="simple">
+<li><p><cite>fp_left</cite>: GRAV * (current cell height - left cell height) + (current cell leftward momentum - left cell rightward momentum)</p></li>
+<li><p><cite>fp_right</cite>: GRAV * (current cell height - right cell height) + (current cell rightward momentum - right cell leftward momentum)</p></li>
+<li><p><cite>flow_left</cite> and <cite>flow_right</cite>: <cite>fp_left</cite> / 4 and <cite>fp_right</cite> / 4</p></li>
+<li><p>If <cite>flow_left</cite> is larger than the height of the current cell divided by 4, set it to that.</p></li>
+<li><p>Do the same for <cite>flow_right</cite>.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Still in the same for-loop, assign the flows for the next timestep.</dt><dd><ul class="simple">
+<li><dl class="simple">
+<dt>If <cite>flow_left</cite> is positive i.e. larger than zero, update <cite>dwater</cite>, <cite>mo_left</cite> and <cite>mo_right</cite> for the cells:</dt><dd><ul>
+<li><p>Add <cite>flow_left</cite> to <cite>dwater</cite> of the left cell</p></li>
+<li><p>Subtract <cite>flow_left</cite> from <cite>dwater</cite> of the current cell</p></li>
+<li><p>Subtract <cite>DAMP</cite> multiplied by <cite>flow_left</cite> to <cite>mo_left</cite> of current cell</p></li>
+<li><p>Add <cite>DAMP</cite> multiplied by <cite>flow_left</cite> to <cite>mo_right</cite> of the left cell.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>If <cite>flow_right</cite> is positive i.e. larger than zero, do similar:</dt><dd><ul>
+<li><p>Add <cite>flow_right</cite> to <cite>dwater</cite> of the right cell</p></li>
+<li><p>Subtract <cite>flow_right</cite> from <cite>dwater</cite> of the current cell</p></li>
+<li><p>Subtract <cite>DAMP</cite> multiplied by <cite>flow_right</cite> to <cite>mo_right</cite> of current cell</p></li>
+<li><p>Add <cite>DAMP</cite> multiplied by <cite>flow_right</cite> to <cite>mo_left</cite> of the left cell.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>After this for-loop is done, add code after it for our boundary cells.</dt><dd><ul class="simple">
+<li><p>For the left-most cell, copy-paste the contents of the loop except for everything that has to do with having a cell on the left.</p></li>
+<li><p>For the right-most cell, copy-paste the contents of the loop except for everything that has to do with having a cell on the right.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Check momentum of boundary cells reflecting off the walls.</dt><dd><ul class="simple">
+<li><p>if <cite>mo_left</cite> of leftmost cell is positive, multiply it by -1.</p></li>
+<li><p>if <cite>mo_right</cite> of rightmost cell is positive, multiply it by -1.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Update <cite>water</cite> by adding to it <cite>dwater</cite>.</p></li>
+<li><p>Write a bigger for-loop that wraps everything in steps 3 to 7, and iterate over 200 timesteps. Create a variable called <cite>water_stored</cite>, and initialize it to be an empty list outside this bigger for-loop. At the end of the loop, append <cite>water</cite> to it. This will serve to store the heights of water over time.</p></li>
+<li><p>If you can get to step 8, ask the instructor for code to visualize this.</p></li>
+</ol>
 </div>
 </div>
 </div>
@@ -55,11 +135,18 @@
   <h3><a href="index.html">Table of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Week 5: Advanced Exercises</a><ul>
-<li><a class="reference internal" href="#adv-exercise-conway-s-game-of-life">Adv Exercise: Conway’s Game of Life</a></li>
+<li><a class="reference internal" href="#adv-exercise-1d-fluid-simulation-by-cellular-automata">Adv Exercise: 1D fluid simulation by cellular automata</a><ul>
+<li><a class="reference internal" href="#explanation-of-logic">Explanation of logic</a></li>
+<li><a class="reference internal" href="#instructions">Instructions</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="05_numpy_automata.html"
+                        title="previous chapter">Week 5 : <cite>Numpy</cite> vectors &amp; cellular automata</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -87,6 +174,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="05_numpy_automata.html" title="Week 5 : Numpy vectors &amp; cellular automata"
+             >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Exposure to Code 1.0 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Week 5: Advanced Exercises</a></li> 
       </ul>
