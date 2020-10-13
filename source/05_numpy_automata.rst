@@ -234,44 +234,88 @@ Before we end our section on `numpy` arrays, following are a few exercises to ge
 
 Cellular automata
 -----------------
-.. Instructor notes: 
+.. Instructor notes: Go through flocking first, then segue to cellular automata as a close (but not quite) corollary of grid-bound flocking
 .. Estimated time: 20 mins
 .. Section objective: Show the concept of cellular automata. 
 
-.. [ ]Setting the context
+Given that we have been learning about arrays in this module, we'll take a look into cellular automata, an interesting concept that is fundamentally about cells in a grid. But before that, we will first set the stage by looking at flocking algorithms. 
 
-.. We will begin this section by first discussing flocking behaviour in animals. 
+Flocking algorithms
+^^^^^^^^^^^^^^^^^^^
+
+In the animal kingdom, some animals have evolved to move around in groups for survival reasons. Cows roam around in herds, fish swim in shoals, and birds move in flocks. Animals do this primarily for survival reasons; animals in a group are less likely to be picked off individually by predators, plus a group of animals can search a bigger area for food. 
 
 .. Start with showing flocking algorithms
-.. Individual units make decisions based on their neighbors
-.. Touch on the topic of emergence and its definition 
 
-.. [ ]Intro to cellular automata
+It is probably no surprise to you, that this natural phenomenon can be replicated in code. Over the years, smart people have managed to model animals moving as a collective while exhibiting organic behaviour. They accomplished this by specifying rules for autonomous agents, i.e. modelled animal, to follow. Although no explicit rules or directions were involved in the programming, these agents are able to emulate the behaviour of animals in real life. We call these flocking algorithms. 
 
-.. The word "cell": appropriate since we are looking at grids in computing. It is similar to flocking algorithms constrained to grids and simpler rules. Arrays are all about grids! 
+Let us take a look at the earliest form of flocking algorithms, dating back to 1986: `https://www.youtube.com/watch?v=86iQiV3-3IA <https://www.youtube.com/watch?v=86iQiV3-3IA>`_.
 
-.. [ ]What are cellular automata
+This video above demonstrates the artificial life algorithm by Craig Reynolds, called Boids. Each agent in the algorithm follows three very simple rules:
+    * separation: steer to maintain distance with other agents
+    * alignment: steer to move in roughly the same direction as other agents
+    * cohesion: steer to stay close enough to other agents
 
-.. Go into the history a bit
-.. Show some examples, Langton's ant and Conway's game of life
-.. Summarize the basic concepts of cellular automata
+Now let's watch this Youtube video that further showcases how flocking algorithms work, and explain them in more detail as well: `https://www.youtube.com/watch?v=QbUPfMXXQIY <https://www.youtube.com/watch?v=QbUPfMXXQIY>`_
 
-Exercise: Conway's Game of Life, in one dimension
---------------------------------------------------
+Notice that the rules only require the agent to look at what other agents are doing, especially its neighbors closest to it. These flocking algorithms are designed to function in a coordinate system, where the position of the agents can be any real number. 
+
+What if constrain the agents to exist in a grid instead of a real-numbered space? 
+	
+Basically, we get cellular automata. 
+
+Intro to cellular automata
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. Talk about the brief concept
+
+In simple terms:
+	* A cellular automaton consists of a grid of cells.
+	* Each cell can be in a finite number of states, e.g. on or off. 
+	* The simulation is marched through time. At each timestep, the state of the grid depends on the state in the previous timestep, following a set of fixed rules. 
+	* The initial state has no state prior to it, and thus needs to be specified. 
+	* The rules only depend on the previous state of each cell and its neighbours.
+
+Just like what we saw when covering flocking algorithms, cellular automata can generate interesting patterns just from specifying simple behavioural rules. 
+
+.. Talk about the history and Game of Life
+
+The concept of cellular automata started with the concept of self-replicating systems itself, when von Neumann was working on the idea of robots that can build themselves in the 1940s. Scientists after von Neumann gradually expanded upon the idea, and cellular automata as it is known today became famous through John Conway's Game of Life in the 1970s. 
+
+The Game of Life got its name because each cell can be in two states, either dead or alive. The game works on a 2D grid, and has four simple rules:
+	1. Live cell with < 2 neighbours --> dies
+	2. Live cell with 2 or 3 neighbours --> lives
+	3. Live cell with > 3 neighbours --> dies
+	4. Dead cell with 3 neighbours --> lives
+
+Depending on the initial state of the grid, the system is able to produce a large range of behaviour, generating patterns that are unbelievably complex. `The corresponding wikipedia page has a few good examples. <https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life#Examples_of_patterns>`_
+
+Given that the Game of Life has been explored extensively, we will tap into the world's biggest lecture database to further understand the concept. 
+	* This video explains the concepts of Game of Life briefly in 2 minutes: https://www.youtube.com/watch?v=0XI6s-TGzSs
+	* This video demonstrates a Game of Life simulation in 3 minutes: https://www.youtube.com/watch?v=Aq51GfPmD54
+	* This video simulates Game of Life using Game of Life: https://www.youtube.com/watch?v=xP5-iIeKXE8
+
+.. One more example, Langton's Ant
+
+Another example of a cellular automaton is Langton's Ant, where a single agent, the ant, is placed on a 2D grid, where some of the grid cells are set to on or off. Depending on the current state of the grid, the ant will decide what direction to move in. 
+
+Like many things, there is a good Youtube video for this: https://www.youtube.com/watch?v=NWBToaXK5T0.
+
+Exercise: Conway's Game of Life, but on a one-dimension grid
+------------------------------------------------------------
 .. Estimated time: 40 mins
 .. Section objective: 
 .. Instructor notes
-.. [ ] Find a way to package this such that students can legitimately complete this in a short period of time. Might need to pre-write the visualizer? Jake Vanderplas has sth awesome on this as usual: http://jakevdp.github.io/blog/2013/08/07/conways-game-of-life/
+.. [X] Find a way to package this such that students can legitimately complete this in a short period of time. Might need to pre-write the visualizer? Jake Vanderplas has sth awesome on this as usual: http://jakevdp.github.io/blog/2013/08/07/conways-game-of-life/ --> in the end, we didn't need no visualizer. 
 
-We have briefly explained Conway's Game of Life above. Now we will implement a 1D version of Game of Life. In this class, we will implement a one-dimensional version of the Game of Life. 
+In this exercise, we will tie together what we learnt about `numpy` arrays, and also the wonderful concept of cellular automata. We will implement a 1D version of Game of Life. 
 
-The rules that we will use are as follows:
+Instead of a 2D grid, we will use a 1D grid. We will use a 1D `numpy` array to represent the state of the cells. A cell is alive if it is set to 1, and dead if set to 0. 
+
+Due to each cell now only being able to see to the left and to the right, we will need to use new rules as follows:
 	+ A cell can see two neighbors to its left and two neighbors to its right. 
 	+ If a cell is dead, it will be reborn if it has 2 or 3 neighbors, else it remains dead.
 	+ If a cell is alive, it will continue to survive if it has 2 or 4 neighbors, else it will perish. 
 	+ Rules referred from `http://jonmillen.com/1dlife/index.html <http://jonmillen.com/1dlife/index.html>`_
-
-We will use a 1D `numpy` array to represent the state of the cells. A cell is alive if it is set to 1, and dead if set to 0. 
 
 Follow the instructions below:
 
@@ -291,7 +335,12 @@ Conclusion
 .. Section objective: Recap and re-emphasize message
 .. Message of the day: 
 
-.. Further reading
-.. ---------------
-.. Official `matplotlib` documentation by Matplotlib development team: https://matplotlib.org/contents.html
-.. https://www.youtube.com/watch?v=NptnmWvkbTw
+Take-away message for this week: 
+	* We learnt about working with arrays in one dimension
+	* We learnt about the concept of cellular automata and implemented one ourselves!
+
+Further reading
+---------------
+* https://en.wikipedia.org/wiki/Boids
+* https://en.wikipedia.org/wiki/Cellular_automaton
+* `Youtube video - Inventing Game of Life (John Conway) - Numberphile <https://www.youtube.com/watch?v=R9Plq-D1gEk>`_
