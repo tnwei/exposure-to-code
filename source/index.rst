@@ -34,7 +34,8 @@ Contents
    03_ifelse_fxns_EX.rst
    03_ifelse_fxns_sols.rst
    04_matplotlib.rst
-   .. 05_numpy_automata.rst
+   05_numpy_automata.rst
+   05_numpy_automata_EX.rst
    .. 06_numpy_chaos.rst
    .. 07_numerical_methods.rst
    .. 08_pde_populations.rst
