@@ -28,10 +28,8 @@ For this week's class, you will need to be using a local Python installation, ju
 
 If you can run the following code chunk without errors, you are good to go for today!
 ::
+
 	import numpy as np
-	import matplotlib.pyplot as plt
-	plt.plot([1, 2, 3, 4], [1, 2, 3, 4])
-	plt.show()
 
 
 Basic `numpy` operations
@@ -305,7 +303,7 @@ Exercise: Conway's Game of Life, but on a one-dimension grid
 .. Estimated time: 40 mins
 .. Section objective: 
 .. Instructor notes
-.. [X] Find a way to package this such that students can legitimately complete this in a short period of time. Might need to pre-write the visualizer? Jake Vanderplas has sth awesome on this as usual: http://jakevdp.github.io/blog/2013/08/07/conways-game-of-life/ --> in the end, we didn't need no visualizer. 
+.. [X]Find a way to package this such that students can legitimately complete this in a short period of time. Might need to pre-write the visualizer? Jake Vanderplas has sth awesome on this as usual: http://jakevdp.github.io/blog/2013/08/07/conways-game-of-life/ --> in the end, we didn't need no visualizer. 
 
 In this exercise, we will tie together what we learnt about `numpy` arrays, and also the wonderful concept of cellular automata. We will implement a 1D version of Game of Life. 
 

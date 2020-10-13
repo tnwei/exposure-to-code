@@ -60,9 +60,6 @@
 <p>For this week’s class, you will need to be using a local Python installation, just like last week. In fact, you will need it for the rest of this course! Given that we will need to import libraries every week, online REPLs will not be able to support our work any further.</p>
 <p>If you can run the following code chunk without errors, you are good to go for today!</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -294,11 +291,6 @@
 </div>
 <div class="section" id="exercise-conway-s-game-of-life-but-on-a-one-dimension-grid">
 <h2>Exercise: Conway’s Game of Life, but on a one-dimension grid<a class="headerlink" href="#exercise-conway-s-game-of-life-but-on-a-one-dimension-grid" title="Permalink to this headline">¶</a></h2>
-<dl class="citation">
-<dt class="label" id="x"><span class="brackets">X</span></dt>
-<dd><p>Find a way to package this such that students can legitimately complete this in a short period of time. Might need to pre-write the visualizer? Jake Vanderplas has sth awesome on this as usual: <a class="reference external" href="http://jakevdp.github.io/blog/2013/08/07/conways-game-of-life/">http://jakevdp.github.io/blog/2013/08/07/conways-game-of-life/</a> –&gt; in the end, we didn’t need no visualizer.</p>
-</dd>
-</dl>
 <p>In this exercise, we will tie together what we learnt about <cite>numpy</cite> arrays, and also the wonderful concept of cellular automata. We will implement a 1D version of Game of Life.</p>
 <p>Instead of a 2D grid, we will use a 1D grid. We will use a 1D <cite>numpy</cite> array to represent the state of the cells. A cell is alive if it is set to 1, and dead if set to 0.</p>
 <dl class="simple">
