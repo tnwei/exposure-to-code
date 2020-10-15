@@ -203,31 +203,37 @@ What would the following code return? Did they return results as expected?
 Exercise: Thinking in array indices
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Before we end our section on `numpy` arrays, following are a few exercises to get you attuned to thinking in array indices:
-	1. Write a function that moves all of the elements in an array one step to the right. Example: an array of `X = np.array([1, 2, 3, 4])` should become `array([4, 1, 2, 3])`. Notice that the rightmost element is rolled back to the beginning. In other words, the element at index -1 is moved to index 0. Use the following code as the starting point, and get your function to replicate the example output below:
-	::
 
-		import numpy as np
+.. note::
 
-		def roll_array(arr):
-			# YOUR CODE HERE
+	Use `len(arr)` to obtain the length of a 1D array!
 
-		# If your example replicates this output, it is good to go
-		a = np.array([2, 3, 4, 1])
-		roll_array(a)
-		# Should get output: `array([1, 2, 3, 4]) 
 
-	2. Write a function that adds one to each element with even-numbered indices, and subtracts one from each element with odd-numbered indices. 
-	::
+1. Write a function that moves all of the elements in an array one step to the right. Example: an array of `X = np.array([1, 2, 3, 4])` should become `array([4, 1, 2, 3])`. Notice that the rightmost element is rolled back to the beginning. In other words, the element at index -1 is moved to index 0. Use the following code as the starting point, and get your function to replicate the example output below:
+::
 
-		import numpy as np
+	import numpy as np
 
-		def odd_even(arr):
-			# YOUR CODE HERE
+	def roll_array(arr):
+		# YOUR CODE HERE
 
-		# If your example replicates this output, it is good to go
-		b = 5 * np.ones(shape=(6, )) # Initialize an array with all 5's
-		c = odd_even(b) # Should get output: `array([6, 4, 6, 4, 6, 4])
-		d = odd_even(c) # Should get output: `array([7, 3, 7, 3, 7, 3])
+	# If your example replicates this output, it is good to go
+	a = np.array([2, 3, 4, 1])
+	roll_array(a)
+	# Should get output: `array([1, 2, 3, 4]) 
+
+2. Write a function that adds one to each element with even-numbered indices, and subtracts one from each element with odd-numbered indices. 
+::
+
+	import numpy as np
+
+	def odd_even(arr):
+		# YOUR CODE HERE
+
+	# If your example replicates this output, it is good to go
+	b = 5 * np.ones(shape=(6, )) # Initialize an array with all 5's
+	c = odd_even(b) # Should get output: `array([6, 4, 6, 4, 6, 4])
+	d = odd_even(c) # Should get output: `array([7, 3, 7, 3, 7, 3])
 		
 
 Cellular automata
