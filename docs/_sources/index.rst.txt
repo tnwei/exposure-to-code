@@ -36,6 +36,7 @@ Contents
    04_matplotlib.rst
    05_numpy_automata.rst
    05_numpy_automata_EX.rst
+   05_numpy_automata_sols.rst
    .. 06_numpy_chaos.rst
    .. 07_numerical_methods.rst
    .. 08_pde_populations.rst

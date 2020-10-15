@@ -1,0 +1,282 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Week 5: Class Exercise solutions &#8212; Exposure to Code 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Week 5: Advanced Exercises" href="05_numpy_automata_EX.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="05_numpy_automata_EX.html" title="Week 5: Advanced Exercises"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Exposure to Code 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Week 5: Class Exercise solutions</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="week-5-class-exercise-solutions">
+<h1>Week 5: Class Exercise solutions<a class="headerlink" href="#week-5-class-exercise-solutions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="in-class-exercise-array-indexing">
+<h2>In-class exercise: array-indexing<a class="headerlink" href="#in-class-exercise-array-indexing" title="Permalink to this headline">¶</a></h2>
+<p>Code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">arr_a</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr_a</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">arr_a</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">arr_a</span><span class="p">[</span><span class="o">-</span><span class="mi">9</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr_a</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">7</span><span class="p">])</span>
+<span class="n">arr_a</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span> <span class="o">=</span> <span class="mi">100</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="mi">57</span>
+<span class="mi">89</span>
+<span class="p">[</span><span class="mi">111</span> <span class="mi">115</span>   <span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="exercise-thinking-in-array-indices">
+<h2>Exercise: Thinking in array indices<a class="headerlink" href="#exercise-thinking-in-array-indices" title="Permalink to this headline">¶</a></h2>
+<p>Code for Question 1:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">roll_array</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+    <span class="c1"># YOUR CODE HERE</span>
+    <span class="n">arr_len</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+    <span class="n">new_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">arr_len</span><span class="p">,))</span>
+
+    <span class="n">new_arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">arr_len</span><span class="p">):</span>
+        <span class="n">new_arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">new_arr</span>
+
+<span class="c1"># If your example replicates this output, it is good to go</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">roll_array</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="c1"># Should get output: `array([1, 2, 3, 4])</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mf">3.</span><span class="p">,</span> <span class="mf">4.</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Code for Question 2:</p>
+<dl>
+<dt>def odd_even(arr):</dt><dd><p># YOUR CODE HERE
+arr_len = len(arr)
+for i in range(arr_len):</p>
+<blockquote>
+<div><dl class="simple">
+<dt>if i % 2 == 0:</dt><dd><p>arr[i] = arr[i] + 1</p>
+</dd>
+<dt>else:</dt><dd><p>arr[i] = arr[i] - 1</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>return arr</p>
+</dd>
+</dl>
+<p># If your example replicates this output, it is good to go
+b = 5 * np.ones(shape=(6, )) # Initialize an array with all 5’s
+print(b)
+c = odd_even(b) # Should get output: <a href="#id1"><span class="problematic" id="id2">`</span></a>array([6, 4, 6, 4, 6, 4])
+print(c)
+d = odd_even(c) # Should get output: <a href="#id3"><span class="problematic" id="id4">`</span></a>array([7, 3, 7, 3, 7, 3])
+print(d)</p>
+<p>Output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mf">5.</span> <span class="mf">5.</span> <span class="mf">5.</span> <span class="mf">5.</span> <span class="mf">5.</span> <span class="mf">5.</span><span class="p">]</span>
+<span class="p">[</span><span class="mf">6.</span> <span class="mf">4.</span> <span class="mf">6.</span> <span class="mf">4.</span> <span class="mf">6.</span> <span class="mf">4.</span><span class="p">]</span>
+<span class="p">[</span><span class="mf">7.</span> <span class="mf">3.</span> <span class="mf">7.</span> <span class="mf">3.</span> <span class="mf">7.</span> <span class="mf">3.</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="exercise-conway-s-game-of-life-but-on-a-one-dimension-grid">
+<h2>Exercise: Conway’s Game of Life, but on a one-dimension grid<a class="headerlink" href="#exercise-conway-s-game-of-life-but-on-a-one-dimension-grid" title="Permalink to this headline">¶</a></h2>
+<p>Code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># 1. Set constants N=20 and ITERATIONS=60.</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">ITERATIONS</span> <span class="o">=</span> <span class="mi">60</span>
+
+<span class="c1"># 2. Initialize a numpy array with one-dimension and length N. Set this array to have 1’s and 0’s at your choice. Name this array `state`.</span>
+<span class="n">state</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="p">))</span>
+<span class="n">state</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">state</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+
+<span class="c1"># 3. Initialize a blank numpy array that also has length N, but is all zeros. Name this array next_state.</span>
+<span class="n">next_state</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="p">))</span>
+
+<span class="c1"># 6. Wrap everything in steps 3 and 4 in a bigger for-loop, that loops over ITERATIONS. Inside this bigger for-loop, add under the previous for-loop the following:</span>
+<span class="c1">#     + update state by running state = next_state.copy()</span>
+<span class="c1">#     + print state</span>
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ITERATIONS</span><span class="p">):</span>
+
+    <span class="c1"># 4. Create a for-loop that iterates over 2 to N-2, which corresponds to the cells in `state` except for the boundary cells. In each loop, implement the Game of Life logic above, and set the corresponding cell in next_state to be 1 if the cell survives, or 0 if the cell dies.</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">N</span><span class="o">-</span><span class="mi">2</span><span class="p">):</span>
+        <span class="n">left_neighbours</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="p">:</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+        <span class="n">right_neighbours</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+        <span class="n">total_neighbours</span> <span class="o">=</span> <span class="n">left_neighbours</span> <span class="o">+</span> <span class="n">right_neighbours</span>
+
+        <span class="c1"># If dead cell</span>
+        <span class="k">if</span> <span class="n">state</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># Conditions to be alive</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">total_neighbours</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">total_neighbours</span> <span class="o">==</span> <span class="mi">3</span><span class="p">):</span>
+                <span class="n">next_state</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="c1"># Else stay dead</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">next_state</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="c1"># If alive cell</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Conditions to stay alive</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">total_neighbours</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">total_neighbours</span> <span class="o">==</span> <span class="mi">4</span><span class="p">):</span>
+                <span class="n">next_state</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="c1"># Else become dead</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">next_state</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="c1"># 5. Implement logic that covers the boundary cells with indices 0, 1, N-2, and N-1. These cells follow the same rules, but don’t have the same number of neighbors as all other cells further from the boundary.</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="c1"># left_neighbours = state[i-2:i].sum()</span>
+    <span class="n">left_neighbours</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">right_neighbours</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">total_neighbours</span> <span class="o">=</span> <span class="n">left_neighbours</span> <span class="o">+</span> <span class="n">right_neighbours</span>
+
+    <span class="k">if</span> <span class="n">state</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">total_neighbours</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">total_neighbours</span> <span class="o">==</span> <span class="mi">3</span><span class="p">):</span>
+            <span class="n">next_state</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">total_neighbours</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">total_neighbours</span> <span class="o">!=</span> <span class="mi">4</span><span class="p">):</span>
+            <span class="n">next_state</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="c1"># left_neighbours = state[i-2:i].sum()</span>
+    <span class="n">left_neighbours</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">right_neighbours</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">total_neighbours</span> <span class="o">=</span> <span class="n">left_neighbours</span> <span class="o">+</span> <span class="n">right_neighbours</span>
+
+    <span class="k">if</span> <span class="n">state</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">total_neighbours</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">total_neighbours</span> <span class="o">==</span> <span class="mi">3</span><span class="p">):</span>
+            <span class="n">next_state</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">total_neighbours</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">total_neighbours</span> <span class="o">!=</span> <span class="mi">4</span><span class="p">):</span>
+            <span class="n">next_state</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="n">i</span> <span class="o">=</span> <span class="n">N</span><span class="o">-</span><span class="mi">2</span>
+    <span class="n">left_neighbours</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="p">:</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="c1"># right_neighbours = state[i+1:i+3].sum()</span>
+    <span class="n">right_neighbours</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">total_neighbours</span> <span class="o">=</span> <span class="n">left_neighbours</span> <span class="o">+</span> <span class="n">right_neighbours</span>
+
+    <span class="k">if</span> <span class="n">state</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">total_neighbours</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">total_neighbours</span> <span class="o">==</span> <span class="mi">3</span><span class="p">):</span>
+            <span class="n">next_state</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">total_neighbours</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">total_neighbours</span> <span class="o">!=</span> <span class="mi">4</span><span class="p">):</span>
+            <span class="n">next_state</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="n">i</span> <span class="o">=</span> <span class="n">N</span><span class="o">-</span><span class="mi">1</span>
+    <span class="n">left_neighbours</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="p">:</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="c1"># right_neighbours = state[i+1:i+3].sum()</span>
+    <span class="n">right_neighbours</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">total_neighbours</span> <span class="o">=</span> <span class="n">left_neighbours</span> <span class="o">+</span> <span class="n">right_neighbours</span>
+
+    <span class="k">if</span> <span class="n">state</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">total_neighbours</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">total_neighbours</span> <span class="o">==</span> <span class="mi">3</span><span class="p">):</span>
+            <span class="n">next_state</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">total_neighbours</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">total_neighbours</span> <span class="o">!=</span> <span class="mi">4</span><span class="p">):</span>
+            <span class="n">next_state</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="n">state</span> <span class="o">=</span> <span class="n">next_state</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">states</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Week 5: Class Exercise solutions</a><ul>
+<li><a class="reference internal" href="#in-class-exercise-array-indexing">In-class exercise: array-indexing</a></li>
+<li><a class="reference internal" href="#exercise-thinking-in-array-indices">Exercise: Thinking in array indices</a></li>
+<li><a class="reference internal" href="#exercise-conway-s-game-of-life-but-on-a-one-dimension-grid">Exercise: Conway’s Game of Life, but on a one-dimension grid</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="05_numpy_automata_EX.html"
+                        title="previous chapter">Week 5: Advanced Exercises</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/05_numpy_automata_sols.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="05_numpy_automata_EX.html" title="Week 5: Advanced Exercises"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Exposure to Code 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Week 5: Class Exercise solutions</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright PERMATA STEM Talent, 2020.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+    </div>
+  </body>
+</html>
