@@ -17,7 +17,7 @@ Code:
 Output:
 :: 
 
-	57
+    57
     89
     [111 115   0]
 
@@ -54,24 +54,24 @@ Output:
 Code for Question 2:
 ::
 
-def odd_even(arr):
-    # YOUR CODE HERE
-    arr_len = len(arr)
-    for i in range(arr_len):
-        if i % 2 == 0:
-            arr[i] = arr[i] + 1
-        else:
-            arr[i] = arr[i] - 1
-    
-    return arr
+    def odd_even(arr):
+        # YOUR CODE HERE
+        arr_len = len(arr)
+        for i in range(arr_len):
+            if i % 2 == 0:
+                arr[i] = arr[i] + 1
+            else:
+                arr[i] = arr[i] - 1
+        
+        return arr
 
-# If your example replicates this output, it is good to go
-b = 5 * np.ones(shape=(6, )) # Initialize an array with all 5's
-print(b)
-c = odd_even(b) # Should get output: `array([6, 4, 6, 4, 6, 4])
-print(c)
-d = odd_even(c) # Should get output: `array([7, 3, 7, 3, 7, 3])
-print(d)
+    # If your example replicates this output, it is good to go
+    b = 5 * np.ones(shape=(6, )) # Initialize an array with all 5's
+    print(b)
+    c = odd_even(b) # Should get output: `array([6, 4, 6, 4, 6, 4])
+    print(c)
+    d = odd_even(c) # Should get output: `array([7, 3, 7, 3, 7, 3])
+    print(d)
 
 Output:
 ::
@@ -91,21 +91,29 @@ Code:
     N = 20
     ITERATIONS = 60
 
-    # 2. Initialize a numpy array with one-dimension and length N. Set this array to have 1’s and 0’s at your choice. Name this array `state`.
-    state = np.zeros(shape=(N, ))
+    # 2. Initialize a numpy array with one-dimension and length N. Set this
+    # array to have 1’s and 0’s at your choice. Name this array `state`.
+    # state = np.zeros(shape=(N, ))
     state[0] = 1
     state[2:8] = 1
     print(state)
 
-    # 3. Initialize a blank numpy array that also has length N, but is all zeros. Name this array next_state.
+    # 3. Initialize a blank numpy array that also has length N, but is all
+    # zeros. Name this array next_state.
     next_state = np.zeros(shape=(N, ))
 
-    # 6. Wrap everything in steps 3 and 4 in a bigger for-loop, that loops over ITERATIONS. Inside this bigger for-loop, add under the previous for-loop the following:
+    # 6. Wrap everything in steps 3 and 4 in a bigger for-loop, that loops over 
+    # ITERATIONS. Inside this bigger for-loop, add under the previous for-loop 
+    # the following:
     #     + update state by running state = next_state.copy()
     #     + print state
     for j in range(ITERATIONS):
         
-        # 4. Create a for-loop that iterates over 2 to N-2, which corresponds to the cells in `state` except for the boundary cells. In each loop, implement the Game of Life logic above, and set the corresponding cell in next_state to be 1 if the cell survives, or 0 if the cell dies.
+        # 4. Create a for-loop that iterates over 2 to N-2, which corresponds 
+        # to the cells in `state` except for the boundary cells. In each loop, 
+        # implement the Game of Life logic above, and set the corresponding 
+        # cell in next_state to be 1 if the cell survives, or 0 if the cell 
+        # dies.
         for i in range(2, N-2):
             left_neighbours = state[i-2:i].sum()
             right_neighbours = state[i+1:i+3].sum()
@@ -128,7 +136,10 @@ Code:
                 else:
                     next_state[i] = 0
                     
-        # 5. Implement logic that covers the boundary cells with indices 0, 1, N-2, and N-1. These cells follow the same rules, but don’t have the same number of neighbors as all other cells further from the boundary.
+        # 5. Implement logic that covers the boundary cells with indices 0, 1, 
+        # N-2, and N-1. These cells follow the same rules, but don’t have the 
+        # same number of neighbors as all other cells further from the boundary.
+        
         i = 0
         # left_neighbours = state[i-2:i].sum()
         left_neighbours = 0
