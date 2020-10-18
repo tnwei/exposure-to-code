@@ -1,10 +1,11 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
-    <title>Week 4: Visualization with matplotlib &#8212; Exposure to Code 1.0 documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Week 4: Visualizing data with matplotlib &#8212; Exposure to Code 1.0 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -12,8 +13,11 @@
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Week 5 : Numpy vectors &amp; cellular automata" href="05_numpy_automata.html" />
+    <link rel="prev" title="Week 3: Class Exercise solutions" href="03_ifelse_fxns_sols.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -21,7 +25,14 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">Exposure to Code 1.0 documentation</a> &#187;</li> 
+        <li class="right" >
+          <a href="05_numpy_automata.html" title="Week 5 : Numpy vectors &amp; cellular automata"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="03_ifelse_fxns_sols.html" title="Week 3: Class Exercise solutions"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Exposure to Code 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Week 4: Visualizing data with matplotlib</a></li> 
       </ul>
     </div>  
 
@@ -30,42 +41,459 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="week-4-visualization-with-matplotlib">
-<h1>Week 4: Visualization with matplotlib<a class="headerlink" href="#week-4-visualization-with-matplotlib" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="week-4-visualizing-data-with-matplotlib">
+<h1>Week 4: Visualizing data with matplotlib<a class="headerlink" href="#week-4-visualizing-data-with-matplotlib" title="Permalink to this headline">¶</a></h1>
 <p>Outcome: Students will learn how to make basic plots in Python using <cite>matplotlib</cite>, the de-facto standard for visualization.</p>
 <dl>
 <dt>What we will do:</dt><dd><blockquote>
 <div><ul class="simple">
-<li><p>What is matplotlib?</p></li>
+<li><p>Code to … <em>draw</em> ?</p></li>
+<li><p>What is matplotlib + setup check</p></li>
 <li><p>Basic plotting</p></li>
-<li><p>Basic configuration</p></li>
-<li><p>Combining plot elements</p></li>
-<li><p>Exercise: Writing a visualizer we will use soon …</p></li>
+<li><p>Plotting from CSV files</p></li>
+<li><p>Basic styling</p></li>
+<li><p>Slightly more advanced styling</p></li>
+<li><p>Exercise: Recreating the World Health Chart</p></li>
 </ul>
 </div></blockquote>
 </dd>
 </dl>
-<div class="section" id="what-is-matplotlib">
-<h2>What is matplotlib?<a class="headerlink" href="#what-is-matplotlib" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="code-to-draw">
+<h2>Code to … <em>draw</em>?<a class="headerlink" href="#code-to-draw" title="Permalink to this headline">¶</a></h2>
+<p>In the last few weeks, we have been learning the basics of coding as a tool to execute logic. It might come as a surprise to you that coding is not all about logic, but can also be applied to generate visualizations. In fact, some people spend significant amounts of time using code to build the visualizations that they need!</p>
+<dl class="simple">
+<dt>Visualization is typically done as part of data analysis work, to summarize and express the relationships in data in an intuitive manner. A few examples of neat visualizations made in code that you can find online:</dt><dd><ul class="simple">
+<li><p><a class="reference external" href="https://www.reddit.com/r/dataisbeautiful/comments/8bzdr8/gaze_and_foot_placement_when_walking_over_rough/">Gaze and the Control of Foot Placement When Walking in Natural Terrain, from Reddit</a></p></li>
+<li><p><a class="reference external" href="http://graphics.wsj.com/infectious-diseases-and-vaccines/">Wall St Journal graphic on the impact of vaccines</a></p></li>
+<li><p><a class="reference external" href="https://armsglobe.chromeexperiments.com/">Visualizing the trade of small arms across the globe, Chrome Experiments</a></p></li>
+<li><p><a class="reference external" href="http://fingfx.thomsonreuters.com/gfx/rngs/MYANMAR-ROHINGYA/010051VB46G/index.html">Life In The Camps by Reuters</a></p></li>
+<li><p><a class="reference external" href="https://www.gapminder.org/fw/world-health-chart/">World Health Chart by Gapminder</a></p></li>
+</ul>
+</dd>
+</dl>
+<p>In this class, we won’t be making visualizations as impressive as these. These interactive visualizations make heavy use of Javascript-based libraries, of which is out of scope of this course. Instead, we will start small, and take a small step into making plots in Python, with <cite>matplotlib</cite>.</p>
+</div>
+<div class="section" id="what-is-matplotlib-setup-check">
+<h2>What is matplotlib + setup check<a class="headerlink" href="#what-is-matplotlib-setup-check" title="Permalink to this headline">¶</a></h2>
+<p><cite>matplotlib</cite> is a widely used plotting library in Python, and is the de facto standard for scientific analysis. It enables users to generate publication-quality plots, and allows heavy customization to get plots that look exactly the way the users want to.</p>
+<p>For this class, you will need to be using a local Python installation w/ the <cite>matplotlib</cite> package installed. If you were using an online REPL for the class, you will need to switch to using an IDE like Spyder. <cite>matplotlib</cite> is installed by default if you are using Anaconda Python. Else, you will need to install it separately.</p>
+<p>If you are able to run the following code chunk and see plot output, you are good to go for today’s class.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="basic-plotting">
 <h2>Basic plotting<a class="headerlink" href="#basic-plotting" title="Permalink to this headline">¶</a></h2>
-<p>Scatter / line / bar plots etc.</p>
+<p>Using <cite>matplotlib</cite> requires you to <strong>import</strong> it in Python before usage. It is a library that contains functions not available in standard Python. Thus, the act of <cite>import</cite>-ing the library makes its functions available for us to use. Make sure the following line has been run before using any functions from <cite>matplotlib</cite>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
 </div>
-<div class="section" id="basic-configuration">
-<h2>Basic configuration<a class="headerlink" href="#basic-configuration" title="Permalink to this headline">¶</a></h2>
-<p>Setting figsize, axes, title, legend etc.</p>
+<div class="section" id="plt-plot">
+<h3><cite>plt.plot</cite><a class="headerlink" href="#plt-plot" title="Permalink to this headline">¶</a></h3>
+<p><cite>plt.plot</cite> is one of the most common plotting functions used in the library. Give it sequences of values as <cite>x</cite> and <cite>y</cite>, and <cite>plt.plot(x, y)</cite> will give you a line of <cite>y</cite> over <cite>x</cite>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Data to plot</span>
+<span class="n">days</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">covid_cases</span> <span class="o">=</span> <span class="p">[</span><span class="mi">115</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">260</span><span class="p">,</span> <span class="mi">287</span><span class="p">]</span>
+
+<span class="c1"># Plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">days</span><span class="p">,</span> <span class="n">covid_cases</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
 </div>
-<div class="section" id="combining-plot-elements">
-<h2>Combining plot elements<a class="headerlink" href="#combining-plot-elements" title="Permalink to this headline">¶</a></h2>
-<p>Dinosaur lmao
-Polar plot, find sin/cos that cause full circle</p>
+<div class="figure align-default">
+<img alt="Outcome of `plt.plot(days, covid_cases)`" src="_images/matplotlib01.png" />
 </div>
-<div class="section" id="exercise-writing-a-visualizer-we-will-use-soon">
-<h2>Exercise: Writing a visualizer we will use soon …<a class="headerlink" href="#exercise-writing-a-visualizer-we-will-use-soon" title="Permalink to this headline">¶</a></h2>
+<p>In the example above, we plotted the new COVID cases in Malaysia for Monday to Friday (Sep 28 to Oct 2) in one line. Right now the image looks rather basic, but we will get around to formatting it later in this session.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <cite>plt.show()</cite> command prompts <cite>matplotlib</cite> to display the image instead of waiting for more input. You need to call it to get the plot to show.</p>
+</div>
+<p>If we want to compare the numbers on the plot with the case count from the previous week, we can do that by adding some code to draw the extra line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Data to plot</span>
+<span class="n">days</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">covid_cases</span> <span class="o">=</span> <span class="p">[</span><span class="mi">115</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">260</span><span class="p">,</span> <span class="mi">287</span><span class="p">]</span>
+<span class="n">last_week_covid_cases</span> <span class="o">=</span> <span class="p">[</span><span class="mi">57</span><span class="p">,</span> <span class="mi">82</span><span class="p">,</span> <span class="mi">147</span><span class="p">,</span> <span class="mi">71</span><span class="p">,</span> <span class="mi">111</span><span class="p">]</span>
+
+<span class="c1"># Plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">days</span><span class="p">,</span> <span class="n">covid_cases</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">days</span><span class="p">,</span> <span class="n">last_week_covid_cases</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="Adding another line to the plot" src="_images/matplotlib02.png" />
+</div>
+<p>Notice that <cite>matplotlib</cite> automatically assigned the second line a different colour. Just like when making plots in Microsoft Excel, there are many settings for plotting under the hood. When none of the settings are specified, <cite>matplotlib</cite> falls back on reasonable defaults, in this case giving each line its own colour. Let’s take a closer look at how we can format the lines from <cite>plt.plot</cite>.</p>
+</div>
+<div class="section" id="formatting-plt-plot-color-linestyle-linewidth-transparency-and-markers">
+<h3>Formatting <cite>plt.plot</cite>: color, linestyle, linewidth, transparency, and markers<a class="headerlink" href="#formatting-plt-plot-color-linestyle-linewidth-transparency-and-markers" title="Permalink to this headline">¶</a></h3>
+<p>First we will modify the <strong>colour</strong> of the lines. Go ahead and add <cite>color=”green”</cite> inside the first <cite>plt.plot</cite>, and <cite>color=”blue”</cite> inside the second <cite>plt.plot</cite>. You will find that the color of the lines have changed as specified:</p>
+<div class="figure align-default">
+<img alt="Modified line colour" src="_images/matplotlib03.png" />
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Colour of a line is specified through the <cite>color</cite> argument (be mindful, of the American spelling!) in <cite>plt.plot</cite>. There are many ways to set color, either using full names of common colors, specifying an RGB tuple, or providing the hex code of a colour in string!</p>
+</div>
+<p>Next, we will adjust the <strong>linestyle</strong>. By default, the lines plotted are solid lines. We want to change the line that reflects last week’s cases to be a dotted line instead. We can do this by adding <cite>ls=”dotted”</cite> to the second <cite>plt.plot</cite>.</p>
+<div class="figure align-default">
+<img alt="Modified linestyle" src="_images/matplotlib04.png" />
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <cite>ls</cite> argument decides the line style. Like colour, there are many methods to specify line style. We will focus on providing string argument (e.g. <cite>ls=”dashdot”</cite>). The available options are: <cite>“solid”</cite>, <cite>“dashed”</cite>, <cite>“dashdot”</cite>, and <cite>“dotted”</cite>.</p>
+</div>
+<p>Now, we want to specify the <strong>linewidth</strong> instead. We want to make the line thicker for current cases. The default width is 1. To do this, add <cite>lw=3</cite> to the first <cite>plt.plot</cite>.</p>
+<div class="figure align-default">
+<img alt="Modified linewidth" src="_images/matplotlib05.png" />
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><cite>lw</cite> specifies line width in points. Defaults to 1.</p>
+</div>
+<p>Moving ahead, we want to further make the line representing the previous week’s cases to have some level of <strong>transparency</strong>. To do this, add <cite>alpha=0.3</cite> to the second <cite>plt.plot</cite>.</p>
+<div class="figure align-default">
+<img alt="Added transparency" src="_images/matplotlib06.png" />
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <cite>alpha</cite> argument denotes transparency. It takes values between 0 and 1. 0 gives a fully transparent line, while 1 gives a fully opaque line.</p>
+</div>
+<p>One last thing; from the looks of our lines, it is not obvious where the data points are. Let us add <strong>markers</strong> so that we can see exactly where our data points are. Let’s add <cite>marker=”o”</cite> to the first <cite>plt.plot</cite> and <cite>marker=”x”</cite> to the second <cite>plt.plot</cite>.</p>
+<p>At this point, your code should look like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Data to plot</span>
+<span class="n">days</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">covid_cases</span> <span class="o">=</span> <span class="p">[</span><span class="mi">115</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">260</span><span class="p">,</span> <span class="mi">287</span><span class="p">]</span>
+<span class="n">last_week_covid_cases</span> <span class="o">=</span> <span class="p">[</span><span class="mi">57</span><span class="p">,</span> <span class="mi">82</span><span class="p">,</span> <span class="mi">147</span><span class="p">,</span> <span class="mi">71</span><span class="p">,</span> <span class="mi">111</span><span class="p">]</span>
+
+<span class="c1"># Plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">days</span><span class="p">,</span> <span class="n">covid_cases</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">days</span><span class="p">,</span> <span class="n">last_week_covid_cases</span><span class="p">,</span>
+                <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;dotted&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="Added marker" src="_images/matplotlib07.png" />
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <cite>marker</cite> argument marks the exact location of the data point, with the specified shape. Like the other styling options, there are many ways to specify markers. The most common options are <cite>“o”</cite>, <cite>“x”</cite>, and <cite>“+”</cite>.</p>
+</div>
+</div>
+<div class="section" id="plt-scatter">
+<h3><cite>plt.scatter</cite><a class="headerlink" href="#plt-scatter" title="Permalink to this headline">¶</a></h3>
+<p>At the end of the section above, we have plotted a small dataset and added markers to the plot. If we want to only use markers instead of lines, we can go use <cite>plt.scatter</cite>.</p>
+<p>If you take the code above, and change <cite>plt.plot</cite> to <cite>plt.scatter</cite>, you will find that <cite>matplotlib</cite> will still be able to give you a plot, which will look like this:</p>
+<div class="figure align-default">
+<img alt="`plt.scatter`" src="_images/matplotlib08.png" />
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is a special case! It is possible for <cite>plt.plot</cite> and <cite>plt.scatter</cite> to have different arguments. Be mindful when changing from line to scatter.</p>
+</div>
+</div>
+<div class="section" id="plt-bar">
+<h3><cite>plt.bar</cite><a class="headerlink" href="#plt-bar" title="Permalink to this headline">¶</a></h3>
+<p>In the above data, we have been representing the days Monday to Friday by the numbers 1 to 5. As a result, <cite>matplotlib</cite> gives us a numeric x-axis. Thus, instead of having the x-axis marked by numbers 1 to 5 by default, <cite>matplotlib</cite> produced a number line with intervals of 0.5. To remedy this, we will be changing the information on our x-axis from numbers to categories, like below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">days</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Mon&quot;</span><span class="p">,</span> <span class="s2">&quot;Tue&quot;</span><span class="p">,</span> <span class="s2">&quot;Wed&quot;</span><span class="p">,</span> <span class="s2">&quot;Thu&quot;</span><span class="p">,</span> <span class="s2">&quot;Fri&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>We will substitute instead a list of strings representing the days of the week. As a result, we will also need to change our plot type for categorical data. This is where a bar plot comes in useful.</p>
+<p>Use the following code to plot the modified data as a bar plot:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Data to plot</span>
+<span class="n">days</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Mon&quot;</span><span class="p">,</span> <span class="s2">&quot;Tue&quot;</span><span class="p">,</span> <span class="s2">&quot;Wed&quot;</span><span class="p">,</span> <span class="s2">&quot;Thu&quot;</span><span class="p">,</span> <span class="s2">&quot;Fri&quot;</span><span class="p">]</span>
+<span class="n">covid_cases</span> <span class="o">=</span> <span class="p">[</span><span class="mi">115</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">260</span><span class="p">,</span> <span class="mi">287</span><span class="p">]</span>
+
+<span class="c1"># Plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">days</span><span class="p">,</span> <span class="n">covid_cases</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="`plt.bar`" src="_images/matplotlib09.png" />
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><cite>plt.bar</cite> has a similar format as <cite>plt.plot</cite> and <cite>plt.scatter</cite> above. Given <cite>x</cite> and <cite>height</cite>, <cite>plt.bar(x, height)</cite> will produce a bar plot, where the location of each bar is given by <cite>x</cite>, and the height of each bar is given by <cite>height</cite>.</p>
+</div>
+</div>
+<div class="section" id="plt-axhline">
+<h3><cite>plt.axhline</cite><a class="headerlink" href="#plt-axhline" title="Permalink to this headline">¶</a></h3>
+<p>On the bar plot above, let’s say that we want to draw a horizontal line across the plot, to mark 200 cases. We can do that simply by adding the following line to the plot:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="`plt.axhline`" src="_images/matplotlib10.png" />
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><cite>plt.axhline</cite> draws a horizontal line on the plot, thus the name <cite>hline</cite>. The most important argument to pass to this function is the y value where you want the line to be drawn. It also takes other formatting arguments similar to <cite>plt.plot</cite> above.</p>
+<p>To draw a vertical line instead, use <cite>plt.axvline</cite>.</p>
+</div>
+</div>
+</div>
+<div class="section" id="plotting-from-csv-files">
+<h2>Plotting from CSV files<a class="headerlink" href="#plotting-from-csv-files" title="Permalink to this headline">¶</a></h2>
+<p>In this section, we will learn how to load data from a CSV file, and apply our newfound knowledge to plot it.</p>
+<div class="section" id="load-csv-files-using-pd-read-csv">
+<h3>Load CSV files using <cite>pd.read_csv</cite><a class="headerlink" href="#load-csv-files-using-pd-read-csv" title="Permalink to this headline">¶</a></h3>
+<p>Download the CSV from the link given in class, and save it to the same folder that your code is running in. The filename should be <cite>mystery_data.csv</cite>. Then, run the following code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;mystery_data.csv&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>What do you see?</p>
+<dl class="simple">
+<dt>Let’s go through these three lines of code.</dt><dd><ol class="arabic simple">
+<li><p>First, we imported a library called <cite>pandas</cite> and referred to it as <cite>pd</cite>. <cite>pandas</cite> is a library that makes it simple to load and handle data. In a way, you can say it is the Excel of Python.</p></li>
+<li><p>We imported <cite>pandas</cite> because we want to use this function, <cite>pd.read_csv</cite>. As you might be able to guess from the name, this function reads data from a CSV file. The variable <cite>data</cite> is now a DataFrame in <cite>pandas</cite>. Think of it as it being now a spreadsheet.</p></li>
+<li><p>This line prints the first 5 rows of the DataFrame. If you open up the CSV file in Excel, you will see that the data in the CSV file matches up.</p></li>
+</ol>
+</dd>
+</dl>
+</div>
+<div class="section" id="accessing-data-by-columns-from-dataframes">
+<h3>Accessing data by columns from DataFrames<a class="headerlink" href="#accessing-data-by-columns-from-dataframes" title="Permalink to this headline">¶</a></h3>
+<p>Go ahead and run the following code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt>Compare this with the output from the code before. Notice that:</dt><dd><ul class="simple">
+<li><p><cite>data.index</cite> gives the indices, in a list. Indices represent the length of a DataFrame. In this case, our indices are a range of integers from 0 to 142.</p></li>
+<li><p><cite>data.columns</cite> gives the names of the columns, in a list. Columns represent the width of a DataFrame. In this case, we have two columns, called <cite>x</cite> and <cite>y</cite>.</p></li>
+<li><p>Passing <cite>x</cite> and <cite>y</cite> into a square bracket after <cite>data</cite> allows us to access columns <cite>x</cite> and <cite>y</cite>!</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The syntax for accessing columns in a given DataFrame in variable <cite>data</cite>, is <cite>data[name]</cite>, where <cite>name</cite> is the name of the column.</p>
+</div>
+</div>
+<div class="section" id="make-the-plot">
+<h3>Make the plot<a class="headerlink" href="#make-the-plot" title="Permalink to this headline">¶</a></h3>
+<p>With this information above, go ahead and make a scatter plot of column <cite>x</cite> on the x-axis, and <cite>y</cite> on the y-axis. What do you see? :)</p>
+</div>
+</div>
+<div class="section" id="basic-styling">
+<h2>Basic styling<a class="headerlink" href="#basic-styling" title="Permalink to this headline">¶</a></h2>
+<p>So far from the plots above, we’ve looked at formatting the plot elements, but not the plot figure itself. Let’s look at how to do that, picking up from the line plots above.</p>
+<p>We will add the following lines of code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add this line!</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="c1"># Data to plot</span>
+<span class="n">days</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">covid_cases</span> <span class="o">=</span> <span class="p">[</span><span class="mi">115</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">260</span><span class="p">,</span> <span class="mi">287</span><span class="p">]</span>
+<span class="n">last_week_covid_cases</span> <span class="o">=</span> <span class="p">[</span><span class="mi">57</span><span class="p">,</span> <span class="mi">82</span><span class="p">,</span> <span class="mi">147</span><span class="p">,</span> <span class="mi">71</span><span class="p">,</span> <span class="mi">111</span><span class="p">]</span>
+
+<span class="c1"># Plot</span>
+<span class="c1"># Add keyword `label`</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">days</span><span class="p">,</span> <span class="n">covid_cases</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;This week&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">days</span><span class="p">,</span> <span class="n">last_week_covid_cases</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;dotted&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Last week&quot;</span><span class="p">)</span>
+
+<span class="c1"># Add these lines!</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;COVID cases from Mon to Fri&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Day&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Case count&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="`Basic plot formatting`" src="_images/matplotlib11.png" />
+</div>
+<dl class="simple">
+<dt>The lines of code we added has introduced changes to the plot like so:</dt><dd><ul class="simple">
+<li><p>figure size has changed</p></li>
+<li><p>plot title is added</p></li>
+<li><p>plot axes are labelled</p></li>
+<li><p>plot legend is added</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><cite>plt.figure()</cite> accepts many arguments for plot formatting. In this case, we passed <cite>figsize=(10, 4)</cite>, which sets the figure size to a width of 10 inches by 4 inches.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><cite>plt.title()</cite> accepts a string as input to set as title.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><cite>plt.xlabel()</cite> and <cite>plt.ylabel()</cite> accepts a string as input each, to be displayed as x-axis and y-axis labels.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><cite>plt.legend()</cite> displays the legend of each plot element (e.g. line, scatter). Note that each plot element needs to add the argument <cite>label=&lt;name&gt;</cite> for it to show up on the legend.</p>
+</div>
+</div>
+<div class="section" id="slightly-more-advanced-styling">
+<h2>Slightly more advanced styling<a class="headerlink" href="#slightly-more-advanced-styling" title="Permalink to this headline">¶</a></h2>
+<p>Now we will look at slightly more advanced styling options that are not as commonly used as the above.</p>
+<div class="section" id="setting-plot-limits">
+<h3>Setting plot limits<a class="headerlink" href="#setting-plot-limits" title="Permalink to this headline">¶</a></h3>
+<p><cite>matplotlib</cite> will automatically adjust the plot limits based on the data plotted. If you want to manually adjust the plot limits, you can use <cite>plt.xlim</cite> and <cite>plt.ylim</cite>. They take two arguments each to specify the low limit and the high limit, as the example below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">820</span><span class="p">,</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">840</span><span class="p">,</span> <span class="mi">790</span><span class="p">,</span> <span class="mi">770</span><span class="p">,</span> <span class="mi">790</span><span class="p">,</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">830</span><span class="p">,</span> <span class="mi">810</span><span class="p">,</span> <span class="mi">820</span><span class="p">,</span> <span class="mi">800</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="`Auto plot limits`" src="_images/matplotlib16.png" />
+</div>
+<p>From the plot above, it appears that the data has quite some amount of variation. However, if the plot limits are manually set from 0 to 1000 as below, the variation looks a lot less! Setting the appropriate plot limits are important to ensure your visualization is produced with the intended message.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">820</span><span class="p">,</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">840</span><span class="p">,</span> <span class="mi">790</span><span class="p">,</span> <span class="mi">770</span><span class="p">,</span> <span class="mi">790</span><span class="p">,</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">830</span><span class="p">,</span> <span class="mi">810</span><span class="p">,</span> <span class="mi">820</span><span class="p">,</span> <span class="mi">800</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="`Manually set plot limits`" src="_images/matplotlib17.png" />
+</div>
+</div>
+<div class="section" id="setting-scale-for-log-axis">
+<h3>Setting scale for log axis<a class="headerlink" href="#setting-scale-for-log-axis" title="Permalink to this headline">¶</a></h3>
+<p>Occasionally we will run into data that are only meaningful when displayed on the logarithmic scale. Look at the code and the subsequent output below that demonstrates how to set the scale for plotting exponential data:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">51</span><span class="p">))</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+        <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span> <span class="o">**</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">y</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="`Without log scale`" src="_images/matplotlib12.png" />
+</div>
+<p>In this plot above, we have drawn straight lines to represent the values on the y-axis. Notice that scale is too big to meaningfully display data from x=0 to 30! If we modify the plotting code to use a log scale, we will be able to better represent the range of data:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="`With log scale`" src="_images/matplotlib13.png" />
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use <cite>plt.xscale</cite> or <cite>plt.yscale</cite> to modify the x-axis or y-axis of the plot. Pass “log” to display in log scale. Default is “linear”.</p>
+</div>
+</div>
+<div class="section" id="representing-more-than-two-dimensions-of-data-through-scaling-point-size-on-scatter-plots">
+<h3>Representing more than two dimensions of data through scaling point size on scatter plots<a class="headerlink" href="#representing-more-than-two-dimensions-of-data-through-scaling-point-size-on-scatter-plots" title="Permalink to this headline">¶</a></h3>
+<p>Typically, plots represent data in two-dimensions, due to plots only having the x-axis and y-axis. However, it is actually possible to represent more than two dimensions visually, by use specific properties of plot elements. For example, we can manipulate the size of the points on a scatter plot to represent an extra dimension. See the example below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">63</span><span class="p">,</span> <span class="mi">90</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">s</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+        <span class="n">s</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="n">s</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="`Scatter size example`" src="_images/matplotlib14.png" />
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Specify the optional argument <cite>s</cite> in <cite>plt.scatter</cite> as above, to set the size of the points.</p>
+</div>
+</div>
+<div class="section" id="displaying-grid-lines">
+<h3>Displaying grid lines<a class="headerlink" href="#displaying-grid-lines" title="Permalink to this headline">¶</a></h3>
+<p>Notice that our plots do not have gridlines by default. If we want to toggle displaying grid lines in <cite>matplotlib</cite>, there is a simple function that does that: <cite>plt.grid</cite>.</p>
+<p>Take a look at the code and the output below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Display major axis for x-axis and y-axis&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s2">&quot;major&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;both&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="`Gridlines example`" src="_images/matplotlib15.png" />
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><cite>plt.grid</cite> has two key arguments, <cite>which</cite> and <cite>axis</cite>, and multiple optional arguments, like all <cite>matplotlib</cite> functions.
+* Fill in <cite>major</cite>, <cite>minor</cite>, or <cite>both</cite> for <cite>which</cite> to specify which gridlines to display. Note that plots don’t always have <cite>minor</cite> axes, depending on the scale.
+* Fill in <cite>x</cite>, <cite>y</cite> or <cite>both</cite> to choose which axes to display gridlines.
+* Specify <cite>alpha</cite> to set the transparency of the gridlines.</p>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-recreating-the-world-health-chart">
+<h2>Exercise: Recreating the World Health Chart<a class="headerlink" href="#exercise-recreating-the-world-health-chart" title="Permalink to this headline">¶</a></h2>
+<p>We now have learnt enough to be able to work on real data. In this exercise, we will be recreating the World Health Chart example seen above.</p>
+<p>Data used in the chart for 2020 has been retrieved in advance. Use the link provided in class to download the CSV file, and follow the in-class instructions. Use the following code as a template:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># Import data into the variable `df`</span>
+<span class="c1"># YOUR CODE BELOW</span>
+
+<span class="c1"># Making variables for convenience</span>
+<span class="n">life</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;life&quot;</span><span class="p">]</span>
+<span class="n">income</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;income&quot;</span><span class="p">]</span>
+<span class="n">pop</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;pop&quot;</span><span class="p">]</span>
+<span class="n">cont</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;continent&quot;</span><span class="p">]</span>
+<span class="n">countries</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span>
+
+<span class="c1"># Making the plot</span>
+<span class="c1"># YOUR CODE BELOW</span>
+</pre></div>
+</div>
+<dl>
+<dt>Our workflow will be as below:</dt><dd><ol class="arabic simple">
+<li><p>Load the data</p></li>
+<li><p>Understand the elements on the original plot</p></li>
+<li><p>Scatter of income on x-axis, and life expectancy on y-axis.</p></li>
+<li><p>Set x-axis to be log scale.</p></li>
+<li><p>Set the x-limits to (200, 151000), and the y-limits to (20, 90).</p></li>
+<li><p>Specify scatter size by using population, measured in millions (i.e. divide by 1e6).</p></li>
+<li><p>Specify color by continents! Paste the following as part of the plotting function:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">=</span><span class="n">cont</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;tab10&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="8">
+<li><dl class="simple">
+<dt>Label the following:</dt><dd><ul class="simple">
+<li><p>x-axis with <cite>Income per person (GDP/capita, PPP$ inflation-adjusted</cite></p></li>
+<li><p>y-axis with <cite>Life expectancy (years)</cite></p></li>
+<li><p>title with <cite>World Health Map - 2020</cite></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Add grid lines to both x-axis and y-axis, with 0.3 transparency.</p></li>
+<li><p>Package this as a function, so that we can use this for data from different years.</p></li>
+</ol>
+</dd>
+</dl>
 </div>
 <div class="section" id="conclusion">
 <h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
+<p>Coding is not all about logic, surprisingly you can use code to draw!</p>
 </div>
 <div class="section" id="further-reading">
 <h2>Further reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">¶</a></h2>
@@ -74,6 +502,7 @@ Polar plot, find sin/cos that cause full circle</p>
 </div>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -81,18 +510,44 @@ Polar plot, find sin/cos that cause full circle</p>
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Week 4: Visualization with matplotlib</a><ul>
-<li><a class="reference internal" href="#what-is-matplotlib">What is matplotlib?</a></li>
-<li><a class="reference internal" href="#basic-plotting">Basic plotting</a></li>
-<li><a class="reference internal" href="#basic-configuration">Basic configuration</a></li>
-<li><a class="reference internal" href="#combining-plot-elements">Combining plot elements</a></li>
-<li><a class="reference internal" href="#exercise-writing-a-visualizer-we-will-use-soon">Exercise: Writing a visualizer we will use soon …</a></li>
+<li><a class="reference internal" href="#">Week 4: Visualizing data with matplotlib</a><ul>
+<li><a class="reference internal" href="#code-to-draw">Code to … <em>draw</em>?</a></li>
+<li><a class="reference internal" href="#what-is-matplotlib-setup-check">What is matplotlib + setup check</a></li>
+<li><a class="reference internal" href="#basic-plotting">Basic plotting</a><ul>
+<li><a class="reference internal" href="#plt-plot"><cite>plt.plot</cite></a></li>
+<li><a class="reference internal" href="#formatting-plt-plot-color-linestyle-linewidth-transparency-and-markers">Formatting <cite>plt.plot</cite>: color, linestyle, linewidth, transparency, and markers</a></li>
+<li><a class="reference internal" href="#plt-scatter"><cite>plt.scatter</cite></a></li>
+<li><a class="reference internal" href="#plt-bar"><cite>plt.bar</cite></a></li>
+<li><a class="reference internal" href="#plt-axhline"><cite>plt.axhline</cite></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#plotting-from-csv-files">Plotting from CSV files</a><ul>
+<li><a class="reference internal" href="#load-csv-files-using-pd-read-csv">Load CSV files using <cite>pd.read_csv</cite></a></li>
+<li><a class="reference internal" href="#accessing-data-by-columns-from-dataframes">Accessing data by columns from DataFrames</a></li>
+<li><a class="reference internal" href="#make-the-plot">Make the plot</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#basic-styling">Basic styling</a></li>
+<li><a class="reference internal" href="#slightly-more-advanced-styling">Slightly more advanced styling</a><ul>
+<li><a class="reference internal" href="#setting-plot-limits">Setting plot limits</a></li>
+<li><a class="reference internal" href="#setting-scale-for-log-axis">Setting scale for log axis</a></li>
+<li><a class="reference internal" href="#representing-more-than-two-dimensions-of-data-through-scaling-point-size-on-scatter-plots">Representing more than two dimensions of data through scaling point size on scatter plots</a></li>
+<li><a class="reference internal" href="#displaying-grid-lines">Displaying grid lines</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#exercise-recreating-the-world-health-chart">Exercise: Recreating the World Health Chart</a></li>
 <li><a class="reference internal" href="#conclusion">Conclusion</a></li>
 <li><a class="reference internal" href="#further-reading">Further reading</a></li>
 </ul>
 </li>
 </ul>
 
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="03_ifelse_fxns_sols.html"
+                        title="previous chapter">Week 3: Class Exercise solutions</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="05_numpy_automata.html"
+                        title="next chapter">Week 5 : <cite>Numpy</cite> vectors &amp; cellular automata</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -120,12 +575,19 @@ Polar plot, find sin/cos that cause full circle</p>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">Exposure to Code 1.0 documentation</a> &#187;</li> 
+        <li class="right" >
+          <a href="05_numpy_automata.html" title="Week 5 : Numpy vectors &amp; cellular automata"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="03_ifelse_fxns_sols.html" title="Week 3: Class Exercise solutions"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Exposure to Code 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Week 4: Visualizing data with matplotlib</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright PERMATA STEM Talent, 2020.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.3.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
     </div>
   </body>
 </html>

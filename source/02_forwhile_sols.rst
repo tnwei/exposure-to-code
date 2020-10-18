@@ -1,8 +1,8 @@
 Week 2: Class Exercise solutions
-====================================
+--------------------------------
 
 Nested for loops
-----------------
+^^^^^^^^^^^^^^^^
 Code:
 ::
 	# Nested For Loops (Instructor Solution)
@@ -41,7 +41,7 @@ Output:
 	gypsy espresso
 
 Exercise: ASCII Animation I
----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Code:
 ::
 	# ASCII Animation I (Instructor Solution)
@@ -99,7 +99,7 @@ Output:
 	[____________________O]
 
 Exercise: ASCII Animation II
-----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Code:
 ::
 	# ASCII Animation II (Instructor Solution)
@@ -138,7 +138,7 @@ Output:
    TODO: Still need this GIF! 
 
 Exercise: Prime finder
-----------------------
+^^^^^^^^^^^^^^^^^^^^^^
 Code:
 ::
 	# Prime finder (Instructor Solution)
@@ -190,7 +190,7 @@ Output:
 	997
 
 Exercise: Caesar Cipher
------------------------
+^^^^^^^^^^^^^^^^^^^^^^^
 Code:
 ::
 	# Caesar Cipher (Instructor Solution)
