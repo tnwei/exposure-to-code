@@ -39,27 +39,124 @@ If you can run the following code chunk without errors, you are good to go for t
 .. Estimated time: 30 mins
 .. Section objective: Extend previously array operations in 1D to 2D
 
-.. [ ]Array indexing in 2D, building on 1D indexing from last week
+.. [ ]Array axesing in 2D, building on 1D axesing from last week
 
+    Previosly, we learned on how to initialize 1D arrays like below
+
+    arr_a = np.array([57, 82, 147, 71, 111, 115, 101, 89, 260, 287])
+
+    Now, as we all know living in a 3D world, not everything is in 1D. So, logically there should be a way to initialize
+    2D array. This is what we'll be learning today. Before we get into that, we should understand how 2D arrays are and
+    what kind of information we can put into them. Let's say for example in GENIUSpintar's senior batch there are 49 students
+    and 7 classes in total. If we had a 1D array, we would only be able to keep all the student's names and nothing else however,
+    if we had a 2D array, we can keep all types of information such as the student's names, id number, class number, and so on.
+    In short, imagine a 2D array like Microsoft Excel where you can store data in different columns and rows. Moving on, in numpy,
+    this is how we initialize a 2D array. It is fairly similar to what we did with 1D arrays with a small difference. Here we'll
+    set up a 2D array with a person's ID number and age in the respective order.
+
+    For this purpose, 1=Ahmad, 2=John, 3=Raj:
+    arr_a = np.array([ [1, 24],
+                       [2, 19],
+                       [3, 21]
+                     ])
 
 .. [ ]The concept of axes in arrays
 
+    So now we have our array called arr_a. In it we have Ahmad, John and Raj's Details. So, how do we extract for example John's age
+    from this? Introducing array index/axes.
+
 .. Builds on previous section. Axis 0, axis 1 and axis 2 are the axes we index, in that order.
+
+    Array axes are important when extracting data from an array. An array axes starts from 0 and since we're dealing with a 2D array,
+    we have to specify two axes. One is the column and another is the row of the array.
+
+    It is important to note that in getting the an array value, the first value you should specify is the column and then the second is the row.
+
+    arr_a[column][row]
+
+    Here's how we get John's age!
+
+    print("John's Age:" , arr_a[1][1])
 
 .. [ ]Array operations: array arithmetic involving other arrays
 
 .. 1D extend to 2D
 .. Array arithmetic w/ constants are the same
 .. sum(), mean(), max(), argmax() for different axes
+
+  Do note that we call do sum, mean, max and argmax similarly to how we did it with 1D arrays. For example:
+
+  Let's say we want to find the sum of the values by column. To do this, we do:
+
+  print(arr_a.sum(axis=0))
+
+  If we want to calculate the sum by row, then we do this:
+
+  print(arr_a.sum(axis=1))
+
+  Note that the only change here is the axis in which we should specify.
+
+
+
+
 .. Array conditionals for 2D arrays still hold!
+
+    Array conditonals still work for 2D arrays as well. For example if we want to find all the number>5 from arr_a, we
+    do as follows:
+
+    print("\n", arr_a[arr_a>5])
+
 
 .. 2D and above concepts
 .. Element-wise operations with same-shape arrays
+
+  With 2D arrays, we can also perform operations on them if they have the same shape.
+
+  Here, we initialize two arrays and then reshape them with a form of 4 rows X 3 colums
+  a = np.arange(12).reshape(4,3)
+  print('Array A\n',a)
+  b = np.arange(12).reshape(4,3)
+  print('\nArray B\n',b)
+
+  We then add both of them together and print to show the result
+  c=a+b
+  print('\nArray C\n',c)
+
 .. Matrix operations e.g. dot product, cross product etc
+
+  With 2D arrays, we can also do several matrix operations such as dot products and cross products:
+
+  Dot Product:
+
+  arr_a = np.arange(12).reshape(4,3)
+  print('Array A\n',arr_a)
+  arr_b = np.arange(12).reshape(3,4)
+  print('\nArray B\n',arr_b)
+
+  arr_c=np.dot(arr_a,arr_b)
+  print('Dot Product of A and B is',arr_c)
+
 
 .. [ ]Small exercise for this section
 .. Need ideas. Last week's was implementing rolling elements of a 1D array one step to the right. Something that needs thinking in 2D would be best!
 .. (Since its a small exercise.. What about finding sum of 2d array? They can find out how to utilize 2x for loop the right way here)
+
+  Since we have had numpy help us to the sum of arrays, it's time to implement it ourselves to see how it works.
+  Let's use the Dot Product of arr_a and arr_b above as our array (arr_c).
+
+  Answer:
+
+  sum=0
+ for row in range (len(c_arr)):
+    for col in range(len(c_arr[0])):
+        sum = sum + c_arr[row][col]
+
+ print(sum)
+
+ Compare it with this to check if your sum is code is correct or .. note::
+ print(np.sum(c_arr))
+
+
 
 Chaotic systems
 ---------------
@@ -151,7 +248,7 @@ Part A
     * `init_state`, a list of three numbers that represents initial conditions
 2. Inside the function, initialize two variables below:
     * `dt` to represent time step size. Set this to 0.01
-    * `duration` to represent total length of time to simulate. Set this to 40. 
+    * `duration` to represent total length of time to simulate. Set this to 40.
 2. Initialize the variable `state` as an array of all zeros, with shape `(int(duration/dt), 3)`.
 3. Set the first row of `state` to be equal to `init_state`
 4. Loop for `i` from 0 to `len(state)-1`:
@@ -174,20 +271,20 @@ Part B
 .. Start exploring. Use a, b = Lorenz's values, while setting c = 5. Run using a variety of init_state, ask students what do they observe in the difference of the last value? Should see attractor behaviour. This is opposite of chaotic behaviour! Not sensitive to initial conditions.
 .. Increase c to 5, 12, 15, 22, 28
 
-What we have done in Part A is to use numerical methods to approximate the solutions of the Lorenz equations over time. We will also explore this particular topic later in the course! 
+What we have done in Part A is to use numerical methods to approximate the solutions of the Lorenz equations over time. We will also explore this particular topic later in the course!
 
 1. Copy paste this function below.
 ::
 
     def show_ts(state):
         xs, ys, zs = state[:, 0], state[:, 1], state[:, 2]
-        
+
         plt.plot(range(len(xs)), xs)
         plt.show()
-        
+
         plt.plot(range(len(xs)), ys)
         plt.show()
-        
+
         plt.plot(range(len(xs)), zs)
         plt.show()
 
@@ -220,40 +317,40 @@ Exercise: Mandelbrot Set
 
 .. Mandelbrot set is a classic demonstration for chaos, does need some explanation to show where the chaotic / stable regimes are.
 
-Take a complex number `c`. We square it, then add itself to the result. When we iterate over this process, we will get certain numbers of `c` where the outcome will either rise to infinity or drop to negative infinity. We will also get certain numbers of `c` where the absolute value will stay bounded, i.e. stay finite over multiple iterations. The latter numbers form the definition of the Mandelbrot set. 
+Take a complex number `c`. We square it, then add itself to the result. When we iterate over this process, we will get certain numbers of `c` where the outcome will either rise to infinity or drop to negative infinity. We will also get certain numbers of `c` where the absolute value will stay bounded, i.e. stay finite over multiple iterations. The latter numbers form the definition of the Mandelbrot set.
 
 .. note ::
-    The reason complex numbers are considered, is because the aforementioned relation is trivial for real numbers. On one hand, at a certain negative number and below, the square of itself will always exceed adding itself, causing the value to tend to infinity over iterations. On the other hand, at a certain positive number and above, the same happens. 
+    The reason complex numbers are considered, is because the aforementioned relation is trivial for real numbers. On one hand, at a certain negative number and below, the square of itself will always exceed adding itself, causing the value to tend to infinity over iterations. On the other hand, at a certain positive number and above, the same happens.
 
     Complex numbers however follow a more interesting squaring rule. A complex number is represented as :math:`a+bi`, where `a` and `b` are constants, while `i` represents the unit imaginary number. The square of a complex number would be:
-    
+
     .. math ::
 
         (a+bi)(a+bi) = a^2 + 2abi + {b^2}{i^2} = a^2 - b^2 + 2abi
 
-    From the above equation, you can see that many combinations of `a` and `b` can lead to different outcomes! 
+    From the above equation, you can see that many combinations of `a` and `b` can lead to different outcomes!
 
-The Mandelbrot set is famous for demonstrating fractal behaviour, i.e. self-similarity, at different scales. As you zoom in, you will see more and more detail. In this module, we will look at how certain regions of the Mandelbrot set exhibits chaotic behaviour, and also visualize the Mandelbrot set while we're at it. 
+The Mandelbrot set is famous for demonstrating fractal behaviour, i.e. self-similarity, at different scales. As you zoom in, you will see more and more detail. In this module, we will look at how certain regions of the Mandelbrot set exhibits chaotic behaviour, and also visualize the Mandelbrot set while we're at it.
 
 Part A
 ^^^^^^
 .. Give instructions to build the `mandelbrot` function and ask folks to input different complex numbers, and plot to see the behaviour. Notice that the output is chaotic.
 .. Need to talk about complex() or use a+bj format to represent complex numbers
 
-Implement a function, `mandelbrot`, to determine if a complex number is part of the Mandelbrot set. 
+Implement a function, `mandelbrot`, to determine if a complex number is part of the Mandelbrot set.
 
 1. The function takes two arguments, `c` for the complex number, and `iterations` for number of times to repeat the equation.
-2. Inside the function, define a variable `z` that is equal to `c`. Create a variable `zs` that is a list, and store `z` in it. 
+2. Inside the function, define a variable `z` that is equal to `c`. Create a variable `zs` that is a list, and store `z` in it.
 3. Run a for-loop to loop over the range of numbers from 1 to `iterations`. In the loop:
     * Assign `z` to be equal to the square of itself, plus `c`.
     * Append `z` to `zs`
-4. Return `zs` 
-5. Modify the function definition from `def mandelbrot(c, iterations):` to `def mandelbrot(c, iterations=10):`. This assigns a default value of 10 if we don't specify `iterations`. 
+4. Return `zs`
+5. Modify the function definition from `def mandelbrot(c, iterations):` to `def mandelbrot(c, iterations=10):`. This assigns a default value of 10 if we don't specify `iterations`.
 
 .. note::
     Assign a value to the argument in a function definition to assign a default value. The proper name for this is optional arguments. Example:
     ::
-    
+
         def add_nums(num1, num2=10):
             print(num1 + num2)
 
@@ -271,16 +368,16 @@ Implement a function, `mandelbrot`, to determine if a complex number is part of 
 .. note::
     Complex numbers in Python are initialized by the `complex` function. Example:
     ::
-    
+
         a = complex(1, 2)
         print(a)
         # (1+2j)
 
-    `j` is used to represent `i`, as `i` is already frequently used in for-loops! 
+    `j` is used to represent `i`, as `i` is already frequently used in for-loops!
 
     You can also initialize complex numbers by specify it directly as `a + bj`, where `a` and `b` are numbers. Example:
     ::
-        
+
         print(1 + 5j)
         # (1+5j)
 
@@ -288,9 +385,9 @@ Part B
 ^^^^^^
 .. Think about how to do this automatically. Why not get code to run for every combination of complex numbers? We can then plot it, using real numbers on x axis, and imaginary numbers on y axis. Give instructions to write `is_bounded`, and the whole code chunk to be able to get the rudimentary picture. Then stick into a function. Then set the extents of the graph, and increase the figsize. Then increase the precision. Then modify is_bounded so it can accept different iteration values until we get a sharp plot. Stop at iteration=50 because we're saving go sharper for later.
 
-Given that we're in a coding class, we can do better than checking different complex numbers by hand. Why not use code to check a range of numbers for us? We can then visualize them on a plot, using the x-axis for real numbers, and y-axis for imaginary numbers. 
+Given that we're in a coding class, we can do better than checking different complex numbers by hand. Why not use code to check a range of numbers for us? We can then visualize them on a plot, using the x-axis for real numbers, and y-axis for imaginary numbers.
 
-1. Write the function `is_bounded` to check if a given complex number is bounded, i.e. is part of the Mandelbrot set. 
+1. Write the function `is_bounded` to check if a given complex number is bounded, i.e. is part of the Mandelbrot set.
     * The function takes two arguments, `real` and `imaginary`. Instead of passing a complex number directly, we pass both parts separately because we will be running this function on a 2D grid of numbers! We will be using real numbers along the column (i.e. y-axis) to represent the imaginary components.
     * The function will also take another two arguments, `iterations` and `thresh` that have default values 50 and 10.
     * Inside the function, create the variable `c` as the complex number, using both arguments `real` and `imaginary`.
@@ -298,26 +395,26 @@ Given that we're in a coding class, we can do better than checking different com
     * Create a for-loop over `i`, for `i` in the range of 0 to `iterations`:
         * Do `z = z ** 2 + c`
         * Check if `abs(z)` is large than `thresh`. If yes, return 0.
-    * Outside the for-loop, add code to return 1. 
+    * Outside the for-loop, add code to return 1.
 
 2. Copy-paste the function definition below to run `is_bounded` on a sequence of `xs` and `ys`:
 ::
 
-    def calc_mandelbrot(xs, ys):    
+    def calc_mandelbrot(xs, ys):
         xs_count = len(xs)
         ys_count = len(ys)
 
         # Make array to store results
         # First dim is how many rows, second dim is how many cols
         res = np.zeros(shape=(ys_count, xs_count))
-        
+
         # For each col
         for i in range(ys_count):
             # For each row
             for j in range(xs_count):
                 # Assign col, row results of checking (real, imaginary) which is (row, col)
                 res[i, j] = is_bounded(xs[j], ys[i])
-                
+
         return res
 
 3. Generate `xs` and `ys`, inputs to `calc_mandelbrot` using `np.arange`:
@@ -327,34 +424,34 @@ Given that we're in a coding class, we can do better than checking different com
     ys = np.arange(-2, 2, 0.1)
 
 .. note ::
-    
+
     `np.arange(start, end, step)` allows specifying a 1D array where values from `start` to `end` are created, spaced by `step`.
 
-4. Use the following code-chunk to generate a low resolution plot of the Mandelbrot set! 
+4. Use the following code-chunk to generate a low resolution plot of the Mandelbrot set!
 ::
-    
+
     res = calc_mandelbrot(xs, ys)
     plt.figure(figsize=(18, 10))
     plt.imshow(res, origin="lower", extent=[xs[0], xs[-1], ys[0], ys[-1]])
     plt.show()
 
 .. note ::
-    
-    `plt.imshow` can be used to visualize 2D arrays as an image! 
 
-5. Enhance the resolution by reducing 0.1 in `np.arange` to 5e-3. Note that this might take a while to run depending on your computer. You will see a plot of the Mandelbrot set, where all numbers in the set are visualized in the blob. 
+    `plt.imshow` can be used to visualize 2D arrays as an image!
 
-6. Using the plot, pick complex numbers to verify if they are part of the set or not, by repeating (6) in Part A. 
+5. Enhance the resolution by reducing 0.1 in `np.arange` to 5e-3. Note that this might take a while to run depending on your computer. You will see a plot of the Mandelbrot set, where all numbers in the set are visualized in the blob.
+
+6. Using the plot, pick complex numbers to verify if they are part of the set or not, by repeating (6) in Part A.
 
 Part C
 ^^^^^^
-Setting a single threshold might not capture the full variation in the Mandelbrot set, as the points that are unbounded increase/decrease at different speeds! 
+Setting a single threshold might not capture the full variation in the Mandelbrot set, as the points that are unbounded increase/decrease at different speeds!
 
 1. Modify `is_bounded` to instead return the number of iterations required to exceed the threshold.
 
-2. Re-run Part B Q4. You should see a lot more detail in the plot. 
+2. Re-run Part B Q4. You should see a lot more detail in the plot.
 
-3. We want to study further the boundary between numbers in the Mandelbrot set and numbers that are not. We will create a function to simplify plotting the Mandelbrot set. Instead of specifying the bounds of the x-axis and y-axis, we will instead specify a midpoint, and the bounds of the image away from it, specified by `imgsize`. 
+3. We want to study further the boundary between numbers in the Mandelbrot set and numbers that are not. We will create a function to simplify plotting the Mandelbrot set. Instead of specifying the bounds of the x-axis and y-axis, we will instead specify a midpoint, and the bounds of the image away from it, specified by `imgsize`.
 
 Complete the function below:
 ::
@@ -362,11 +459,11 @@ Complete the function below:
     def show_mandelbrot(x, y, imgsize, precision, iterations=50, thresh=10):
         # YOUR CODE BELOW
         # Use x, y and imgsize to find the following
-        xstart = 
-        xend = 
-        ystart = 
-        yend = 
-        
+        xstart =
+        xend =
+        ystart =
+        yend =
+
         xs = np.arange(xstart, xend, precision)
         ys = np.arange(ystart, yend, precision)
         res = calc_mandelbrot(xs, ys, iterations=iterations, thresh=thresh)
