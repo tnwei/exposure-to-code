@@ -80,3 +80,18 @@ Your code should look something like this:
 		plt.show()
 
 You should observe that at `c = 5`  and `c = 12`, the system converges to a single point. For `c = 15`, the system no longer has one stable point to converge to, but has two instead. At `c = 28`, the system freely oscillates about both stable points.
+
+Exercise: Mandelbrot Set
+------------------------
+Part A
+^^^^^^
+::
+    
+    def mandelbrot(c, iterations=10):
+        z = c
+        zs = [z]
+        for i in range(1, iterations):
+            z = z ** 2 + c
+            zs.append(z)
+        return zs
+

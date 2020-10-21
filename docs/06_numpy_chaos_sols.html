@@ -118,6 +118,21 @@
 <p>You should observe that at <cite>c = 5</cite>  and <cite>c = 12</cite>, the system converges to a single point. For <cite>c = 15</cite>, the system no longer has one stable point to converge to, but has two instead. At <cite>c = 28</cite>, the system freely oscillates about both stable points.</p>
 </div>
 </div>
+<div class="section" id="exercise-mandelbrot-set">
+<h2>Exercise: Mandelbrot Set<a class="headerlink" href="#exercise-mandelbrot-set" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>Part A<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">mandelbrot</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">c</span>
+    <span class="n">zs</span> <span class="o">=</span> <span class="p">[</span><span class="n">z</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">iterations</span><span class="p">):</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">z</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">c</span>
+        <span class="n">zs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">zs</span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 
 
@@ -135,6 +150,10 @@
 <li><a class="reference internal" href="#part-a">Part A</a></li>
 <li><a class="reference internal" href="#part-b">Part B</a></li>
 <li><a class="reference internal" href="#part-c">Part C</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#exercise-mandelbrot-set">Exercise: Mandelbrot Set</a><ul>
+<li><a class="reference internal" href="#id1">Part A</a></li>
 </ul>
 </li>
 </ul>
