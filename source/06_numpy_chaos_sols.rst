@@ -47,3 +47,11 @@ Your code should look something like this:
             state[i+1, 2] = z + dz
             
         return state
+
+
+Part B
+^^^^^^
+* When `c` equals 5, you will find that regardless of the initial values, the Lorenz equations will bring you back to a fixed value. `show_ts` would display `xs`, `ys` and `zs` stabilizing to specific values after a few iterations.
+* When `c` equals 12, you will find that `xs`, `ys` and `zs` will still converge to a specific value, but they oscillate a lot more! 
+* When `c` equals 15, you might start seeing there being two specific points that the values will converge to. 
+* When `c` equals 28, you will see that the values of the equations become much more erratic, and the system exhibits chaotic behaviour. Small changes in initial conditions will greatly affect the final value of the system!
