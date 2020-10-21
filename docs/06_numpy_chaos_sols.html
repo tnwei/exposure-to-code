@@ -93,6 +93,30 @@
 <li><p>When <cite>c</cite> equals 28, you will see that the values of the equations become much more erratic, and the system exhibits chaotic behaviour. Small changes in initial conditions will greatly affect the final value of the system!</p></li>
 </ul>
 </div>
+<div class="section" id="part-c">
+<h3>Part C<a class="headerlink" href="#part-c" title="Permalink to this headline">¶</a></h3>
+<p>Your code should look something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">show_2d</span><span class="p">(</span><span class="n">state</span><span class="p">):</span>
+        <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">zs</span> <span class="o">=</span> <span class="n">state</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">state</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">state</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span>
+
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;xs&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;ys&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">zs</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;xs&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;zs&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ys</span><span class="p">,</span> <span class="n">zs</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;ys&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;zs&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>You should observe that at <cite>c = 5</cite>  and <cite>c = 12</cite>, the system converges to a single point. For <cite>c = 15</cite>, the system no longer has one stable point to converge to, but has two instead. At <cite>c = 28</cite>, the system freely oscillates about both stable points.</p>
+</div>
 </div>
 </div>
 
@@ -110,6 +134,7 @@
 <li><a class="reference internal" href="#exercise-lorenz-system">Exercise: Lorenz System</a><ul>
 <li><a class="reference internal" href="#part-a">Part A</a></li>
 <li><a class="reference internal" href="#part-b">Part B</a></li>
+<li><a class="reference internal" href="#part-c">Part C</a></li>
 </ul>
 </li>
 </ul>
