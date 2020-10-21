@@ -55,6 +55,36 @@
 </pre></div>
 </div>
 </div>
+<div class="section" id="exercise-lorenz-system">
+<h2>Exercise: Lorenz System<a class="headerlink" href="#exercise-lorenz-system" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="part-a">
+<h3>Part A<a class="headerlink" href="#part-a" title="Permalink to this headline">¶</a></h3>
+<p>Your code should look something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">lorenz</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">init_state</span><span class="p">):</span>
+    <span class="n">dt</span> <span class="o">=</span> <span class="mf">0.01</span>
+    <span class="n">duration</span> <span class="o">=</span> <span class="mi">40</span>
+
+    <span class="n">state</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">duration</span> <span class="o">/</span> <span class="n">dt</span><span class="p">),</span> <span class="mi">3</span><span class="p">))</span>
+    <span class="n">state</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">init_state</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">state</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+
+        <span class="n">dx</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="n">x</span><span class="p">))</span> <span class="o">*</span> <span class="n">dt</span>
+        <span class="n">dy</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="p">(</span><span class="n">c</span><span class="o">-</span><span class="n">z</span><span class="p">)</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="n">dt</span>
+        <span class="n">dz</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">y</span> <span class="o">-</span> <span class="n">b</span><span class="o">*</span><span class="n">z</span><span class="p">)</span> <span class="o">*</span> <span class="n">dt</span>
+
+        <span class="n">state</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">dx</span>
+        <span class="n">state</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">dy</span>
+        <span class="n">state</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">z</span> <span class="o">+</span> <span class="n">dz</span>
+
+    <span class="k">return</span> <span class="n">state</span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 
 
@@ -68,6 +98,10 @@
   <ul>
 <li><a class="reference internal" href="#">Week 6: Class Exercise solutions</a><ul>
 <li><a class="reference internal" href="#exercise-sum-of-all-elements-in-a-2d-array">Exercise: Sum of all elements in a 2D array</a></li>
+<li><a class="reference internal" href="#exercise-lorenz-system">Exercise: Lorenz System</a><ul>
+<li><a class="reference internal" href="#part-a">Part A</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

@@ -19,3 +19,31 @@ Using sum():
     big_array.sum()
 	
 
+Exercise: Lorenz System
+-----------------------
+Part A
+^^^^^^
+Your code should look something like this:
+::
+
+    def lorenz(a, b, c, init_state):
+        dt = 0.01
+        duration = 40
+
+        state = np.zeros(shape=(int(duration / dt), 3))
+        state[0, :] = init_state
+        
+        for i in range(len(state)-1):
+            x = state[i, 0]
+            y = state[i, 1]
+            z = state[i, 2]
+            
+            dx = (a*(y-x)) * dt
+            dy = (x*(c-z) - y) * dt
+            dz = (x*y - b*z) * dt
+
+            state[i+1, 0] = x + dx
+            state[i+1, 1] = y + dy
+            state[i+1, 2] = z + dz
+            
+        return state
