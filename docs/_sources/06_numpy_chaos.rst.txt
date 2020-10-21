@@ -198,13 +198,6 @@ The following code below creates an array and fills it with random numbers. Find
     # YOUR CODE BELOW
 
 
-.. Answer:
-.. sum=0
-.. for row in range (len(c_arr)):
-..    for col in range(len(c_arr[0])):
-..        sum = sum + c_arr[row][col]
-..        print*sum)
-
 Chaotic systems
 ---------------
 .. Instructor notes:
