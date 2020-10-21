@@ -148,6 +148,42 @@
 </pre></div>
 </div>
 </div>
+<div class="section" id="id3">
+<h3>Part C<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>Modified <cite>is_bounded</cite>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_bounded</span><span class="p">(</span><span class="n">real</span><span class="p">,</span> <span class="n">imaginary</span><span class="p">):</span>
+    <span class="n">iterations</span> <span class="o">=</span> <span class="mi">15</span>
+    <span class="n">thresh</span> <span class="o">=</span> <span class="mf">1e6</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="n">real</span><span class="p">,</span> <span class="n">imaginary</span><span class="p">)</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">c</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">iterations</span><span class="p">):</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">z</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">c</span>
+        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">thresh</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>Completed <cite>show_mandelbrot</cite>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">show_mandelbrot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">imgsize</span><span class="p">,</span> <span class="n">precision</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">thresh</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+    <span class="c1"># YOUR CODE BELOW</span>
+    <span class="c1"># Use x, y and imgsize to find the following</span>
+    <span class="n">xstart</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">imgsize</span>
+    <span class="n">xend</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">imgsize</span>
+    <span class="n">ystart</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="n">imgsize</span>
+    <span class="n">yend</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">imgsize</span>
+
+    <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">xstart</span><span class="p">,</span> <span class="n">xend</span><span class="p">,</span> <span class="n">precision</span><span class="p">)</span>
+    <span class="n">ys</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">ystart</span><span class="p">,</span> <span class="n">yend</span><span class="p">,</span> <span class="n">precision</span><span class="p">)</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">calc_mandelbrot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="n">iterations</span><span class="p">,</span> <span class="n">thresh</span><span class="o">=</span><span class="n">thresh</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="n">xs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">xs</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">ys</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ys</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]],</span> <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;lower&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;magma&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;image&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 
@@ -171,6 +207,7 @@
 <li><a class="reference internal" href="#exercise-mandelbrot-set">Exercise: Mandelbrot Set</a><ul>
 <li><a class="reference internal" href="#id1">Part A</a></li>
 <li><a class="reference internal" href="#id2">Part B</a></li>
+<li><a class="reference internal" href="#id3">Part C</a></li>
 </ul>
 </li>
 </ul>

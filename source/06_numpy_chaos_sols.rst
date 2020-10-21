@@ -111,3 +111,41 @@ Part B
         else:
             return 1
 
+Part C
+^^^^^^
+Modified `is_bounded`:
+
+::
+
+    def is_bounded(real, imaginary):
+        iterations = 15
+        thresh = 1e6
+        c = complex(real, imaginary)
+        z = c
+        for i in range(iterations):
+            z = z ** 2 + c
+            if abs(z) > thresh:
+                return 0
+        else:
+            return 1
+
+Completed `show_mandelbrot`:
+
+::
+
+    def show_mandelbrot(x, y, imgsize, precision, iterations=50, thresh=10):
+        # YOUR CODE BELOW
+        # Use x, y and imgsize to find the following
+        xstart = x - imgsize
+        xend = x + imgsize
+        ystart = y - imgsize
+        yend = y + imgsize
+
+        xs = np.arange(xstart, xend, precision)
+        ys = np.arange(ystart, yend, precision)
+        res = calc_mandelbrot(xs, ys, iterations=iterations, thresh=thresh)
+        plt.figure(figsize=(18, 10))
+        plt.imshow(res, extent=[xs[0], xs[-1], ys[0], ys[-1]], origin="lower", cmap="magma")
+        plt.axis("image")
+        plt.colorbar()
+        plt.show()
