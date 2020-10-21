@@ -4,25 +4,21 @@ Week 6 : `Numpy` arrays & exploring chaotic phenomena
 Outcome: Students will learn more about `numpy`, extending last lesson's knowledge to 2D arrays. Students will also be made acquainted with famous chaotic systems, and how code enables the exploration and study of these systems.
 
 What we will do:
+    * Setup check
     * 2D arrays in `numpy`
+    * Exercise: Sum of all elements in a 2D array
     * Chaotic systems
     * Exercise: Lorenz system
     * Exercise: Mandelbrot set
-    .. * (No Adv exercise, explore configurations for the rest of the class?)
-
-Refresher on `numpy` and 1D arrays + setup check
-------------------------------------------------
+    
+Setup check
+-----------
 .. Instructor notes:
 .. Estimated time: 10 mins
 .. Section objective: Summarize last week's contents + setup check
 
-.. [ ]Summarize last week's contents
-
-
 .. [X]Setup check
 
-Setup check
-^^^^^^^^^^^
 For this week's class, you will need to be using a local Python installation, just like last week. In fact, you will need it for the rest of this course! Given that we will need to import libraries every week, online REPLs will not be able to support our work any further.
 
 If you can run the following code chunk without errors, you are good to go for today!
@@ -32,131 +28,182 @@ If you can run the following code chunk without errors, you are good to go for t
     plt.plot([1, 2, 3, 4], [1, 2, 3, 4])
     plt.show()
 
+.. Refresher on `numpy` and 1D arrays
+.. ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. [ ]Summarize last week's contents
+.. TODO
 
 2D arrays in `numpy`
 --------------------
 .. Instructor notes:
-.. Estimated time: 30 mins
+.. Estimated time: 20 mins
 .. Section objective: Extend previously array operations in 1D to 2D
 
-.. [ ]Array axesing in 2D, building on 1D axesing from last week
-
-    Previosly, we learned on how to initialize 1D arrays like below
-
+Previously, we learned on how to initialize 1D arrays like below
+::
+    
     arr_a = np.array([57, 82, 147, 71, 111, 115, 101, 89, 260, 287])
 
-    Now, as we all know living in a 3D world, not everything is in 1D. So, logically there should be a way to initialize
-    2D array. This is what we'll be learning today. Before we get into that, we should understand how 2D arrays are and
-    what kind of information we can put into them. Let's say for example in GENIUSpintar's senior batch there are 49 students
-    and 7 classes in total. If we had a 1D array, we would only be able to keep all the student's names and nothing else however,
-    if we had a 2D array, we can keep all types of information such as the student's names, id number, class number, and so on.
-    In short, imagine a 2D array like Microsoft Excel where you can store data in different columns and rows. Moving on, in numpy,
-    this is how we initialize a 2D array. It is fairly similar to what we did with 1D arrays with a small difference. Here we'll
-    set up a 2D array with a person's ID number and age in the respective order.
+We live in a 3D world, so obviously not everything is in 1D! We should be able to have arrays that have more than one dimension. This is what we'll be learning today. 
 
-    For this purpose, 1=Ahmad, 2=John, 3=Raj:
-    arr_a = np.array([ [1, 24],
-                       [2, 19],
-                       [3, 21]
-                     ])
+2D arrays?
+^^^^^^^^^^
 
-.. [ ]The concept of axes in arrays
+Before we get into that, we should understand what 2D arrays are and what kind of information we can put into them. Let's say for example in GENIUSpintar's senior batch there are 49 students and 7 classes in total. If we had a 1D array, we would only be able to keep all the student's names and nothing else. However, if we had a 2D array, we can keep all types of information such as the student's names, id number, class number, and so on.In short, imagine a 2D array like Microsoft Excel where you can store data in different columns and rows. 
 
-    So now we have our array called arr_a. In it we have Ahmad, John and Raj's Details. So, how do we extract for example John's age
-    from this? Introducing array index/axes.
+Initializing 2D arrays
+^^^^^^^^^^^^^^^^^^^^^^
+.. [-]The concept of axes in arrays --> just dimensions, can set aside
 
-.. Builds on previous section. Axis 0, axis 1 and axis 2 are the axes we index, in that order.
+This is how we initialize a 2D array using `np.array`. It is fairly similar to what we did with 1D arrays with a small difference. The following code
+sets up a 2D array containing a few rows of data, where the first column is person number, and the second column is age. Verify that by printing this array yourself:
+::
 
-    Array axes are important when extracting data from an array. An array axes starts from 0 and since we're dealing with a 2D array,
-    we have to specify two axes. One is the column and another is the row of the array.
+    arr_a = np.array([[1, 24], [2, 19], [3, 21]])
 
-    It is important to note that in getting the an array value, the first value you should specify is the column and then the second is the row.
+.. TODO speak more about how to set rows and columns, and then specify that we won't look into 3D arrays.
 
-    arr_a[column][row]
+Last week, we also used `np.zeros` and `np.ones` to initialize arrays that are all zeros or all ones, in 1D. Below is how we initialize a 2D array with 10 rows and 4 columns:
+::
 
-    Here's how we get John's age!
+    np.zeros(shape=(10, 4))
+    np.ones(shape=(10, 4))
 
-    print("John's Age:" , arr_a[1][1])
+And the following is how we use `np.zeros` and `np.ones` to initialize a 3D array with 9 rows, 8 columns, and a third dimension with length 2.
+::
 
+    np.zeros(shape=(9, 8, 2))
+    np.ones(shape=(9, 8, 2))
+
+Do you see the format here? Basically, the shape of an array is specified by the length of each dimension in sequence. Typically, instead of the word "dimension", we use the word "axis", or in plural, "axes".
+
+Array indexing on 2D axes
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. [X]Array indexing in 2D, building on 1D indexing from last week
+
+We have seen last week that indexing a 1D array is similar to indexing for lists. For arrays with two dimensions, the syntax is similar, just that we need to *place the indices in the corresponding axes*. We will use the very first array initialized above as the example array to index.
+
+Following are a few examples:
+    * accessing the first value in the second axis
+    * accessing the third value in the first axis
+    * accessing the last value in the last axis
+    * accessing all values in the first axis
+
+::
+        
+    arr_a[0, 1]
+    arr_a[2, 0]
+    arr_a[-1, -1]
+    arr_a[:, -1]
+
+In simpler words:
+    * Row 1 Column 2, thus indexed by [0, 1]
+    * Row 3 Column 1, thus indexed by [2, 0]
+    * Row -1 Column -1, thus indexed by [-1, -1]
+    * All rows Column 1, thus indexed by [:, -1]
+
+What's going on in the last example? 
+
+.. note::
+    When indexing arrays from the first element to the last, you can specify `:`, as a shortcut to represent `0:-1`. 
+
+.. Array operations in 2D
+.. ^^^^^^^^^^^^^^^^^^^^^^
 .. [ ]Array operations: array arithmetic involving other arrays
-
+.. sum(), mean(), max(), argmax() for different axes
 .. 1D extend to 2D
 .. Array arithmetic w/ constants are the same
-.. sum(), mean(), max(), argmax() for different axes
 
-  Do note that we call do sum, mean, max and argmax similarly to how we did it with 1D arrays. For example:
+Array functions in 2D
+^^^^^^^^^^^^^^^^^^^^^
 
-  Let's say we want to find the sum of the values by column. To do this, we do:
+Last week, we learned how to use the functions `sum`, `mean`, `max` and `argmax` for 1D arrays. Just like array indexing, the syntax is similar, just that we need to be mindful of the axes. 
 
-  print(arr_a.sum(axis=0))
+This is how to find the sum of the values along each row, i.e. sum by columns:
+::
+    
+    arr_a.sum(axis=0)
 
-  If we want to calculate the sum by row, then we do this:
+This is how to calculate the sum of the values along each column, i.e. sum by rows:
+::
 
-  print(arr_a.sum(axis=1))
+    arr_a.sum(axis=1)
 
-  Note that the only change here is the axis in which we should specify.
-
-
-
-
+Array conditionals in 2D
+^^^^^^^^^^^^^^^^^^^^^^^^
 .. Array conditionals for 2D arrays still hold!
 
-    Array conditonals still work for 2D arrays as well. For example if we want to find all the number>5 from arr_a, we
-    do as follows:
+Array conditionals still work for 2D arrays as well. However, the format of the output is very different; `numpy` will first reshape the array to one dimension, then run the conditional. Try the following code, where we tell `numpy` to only return us elements in `arr_a` that are divisible by two. There are two elements that fulfill this condition, at `arr_a[0, 1]` and `arr_a[1, 0]` respectively. 
+::
 
-    print("\n", arr_a[arr_a>5])
+    print(arr_a[arr_a % 2 ==0])
+    # [24 2]
 
+Notice that the output is in one dimension. 
 
 .. 2D and above concepts
 .. Element-wise operations with same-shape arrays
 
-  With 2D arrays, we can also perform operations on them if they have the same shape.
+Array arithmetic in 2D
+^^^^^^^^^^^^^^^^^^^^^^
 
-  Here, we initialize two arrays and then reshape them with a form of 4 rows X 3 colums
-  a = np.arange(12).reshape(4,3)
-  print('Array A\n',a)
-  b = np.arange(12).reshape(4,3)
-  print('\nArray B\n',b)
+Element-wise operations in 2D work similarly as in 1D. Arithmetic between 2D arrays and numbers work as expected thanks to array broadcasting:
+::
 
-  We then add both of them together and print to show the result
-  c=a+b
-  print('\nArray C\n',c)
+    np.zeros(shape=(5, 3)) + 2
+    
+However, any arithmetic between arrays will require them to have the same shape. You can see this for yourself below:
+::
 
+    # These lines of code will return errors!
+    np.ones(shape=(5, 3)) + np.ones(shape=(5, ))
+    np.ones(shape=(5, 3)) + np.ones(shape=(3, ))
+
+    # Only this one will not!
+    np.ones(shape=(5, 3)) + np.ones(shape=(5, 3))
+
+With 2D arrays, we can also perform operations on them if they have the same shape.
+
+Matrix operations
+^^^^^^^^^^^^^^^^^
 .. Matrix operations e.g. dot product, cross product etc
 
-  With 2D arrays, we can also do several matrix operations such as dot products and cross products:
+As 2D arrays are equivalent to matrices in mathematics, it is simple to perform matrix operations on 2D arrays. For instance, you can perform a dot product using `np.dot(array1, array2)`:
+::
 
-  Dot Product:
+    arr_b = np.array([[ 0,  1,  2],
+       [ 3,  4,  5],
+       [ 6,  7,  8],
+       [ 9, 10, 11]])
+    arr_c = np.array([[ 0,  1,  2,  3],
+       [ 4,  5,  6,  7],
+       [ 8,  9, 10, 11]])
 
-  arr_a = np.arange(12).reshape(4,3)
-  print('Array A\n',arr_a)
-  arr_b = np.arange(12).reshape(3,4)
-  print('\nArray B\n',arr_b)
-
-  arr_c=np.dot(arr_a,arr_b)
-  print('Dot Product of A and B is',arr_c)
-
+    print(np.dot(arr_b, arr_c))
+    
+Exercise: Sum of all elements in a 2D array
+-------------------------------------------
 
 .. [ ]Small exercise for this section
 .. Need ideas. Last week's was implementing rolling elements of a 1D array one step to the right. Something that needs thinking in 2D would be best!
 .. (Since its a small exercise.. What about finding sum of 2d array? They can find out how to utilize 2x for loop the right way here)
 
-  Since we have had numpy help us to the sum of arrays, it's time to implement it ourselves to see how it works.
-  Let's use the Dot Product of arr_a and arr_b above as our array (arr_c).
+The following code below creates an array and fills it with random numbers. Find the total sum of the numbers in the array. 
 
-  Answer:
+::
 
-  sum=0
- for row in range (len(c_arr)):
-    for col in range(len(c_arr[0])):
-        sum = sum + c_arr[row][col]
+    big_array = np.random.random(size=(10000, 10000))
 
- print(sum)
-
- Compare it with this to check if your sum is code is correct or .. note::
- print(np.sum(c_arr))
+    # YOUR CODE BELOW
 
 
+.. Answer:
+.. sum=0
+.. for row in range (len(c_arr)):
+..    for col in range(len(c_arr[0])):
+..        sum = sum + c_arr[row][col]
+..        print*sum)
 
 Chaotic systems
 ---------------
@@ -167,35 +214,45 @@ Chaotic systems
 .. [ ]Lay down definition and explanation of chaotic systems
 .. Deterministic but appears random
 
-Chaotic Systems are systems that ascribe to the Chaos Theory in which these systems appear to be
-random but are actually deterministic. In the context of science, a chaotic system is defined as one that is highly sensitive to initial conditions.
+Chaotic systems are systems that appear to be random but are actually deterministic, and are highly sensitive to initial conditions.
+
 Think of it like this, remember Conway's Game of Life and how it is important to have rules and its initial state defined? We then get seemingly random
-but deterministic patterns such as spaceships and oscillators just by stating these initial conditions that is important to Chaos Theory and Chaotic Systems.
-This is what makes a Chaotic System. (Remove if not relevant or wrong explanation)
+but deterministic patterns such as spaceships and oscillators just by specifying these initial conditions.
 
 .. Begin explanation by referring to the butterfly effect
 
-Another example we can talk about is the Butterfly Effect.
+The butterfly effect in pop culture knowledge is a good example of this. 
+
+.. note ::
+    "A butterfly flaps its wings in the Amazonian jungle, and subsequently a storm ravages half of Europe"
+         -Terry Pratchett and Neil Gaiman"
 
 The butterfly effect is defined as the sensitive dependence on initial conditions in which a small change in one state of a deterministic nonlinear system can result in large differences in a later state.
 Just by comparing the differences of the definition between Chaotic Systems/Chaos Theory and the Butterfly Effect, we can see that they are very similar.
-The concept "Butterfly Effect" can be imagined like this. "A butterfly flaps its wings in the Amazonian jungle, and subsequently a storm ravages half of Europe -by Terry Pratchett and Neil Gaiman"
+The concept "Butterfly Effect" can be imagined like this. 
 
 The founder of chaos theory Edward Lorenz states he used the Butterfly as an example as it had symbolic representation of unknowable quantity.
 
-"For want of a nail the shoe was lost,
-For want of a shoe the horse was lost,
-For want of a horse the rider was lost,
-For want of a rider the battle was lost,
-For want of a battle the kingdom was lost,
-And all for the want of a horseshoe nail." -Benjamin Franklin
+.. note ::
+    "For want of a nail the shoe was lost,
+
+    For want of a shoe the horse was lost,
+
+    For want of a horse the rider was lost,
+
+    For want of a rider the battle was lost,
+
+    For want of a battle the kingdom was lost,
+    
+    And all for the want of a horseshoe nail."
+        -Benjamin Franklin
 
 .. [ ]Walk through real-life examples
 .. Weather systems
 
 Let's go back to foundations of chaos theory by looking at Edward Lorenz did. Lorenz was a meteorologist and mathematician who combined both fields to become what we know today as chaos theory.
 In an experiment to model weather predictions, he decided to enter an initial condition of 0.506 instead of 0.506127. He thought that the weather prediction wouldn't change by that much, but he
-got a completely different result. He deduced that a miniscule change in initial conditions had long-term implications. in 1963, he wrote a paper entitled Deterministic Nonperiodic FLow which he
+got a completely different result. He deduced that a miniscule change in initial conditions had long-term implications. in 1963, he wrote a paper entitled Deterministic Nonperiodic Flow which he
 theorized that "weather prediction models are inaccurate because knowing the precise starting conditions is impossible, and a tiny change can throw off the results."
 
 .. Explain that it is a system with well understood rules, but extremely sensitive to initial conditions
@@ -204,8 +261,7 @@ It shows science to be less accurate than we assume, as we have no means of maki
 
 .. Enumerate more examples, e.g. 2X pendulum
 
-Another example of chaos theory is the 2x pendulum. (Need to show video here: https://en.wikipedia.org/wiki/File:Demonstrating_Chaos_with_a_Double_Pendulum.gif)
-The 2x pendulum is set up in a way that the 2nd pendulum is attached to edge of the 1st pendulum. This is so we can see how the 2nd pendulum moves about when we release
+Another example of chaos theory is the 2x pendulum. The 2x pendulum is set up in a way that the 2nd pendulum is attached to edge of the 1st pendulum. This is so we can see how the 2nd pendulum moves about when we release
 at a specific angle. Now, we set 3 different double pendulum with the exact same specifications (same height, same weight). Then, we release the pendulums at the same angle. Just
 by doing this we can observe that the 3 pendulums do not follow each other. Simple miniscule difference in initial conditions change the result significantly.
 
@@ -223,7 +279,7 @@ Exercise: Lorenz System
 
 .. Begin with brief history on Lorenz: weather convection sytem
 
-Edward Lorenz was working on a set of equations to model atmospheric convection in 1963. These equations describe how a two-dimensional layer of fluid would be warmed from below and cooled from above. Below is a simplified version of the Lorenz equations:
+Let's go into more detail on the work of Edward Lorenz. He was working on a set of equations to model atmospheric convection in 1963, which describe how a two-dimensional layer of fluid would be warmed from below and cooled from above. Below is a simplified version of the Lorenz equations:
 
 .. Then show the equations, explain them. Give instructions to implement
 
@@ -312,7 +368,7 @@ Part C
 Exercise: Mandelbrot Set
 ------------------------
 .. Instructor notes: Require instructions for both visualizer and the core logic
-.. Estimated time: 30 mins
+.. Estimated time: 40 mins
 .. Section objective: Apply 2D array operations to simulate chaotic systems
 
 .. Mandelbrot set is a classic demonstration for chaos, does need some explanation to show where the chaotic / stable regimes are.

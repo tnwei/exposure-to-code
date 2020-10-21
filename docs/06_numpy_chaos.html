@@ -15,7 +15,8 @@
     <script src="_static/language_data.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Week 5: Class Exercise solutions" href="05_numpy_automata_sols.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -23,6 +24,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="05_numpy_automata_sols.html" title="Week 5: Class Exercise solutions"
+             accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Exposure to Code 1.0 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Week 6 : <cite>Numpy</cite> arrays &amp; exploring chaotic phenomena</a></li> 
       </ul>
@@ -38,17 +42,17 @@
 <p>Outcome: Students will learn more about <cite>numpy</cite>, extending last lesson’s knowledge to 2D arrays. Students will also be made acquainted with famous chaotic systems, and how code enables the exploration and study of these systems.</p>
 <dl class="simple">
 <dt>What we will do:</dt><dd><ul class="simple">
+<li><p>Setup check</p></li>
 <li><p>2D arrays in <cite>numpy</cite></p></li>
+<li><p>Exercise: Sum of all elements in a 2D array</p></li>
 <li><p>Chaotic systems</p></li>
 <li><p>Exercise: Lorenz system</p></li>
 <li><p>Exercise: Mandelbrot set</p></li>
 </ul>
 </dd>
 </dl>
-<div class="section" id="refresher-on-numpy-and-1d-arrays-setup-check">
-<h2>Refresher on <cite>numpy</cite> and 1D arrays + setup check<a class="headerlink" href="#refresher-on-numpy-and-1d-arrays-setup-check" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="setup-check">
-<h3>Setup check<a class="headerlink" href="#setup-check" title="Permalink to this headline">¶</a></h3>
+<h2>Setup check<a class="headerlink" href="#setup-check" title="Permalink to this headline">¶</a></h2>
 <p>For this week’s class, you will need to be using a local Python installation, just like last week. In fact, you will need it for the rest of this course! Given that we will need to import libraries every week, online REPLs will not be able to support our work any further.</p>
 <p>If you can run the following code chunk without errors, you are good to go for today!</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -58,41 +62,173 @@
 </pre></div>
 </div>
 </div>
-</div>
 <div class="section" id="d-arrays-in-numpy">
 <h2>2D arrays in <cite>numpy</cite><a class="headerlink" href="#d-arrays-in-numpy" title="Permalink to this headline">¶</a></h2>
+<p>Previously, we learned on how to initialize 1D arrays like below</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">arr_a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">57</span><span class="p">,</span> <span class="mi">82</span><span class="p">,</span> <span class="mi">147</span><span class="p">,</span> <span class="mi">71</span><span class="p">,</span> <span class="mi">111</span><span class="p">,</span> <span class="mi">115</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">260</span><span class="p">,</span> <span class="mi">287</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>We live in a 3D world, so obviously not everything is in 1D! We should be able to have arrays that have more than one dimension. This is what we’ll be learning today.</p>
+<div class="section" id="d-arrays">
+<h3>2D arrays?<a class="headerlink" href="#d-arrays" title="Permalink to this headline">¶</a></h3>
+<p>Before we get into that, we should understand what 2D arrays are and what kind of information we can put into them. Let’s say for example in GENIUSpintar’s senior batch there are 49 students and 7 classes in total. If we had a 1D array, we would only be able to keep all the student’s names and nothing else. However, if we had a 2D array, we can keep all types of information such as the student’s names, id number, class number, and so on.In short, imagine a 2D array like Microsoft Excel where you can store data in different columns and rows.</p>
+</div>
+<div class="section" id="initializing-2d-arrays">
+<h3>Initializing 2D arrays<a class="headerlink" href="#initializing-2d-arrays" title="Permalink to this headline">¶</a></h3>
+<p>This is how we initialize a 2D array using <cite>np.array</cite>. It is fairly similar to what we did with 1D arrays with a small difference. The following code
+sets up a 2D array containing a few rows of data, where the first column is person number, and the second column is age. Verify that by printing this array yourself:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">arr_a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">24</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">19</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">21</span><span class="p">]])</span>
+</pre></div>
+</div>
+<p>Last week, we also used <cite>np.zeros</cite> and <cite>np.ones</cite> to initialize arrays that are all zeros or all ones, in 1D. Below is how we initialize a 2D array with 10 rows and 4 columns:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>And the following is how we use <cite>np.zeros</cite> and <cite>np.ones</cite> to initialize a 3D array with 9 rows, 8 columns, and a third dimension with length 2.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Do you see the format here? Basically, the shape of an array is specified by the length of each dimension in sequence. Typically, instead of the word “dimension”, we use the word “axis”, or in plural, “axes”.</p>
+</div>
+<div class="section" id="array-indexing-on-2d-axes">
+<h3>Array indexing on 2D axes<a class="headerlink" href="#array-indexing-on-2d-axes" title="Permalink to this headline">¶</a></h3>
+<p>We have seen last week that indexing a 1D array is similar to indexing for lists. For arrays with two dimensions, the syntax is similar, just that we need to <em>place the indices in the corresponding axes</em>. We will use the very first array initialized above as the example array to index.</p>
+<dl class="simple">
+<dt>Following are a few examples:</dt><dd><ul class="simple">
+<li><p>accessing the first value in the second axis</p></li>
+<li><p>accessing the third value in the first axis</p></li>
+<li><p>accessing the last value in the last axis</p></li>
+<li><p>accessing all values in the first axis</p></li>
+</ul>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">arr_a</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">arr_a</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">arr_a</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">arr_a</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt>In simpler words:</dt><dd><ul class="simple">
+<li><p>Row 1 Column 2, thus indexed by [0, 1]</p></li>
+<li><p>Row 3 Column 1, thus indexed by [2, 0]</p></li>
+<li><p>Row -1 Column -1, thus indexed by [-1, -1]</p></li>
+<li><p>All rows Column 1, thus indexed by [:, -1]</p></li>
+</ul>
+</dd>
+</dl>
+<p>What’s going on in the last example?</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When indexing arrays from the first element to the last, you can specify <cite>:</cite>, as a shortcut to represent <cite>0:-1</cite>.</p>
+</div>
+</div>
+<div class="section" id="array-functions-in-2d">
+<h3>Array functions in 2D<a class="headerlink" href="#array-functions-in-2d" title="Permalink to this headline">¶</a></h3>
+<p>Last week, we learned how to use the functions <cite>sum</cite>, <cite>mean</cite>, <cite>max</cite> and <cite>argmax</cite> for 1D arrays. Just like array indexing, the syntax is similar, just that we need to be mindful of the axes.</p>
+<p>This is how to find the sum of the values along each row, i.e. sum by columns:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">arr_a</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This is how to calculate the sum of the values along each column, i.e. sum by rows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">arr_a</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="array-conditionals-in-2d">
+<h3>Array conditionals in 2D<a class="headerlink" href="#array-conditionals-in-2d" title="Permalink to this headline">¶</a></h3>
+<p>Array conditionals still work for 2D arrays as well. However, the format of the output is very different; <cite>numpy</cite> will first reshape the array to one dimension, then run the conditional. Try the following code, where we tell <cite>numpy</cite> to only return us elements in <cite>arr_a</cite> that are divisible by two. There are two elements that fulfill this condition, at <cite>arr_a[0, 1]</cite> and <cite>arr_a[1, 0]</cite> respectively.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">arr_a</span><span class="p">[</span><span class="n">arr_a</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span><span class="mi">0</span><span class="p">])</span>
+<span class="c1"># [24 2]</span>
+</pre></div>
+</div>
+<p>Notice that the output is in one dimension.</p>
+</div>
+<div class="section" id="array-arithmetic-in-2d">
+<h3>Array arithmetic in 2D<a class="headerlink" href="#array-arithmetic-in-2d" title="Permalink to this headline">¶</a></h3>
+<p>Element-wise operations in 2D work similarly as in 1D. Arithmetic between 2D arrays and numbers work as expected thanks to array broadcasting:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span> <span class="o">+</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p>However, any arithmetic between arrays will require them to have the same shape. You can see this for yourself below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># These lines of code will return errors!</span>
+<span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="p">))</span>
+<span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="p">))</span>
+
+<span class="c1"># Only this one will not!</span>
+<span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>With 2D arrays, we can also perform operations on them if they have the same shape.</p>
+</div>
+<div class="section" id="matrix-operations">
+<h3>Matrix operations<a class="headerlink" href="#matrix-operations" title="Permalink to this headline">¶</a></h3>
+<p>As 2D arrays are equivalent to matrices in mathematics, it is simple to perform matrix operations on 2D arrays. For instance, you can perform a dot product using <cite>np.dot(array1, array2)</cite>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">arr_b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span> <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">2</span><span class="p">],</span>
+   <span class="p">[</span> <span class="mi">3</span><span class="p">,</span>  <span class="mi">4</span><span class="p">,</span>  <span class="mi">5</span><span class="p">],</span>
+   <span class="p">[</span> <span class="mi">6</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span>  <span class="mi">8</span><span class="p">],</span>
+   <span class="p">[</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">]])</span>
+<span class="n">arr_c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span> <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">3</span><span class="p">],</span>
+   <span class="p">[</span> <span class="mi">4</span><span class="p">,</span>  <span class="mi">5</span><span class="p">,</span>  <span class="mi">6</span><span class="p">,</span>  <span class="mi">7</span><span class="p">],</span>
+   <span class="p">[</span> <span class="mi">8</span><span class="p">,</span>  <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">]])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">arr_b</span><span class="p">,</span> <span class="n">arr_c</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-sum-of-all-elements-in-a-2d-array">
+<h2>Exercise: Sum of all elements in a 2D array<a class="headerlink" href="#exercise-sum-of-all-elements-in-a-2d-array" title="Permalink to this headline">¶</a></h2>
+<p>The following code below creates an array and fills it with random numbers. Find the total sum of the numbers in the array.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">big_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">))</span>
+
+<span class="c1"># YOUR CODE BELOW</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="chaotic-systems">
 <h2>Chaotic systems<a class="headerlink" href="#chaotic-systems" title="Permalink to this headline">¶</a></h2>
-<p>Chaotic Systems are systems that ascribe to the Chaos Theory in which these systems appear to be
-random but are actually deterministic. In the context of science, a chaotic system is defined as one that is highly sensitive to initial conditions.
-Think of it like this, remember Conway’s Game of Life and how it is important to have rules and its initial state defined? We then get seemingly random
-but deterministic patterns such as spaceships and oscillators just by stating these initial conditions that is important to Chaos Theory and Chaotic Systems.
-This is what makes a Chaotic System. (Remove if not relevant or wrong explanation)</p>
-<p>Another example we can talk about is the Butterfly Effect.</p>
+<p>Chaotic systems are systems that appear to be random but are actually deterministic, and are highly sensitive to initial conditions.</p>
+<p>Think of it like this, remember Conway’s Game of Life and how it is important to have rules and its initial state defined? We then get seemingly random
+but deterministic patterns such as spaceships and oscillators just by specifying these initial conditions.</p>
+<p>The butterfly effect in pop culture knowledge is a good example of this.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<dl class="simple">
+<dt>“A butterfly flaps its wings in the Amazonian jungle, and subsequently a storm ravages half of Europe”</dt><dd><p>-Terry Pratchett and Neil Gaiman”</p>
+</dd>
+</dl>
+</div>
 <p>The butterfly effect is defined as the sensitive dependence on initial conditions in which a small change in one state of a deterministic nonlinear system can result in large differences in a later state.
 Just by comparing the differences of the definition between Chaotic Systems/Chaos Theory and the Butterfly Effect, we can see that they are very similar.
-The concept “Butterfly Effect” can be imagined like this. “A butterfly flaps its wings in the Amazonian jungle, and subsequently a storm ravages half of Europe -by Terry Pratchett and Neil Gaiman”</p>
+The concept “Butterfly Effect” can be imagined like this.</p>
 <p>The founder of chaos theory Edward Lorenz states he used the Butterfly as an example as it had symbolic representation of unknowable quantity.</p>
-<p>“For want of a nail the shoe was lost,
-For want of a shoe the horse was lost,
-For want of a horse the rider was lost,
-For want of a rider the battle was lost,
-For want of a battle the kingdom was lost,
-And all for the want of a horseshoe nail.” -Benjamin Franklin</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>“For want of a nail the shoe was lost,</p>
+<p>For want of a shoe the horse was lost,</p>
+<p>For want of a horse the rider was lost,</p>
+<p>For want of a rider the battle was lost,</p>
+<p>For want of a battle the kingdom was lost,</p>
+<dl class="simple">
+<dt>And all for the want of a horseshoe nail.”</dt><dd><p>-Benjamin Franklin</p>
+</dd>
+</dl>
+</div>
 <p>Let’s go back to foundations of chaos theory by looking at Edward Lorenz did. Lorenz was a meteorologist and mathematician who combined both fields to become what we know today as chaos theory.
 In an experiment to model weather predictions, he decided to enter an initial condition of 0.506 instead of 0.506127. He thought that the weather prediction wouldn’t change by that much, but he
-got a completely different result. He deduced that a miniscule change in initial conditions had long-term implications. in 1963, he wrote a paper entitled Deterministic Nonperiodic FLow which he
+got a completely different result. He deduced that a miniscule change in initial conditions had long-term implications. in 1963, he wrote a paper entitled Deterministic Nonperiodic Flow which he
 theorized that “weather prediction models are inaccurate because knowing the precise starting conditions is impossible, and a tiny change can throw off the results.”</p>
 <p>It shows science to be less accurate than we assume, as we have no means of making accurate predictions due to the exponential growth of errors.</p>
-<p>Another example of chaos theory is the 2x pendulum. (Need to show video here: <a class="reference external" href="https://en.wikipedia.org/wiki/File:Demonstrating_Chaos_with_a_Double_Pendulum.gif">https://en.wikipedia.org/wiki/File:Demonstrating_Chaos_with_a_Double_Pendulum.gif</a>)
-The 2x pendulum is set up in a way that the 2nd pendulum is attached to edge of the 1st pendulum. This is so we can see how the 2nd pendulum moves about when we release
+<p>Another example of chaos theory is the 2x pendulum. The 2x pendulum is set up in a way that the 2nd pendulum is attached to edge of the 1st pendulum. This is so we can see how the 2nd pendulum moves about when we release
 at a specific angle. Now, we set 3 different double pendulum with the exact same specifications (same height, same weight). Then, we release the pendulums at the same angle. Just
 by doing this we can observe that the 3 pendulums do not follow each other. Simple miniscule difference in initial conditions change the result significantly.</p>
 </div>
 <div class="section" id="exercise-lorenz-system">
 <h2>Exercise: Lorenz System<a class="headerlink" href="#exercise-lorenz-system" title="Permalink to this headline">¶</a></h2>
-<p>Edward Lorenz was working on a set of equations to model atmospheric convection in 1963. These equations describe how a two-dimensional layer of fluid would be warmed from below and cooled from above. Below is a simplified version of the Lorenz equations:</p>
+<p>Let’s go into more detail on the work of Edward Lorenz. He was working on a set of equations to model atmospheric convection in 1963, which describe how a two-dimensional layer of fluid would be warmed from below and cooled from above. Below is a simplified version of the Lorenz equations:</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}    \frac{dx}{dt} = a(y-x)\\\frac{dy}{dt} = x(c-z) - y\\   \frac{dz}{dt} = xy - bz\end{aligned}\end{align} \]</div>
 <p>where <cite>x</cite>, <cite>y</cite> and <cite>z</cite> represent the dimensions, and <cite>a</cite>, <cite>b</cite> and <cite>c</cite> represent constants. This is a trio of ordinary differential equations, where the rate of change of <cite>x</cite>, <cite>y</cite> and <cite>z</cite> are dependent on each other over time. (Speaking of differential equations, we will cover it later in the course!)</p>
@@ -400,11 +536,18 @@ by doing this we can observe that the 3 pendulums do not follow each other. Simp
   <h3><a href="index.html">Table of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Week 6 : <cite>Numpy</cite> arrays &amp; exploring chaotic phenomena</a><ul>
-<li><a class="reference internal" href="#refresher-on-numpy-and-1d-arrays-setup-check">Refresher on <cite>numpy</cite> and 1D arrays + setup check</a><ul>
 <li><a class="reference internal" href="#setup-check">Setup check</a></li>
+<li><a class="reference internal" href="#d-arrays-in-numpy">2D arrays in <cite>numpy</cite></a><ul>
+<li><a class="reference internal" href="#d-arrays">2D arrays?</a></li>
+<li><a class="reference internal" href="#initializing-2d-arrays">Initializing 2D arrays</a></li>
+<li><a class="reference internal" href="#array-indexing-on-2d-axes">Array indexing on 2D axes</a></li>
+<li><a class="reference internal" href="#array-functions-in-2d">Array functions in 2D</a></li>
+<li><a class="reference internal" href="#array-conditionals-in-2d">Array conditionals in 2D</a></li>
+<li><a class="reference internal" href="#array-arithmetic-in-2d">Array arithmetic in 2D</a></li>
+<li><a class="reference internal" href="#matrix-operations">Matrix operations</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#d-arrays-in-numpy">2D arrays in <cite>numpy</cite></a></li>
+<li><a class="reference internal" href="#exercise-sum-of-all-elements-in-a-2d-array">Exercise: Sum of all elements in a 2D array</a></li>
 <li><a class="reference internal" href="#chaotic-systems">Chaotic systems</a></li>
 <li><a class="reference internal" href="#exercise-lorenz-system">Exercise: Lorenz System</a><ul>
 <li><a class="reference internal" href="#part-a">Part A</a></li>
@@ -424,6 +567,9 @@ by doing this we can observe that the 3 pendulums do not follow each other. Simp
 </li>
 </ul>
 
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="05_numpy_automata_sols.html"
+                        title="previous chapter">Week 5: Class Exercise solutions</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -451,6 +597,9 @@ by doing this we can observe that the 3 pendulums do not follow each other. Simp
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="05_numpy_automata_sols.html" title="Week 5: Class Exercise solutions"
+             >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Exposure to Code 1.0 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Week 6 : <cite>Numpy</cite> arrays &amp; exploring chaotic phenomena</a></li> 
       </ul>
