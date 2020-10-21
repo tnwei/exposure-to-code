@@ -95,3 +95,19 @@ Part A
             zs.append(z)
         return zs
 
+Part B
+^^^^^^
+::
+
+    def is_bounded(real, imaginary):
+        iterations = 10
+        thresh = 1e5
+        c = complex(real, imaginary)
+        z = c
+        for i in range(iterations):
+            z = z ** 2 + c
+            if abs(z) > thresh:
+                return 0
+        else:
+            return 1
+

@@ -132,6 +132,22 @@
 </pre></div>
 </div>
 </div>
+<div class="section" id="id2">
+<h3>Part B<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_bounded</span><span class="p">(</span><span class="n">real</span><span class="p">,</span> <span class="n">imaginary</span><span class="p">):</span>
+    <span class="n">iterations</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="n">thresh</span> <span class="o">=</span> <span class="mf">1e5</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="n">real</span><span class="p">,</span> <span class="n">imaginary</span><span class="p">)</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">c</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">iterations</span><span class="p">):</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">z</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">c</span>
+        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">thresh</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 
@@ -154,6 +170,7 @@
 </li>
 <li><a class="reference internal" href="#exercise-mandelbrot-set">Exercise: Mandelbrot Set</a><ul>
 <li><a class="reference internal" href="#id1">Part A</a></li>
+<li><a class="reference internal" href="#id2">Part B</a></li>
 </ul>
 </li>
 </ul>
