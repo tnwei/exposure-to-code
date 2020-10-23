@@ -1,0 +1,5 @@
+# Design Document
+
+Write Week by week content first, then organize accordingly. Feel like organizing by topic instead of by week. Be story-driven as heck! Have the key take-away message in mind, start the class w/ it, reinforce it w/ class activities, then sum up again at the end. Inspired by my chit-chat w/ the course trainer in the what's its name hotel. Anyone can do stuff, but trainers understand how to use the opportunity to send a message. 
+
+Conceptually, students are enabled to learn first-hand knowledge through experiencing errors. Whenever possible, class exercises introduce some roadblock or concept change for students to face, while instructors move around assisting students to understand and overcome the roadblocks. When done, instructors then reveal the concept for the class to understand. 

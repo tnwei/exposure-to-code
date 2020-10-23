@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Week 6 : Numpy arrays &amp; visualizing chaotic phenomena &#8212; Exposure to Code 1.0 documentation</title>
+    <title>Week 6 : Numpy arrays &amp; exploring chaotic phenomena &#8212; Exposure to Code 1.0 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -15,7 +15,9 @@
     <script src="_static/language_data.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Week 6: Class Exercise solutions" href="06_numpy_chaos_sols.html" />
+    <link rel="prev" title="Week 5: Class Exercise solutions" href="05_numpy_automata_sols.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -23,8 +25,14 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="06_numpy_chaos_sols.html" title="Week 6: Class Exercise solutions"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="05_numpy_automata_sols.html" title="Week 5: Class Exercise solutions"
+             accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Exposure to Code 1.0 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Week 6 : Numpy arrays &amp; visualizing chaotic phenomena</a></li> 
+        <li class="nav-item nav-item-this"><a href="">Week 6 : <cite>Numpy</cite> arrays &amp; exploring chaotic phenomena</a></li> 
       </ul>
     </div>  
 
@@ -33,48 +41,492 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="week-6-numpy-arrays-visualizing-chaotic-phenomena">
-<h1>Week 6 : Numpy arrays &amp; visualizing chaotic phenomena<a class="headerlink" href="#week-6-numpy-arrays-visualizing-chaotic-phenomena" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="week-6-numpy-arrays-exploring-chaotic-phenomena">
+<h1>Week 6 : <cite>Numpy</cite> arrays &amp; exploring chaotic phenomena<a class="headerlink" href="#week-6-numpy-arrays-exploring-chaotic-phenomena" title="Permalink to this headline">¶</a></h1>
 <p>Outcome: Students will learn more about <cite>numpy</cite>, extending last lesson’s knowledge to 2D arrays. Students will also be made acquainted with famous chaotic systems, and how code enables the exploration and study of these systems.</p>
 <dl class="simple">
 <dt>What we will do:</dt><dd><ul class="simple">
+<li><p>Setup check</p></li>
 <li><p>2D arrays in <cite>numpy</cite></p></li>
-<li><dl class="simple">
-<dt>Chaotic systems</dt><dd><ul>
-<li><p>Exercise: Lorentz Attractor</p></li>
+<li><p>Exercise: Sum of all elements in a 2D array</p></li>
+<li><p>Chaotic systems</p></li>
+<li><p>Exercise: Lorenz system</p></li>
 <li><p>Exercise: Mandelbrot set</p></li>
 </ul>
 </dd>
 </dl>
-</li>
-<li><p>(No Adv exercise, play w/ fractals)</p></li>
+<div class="section" id="setup-check">
+<h2>Setup check<a class="headerlink" href="#setup-check" title="Permalink to this headline">¶</a></h2>
+<p>For this week’s class, you will need to be using a local Python installation, just like last week. In fact, you will need it for the rest of this course! Given that we will need to import libraries every week, online REPLs will not be able to support our work any further.</p>
+<p>If you can run the following code chunk without errors, you are good to go for today!</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="d-arrays-in-numpy">
+<h2>2D arrays in <cite>numpy</cite><a class="headerlink" href="#d-arrays-in-numpy" title="Permalink to this headline">¶</a></h2>
+<p>Previously, we learned on how to initialize 1D arrays like below</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">arr_a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">57</span><span class="p">,</span> <span class="mi">82</span><span class="p">,</span> <span class="mi">147</span><span class="p">,</span> <span class="mi">71</span><span class="p">,</span> <span class="mi">111</span><span class="p">,</span> <span class="mi">115</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">260</span><span class="p">,</span> <span class="mi">287</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>We live in a 3D world, so obviously not everything is in 1D! We should be able to have arrays that have more than one dimension. This is what we’ll be learning today.</p>
+<div class="section" id="d-arrays">
+<h3>2D arrays?<a class="headerlink" href="#d-arrays" title="Permalink to this headline">¶</a></h3>
+<p>Before we get into that, we should understand what 2D arrays are and what kind of information we can put into them. Let’s say for example in GENIUSpintar’s senior batch there are 49 students and 7 classes in total. If we had a 1D array, we would only be able to keep all the student’s names and nothing else. However, if we had a 2D array, we can keep all types of information such as the student’s names, id number, class number, and so on.In short, imagine a 2D array like Microsoft Excel where you can store data in different columns and rows.</p>
+</div>
+<div class="section" id="initializing-2d-arrays">
+<h3>Initializing 2D arrays<a class="headerlink" href="#initializing-2d-arrays" title="Permalink to this headline">¶</a></h3>
+<p>This is how we initialize a 2D array using <cite>np.array</cite>. It is fairly similar to what we did with 1D arrays with a small difference. The following code
+sets up a 2D array containing a few rows of data, where the first column is person number, and the second column is age. Verify that by printing this array yourself:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">arr_a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">24</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">19</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">21</span><span class="p">]])</span>
+</pre></div>
+</div>
+<p>Last week, we also used <cite>np.zeros</cite> and <cite>np.ones</cite> to initialize arrays that are all zeros or all ones, in 1D. Below is how we initialize a 2D array with 10 rows and 4 columns:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>And the following is how we use <cite>np.zeros</cite> and <cite>np.ones</cite> to initialize a 3D array with 9 rows, 8 columns, and a third dimension with length 2.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Do you see the format here? Basically, the shape of an array is specified by the length of each dimension in sequence. Typically, instead of the word “dimension”, we use the word “axis”, or in plural, “axes”.</p>
+</div>
+<div class="section" id="array-indexing-on-2d-axes">
+<h3>Array indexing on 2D axes<a class="headerlink" href="#array-indexing-on-2d-axes" title="Permalink to this headline">¶</a></h3>
+<p>We have seen last week that indexing a 1D array is similar to indexing for lists. For arrays with two dimensions, the syntax is similar, just that we need to <em>place the indices in the corresponding axes</em>. We will use the very first array initialized above as the example array to index.</p>
+<dl class="simple">
+<dt>Following are a few examples:</dt><dd><ul class="simple">
+<li><p>accessing the first value in the second axis</p></li>
+<li><p>accessing the third value in the first axis</p></li>
+<li><p>accessing the last value in the last axis</p></li>
+<li><p>accessing all values in the first axis</p></li>
 </ul>
 </dd>
 </dl>
-<div class="section" id="d-arrays-in-numpy">
-<h2>2D arrays in <cite>numpy</cite><a class="headerlink" href="#d-arrays-in-numpy" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">arr_a</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">arr_a</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">arr_a</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">arr_a</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt>In simpler words:</dt><dd><ul class="simple">
+<li><p>Row 1 Column 2, thus indexed by [0, 1]</p></li>
+<li><p>Row 3 Column 1, thus indexed by [2, 0]</p></li>
+<li><p>Row -1 Column -1, thus indexed by [-1, -1]</p></li>
+<li><p>All rows Column 1, thus indexed by [:, -1]</p></li>
+</ul>
+</dd>
+</dl>
+<p>What’s going on in the last example?</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When indexing arrays from the first element to the last, you can specify <cite>:</cite>, as a shortcut to represent <cite>0:-1</cite>.</p>
+</div>
+</div>
+<div class="section" id="array-functions-in-2d">
+<h3>Array functions in 2D<a class="headerlink" href="#array-functions-in-2d" title="Permalink to this headline">¶</a></h3>
+<p>Last week, we learned how to use the functions <cite>sum</cite>, <cite>mean</cite>, <cite>max</cite> and <cite>argmax</cite> for 1D arrays. Just like array indexing, the syntax is similar, just that we need to be mindful of the axes.</p>
+<p>This is how to find the sum of the values along each row, i.e. sum by columns:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">arr_a</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This is how to calculate the sum of the values along each column, i.e. sum by rows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">arr_a</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="array-conditionals-in-2d">
+<h3>Array conditionals in 2D<a class="headerlink" href="#array-conditionals-in-2d" title="Permalink to this headline">¶</a></h3>
+<p>Array conditionals still work for 2D arrays as well. However, the format of the output is very different; <cite>numpy</cite> will first reshape the array to one dimension, then run the conditional. Try the following code, where we tell <cite>numpy</cite> to only return us elements in <cite>arr_a</cite> that are divisible by two. There are two elements that fulfill this condition, at <cite>arr_a[0, 1]</cite> and <cite>arr_a[1, 0]</cite> respectively.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">arr_a</span><span class="p">[</span><span class="n">arr_a</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span><span class="mi">0</span><span class="p">])</span>
+<span class="c1"># [24 2]</span>
+</pre></div>
+</div>
+<p>Notice that the output is in one dimension.</p>
+</div>
+<div class="section" id="array-arithmetic-in-2d">
+<h3>Array arithmetic in 2D<a class="headerlink" href="#array-arithmetic-in-2d" title="Permalink to this headline">¶</a></h3>
+<p>Element-wise operations in 2D work similarly as in 1D. Arithmetic between 2D arrays and numbers work as expected thanks to array broadcasting:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span> <span class="o">+</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p>However, any arithmetic between arrays will require them to have the same shape. You can see this for yourself below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># These lines of code will return errors!</span>
+<span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="p">))</span>
+<span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="p">))</span>
+
+<span class="c1"># Only this one will not!</span>
+<span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>With 2D arrays, we can also perform operations on them if they have the same shape.</p>
+</div>
+<div class="section" id="matrix-operations">
+<h3>Matrix operations<a class="headerlink" href="#matrix-operations" title="Permalink to this headline">¶</a></h3>
+<p>As 2D arrays are equivalent to matrices in mathematics, it is simple to perform matrix operations on 2D arrays. For instance, you can perform a dot product using <cite>np.dot(array1, array2)</cite>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">arr_b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span> <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">2</span><span class="p">],</span>
+   <span class="p">[</span> <span class="mi">3</span><span class="p">,</span>  <span class="mi">4</span><span class="p">,</span>  <span class="mi">5</span><span class="p">],</span>
+   <span class="p">[</span> <span class="mi">6</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span>  <span class="mi">8</span><span class="p">],</span>
+   <span class="p">[</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">]])</span>
+<span class="n">arr_c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span> <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">3</span><span class="p">],</span>
+   <span class="p">[</span> <span class="mi">4</span><span class="p">,</span>  <span class="mi">5</span><span class="p">,</span>  <span class="mi">6</span><span class="p">,</span>  <span class="mi">7</span><span class="p">],</span>
+   <span class="p">[</span> <span class="mi">8</span><span class="p">,</span>  <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">]])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">arr_b</span><span class="p">,</span> <span class="n">arr_c</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-sum-of-all-elements-in-a-2d-array">
+<h2>Exercise: Sum of all elements in a 2D array<a class="headerlink" href="#exercise-sum-of-all-elements-in-a-2d-array" title="Permalink to this headline">¶</a></h2>
+<p>The following code below creates an array and fills it with random numbers. Find the total sum of the numbers in the array.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">big_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">))</span>
+
+<span class="c1"># YOUR CODE BELOW</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="chaotic-systems">
 <h2>Chaotic systems<a class="headerlink" href="#chaotic-systems" title="Permalink to this headline">¶</a></h2>
+<p>Chaotic systems are systems that appear to be random but are actually deterministic, and are highly sensitive to initial conditions.</p>
+<p>Think of it like this, remember Conway’s Game of Life and how it is important to have rules and its initial state defined? We then get seemingly random
+but deterministic patterns such as spaceships and oscillators just by specifying these initial conditions.</p>
+<p>The butterfly effect in pop culture knowledge is a good example of this.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<dl class="simple">
+<dt>“A butterfly flaps its wings in the Amazonian jungle, and subsequently a storm ravages half of Europe”</dt><dd><p>-Terry Pratchett and Neil Gaiman”</p>
+</dd>
+</dl>
 </div>
-<div class="section" id="exercise-lorentz-attractor">
-<h2>Exercise: Lorentz Attractor<a class="headerlink" href="#exercise-lorentz-attractor" title="Permalink to this headline">¶</a></h2>
+<p>The butterfly effect is defined as the sensitive dependence on initial conditions in which a small change in one state of a deterministic nonlinear system can result in large differences in a later state.
+Just by comparing the differences of the definition between Chaotic Systems/Chaos Theory and the Butterfly Effect, we can see that they are very similar.
+The concept “Butterfly Effect” can be imagined like this.</p>
+<p>The founder of chaos theory Edward Lorenz states he used the Butterfly as an example as it had symbolic representation of unknowable quantity.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>“For want of a nail the shoe was lost,</p>
+<p>For want of a shoe the horse was lost,</p>
+<p>For want of a horse the rider was lost,</p>
+<p>For want of a rider the battle was lost,</p>
+<p>For want of a battle the kingdom was lost,</p>
+<dl class="simple">
+<dt>And all for the want of a horseshoe nail.”</dt><dd><p>-Benjamin Franklin</p>
+</dd>
+</dl>
+</div>
+<p>Let’s go back to foundations of chaos theory by looking at Edward Lorenz did. Lorenz was a meteorologist and mathematician who combined both fields to become what we know today as chaos theory.
+In an experiment to model weather predictions, he decided to enter an initial condition of 0.506 instead of 0.506127. He thought that the weather prediction wouldn’t change by that much, but he
+got a completely different result. He deduced that a miniscule change in initial conditions had long-term implications. in 1963, he wrote a paper entitled Deterministic Nonperiodic Flow which he
+theorized that “weather prediction models are inaccurate because knowing the precise starting conditions is impossible, and a tiny change can throw off the results.”</p>
+<p>It shows science to be less accurate than we assume, as we have no means of making accurate predictions due to the exponential growth of errors.</p>
+<p>Another example of chaos theory is the 2x pendulum. The 2x pendulum is set up in a way that the 2nd pendulum is attached to edge of the 1st pendulum. This is so we can see how the 2nd pendulum moves about when we release
+at a specific angle. Now, we set 3 different double pendulum with the exact same specifications (same height, same weight). Then, we release the pendulums at the same angle. Just
+by doing this we can observe that the 3 pendulums do not follow each other. Simple miniscule difference in initial conditions change the result significantly.</p>
+</div>
+<div class="section" id="exercise-lorenz-system">
+<h2>Exercise: Lorenz System<a class="headerlink" href="#exercise-lorenz-system" title="Permalink to this headline">¶</a></h2>
+<p>Let’s go into more detail on the work of Edward Lorenz. He was working on a set of equations to model atmospheric convection in 1963, which describe how a two-dimensional layer of fluid would be warmed from below and cooled from above. Below is a simplified version of the Lorenz equations:</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}    \frac{dx}{dt} = a(y-x)\\\frac{dy}{dt} = x(c-z) - y\\   \frac{dz}{dt} = xy - bz\end{aligned}\end{align} \]</div>
+<p>where <cite>x</cite>, <cite>y</cite> and <cite>z</cite> represent the dimensions, and <cite>a</cite>, <cite>b</cite> and <cite>c</cite> represent constants. This is a trio of ordinary differential equations, where the rate of change of <cite>x</cite>, <cite>y</cite> and <cite>z</cite> are dependent on each other over time. (Speaking of differential equations, we will cover it later in the course!)</p>
+<p>Lorenz eventually found that a certain combination of constants resulted in chaotic behaviour, where given slightly different initial conditions, the equations produce wildly different output. We will take a look for ourselves in this exercise.</p>
+<div class="section" id="part-a">
+<h3>Part A<a class="headerlink" href="#part-a" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>Implement a function called <cite>lorenz</cite> that has the following arguments:</dt><dd><ul class="simple">
+<li><p><cite>a</cite>, <cite>b</cite> and <cite>c</cite>, representing the constants of the Lorenz equations</p></li>
+<li><p><cite>init_state</cite>, a list of three numbers that represents initial conditions</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Inside the function, initialize two variables below:</dt><dd><ul class="simple">
+<li><p><cite>dt</cite> to represent time step size. Set this to 0.01</p></li>
+<li><p><cite>duration</cite> to represent total length of time to simulate. Set this to 40.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+<ol class="arabic" start="2">
+<li><p>Initialize the variable <cite>state</cite> as an array of all zeros, with shape <cite>(int(duration/dt), 3)</cite>.</p></li>
+<li><p>Set the first row of <cite>state</cite> to be equal to <cite>init_state</cite></p></li>
+<li><dl>
+<dt>Loop for <cite>i</cite> from 0 to <cite>len(state)-1</cite>:</dt><dd><ul class="simple">
+<li><p>Set <cite>x</cite>, <cite>y</cite> and <cite>z</cite> to be equal to <cite>state[i, 0]</cite>, <cite>state[i, 1]</cite>, <cite>state[i, 2]</cite></p></li>
+<li><p>Implement the Lorenz equations:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dx</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="n">x</span><span class="p">))</span> <span class="o">*</span> <span class="n">dt</span>
+<span class="n">dy</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="p">(</span><span class="n">c</span><span class="o">-</span><span class="n">z</span><span class="p">)</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="n">dt</span>
+<span class="n">dz</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">y</span> <span class="o">-</span> <span class="n">b</span><span class="o">*</span><span class="n">z</span><span class="p">)</span> <span class="o">*</span> <span class="n">dt</span>
+
+<span class="n">state</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">dx</span>
+<span class="n">state</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">dy</span>
+<span class="n">state</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">z</span> <span class="o">+</span> <span class="n">dz</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><p>Return <cite>state</cite> after the loop.</p></li>
+</ol>
+</div>
+<div class="section" id="part-b">
+<h3>Part B<a class="headerlink" href="#part-b" title="Permalink to this headline">¶</a></h3>
+<p>What we have done in Part A is to use numerical methods to approximate the solutions of the Lorenz equations over time. We will also explore this particular topic later in the course!</p>
+<p>1. Copy paste this function below.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">show_ts</span><span class="p">(</span><span class="n">state</span><span class="p">):</span>
+    <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">zs</span> <span class="o">=</span> <span class="n">state</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">state</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">state</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">)),</span> <span class="n">xs</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">)),</span> <span class="n">ys</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">)),</span> <span class="n">zs</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Use it to explore the outputs of different runs of the <cite>lorenz</cite> function like so:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">state</span> <span class="o">=</span> <span class="n">lorenz</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">8</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">init_state</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">show_ts</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Use constants from the example above, change the values in <cite>init_state</cite> a few times. What do you observe? Print the final values to compare how they differ from each other.</p></li>
+<li><p>Repeat (2) using <cite>c</cite> equals 12, then 15, then 28. What do you observe?</p></li>
+</ol>
+</div>
+<div class="section" id="part-c">
+<h3>Part C<a class="headerlink" href="#part-c" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>Modify <cite>show_ts</cite> to create the function <cite>show_2d</cite>, that:</dt><dd><ul class="simple">
+<li><p>plots <cite>xs</cite> vs <cite>ys</cite>, then <cite>xs</cite> vs <cite>zs</cite>, then <cite>ys</cite> vs <cite>zs</cite></p></li>
+<li><p>labels the x and y labels appropriately</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Re-run Steps 2 and 3 from Part B. What do you observe?</p></li>
+</ol>
+</div>
 </div>
 <div class="section" id="exercise-mandelbrot-set">
-<h2>Exercise: Mandelbrot set<a class="headerlink" href="#exercise-mandelbrot-set" title="Permalink to this headline">¶</a></h2>
+<h2>Exercise: Mandelbrot Set<a class="headerlink" href="#exercise-mandelbrot-set" title="Permalink to this headline">¶</a></h2>
+<p>Take a complex number <cite>c</cite>. We square it, then add itself to the result. When we iterate over this process, we will get certain numbers of <cite>c</cite> where the outcome will either rise to infinity or drop to negative infinity. We will also get certain numbers of <cite>c</cite> where the absolute value will stay bounded, i.e. stay finite over multiple iterations. The latter numbers form the definition of the Mandelbrot set.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The reason complex numbers are considered, is because the aforementioned relation is trivial for real numbers. On one hand, at a certain negative number and below, the square of itself will always exceed adding itself, causing the value to tend to infinity over iterations. On the other hand, at a certain positive number and above, the same happens.</p>
+<p>Complex numbers however follow a more interesting squaring rule. A complex number is represented as <span class="math notranslate nohighlight">\(a+bi\)</span>, where <cite>a</cite> and <cite>b</cite> are constants, while <cite>i</cite> represents the unit imaginary number. The square of a complex number would be:</p>
+<div class="math notranslate nohighlight">
+\[(a+bi)(a+bi) = a^2 + 2abi + {b^2}{i^2} = a^2 - b^2 + 2abi\]</div>
+<p>From the above equation, you can see that many combinations of <cite>a</cite> and <cite>b</cite> can lead to different outcomes!</p>
+</div>
+<p>The Mandelbrot set is famous for demonstrating fractal behaviour, i.e. self-similarity, at different scales. As you zoom in, you will see more and more detail. In this module, we will look at how certain regions of the Mandelbrot set exhibits chaotic behaviour, and also visualize the Mandelbrot set while we’re at it.</p>
+<div class="section" id="id1">
+<h3>Part A<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Implement a function, <cite>mandelbrot</cite>, to determine if a complex number is part of the Mandelbrot set.</p>
+<ol class="arabic simple">
+<li><p>The function takes two arguments, <cite>c</cite> for the complex number, and <cite>iterations</cite> for number of times to repeat the equation.</p></li>
+<li><p>Inside the function, define a variable <cite>z</cite> that is equal to <cite>c</cite>. Create a variable <cite>zs</cite> that is a list, and store <cite>z</cite> in it.</p></li>
+<li><dl class="simple">
+<dt>Run a for-loop to loop over the range of numbers from 1 to <cite>iterations</cite>. In the loop:</dt><dd><ul class="simple">
+<li><p>Assign <cite>z</cite> to be equal to the square of itself, plus <cite>c</cite>.</p></li>
+<li><p>Append <cite>z</cite> to <cite>zs</cite></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Return <cite>zs</cite></p></li>
+<li><p>Modify the function definition from <cite>def mandelbrot(c, iterations):</cite> to <cite>def mandelbrot(c, iterations=10):</cite>. This assigns a default value of 10 if we don’t specify <cite>iterations</cite>.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Assign a value to the argument in a function definition to assign a default value. The proper name for this is optional arguments. Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_nums</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span> <span class="n">num2</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">num1</span> <span class="o">+</span> <span class="n">num2</span><span class="p">)</span>
+
+<span class="n">print_number</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="c1"># Returns 10</span>
+<span class="n">print_number</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="c1"># Returns 15</span>
+</pre></div>
+</div>
+</div>
+<p>6. Copy-paste the following code chunk. Modify the complex number passed to the function. What do you observe?</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">zs</span> <span class="o">=</span> <span class="n">mandelbrot</span><span class="p">(</span><span class="nb">complex</span><span class="p">(</span><span class="mf">1.21</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">zs</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">zs</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Complex numbers in Python are initialized by the <cite>complex</cite> function. Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="c1"># (1+2j)</span>
+</pre></div>
+</div>
+<p><cite>j</cite> is used to represent <cite>i</cite>, as <cite>i</cite> is already frequently used in for-loops!</p>
+<p>You can also initialize complex numbers by specify it directly as <cite>a + bj</cite>, where <cite>a</cite> and <cite>b</cite> are numbers. Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">5</span><span class="n">j</span><span class="p">)</span>
+<span class="c1"># (1+5j)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>Part B<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>Given that we’re in a coding class, we can do better than checking different complex numbers by hand. Why not use code to check a range of numbers for us? We can then visualize them on a plot, using the x-axis for real numbers, and y-axis for imaginary numbers.</p>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>Write the function <cite>is_bounded</cite> to check if a given complex number is bounded, i.e. is part of the Mandelbrot set.</dt><dd><ul class="simple">
+<li><p>The function takes two arguments, <cite>real</cite> and <cite>imaginary</cite>. Instead of passing a complex number directly, we pass both parts separately because we will be running this function on a 2D grid of numbers! We will be using real numbers along the column (i.e. y-axis) to represent the imaginary components.</p></li>
+<li><p>The function will also take another two arguments, <cite>iterations</cite> and <cite>thresh</cite> that have default values 50 and 10.</p></li>
+<li><p>Inside the function, create the variable <cite>c</cite> as the complex number, using both arguments <cite>real</cite> and <cite>imaginary</cite>.</p></li>
+<li><p>Initialize the variable <cite>z</cite> to have the value of <cite>c</cite></p></li>
+<li><dl class="simple">
+<dt>Create a for-loop over <cite>i</cite>, for <cite>i</cite> in the range of 0 to <cite>iterations</cite>:</dt><dd><ul>
+<li><p>Do <cite>z = z ** 2 + c</cite></p></li>
+<li><p>Check if <cite>abs(z)</cite> is large than <cite>thresh</cite>. If yes, return 0.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Outside the for-loop, add code to return 1.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+<p>2. Copy-paste the function definition below to run <cite>is_bounded</cite> on a sequence of <cite>xs</cite> and <cite>ys</cite>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calc_mandelbrot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">):</span>
+    <span class="n">xs_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+    <span class="n">ys_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ys</span><span class="p">)</span>
+
+    <span class="c1"># Make array to store results</span>
+    <span class="c1"># First dim is how many rows, second dim is how many cols</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">ys_count</span><span class="p">,</span> <span class="n">xs_count</span><span class="p">))</span>
+
+    <span class="c1"># For each col</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ys_count</span><span class="p">):</span>
+        <span class="c1"># For each row</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">xs_count</span><span class="p">):</span>
+            <span class="c1"># Assign col, row results of checking (real, imaginary) which is (row, col)</span>
+            <span class="n">res</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">is_bounded</span><span class="p">(</span><span class="n">xs</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">ys</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">res</span>
+</pre></div>
+</div>
+<p>3. Generate <cite>xs</cite> and <cite>ys</cite>, inputs to <cite>calc_mandelbrot</cite> using <cite>np.arange</cite>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><cite>np.arange(start, end, step)</cite> allows specifying a 1D array where values from <cite>start</cite> to <cite>end</cite> are created, spaced by <cite>step</cite>.</p>
+</div>
+<p>4. Use the following code-chunk to generate a low resolution plot of the Mandelbrot set!</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">calc_mandelbrot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;lower&quot;</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="n">xs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">xs</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">ys</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ys</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><cite>plt.imshow</cite> can be used to visualize 2D arrays as an image!</p>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>Enhance the resolution by reducing 0.1 in <cite>np.arange</cite> to 5e-3. Note that this might take a while to run depending on your computer. You will see a plot of the Mandelbrot set, where all numbers in the set are visualized in the blob.</p></li>
+<li><p>Using the plot, pick complex numbers to verify if they are part of the set or not, by repeating (6) in Part A.</p></li>
+</ol>
+</div>
+<div class="section" id="id3">
+<h3>Part C<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>Setting a single threshold might not capture the full variation in the Mandelbrot set, as the points that are unbounded increase/decrease at different speeds!</p>
+<ol class="arabic simple">
+<li><p>Modify <cite>is_bounded</cite> to instead return the number of iterations required to exceed the threshold.</p></li>
+<li><p>Re-run Part B Q4. You should see a lot more detail in the plot.</p></li>
+<li><p>We want to study further the boundary between numbers in the Mandelbrot set and numbers that are not. We will create a function to simplify plotting the Mandelbrot set. Instead of specifying the bounds of the x-axis and y-axis, we will instead specify a midpoint, and the bounds of the image away from it, specified by <cite>imgsize</cite>.</p></li>
+</ol>
+<p>Complete the function below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">show_mandelbrot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">imgsize</span><span class="p">,</span> <span class="n">precision</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">thresh</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+    <span class="c1"># YOUR CODE BELOW</span>
+    <span class="c1"># Use x, y and imgsize to find the following</span>
+    <span class="n">xstart</span> <span class="o">=</span>
+    <span class="n">xend</span> <span class="o">=</span>
+    <span class="n">ystart</span> <span class="o">=</span>
+    <span class="n">yend</span> <span class="o">=</span>
+
+    <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">xstart</span><span class="p">,</span> <span class="n">xend</span><span class="p">,</span> <span class="n">precision</span><span class="p">)</span>
+    <span class="n">ys</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">ystart</span><span class="p">,</span> <span class="n">yend</span><span class="p">,</span> <span class="n">precision</span><span class="p">)</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">calc_mandelbrot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="n">iterations</span><span class="p">,</span> <span class="n">thresh</span><span class="o">=</span><span class="n">thresh</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="n">xs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">xs</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">ys</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ys</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]],</span> <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;lower&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;magma&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;image&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>4. We will zoom in to see the boundaries of the Mandelbrot set better. Run the  following code line by line. Was it simple to determine the boundaries?</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">show_mandelbrot</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mf">5e-3</span><span class="p">)</span>
+<span class="n">show_mandelbrot</span><span class="p">(</span><span class="o">-</span><span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">)</span>
+<span class="n">show_mandelbrot</span><span class="p">(</span><span class="o">-</span><span class="mf">0.76</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mf">5e-4</span><span class="p">)</span>
+<span class="n">show_mandelbrot</span><span class="p">(</span><span class="o">-</span><span class="mf">0.77</span><span class="p">,</span> <span class="mf">0.12</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mf">3e-4</span><span class="p">)</span>
+<span class="n">show_mandelbrot</span><span class="p">(</span><span class="o">-</span><span class="mf">0.773</span><span class="p">,</span> <span class="mf">0.125</span><span class="p">,</span> <span class="mf">5e-3</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mf">5e-5</span><span class="p">)</span>
+<span class="n">show_mandelbrot</span><span class="p">(</span><span class="o">-</span><span class="mf">0.77315</span><span class="p">,</span> <span class="mf">0.127</span><span class="p">,</span> <span class="mf">1e-3</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">)</span>
+<span class="n">show_mandelbrot</span><span class="p">(</span><span class="o">-</span><span class="mf">0.77295</span><span class="p">,</span> <span class="mf">0.127</span><span class="p">,</span> <span class="mf">3e-4</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">)</span>
+<span class="n">show_mandelbrot</span><span class="p">(</span><span class="o">-</span><span class="mf">0.772975</span><span class="p">,</span> <span class="mf">0.12704</span><span class="p">,</span> <span class="mf">1e-5</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mf">1e-7</span><span class="p">)</span>
+<span class="n">show_mandelbrot</span><span class="p">(</span><span class="o">-</span><span class="mf">0.772972</span><span class="p">,</span> <span class="mf">0.12704</span><span class="p">,</span> <span class="mf">3e-6</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">)</span>
+<span class="n">show_mandelbrot</span><span class="p">(</span><span class="o">-</span><span class="mf">0.772972</span><span class="p">,</span> <span class="mf">0.1270404</span><span class="p">,</span> <span class="mf">5e-7</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mf">5e-9</span><span class="p">)</span>
+<span class="n">show_mandelbrot</span><span class="p">(</span><span class="o">-</span><span class="mf">0.7729719</span><span class="p">,</span> <span class="mf">0.12704049</span><span class="p">,</span> <span class="mf">3e-8</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mf">1e-10</span><span class="p">)</span>
+<span class="n">show_mandelbrot</span><span class="p">(</span><span class="o">-</span><span class="mf">0.772971895</span><span class="p">,</span> <span class="mf">0.127040495</span><span class="p">,</span> <span class="mf">3e-9</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mf">5e-12</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>Increase iterations to 200 and re-run. What has changed?</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">iterations</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="n">show_mandelbrot</span><span class="p">(</span><span class="o">-</span><span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">show_mandelbrot</span><span class="p">(</span><span class="o">-</span><span class="mf">0.76</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mf">3e-4</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">show_mandelbrot</span><span class="p">(</span><span class="o">-</span><span class="mf">0.77</span><span class="p">,</span> <span class="mf">0.12</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">show_mandelbrot</span><span class="p">(</span><span class="o">-</span><span class="mf">0.773</span><span class="p">,</span> <span class="mf">0.125</span><span class="p">,</span> <span class="mf">5e-3</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mf">3e-5</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">show_mandelbrot</span><span class="p">(</span><span class="o">-</span><span class="mf">0.77315</span><span class="p">,</span> <span class="mf">0.127</span><span class="p">,</span> <span class="mf">1e-3</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mf">5e-6</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">show_mandelbrot</span><span class="p">(</span><span class="o">-</span><span class="mf">0.77295</span><span class="p">,</span> <span class="mf">0.127</span><span class="p">,</span> <span class="mf">3e-4</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">show_mandelbrot</span><span class="p">(</span><span class="o">-</span><span class="mf">0.772975</span><span class="p">,</span> <span class="mf">0.12704</span><span class="p">,</span> <span class="mf">1e-5</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mf">5e-8</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">show_mandelbrot</span><span class="p">(</span><span class="o">-</span><span class="mf">0.772972</span><span class="p">,</span> <span class="mf">0.12704</span><span class="p">,</span> <span class="mf">3e-6</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">show_mandelbrot</span><span class="p">(</span><span class="o">-</span><span class="mf">0.772972</span><span class="p">,</span> <span class="mf">0.1270404</span><span class="p">,</span> <span class="mf">5e-7</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mf">5e-9</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">show_mandelbrot</span><span class="p">(</span><span class="o">-</span><span class="mf">0.7729719</span><span class="p">,</span> <span class="mf">0.12704049</span><span class="p">,</span> <span class="mf">3e-8</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mf">1e-10</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">show_mandelbrot</span><span class="p">(</span><span class="o">-</span><span class="mf">0.772971895</span><span class="p">,</span> <span class="mf">0.127040495</span><span class="p">,</span> <span class="mf">3e-9</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mf">5e-12</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="conclusion">
 <h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
-<p>Message of the day: xxxxxxxxxxxxxxxx</p>
+<dl class="simple">
+<dt>Take-away message for this week:</dt><dd><ul class="simple">
+<li><p>We learnt about working with arrays in two dimensions</p></li>
+<li><p>We learnt about the concept of chaotic behaviour and inspected a few classic chaotic systems</p></li>
+</ul>
+</dd>
+</dl>
 </div>
 <div class="section" id="further-reading">
 <h2>Further reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p>Lorenz Attractor by Matplotlib development team,</p></li>
-</ul>
-<p><a class="reference external" href="https://matplotlib.org/3.1.0/gallery/mplot3d/lorenz_attractor.html">https://matplotlib.org/3.1.0/gallery/mplot3d/lorenz_attractor.html</a>
-* Scipy Lectures 1.3.6 Mandelbrot set by Varoquaux G. et al,
-<a class="reference external" href="https://scipy-lectures.org/intro/numpy/auto_examples/plot_mandelbrot.html">https://scipy-lectures.org/intro/numpy/auto_examples/plot_mandelbrot.html</a></p>
+<p><a class="reference external" href="https://fs.blog/2017/08/the-butterfly-effect/">The Butterfly Effect</a></p>
 </div>
 </div>
 
@@ -87,17 +539,44 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Week 6 : Numpy arrays &amp; visualizing chaotic phenomena</a><ul>
-<li><a class="reference internal" href="#d-arrays-in-numpy">2D arrays in <cite>numpy</cite></a></li>
+<li><a class="reference internal" href="#">Week 6 : <cite>Numpy</cite> arrays &amp; exploring chaotic phenomena</a><ul>
+<li><a class="reference internal" href="#setup-check">Setup check</a></li>
+<li><a class="reference internal" href="#d-arrays-in-numpy">2D arrays in <cite>numpy</cite></a><ul>
+<li><a class="reference internal" href="#d-arrays">2D arrays?</a></li>
+<li><a class="reference internal" href="#initializing-2d-arrays">Initializing 2D arrays</a></li>
+<li><a class="reference internal" href="#array-indexing-on-2d-axes">Array indexing on 2D axes</a></li>
+<li><a class="reference internal" href="#array-functions-in-2d">Array functions in 2D</a></li>
+<li><a class="reference internal" href="#array-conditionals-in-2d">Array conditionals in 2D</a></li>
+<li><a class="reference internal" href="#array-arithmetic-in-2d">Array arithmetic in 2D</a></li>
+<li><a class="reference internal" href="#matrix-operations">Matrix operations</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#exercise-sum-of-all-elements-in-a-2d-array">Exercise: Sum of all elements in a 2D array</a></li>
 <li><a class="reference internal" href="#chaotic-systems">Chaotic systems</a></li>
-<li><a class="reference internal" href="#exercise-lorentz-attractor">Exercise: Lorentz Attractor</a></li>
-<li><a class="reference internal" href="#exercise-mandelbrot-set">Exercise: Mandelbrot set</a></li>
+<li><a class="reference internal" href="#exercise-lorenz-system">Exercise: Lorenz System</a><ul>
+<li><a class="reference internal" href="#part-a">Part A</a></li>
+<li><a class="reference internal" href="#part-b">Part B</a></li>
+<li><a class="reference internal" href="#part-c">Part C</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#exercise-mandelbrot-set">Exercise: Mandelbrot Set</a><ul>
+<li><a class="reference internal" href="#id1">Part A</a></li>
+<li><a class="reference internal" href="#id2">Part B</a></li>
+<li><a class="reference internal" href="#id3">Part C</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#conclusion">Conclusion</a></li>
 <li><a class="reference internal" href="#further-reading">Further reading</a></li>
 </ul>
 </li>
 </ul>
 
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="05_numpy_automata_sols.html"
+                        title="previous chapter">Week 5: Class Exercise solutions</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="06_numpy_chaos_sols.html"
+                        title="next chapter">Week 6: Class Exercise solutions</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -125,8 +604,14 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="06_numpy_chaos_sols.html" title="Week 6: Class Exercise solutions"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="05_numpy_automata_sols.html" title="Week 5: Class Exercise solutions"
+             >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Exposure to Code 1.0 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Week 6 : Numpy arrays &amp; visualizing chaotic phenomena</a></li> 
+        <li class="nav-item nav-item-this"><a href="">Week 6 : <cite>Numpy</cite> arrays &amp; exploring chaotic phenomena</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
