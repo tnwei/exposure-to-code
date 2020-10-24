@@ -19,6 +19,7 @@ Setup check
 If you can run the following code chunk without errors, you are good to go for today!
 ::
 
+    import scipy
     import numpy as np
     import matplotlib.pyplot as plt
     plt.plot([1, 2, 3, 4], [1, 2, 3, 4])
@@ -60,7 +61,7 @@ Applications of numerical methods
 .. Modern machine learning
 .. Anytime we deal with differentiation or integration --> fast solvers
 .. On a large scale: weather prediction
-.. List small examples to big examples --> weather prediction is probably a big basket of numerical methods
+.. Optimization
 .. Basically anytime we want computer to do math quickly, there are some numerical methods involved. In fact, we have been using them in our past exercises! List the methods used in the past classes so they can be Googled. 
 
 Exercise: Solving roots using Newton-Raphson's method
@@ -81,7 +82,8 @@ We might not be familiar with solving roots for more complex polynomials, but co
 
 
 Below is the formula for the Newton-Raphson's method:
-.. math ::
+
+.. math::
 
     x_{n+1} = x_{n} - \frac{f(x_{n})}{f'(x_{n})}
 
@@ -98,18 +100,69 @@ Go ahead and find the roots of the fourth power polynomial :math:`f(x)=x^4-4x^3-
 .. Answer is (-3**0.5, 3**0.5, 2-3**0.5, 2+3**0.5)
 
 
-Exercise: Linear Programming
-----------------------------
+Exercise: Solving optimization problems with `scipy`
+----------------------------------------------------
 .. Section objective: 
 .. Estimated time: 25 mins
 .. Instructor notes: 
 
+In this exercise, we will see how we can use coding to make optimal decisions for selling ice cream. 
+
+..TODO: Brief description of `scipy`
+.. We will be making use of the `scipy` library 
+.. library of more specific algorithms built on numpy
+.. Today will be using the optimization part
+
+.. TODO: Filling in basics of optimization
+.. What is an optimization problem? 
+.. What is objective function
+.. How we solve optimization problems --> typically pass to robust solver
+.. Many subdomains of optimization! Linear programming, integer programming etc, we just doing a very simple toy problem here
+
+Part A
+^^^^^^
+
+You sell icecream by the road. Each cone of ice cream costs 50 cents to make. You have noticed that the higher the selling price of your ice cream, the less people will buy them in a day. You estimate that the number of customers per day as a function of price is :math:`f(x) = 2000-1000x`. Find the best selling price to maximize your profit in a day. 
+
+Use `minimize_scalar` from `scipy.optimize` to solve this optimization problem. For that, we will require an objective function to optimize, such that we find the point where its value becomes as small as possible. 
+
+.. note ::
+    TODO Elaborate on minimize_scalar - optimization is phrased as minimization, and historical context is cost, thus algos seek to minimize instead of maximize. Easy to accomplish by switching signs. 
+
+    Anyway there are a few functions in scipy to conduct minimization, but minimize_scalar is for the simple cases where we only want to minimize one number. 
+
+    More solvers out there like Gurobi
+
+.. Note for future: The way this content is structured seems a bit inconsistent. Prolly can think about refactoring in the future. 
+
+1. Create a function `calc_profit` that takes the argument `price`. Calculate profit from ice cream sales following the steps below:
+    a. Calculate number of customers at the given price
+    b. Calculate the total cost: customers times cost of one ice cream cone
+    c. Calculate the total revenue: customers times selling price
+    d. Return profit, which is revenue - cost
+2. Create another function called `obj_fun` which takes `price` as an argument. Return the negative of `calc_profit(price)`. This is to be passed to `minimize_scalar`. 
+3. Import `minimize_scalar` from `scipy.optimize`, and run the following code:
+::
+
+    results = minimize_scalar(fun=obj_fun)
+    print(results)
+
+.. TODO Talk about expected results
+
+Part B
+^^^^^^
+You have found a new location to sell ice cream that is closer to the city centre. 
+* People are more willing to pay for expensive ice cream. The number of customers as a function of price is now :math:`f(x) = 4000-1000x`.
+* However, you need to increase the cost of each ice cream cone to RM2.00 to match their tastes! 
+* You need to pay RM20.00 in fuel per day to travel to and fro the new location. 
+
+Given this information, is it worth it to start selling ice cream at the new location? Or will you make more profit by staying at your current location?
 
 
 Conclusion
 ----------
 .. Estimated time: 5 mins
-Message of the day: xxxxxxxxxxxxxxxx
+.. Talk more about root solving and operations research examples being sth that is very applicable in the real world today!
 
 Further reading
 ---------------
