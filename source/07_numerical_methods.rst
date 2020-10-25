@@ -194,7 +194,7 @@ Given this information, is it worth it to start selling ice cream at the new loc
 
 Conclusion
 ----------
-.. Estimated time: 5 mins
+.. Estimated time: 4 mins
 .. Talk more about root solving and operations research examples being sth that is very applicable in the real world today!
 
 Further reading
