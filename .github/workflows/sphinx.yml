@@ -8,7 +8,7 @@
 #yml file will be placed in dev branch
 
 #2.
-3Everything is as is. Just put a yml file on main branch and let github actions run make
+#3Everything is as is. Just put a yml file on main branch and let github actions run make
 #automatically when something is pushed onto main.
 
 # Below is the start of yml file 
@@ -24,41 +24,41 @@ on:
 #This specifies what job to run
 jobs:
   # Run CI.
-  run-tests:
+  #run-tests:
     #This specifies what type of machine we want to run it on
-    runs-on: ubuntu-latest #runs on 18.04
-    steps:
+    #runs-on: ubuntu-latest #runs on 18.04
+    #steps:
     #Installs python (refer URL: https://docs.github.com/en/free-pro-team@latest/actions/guides/building-and-testing-python)
-  - uses: actions/checkout@v2
-  - name: Set up Python
-    uses: actions/setup-python@v2
-    with:
-      python-version: '3.x' #You can specify the python version
-  - name: Install dependencies
-    run: |
-      python -m pip install --upgrade pip
-      pip install -r requirements.txt
+    #- uses: actions/checkout@v2
+    #- name: Set up Python
+    #uses: actions/setup-python@v2
+    #with:
+      #python-version: '3.x' #You can specify the python version
+      #name: Install dependencies
+      #run: |
+      #  python -m pip install --upgrade pip
+     #   pip install -r requirements.txt
   
-  - name: Print Python version
-    run: python --version
+    #name: Print Python version
+   # run: python --version
          
-  - name: Install sphinx via terminal
-    run: #Insert sphinx installation command here
+    #name: Install sphinx via terminal
+    #run: #Insert sphinx installation command here
 
-  - name: Run make on main branch
-    run: make
+  #name: Run make on main branch
+ #run: make
 
 # An alternative to Installing sphinx via terminal is to use github actions. This should automatically find sphinx docs, build
 # them and place them to a doc folder.
 #. Note, I haven't tested this but it should work (refer to https://github.com/marketplace/actions/sphinx-build)
 # Below is the code. Should be one level below "jobs:"
-#   docs: 
-#    runs-on: ubuntu-latest
-#    steps:
-#    - uses: actions/checkout@v1
-#    - uses: ammaraskar/sphinx-action@master 
-#      with:
-#        docs-folder: "docs/" 
+   docs: 
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: ammaraskar/sphinx-action@master 
+      with:
+        docs-folder: "docs/" 
 
 
 # end of yml file
