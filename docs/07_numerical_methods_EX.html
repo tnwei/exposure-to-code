@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Week 7: Advanced Content &#8212; Exposure to Code 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Week 7 : Numerical methods" href="07_numerical_methods.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="07_numerical_methods.html" title="Week 7 : Numerical methods"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Exposure to Code 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Week 7: Advanced Content</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="week-7-advanced-content">
+<h1>Week 7: Advanced Content<a class="headerlink" href="#week-7-advanced-content" title="Permalink to this headline">¶</a></h1>
+<p>Advanced content are designed for advanced learners that are ready to take on extra challenges. These content are made accessible to all after the class. Note that these content typically require more knowledge than what was presented in class. Typically this section is presented as additional exercises, but for this week we are only going to refer to educational Youtube videos as recommended learning.</p>
+<div class="section" id="adv-content-verlet-integration">
+<h2>Adv Content: Verlet integration<a class="headerlink" href="#adv-content-verlet-integration" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="explanation-of-logic">
+<h3>Explanation of logic<a class="headerlink" href="#explanation-of-logic" title="Permalink to this headline">¶</a></h3>
+<p>In last week’s Lorenz systems exercise, we used Euler’s method to solve for and integrate the system of equations to get <cite>x</cite>, <cite>y</cite> and <cite>z</cite> . In simple terms, Euler’s method is where we simply take the current rate of change, and multiply it by the length of a timestep to get the increase/decrease in value during that timestep.</p>
+<p>These days, Euler’s method is rarely used for serious numerical integration. Instead, much more sophisticated algorithms are used to circumvent the shortcomings of Euler’s method. One of the shortcomings is, if used to model a system in motion, Euler’s method is not good at ensuring energy is conserved throughout the integration!</p>
+<p>When modelling the energy of a system is important, we use Verlet integration as a simple alternative to Euler’s method.</p>
+</div>
+<div class="section" id="learn-more">
+<h3>Learn More<a class="headerlink" href="#learn-more" title="Permalink to this headline">¶</a></h3>
+<p>Learn more about the topic by watching these videos below. Focus less on the code (not Python), and more on the concepts:</p>
+<ul class="simple">
+<li><p>Coding Math - Verlet Integration Part I: <a class="reference external" href="https://www.youtube.com/watch?v=3HjO_RGIjCU">https://www.youtube.com/watch?v=3HjO_RGIjCU</a></p></li>
+<li><p>Coding Math - Verlet Integration Part II: <a class="reference external" href="https://www.youtube.com/watch?v=pBMivz4rIJY">https://www.youtube.com/watch?v=pBMivz4rIJY</a></p></li>
+<li><p>Coding Math - Verlet Integration Part III: <a class="reference external" href="https://www.youtube.com/watch?v=tAd7ttKbugA">https://www.youtube.com/watch?v=tAd7ttKbugA</a></p></li>
+<li><p>Coding Math - Verlet Integration Part IV: <a class="reference external" href="https://www.youtube.com/watch?v=YgRZDCBLDfs">https://www.youtube.com/watch?v=YgRZDCBLDfs</a></p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Week 7: Advanced Content</a><ul>
+<li><a class="reference internal" href="#adv-content-verlet-integration">Adv Content: Verlet integration</a><ul>
+<li><a class="reference internal" href="#explanation-of-logic">Explanation of logic</a></li>
+<li><a class="reference internal" href="#learn-more">Learn More</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="07_numerical_methods.html"
+                        title="previous chapter">Week 7 : Numerical methods</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/07_numerical_methods_EX.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="07_numerical_methods.html" title="Week 7 : Numerical methods"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Exposure to Code 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Week 7: Advanced Content</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright PERMATA STEM Talent, 2020.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+    </div>
+  </body>
+</html>

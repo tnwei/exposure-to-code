@@ -39,7 +39,9 @@ Contents
    05_numpy_automata_sols.rst
    06_numpy_chaos.rst
    06_numpy_chaos_sols.rst
-   .. 07_numerical_methods.rst
+   07_numerical_methods.rst
+   07_numerical_methods_EX.rst
+   .. 07_numerical_methods_sols.rst
    .. 08_pde_populations.rst
    .. 09_random_generative.rst
    .. 10_capstone.rst
