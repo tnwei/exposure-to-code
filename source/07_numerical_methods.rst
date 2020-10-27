@@ -38,9 +38,6 @@ Why do we need numerical methods?
 .. Section objective: Explains the importance of numerical methods
 .. Estimated time: 5 mins
 .. Instructor notes:
-
-
-
 .. [X]Explain rationale
 .. Some problems cannot be solved analytically, or will take forever
 .. Analytical form means can solve the equation
@@ -58,8 +55,9 @@ Applications of numerical methods
 
 .. [ ]List example applications here, explain story and impact
 
-Numerical methods has had numerous applications in our highly integrated society! For example, it helps solves specific scientific and engineering problems such as prediction of oil production, fluid dynamics, multidimensional root finding, weather prediction, and so much more!
-For example in one 1989 paper by N Z Sun entitled, "Applications of numerical methods to simulate the movement of contaminants in groundwater", the author used numerical methods to stimulate movement of contaminants through the subsurface which helped the author in producing a high quality solution without needing to know the complete picture or to take account of every single variable.
+Numerical methods has numerous applications in our highly integrated society! For example, it helps solves specific scientific and engineering problems such as prediction of oil production, fluid dynamics, multidimensional root finding, weather prediction, and so much more!
+
+For example in one 1989 paper by N Z Sun entitled, "Applications of numerical methods to simulate the movement of contaminants in groundwater", the author used numerical methods to simulate movement of contaminants through the subsurface which helped the author in producing a high quality solution without needing to know the complete picture or to take account of every single variable.
 These specific problems if done via an analytical method would take far too much time for a problem as complex as this.
 
 .. Taylor series expansion?
@@ -68,7 +66,7 @@ These specific problems if done via an analytical method would take far too much
 .. Anytime we deal with differentiation or integration --> fast solvers
 .. On a large scale: weather prediction
 
-On a very large scale, numerical methods is used especially since many variables need to introduced (velocity, pressure, temprerature, time, position, carbon dioxide, humidity and so on). Many difficult differential equations are needed to solve this to make a mathematical weather model. In recent times however, a plethora of numerical analysis methods are used in atmospheric modeling such as fluid mechanics and numerical solution of differential equations. Localized data is implemented in certain models that are run by parallel supercomputers to aid in this process.
+Numerical methods are also employed on a very large scale for modelling weather in meteorology. Numerical methods are heavily featured, especially since many variables need to introduced (velocity, pressure, temprerature, time, position, carbon dioxide, humidity and so on). Many difficult differential equations are needed to solve this to make a mathematical weather model. In recent times however, a plethora of numerical analysis methods are used in atmospheric modeling such as fluid mechanics and numerical solution of differential equations. Localized data is implemented in certain models that are run by parallel supercomputers to aid in this process.
 
 .. Optimization
 
@@ -77,7 +75,7 @@ Optimazation is also a type of numerical method that particularly helps in alloc
 
 .. Basically anytime we want computer to do math quickly, there are some numerical methods involved. In fact, we have been using them in our past exercises! List the methods used in the past classes so they can be Googled.
 
-Numerical methods help a lot whenever we want to calculate something quickly and can accept a tolerable amount of error. Most popular programming languages use numerical methods to achieve certain calculations and models. In fact, Python's libraries such as NumPy and matplotlib uses them too! We will be learning a new library called SciPy that also uses numerical methods.
+Numerical methods help a lot whenever we want to calculate something quickly and can accept a tolerable amount of error. Most popular programming languages use numerical methods to achieve certain calculations and models. In fact, Python's libraries such as NumPy and matplotlib uses them too! In a bit, we will be learning a new library called SciPy that also uses numerical methods.
 
 
 Exercise: Solving roots using Newton-Raphson's method
@@ -92,10 +90,12 @@ In a previous exercise, we have asked you to implement the root solving formula 
 
 We might not be familiar with solving roots for more complex polynomials, but computers can help us with that through numerical methods. We just need to give the proper instructions through code. In this exercise, we will be coding the Newton-Raphson's method for solving roots.
 
-.. TODO: Need to finish explanation and illustrations here, uncomment when complete
-.. This method is built on the idea that a function can be approximated by a tangent line.
-.. If able to calculate the fxn and its derivative at any point, able to take a first guess and iterate until the root is found.
+Embedding a figure from Wikimedia Commons below to illustrate the intuition behind this method:
 
+.. figure:: https://upload.wikimedia.org/wikipedia/commons/e/e0/NewtonIteration_Ani.gif
+   :alt: Illustration of how Newton Raphson's work
+
+This method is built on the idea that a function can be approximated by a tangent line, i.e. a straight line that has the same slope with the function at a single point. Newton-Raphson's method uses the tangent line of the function at a point to gradually get closer to the root until it eventually does.
 
 Below is the formula for the Newton-Raphson's method:
 
@@ -105,6 +105,8 @@ Below is the formula for the Newton-Raphson's method:
 
 :math:`f(x)` represents the polynomial, and the standalone :math:`x` stands for the estimated value for the root. The Newton-Raphson's method solves for one root at a time by iterating over this formula above. :math:`n` basically stands for number of iterations. When :math:`n = 0`, there is no :math:`x_{n=-1}` before that, and thus the iteration starts at :math:`x_{0}`, which needs to be provided as an initial guess.
 
+.. note::
+    The formula is derived from :math:`0 = f'(x_n)*(x_{n+1} - x_n) + f(x_n)` ;)
 
 In short, what you need to do to solve a polynomial specified by :math:`f(x)`:
 1. Specify its derivative, :math:`f'(x)`
@@ -124,17 +126,14 @@ Exercise: Solving optimization problems with `scipy`
 
 In this exercise, we will see how we can use coding to make optimal decisions for selling ice cream.
 
-..TODO: Brief description of `scipy`
+.. Brief description of `scipy`
 .. We will be making use of the `scipy` library
 .. library of more specific algorithms built on numpy
 .. Today will be using the optimization part
 
-SciPy can be said as an extension to NumPy. SciPy contains modules for optimization, integration, image and signal processing, interpolation and a few other modules that are common in the scientific and engineering field. Today, we will be using the optimization part of SciPy.
+We will be using the `scipy` library, where `sci` stands for "scientific" and `py` stands for Python. Scipy extends upon `numpy` to provide further functionalities. It contains modules for optimization, integration, image and signal processing, interpolation and a few other modules that are common in the scientific and engineering field. In today's exercise, we will be using a function from `scipy.optimize`.
 
-
-.. TODO: Filling in basics of optimization
-
-Optimization is defined as "the action of making the best or most effective use of a situation or resource."(Oxford Languages). Via optimization, we aim to achieve the best design of a given thing given certain criteria or constraints while maximizing certain factors.
+Today's problem is phrased as an optimization problem. Optimization is defined as "the action of making the best or most effective use of a situation or resource."(Oxford Languages). Via optimization, we aim to achieve the best design of a given thing given certain criteria or constraints while maximizing certain factors.
 
 .. What is an optimization problem?
 
@@ -150,7 +149,7 @@ There are numerous different ways to solve optimization problems. In Python, we 
 
 .. Many subdomains of optimization! Linear programming, integer programming etc, we just doing a very simple toy problem here
 
-
+Optimization is heavily featured in its own field called Operations Research. Multiple techniques exist, such as linear programming, integer programming, etc. Today we will be trying our hand at solving a small classroom-sized optimization problem.
 
 Part A
 ^^^^^^
@@ -160,11 +159,10 @@ You sell icecream by the road. Each cone of ice cream costs 50 cents to make. Yo
 Use `minimize_scalar` from `scipy.optimize` to solve this optimization problem. For that, we will require an objective function to optimize, such that we find the point where its value becomes as small as possible.
 
 .. note ::
-    TODO Elaborate on minimize_scalar - optimization is phrased as minimization, and historical context is cost, thus algos seek to minimize instead of maximize. Easy to accomplish by switching signs.
+   Like its name, `minimize_scalar` focuses on making the objective function as small as possible. Historically, optimization is performed on functions that represent cost, and thus solvers tend to work to minimize instead of maximize. In this case, we flip the sign to get the minimizer to become a maximizer! 
 
-    Anyway there are a few functions in scipy to conduct minimization, but minimize_scalar is for the simple cases where we only want to minimize one number.
+    `minimize_scalar` is for the simple cases where we only want to minimize one number. For more complex use cases, there are other implementations in `scipy` or other libraries for that. 
 
-    More solvers out there like Gurobi
 
 .. Note for future: The way this content is structured seems a bit inconsistent. Prolly can think about refactoring in the future.
 
@@ -180,7 +178,7 @@ Use `minimize_scalar` from `scipy.optimize` to solve this optimization problem. 
     results = minimize_scalar(fun=obj_fun)
     print(results)
 
-.. TODO Talk about expected results
+Take some time to understand the printed output. What is the optimal price, and what is the resultant profit?
 
 Part B
 ^^^^^^
@@ -196,6 +194,9 @@ Conclusion
 ----------
 .. Estimated time: 4 mins
 .. Talk more about root solving and operations research examples being sth that is very applicable in the real world today!
+
+* Numerical methods are heavily used in many aspects of civilization
+* Through today's exercise, we looked into solving a simple optimization problem with Python
 
 Further reading
 ---------------
