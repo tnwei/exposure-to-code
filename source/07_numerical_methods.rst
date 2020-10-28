@@ -113,6 +113,7 @@ Below is the formula for the Newton-Raphson's method:
     The formula is derived from :math:`0 = f'(x_n)*(x_{n+1} - x_n) + f(x_n)` ;)
 
 In short, what you need to do to solve a polynomial specified by :math:`f(x)`:
+
 1. Specify its derivative, :math:`f'(x)`
 2. Pick the initial estimate for one root, :math:`x_0`
 3. Iterate using Newton-Raphsons' method until sufficient. Keep track of the relative error, i.e. the difference between the previous estimate and the current estimate. If the absolute value of the relative error falls below 1e-7, consider that the root has been found.
@@ -187,6 +188,7 @@ Take some time to understand the printed output. What is the optimal price, and 
 Part B
 ^^^^^^
 You have found a new location to sell ice cream that is closer to the city centre.
+
 * People are more willing to pay for expensive ice cream. The number of customers as a function of price is now :math:`f(x) = 4000-1000x`.
 * However, you need to increase the cost of each ice cream cone to RM2.00 to match their tastes!
 * You need to pay RM20.00 in fuel per day to travel to and from the new location.

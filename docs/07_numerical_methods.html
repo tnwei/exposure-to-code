@@ -104,10 +104,12 @@
 <p class="admonition-title">Note</p>
 <p>The formula is derived from <span class="math notranslate nohighlight">\(0 = f'(x_n)*(x_{n+1} - x_n) + f(x_n)\)</span> ;)</p>
 </div>
-<p>In short, what you need to do to solve a polynomial specified by <span class="math notranslate nohighlight">\(f(x)\)</span>:
-1. Specify its derivative, <span class="math notranslate nohighlight">\(f'(x)\)</span>
-2. Pick the initial estimate for one root, <span class="math notranslate nohighlight">\(x_0\)</span>
-3. Iterate using Newton-Raphsons’ method until sufficient. Keep track of the relative error, i.e. the difference between the previous estimate and the current estimate. If the absolute value of the relative error falls below 1e-7, consider that the root has been found.</p>
+<p>In short, what you need to do to solve a polynomial specified by <span class="math notranslate nohighlight">\(f(x)\)</span>:</p>
+<ol class="arabic simple">
+<li><p>Specify its derivative, <span class="math notranslate nohighlight">\(f'(x)\)</span></p></li>
+<li><p>Pick the initial estimate for one root, <span class="math notranslate nohighlight">\(x_0\)</span></p></li>
+<li><p>Iterate using Newton-Raphsons’ method until sufficient. Keep track of the relative error, i.e. the difference between the previous estimate and the current estimate. If the absolute value of the relative error falls below 1e-7, consider that the root has been found.</p></li>
+</ol>
 <p>Go ahead and find the roots of the fourth power polynomial <span class="math notranslate nohighlight">\(f(x)=x^4-4x^3-2x^2+12x-3\)</span>. Run this four times to find all four roots, near points -2, 0, 2, 4.</p>
 </div>
 <div class="section" id="exercise-solving-optimization-problems-with-scipy">
@@ -152,10 +154,12 @@
 </div>
 <div class="section" id="part-b">
 <h3>Part B<a class="headerlink" href="#part-b" title="Permalink to this headline">¶</a></h3>
-<p>You have found a new location to sell ice cream that is closer to the city centre.
-* People are more willing to pay for expensive ice cream. The number of customers as a function of price is now <span class="math notranslate nohighlight">\(f(x) = 4000-1000x\)</span>.
-* However, you need to increase the cost of each ice cream cone to RM2.00 to match their tastes!
-* You need to pay RM20.00 in fuel per day to travel to and from the new location.</p>
+<p>You have found a new location to sell ice cream that is closer to the city centre.</p>
+<ul class="simple">
+<li><p>People are more willing to pay for expensive ice cream. The number of customers as a function of price is now <span class="math notranslate nohighlight">\(f(x) = 4000-1000x\)</span>.</p></li>
+<li><p>However, you need to increase the cost of each ice cream cone to RM2.00 to match their tastes!</p></li>
+<li><p>You need to pay RM20.00 in fuel per day to travel to and from the new location.</p></li>
+</ul>
 <p>Given this information, is it worth it to start selling ice cream at the new location? Or will you make more profit by staying at your current location?</p>
 </div>
 </div>
