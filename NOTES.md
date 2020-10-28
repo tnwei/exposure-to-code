@@ -29,3 +29,30 @@ Refer to `environment.yml`
     + This is commented out correctly: .. [ ] Show how above's repeated comparisons can be reduced by using elif
     + But this is not: .. [X] Format of if-else (indent after colon, un-indent to signify end) - add some examples
     + But removing the trailing space after the bracket does: .. [X]Format of if-else (indent after colon, un-indent to signify end) - add some examples
+
+## Repo branches
+
+Each week is developed in its own branch, e.g. `week6` branch for Week 6 content. 
+
+When the content is ready to be shown on Github Pages, each branch is merged to master:
+```
+git checkout master
+git merge week6
+```
+
+Typically a few more changes will need to be pushed to master for final touches before / during / after class. After that, merge the changes from master back to the respective branches, then tag the branches as archives and have them deleted. 
+```
+# Merge changes to week6
+git checkout week6
+git merge master
+
+# Can't delete week6 while it is checked out
+git checkout master
+
+# Tag as "archive/week6"
+git tag archive/week6 week6
+
+# Delete locally and also on origin
+git branch -d week6
+git push -d origin week6
+```
