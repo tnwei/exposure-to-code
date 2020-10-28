@@ -1,10 +1,14 @@
 Week 7 : Numerical methods
 ==========================
 
-Outcome: Students will be shown how code can be use to solve engineering problems via numerical methods.
+Outcome: Students will be shown how code can be used to solve engineering problems via numerical methods.
 
 What we will do:
-.. TODO: Fill in brief contents here when done
+    * Setup check + Intro to numerical methods
+    * Why do we need numerical methods?
+    * Applications of numerical methods
+    * Exercise: Solving roots using Newton-Raphson's method
+    * Exercise: Solving optimization problems with `scipy`
 
 
 Setup check + Intro to numerical methods
@@ -55,10 +59,11 @@ Applications of numerical methods
 
 .. [ ]List example applications here, explain story and impact
 
-Numerical methods has numerous applications in our highly integrated society! For example, it helps solves specific scientific and engineering problems such as prediction of oil production, fluid dynamics, multidimensional root finding, weather prediction, and so much more!
+Numerical methods have numerous applications in our highly integrated society! For example, it helps solve specific scientific and engineering problems such as prediction of oil production, fluid dynamics, multidimensional root finding, weather prediction, and so much more!
 
 For example in one 1989 paper by N Z Sun entitled, "Applications of numerical methods to simulate the movement of contaminants in groundwater", the author used numerical methods to simulate movement of contaminants through the subsurface which helped the author in producing a high quality solution without needing to know the complete picture or to take account of every single variable.
-These specific problems if done via an analytical method would take far too much time for a problem as complex as this.
+
+These specific problems if solved analytically, i.e. by solving them as equations directly, will take far too much time for their scope of complexity.
 
 .. Taylor series expansion?
 .. FFT for signal processing?
@@ -66,16 +71,15 @@ These specific problems if done via an analytical method would take far too much
 .. Anytime we deal with differentiation or integration --> fast solvers
 .. On a large scale: weather prediction
 
-Numerical methods are also employed on a very large scale for modelling weather in meteorology. Numerical methods are heavily featured, especially since many variables need to introduced (velocity, pressure, temprerature, time, position, carbon dioxide, humidity and so on). Many difficult differential equations are needed to solve this to make a mathematical weather model. In recent times however, a plethora of numerical analysis methods are used in atmospheric modeling such as fluid mechanics and numerical solution of differential equations. Localized data is implemented in certain models that are run by parallel supercomputers to aid in this process.
+Numerical methods are also employed on a very large scale for modelling weather in meteorology. Numerical methods are heavily featured, especially since many variables need to be introduced (velocity, pressure, temperature, time, position, carbon dioxide, humidity and so on). Many difficult differential equations are needed to solve this to make a mathematical weather model. In recent times however, a plethora of numerical analysis methods are used in atmospheric modeling such as fluid mechanics and numerical solution of differential equations. Localized data is implemented in certain models that are run by parallel supercomputers to aid in this process.
 
 .. Optimization
 
-Optimazation is also a type of numerical method that particularly helps in allocating resources most efficiently. Businesses uses optimization methods for investment strategies, inventory control among others.
+Optimization is also a type of numerical method that particularly helps in allocating resources most efficiently. Businesses use optimization methods for investment strategies, inventory control among others.
 
+.. Basically anytime we want computers to do math quickly, there are some numerical methods involved. In fact, we have been using them in our past exercises! List the methods used in the past classes so they can be Googled.
 
-.. Basically anytime we want computer to do math quickly, there are some numerical methods involved. In fact, we have been using them in our past exercises! List the methods used in the past classes so they can be Googled.
-
-Numerical methods help a lot whenever we want to calculate something quickly and can accept a tolerable amount of error. Most popular programming languages use numerical methods to achieve certain calculations and models. In fact, Python's libraries such as NumPy and matplotlib uses them too! In a bit, we will be learning a new library called SciPy that also uses numerical methods.
+Numerical methods help a lot whenever we want to calculate something quickly and can accept a tolerable amount of error. Most popular programming languages use numerical methods to achieve certain calculations and models. In fact, Python's libraries such as `numpy` and matplotlib uses them too! In a bit, we will be learning a new library called `scipy` that also uses numerical methods.
 
 
 Exercise: Solving roots using Newton-Raphson's method
