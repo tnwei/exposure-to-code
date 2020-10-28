@@ -6,11 +6,6 @@ Advanced exercises are designed for advanced learners that are ready to take on 
 
 Adv Exercise: Predator-prey relationship
 ------------------------------------------------------
-.. Still needs thinking
+.. [ ]Elaborate on similarity with SIR model, though now modelling two! Diff eqns
+.. [ ]Provide eqn and scenario, tell to model and see how the equilibrium between prey-predator work out. Need to find numbers for this.
 
-Explanation of logic
-^^^^^^^^^^^^^^^^^^^^
-
-
-Instructions
-^^^^^^^^^^^^
