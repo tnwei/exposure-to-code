@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Week 8 : Solving Partial Differential Equations &amp; Modelling Populations &#8212; Exposure to Code 1.0 documentation</title>
+    <title>Week 8 : Differential Equations &amp; Modelling Populations &#8212; Exposure to Code 1.0 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -15,7 +15,9 @@
     <script src="_static/language_data.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Week 8: Advanced Exercises" href="08_pde_populations_EX.html" />
+    <link rel="prev" title="Week 7: Class Exercise solutions" href="07_numerical_methods_sols.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -23,8 +25,14 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="08_pde_populations_EX.html" title="Week 8: Advanced Exercises"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="07_numerical_methods_sols.html" title="Week 7: Class Exercise solutions"
+             accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Exposure to Code 1.0 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Week 8 : Solving Partial Differential Equations &amp; Modelling Populations</a></li> 
+        <li class="nav-item nav-item-this"><a href="">Week 8 : Differential Equations &amp; Modelling Populations</a></li> 
       </ul>
     </div>  
 
@@ -33,28 +41,139 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="week-8-solving-partial-differential-equations-modelling-populations">
-<h1>Week 8 : Solving Partial Differential Equations &amp; Modelling Populations<a class="headerlink" href="#week-8-solving-partial-differential-equations-modelling-populations" title="Permalink to this headline">¶</a></h1>
-<p>Outcome: Students will be shown how coding can be used to solve ordinary differential equations, in this case with applications in epidemiology and ecology. Spend a lot of time on explaining and teaching the concept.</p>
-<dl>
-<dt>What we will do:</dt><dd><blockquote>
-<div><ul class="simple">
-<li><p>Exercise: SIR disease model (explain intervention translating into coeficients)</p></li>
-<li><p>Exercise: Predator-prey relationship</p></li>
-</ul>
-</div></blockquote>
-<ul class="simple">
-<li><p>(Adv Exercise: Combining both!)</p></li>
+  <div class="section" id="week-8-differential-equations-modelling-populations">
+<h1>Week 8 : Differential Equations &amp; Modelling Populations<a class="headerlink" href="#week-8-differential-equations-modelling-populations" title="Permalink to this headline">¶</a></h1>
+<dl class="simple">
+<dt>What we will do:</dt><dd><ul class="simple">
+<li><p>Setup check + Introduction to differential equations</p></li>
+<li><p>Differential equations around us</p></li>
+<li><p>Differential equations in life sciences</p></li>
+<li><p>Exercise: SIR disease model I</p></li>
+<li><p>Exercise: SIR disease model II</p></li>
+<li><p>Exercise: SIR disease model III</p></li>
 </ul>
 </dd>
 </dl>
+<div class="section" id="setup-check-introduction-to-differential-equations">
+<h2>Setup check + Introduction to differential equations<a class="headerlink" href="#setup-check-introduction-to-differential-equations" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="setup-check">
+<h3>Setup check<a class="headerlink" href="#setup-check" title="Permalink to this headline">¶</a></h3>
+<p>If you can run the following code chunk without errors, you are good to go for today!</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="introduction-to-differential-equations">
+<h3>Introduction to differential equations<a class="headerlink" href="#introduction-to-differential-equations" title="Permalink to this headline">¶</a></h3>
+<p>Before we go into differential equations today, we’ll need to first go over the fundamental terms involved.</p>
+<p>Given a function <span class="math notranslate nohighlight">\(y = f(x)\)</span>, we can take the derivative with respect to <span class="math notranslate nohighlight">\(x\)</span> as <span class="math notranslate nohighlight">\(\frac{dy}{dx}\)</span>. Finding the derivative is like finding the slope. With every movement in the variable, we see how the function changes. We call an equation that describes derivatives, a differential equation.</p>
+<p>When the function contains multiple variables, we can measure the rate of change relative to multiple directions. We measure how the function changes with respect to each variable by holding all other variables constant. We use the partial derivative symbol instead of the typical <span class="math notranslate nohighlight">\(\frac{d}{dx}\)</span> to reflect this.</p>
+<p>Example: Given <span class="math notranslate nohighlight">\(f(x, y) = 3x^2 + 9xy + 9y^2\)</span>, the partial derivative with respect to <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> are as below:</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\frac{{\partial}f(x, y)}{{\partial}x} = 6x + 9y + 9y^2\\\frac{{\partial}f(x, y)}{{\partial}y} = 3x^2 + 9x + 18y\end{aligned}\end{align} \]</div>
+<p>Thus, a partial differential equation is an equation made up of partial derivaative expressions. Conversely, if a differential equation does not contain any partial derivatives, we call it an ordinary differential equation. The distinction between both types are important in terms of how they can be solved, but we will leave it to you to go into that detail on your own.</p>
+<p>Differential eqns reflect how quantities vary with respect to each other. Dynamic systems where interdependent processes exist are thus very suitable to be expressed as differential equations, especially natural phenomena.</p>
+<p>Unless we are working with differential equations in a purely mathematical context, they are used to model interdependent processes that cannot be expressed in only one equation. Typically, we end up working with a system of differential equations. Due to the complexity, almost no application of differential equations are solved by hand, instead they are given to computers to be solved efficiently, just like what we covered in last week’s class.</p>
+</div>
+</div>
+<div class="section" id="differential-equations-around-us">
+<h2>Differential equations around us<a class="headerlink" href="#differential-equations-around-us" title="Permalink to this headline">¶</a></h2>
+<dl class="simple">
+<dt>Given that the complexities of dynamic systems, both natural and man-made, can be described  by differential equations:</dt><dd><ul class="simple">
+<li><p>Heat transfer via conduction is a phenomenon that depends on time and position. The rate of change of temperature of an object is proportional to how much warmer or cooler its surroundings are.</p></li>
+<li><p>Fluid dynamics are described by multiple differential equations, relating pressure and flow under various circumstances.</p></li>
+<li><p>Maxwell’s equations in electromagnetism are four differential equations that describe how electric fields and magnetic fields relate to each other over time.</p></li>
+<li><p>Reaction kinetics in chemistry are governed by differential equations, where the rate of reactions depend on the concentration of reactants present</p></li>
+<li><p>The Black-Scholes equation is a differential equation in economics, that allows modelling market dynamics for options trading, which gave rise to derivatives trading.</p></li>
+</ul>
+</dd>
+</dl>
+<p>In the above, we’ve covered applications in engineering, physics, chemistry and economics. We’ve reserved applications in life sciences for its own section.</p>
+</div>
+<div class="section" id="differential-equations-in-life-sciences">
+<h2>Differential equations in life sciences<a class="headerlink" href="#differential-equations-in-life-sciences" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="modelling-populations">
+<h3>Modelling populations<a class="headerlink" href="#modelling-populations" title="Permalink to this headline">¶</a></h3>
+<p>The life sciences also contain dynamic systems where the rate of change is dependent on interacting quantities. The best example is population dynamics, where fundamental factors leading to population growth / decline are modelled and expressed as differential equations.</p>
+<p>One of the simplest models for population growth is the exponential growth model. A population that has a higher birth rate than death rate is projected to grow exponentially, where the rate of change is proportional to the existing population size. This is described by the equation below:</p>
+<div class="math notranslate nohighlight">
+\[\frac{dN}{dt} = rN\]</div>
+<p>In reality, when populations reach a certain size, they will encounter resource limits, where the growth rate of the population will slow down. This limit is called the carrying capacity of the population’s environment. To reflect this effect, the logistic growth model is developed instead, which introduces an extra term that slows down population growth when near the carrying capacity <span class="math notranslate nohighlight">\(K\)</span>, as follows:</p>
+<div class="math notranslate nohighlight">
+\[\frac{dN}{dt} = rN - \frac{rN^{2}}{K}\]</div>
+<p>Population modelling becomes a lot more interesting when we start looking at more than one population. For example, the population of a prey species and predator species can potentially lead to interesting interactions. Under certain conditions, prey-predator relationships can demonstrate cyclic behaviour. An increase in predator population will cause overhunting, leading to the population of prey to decrease. As food availability decreases, the predator population drops as well. Now that predation pressure is less, the prey population thrives and the numbers rise again.</p>
+</div>
+<div class="section" id="modelling-diseases">
+<h3>Modelling diseases<a class="headerlink" href="#modelling-diseases" title="Permalink to this headline">¶</a></h3>
+<p>The spread of infectious diseases in populations can be modelled using mathematical models, under the field of epidemiology. The concept is quite simple; each person in the modelled population will progress through various stages in the disease. These epidemiological models are also called compartmental models.</p>
+<dl class="simple">
+<dt>The simplest model is the SIR model, where people progress from being susceptible (S), to being infected (I), to finally being removed (R). Thus, the population can be divided into various compartments, one for each of the classified stages. The transmission of individuals from compartment to compartment are described using differential equations that best reflect the transmission mechanism:</dt><dd><ul class="simple">
+<li><p>S to I: Susceptible persons are infected by coming into contacted with already infected persons. Thus transmission of S to I is proportional to the headcounts of S * I.</p></li>
+<li><p>I to R: Infected persons are removed from the simulation over time at an average rate. Thus transmission of I to R is proportional to the headcount of I.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Translated into differential equations, the SIR model can be expressed as following:</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\frac{dS}{dt} = - {\beta}IS\\\frac{dI}{dt} = {\beta}IS - {\gamma}I\\\frac{dR}{dt} = {\gamma}I\end{aligned}\end{align} \]</div>
+<p>Where S, I and R stand for the proportion of the population headcount in the respective compartments, and beta and gamma are constants that are specific to the modelled disease. In other words, <span class="math notranslate nohighlight">\(S + I + R = 1\)</span>.</p>
+<p>More complex terms are used when considering factors such as different distinct stages in the disease (e.g. incubation), population birth rates and death rates if the modelling timespan is on a multi-year scale, and also immigration and emigration if movement of persons are incorporated.</p>
+</div>
+</div>
+<div class="section" id="exercise-sir-disease-model-i">
+<h2>Exercise: SIR disease model I<a class="headerlink" href="#exercise-sir-disease-model-i" title="Permalink to this headline">¶</a></h2>
+<p>In this exercise, we will implement the simple SIR model as described above. We will use Euler’s method to integrate the differential equations over time, and plot the results.</p>
+<p>Euler’s method is basically <span class="math notranslate nohighlight">\(y_{n+1} = y_{n} + \frac{dy}{dx} * dt\)</span>.</p>
+<p>1. First we will set up the timesteps. Set <cite>dt</cite> to 1, representing 1 day per timestep. Set <cite>niter</cite> to 60, representing model duration to be 60 days. Then, create the <cite>timesteps</cite> variable for visualization purposes later:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">timesteps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">niter</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Initialize variables <cite>N</cite> as 1e6, <cite>beta</cite> as 1, and gamma as <cite>0.3</cite>.</p></li>
+<li><p>Initialize vectors <cite>S</cite>, <cite>I</cite> and <cite>R</cite> respectively as numpy arrays with <cite>shape=(niter, )</cite>, using <cite>np.zeros</cite>.</p></li>
+<li><p>Assume that initially, 100 people are infected. Update the first values of S and I to reflect this initial condition. Remember that <cite>S</cite> and <cite>I</cite> are both proportions from 0 to 1!</p></li>
+<li><dl class="simple">
+<dt>Loop from 1 to <cite>niter</cite> to implement Euler’s method. In each iteration:</dt><dd><ul class="simple">
+<li><p>Calculate the derivatives as specified above. Use values of <cite>S</cite>, <cite>I</cite> and <cite>R</cite> from the previous timestep.</p></li>
+<li><p>Assign values of <cite>S</cite>, <cite>I</cite> and <cite>R</cite> in the current timestep using the description of Euler’s method above.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Plot <cite>S</cite>, <cite>I</cite> and <cite>R</cite> against <cite>timesteps</cite> using <cite>matplotlib</cite>.</p></li>
+</ol>
+<p>Experiment with different values of initially infected persons, <cite>beta</cite> and <cite>gamma</cite>. What happens when <cite>beta</cite> / <cite>gamma</cite> is larger than 1? Less than 1?</p>
+</div>
+<div class="section" id="exercise-sir-disease-model-ii">
+<h2>Exercise: SIR disease model II<a class="headerlink" href="#exercise-sir-disease-model-ii" title="Permalink to this headline">¶</a></h2>
+<p>We will use the parameters specified above as the base case, and introduce modifications to our model, to visualize the impact of model interventions.</p>
+<ol class="arabic simple">
+<li><p>Create a variable <cite>intervention</cite> and assign it 20.</p></li>
+<li><p>Change <cite>beta</cite> from a constant into an array with length <cite>niter</cite>. Initialize the whole array to have the same value as before, but modify such that after <cite>intervention</cite> steps, the rest of the array have only 0.5 times the value from before.</p></li>
+<li><p>Modify the loop from before, to use the corresponding value of <cite>beta</cite> at every loop iteration, now that <cite>beta</cite> is an array.</p></li>
+<li><p>Modify the value of <cite>intervention</cite> to 10, 15, and 25. What do you see?</p></li>
+<li><p>Modify the multiplier of <cite>beta</cite> from 0.5, to 0.1 and 0.8. Vary the value of <cite>intervention</cite> like before. What do you see?</p></li>
+</ol>
+</div>
+<div class="section" id="exercise-sir-disease-model-iii">
+<h2>Exercise: SIR disease model III<a class="headerlink" href="#exercise-sir-disease-model-iii" title="Permalink to this headline">¶</a></h2>
+<p>Revert to the code used in SIR disease model I, i.e. remove the code introducing interventions. We assume that the disease being modelled has mutated, and now a certain percentage of individuals who have recovered from the disease will become susceptible to the disease again.</p>
+<ol class="arabic simple">
+<li><p>Introduce a variable <cite>recurrence</cite>, which represents avg number of individuals that return to the susceptible compartment, for every person in the removed compartment. Use 0.2 as the value.</p></li>
+<li><p>Implement extra terms in the code to model this new transmission dynamic.</p></li>
+<li><p>Run your code, using different values for <cite>recurrence</cite>. What do you see?</p></li>
+</ol>
+</div>
 <div class="section" id="conclusion">
 <h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
-<p>Message of the day: xxxxxxxxxxxxxxxx</p>
+<p>Today we learnt about differential equations, as well as built a simple epidemiological model for modelling diseases.</p>
 </div>
 <div class="section" id="further-reading">
 <h2>Further reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">¶</a></h2>
-<p>Munz, Philip &amp; Hudea, Ioan &amp; Imad, Joe &amp; Smith, Robert. (2009). When zombies attack!: mathematical modelling of an outbreak of zombie infection</p>
+<p>Munz, Philip &amp; Hudea, Ioan &amp; Imad, Joe &amp; Smith, Robert. (2009). When zombies attack!: mathematical modelling of an outbreak of zombie infection. <a class="reference external" href="https://loe.org/images/content/091023/Zombie%20Publication.pdf">https://loe.org/images/content/091023/Zombie%20Publication.pdf</a></p>
 </div>
 </div>
 
@@ -67,13 +186,33 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Week 8 : Solving Partial Differential Equations &amp; Modelling Populations</a><ul>
+<li><a class="reference internal" href="#">Week 8 : Differential Equations &amp; Modelling Populations</a><ul>
+<li><a class="reference internal" href="#setup-check-introduction-to-differential-equations">Setup check + Introduction to differential equations</a><ul>
+<li><a class="reference internal" href="#setup-check">Setup check</a></li>
+<li><a class="reference internal" href="#introduction-to-differential-equations">Introduction to differential equations</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#differential-equations-around-us">Differential equations around us</a></li>
+<li><a class="reference internal" href="#differential-equations-in-life-sciences">Differential equations in life sciences</a><ul>
+<li><a class="reference internal" href="#modelling-populations">Modelling populations</a></li>
+<li><a class="reference internal" href="#modelling-diseases">Modelling diseases</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#exercise-sir-disease-model-i">Exercise: SIR disease model I</a></li>
+<li><a class="reference internal" href="#exercise-sir-disease-model-ii">Exercise: SIR disease model II</a></li>
+<li><a class="reference internal" href="#exercise-sir-disease-model-iii">Exercise: SIR disease model III</a></li>
 <li><a class="reference internal" href="#conclusion">Conclusion</a></li>
 <li><a class="reference internal" href="#further-reading">Further reading</a></li>
 </ul>
 </li>
 </ul>
 
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="07_numerical_methods_sols.html"
+                        title="previous chapter">Week 7: Class Exercise solutions</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="08_pde_populations_EX.html"
+                        title="next chapter">Week 8: Advanced Exercises</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -101,8 +240,14 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="08_pde_populations_EX.html" title="Week 8: Advanced Exercises"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="07_numerical_methods_sols.html" title="Week 7: Class Exercise solutions"
+             >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Exposure to Code 1.0 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Week 8 : Solving Partial Differential Equations &amp; Modelling Populations</a></li> 
+        <li class="nav-item nav-item-this"><a href="">Week 8 : Differential Equations &amp; Modelling Populations</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
