@@ -36,6 +36,9 @@ Part 1
 
     turtle.done()
 
+.. figure:: images/week9-sol1.jpg
+   :alt: sol1.py output
+
 Part 2
 ^^^^^^
 ::
@@ -86,6 +89,9 @@ Part 2
         draw_circle(x, y, r)
 
     turtle.done()
+
+.. figure:: images/week9-sol2.jpg
+   :alt: sol2.py output
 
 Part 3
 ^^^^^^
@@ -169,6 +175,9 @@ Part 3
         draw_circle(x, y, z)
 
     turtle.done()
+
+.. figure:: images/week9-sol3.jpg
+   :alt: sol3.py output
 
 Part 4
 ^^^^^^
@@ -273,6 +282,9 @@ Part 4
 
     print("Itercount is", str(rejectcounter + len(circles)), "num circles is:", len(circles))
     turtle.done()
+
+.. figure:: images/week9-sol4.jpg
+   :alt: sol4.py output
 
 Part 5
 ^^^^^^
@@ -391,7 +403,7 @@ Part 5
     print("Itercount is", str(rejectcounter + len(circles)), "num circles is:", len(circles))
     turtle.done()
 
-To save your images, add the following code chunk before `turtle.done()`:
+To save your images, add the following code chunk before `turtle.done()`, specifying the filename as required:
 ::
 
     # Added code chunk to save images
@@ -401,3 +413,6 @@ To save your images, add the following code chunk before `turtle.done()`:
     ps = cv.postscript()
     im = Image.open(io.BytesIO(ps.encode("utf-8")))
     im.save("week9-sol1.jpg")
+
+.. figure:: images/week9-sol5.jpg
+   :alt: sol5.py output
