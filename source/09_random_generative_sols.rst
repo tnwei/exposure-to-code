@@ -131,8 +131,8 @@ Part 3
         else:
             return True
 
-    def two_circles_intersect(x1, y1, r1, x2, y2, r2):
-        # Returns True if both circles intersect each other
+    def two_circles_overlap(x1, y1, r1, x2, y2, r2):
+        # Returns True if both circles overlap each other
         center1 = np.array([x1, y1])
         center2 = np.array([x2, y2])
         dist = np.linalg.norm(center2 - center1)
@@ -143,11 +143,11 @@ Part 3
             return False
         
 
-    def check_circle_no_intersect(x, y, r, circles):
-        # Returns True if specified circle does not intersect with any existing circle
+    def check_circle_no_overlap(x, y, r, circles):
+        # Returns True if specified circle does not overlap with any existing circle
         for prevcircle in circles:
             prevx, prevy, prevr = prevcircle[0], prevcircle[1], prevcircle[2]
-            if two_circles_intersect(x, y, r, prevx, prevy, prevr) is True:
+            if two_circles_overlap(x, y, r, prevx, prevy, prevr) is True:
                 return False
         return True
 
@@ -163,13 +163,13 @@ Part 3
             r = np.random.uniform(low=0, high=FRAMERADIUS)
         
             if check_circle_within_frame(x, y, r, FRAMERADIUS) is True:
-                if check_circle_no_intersect(x, y, r, circles) is True:
+                if check_circle_no_overlap(x, y, r, circles) is True:
                     print("X")
                     break
             
             print("O", end="")
 
-        circles.append((x, y, r))
+        circles.append([x, y, r])
 
     for x, y, z in circles:
         draw_circle(x, y, z)
@@ -218,8 +218,8 @@ Part 4
         else:
             return True
 
-    def two_circles_intersect(x1, y1, r1, x2, y2, r2):
-        # Returns True if both circles intersect each other
+    def two_circles_overlap(x1, y1, r1, x2, y2, r2):
+        # Returns True if both circles overlap each other
         center1 = np.array([x1, y1])
         center2 = np.array([x2, y2])
         dist = np.linalg.norm(center2 - center1)
@@ -230,11 +230,11 @@ Part 4
             return False
         
 
-    def check_circle_no_intersect(x, y, r, circles):
-        # Returns True if specified circle does not intersect with any existing circle
+    def check_circle_no_overlap(x, y, r, circles):
+        # Returns True if specified circle does not overlap with any existing circle
         for prevcircle in circles:
             prevx, prevy, prevr = prevcircle[0], prevcircle[1], prevcircle[2]
-            if two_circles_intersect(x, y, r, prevx, prevy, prevr) is True:
+            if two_circles_overlap(x, y, r, prevx, prevy, prevr) is True:
                 return False
         return True
 
@@ -244,20 +244,19 @@ Part 4
     draw_circle(0, 0, FRAMERADIUS)
 
     circles = []
-    itercount = 0
     rlim = FRAMERADIUS
     avgrejects = 0
     pastrejectcounter = 0
     rejectcounter = 0
 
     for i in range(200):
-        while itercount <= MAXITER:
+        while rejectcounter + len(circles) <= MAXITER:
             x = np.random.uniform(low=-FRAMERADIUS, high=FRAMERADIUS)
             y = np.random.uniform(low=-FRAMERADIUS, high=FRAMERADIUS)
             r = np.random.uniform(low=0, high=rlim)
         
             if check_circle_within_frame(x, y, r, FRAMERADIUS) is True:
-                if check_circle_no_intersect(x, y, r, circles) is True:
+                if check_circle_no_overlap(x, y, r, circles) is True:
                     print("X")
                     break
             
@@ -275,7 +274,7 @@ Part 4
             print("New increased rlim:", rlim)
             
 
-        circles.append((x, y, r))
+        circles.append([x, y, r])
 
     for x, y, z in circles:
         draw_circle(x, y, z)
@@ -324,8 +323,8 @@ Part 5
         else:
             return True
 
-    def two_circles_intersect(x1, y1, r1, x2, y2, r2):
-        # Returns True if both circles intersect each other
+    def two_circles_overlap(x1, y1, r1, x2, y2, r2):
+        # Returns True if both circles overlap each other
         center1 = np.array([x1, y1])
         center2 = np.array([x2, y2])
         dist = np.linalg.norm(center2 - center1)
@@ -336,11 +335,11 @@ Part 5
             return False
         
 
-    def check_circle_no_intersect(x, y, r, circles):
-        # Returns True if specified circle does not intersect with any existing circle
+    def check_circle_no_overlap(x, y, r, circles):
+        # Returns True if specified circle does not overlap with any existing circle
         for prevcircle in circles:
             prevx, prevy, prevr = prevcircle[0], prevcircle[1], prevcircle[2]
-            if two_circles_intersect(x, y, r, prevx, prevy, prevr) is True:
+            if two_circles_overlap(x, y, r, prevx, prevy, prevr) is True:
                 return False
         return True
 
@@ -377,7 +376,7 @@ Part 5
             r = np.random.uniform(low=0, high=rlim)
         
             if check_circle_within_frame(x, y, r, FRAMERADIUS) is True:
-                if check_circle_no_intersect(x, y, r, circles) is True:
+                if check_circle_no_overlap(x, y, r, circles) is True:
                     print("X")
                     break
             
@@ -395,7 +394,7 @@ Part 5
             print("New increased rlim:", rlim)
             
 
-        circles.append((x, y, r))
+        circles.append([x, y, r])
 
     for x, y, z in circles:
         draw_circle(x, y, z)
