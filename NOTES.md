@@ -51,8 +51,9 @@ git merge master
 # Can't delete week6 while it is checked out
 git checkout master
 
-# Tag as "archive/week6"
+# Tag as "archive/week6", and push
 git tag archive/week6 week6
+git push origin archive/week6
 
 # Delete locally and also on origin
 git branch -d week6
