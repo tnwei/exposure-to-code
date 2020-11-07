@@ -4,8 +4,12 @@ Week 9 : Randomness and Generative art
 Outcome: Students will learn about random numbers in computing, and learn about its relationship with a rather niche application of coding, generative art.
 
 What we will do:
-
-.. TODO:Need to fill this in!
+    * Setup check + intro to randomness
+    * Why do we need randomness in computing?
+    * Randomness using `numpy.random`
+    * Generative art with code
+    * Primer on `turtle` graphics library
+    * Exercise: Circle packing generative art
 
 Setup check + intro to randomness
 ---------------------------------
@@ -13,17 +17,46 @@ Setup check + intro to randomness
 .. Estimated time: 5 mins
 .. Instructor notes: 
 
+Setup check
+^^^^^^^^^^^
+If you can run the following code chunk, you are good to go!
+::
+
+    import numpy
+    import turtle
+    import PIL
+
+Intro to randomness
+^^^^^^^^^^^^^^^^^^^
+.. [ ]What it is
+
+Why do we need randomness in computing?
+---------------------------------------
+.. Section objective: 
+.. Estimated time: 10 mins
+.. Instructor notes: 
+
+.. [ ]Randomness for cryptographic security
+.. [ ]Randomness as part of statistical computing
+
 Randomness using `numpy.random`
 -------------------------------
 .. Section objective: 
 .. Estimated time: 15 mins
 .. Instructor notes: 
 
-Generative Art with code
+.. [ ]Explain np.random.uniform, np.random.normal
+.. [ ]Little exercise to program your own pair of dice
+
+Generative art with code
 ------------------------
 .. Section objective: 
-.. Estimated time: 15 mins
+.. Estimated time: 10 mins
 .. Instructor notes: 
+
+.. [ ]Brief history and background of generative art. Esp on its emergence w/ computers to piece together novel arrangements
+.. [ ]Show some examples: Brian Eno's generative music
+.. [ ]Show some visual examples online, generated w/ math
 
 Primer on `turtle` graphics library
 -----------------------------------
@@ -78,7 +111,6 @@ We will tackle these individual components in subsequent parts.
 
 Part 1
 ^^^^^^
-
 
 1. Set up your code as below. With this, we initialize the turtle sprite, and also the screen object the turtle will be working on. As we move ahead, make sure that `turtle.done()` is the last line of code.
 ::
@@ -227,7 +259,7 @@ Thus far, we have the code configured to generate a certain number of circles. T
     im = Image.open(io.BytesIO(ps.encode("utf-8")))
     im.save("week9-circle-packing.jpg")
 
-Increase MAXITER and let the code run. 
+Increase MAXITER and let the code run. Note that there is a lot of room for further customization in this code, e.g. adding colour, controlling the size evolution of the circles, using other shapes for the frame etc.
 
 Conclusion
 ----------
@@ -235,7 +267,10 @@ Conclusion
 .. Estimated time: 5 mins
 .. Instructor notes: 
 
-Message of the day: xxxxxxxxxxxxxxxx
+In this class we learnt about:
+    * randomness in computing, its applications, and how to use it in Python
+    * how code can be used to generate art
+    * making some generative art of our own!
 
 Further reading
 ---------------
