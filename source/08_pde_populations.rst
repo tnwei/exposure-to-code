@@ -50,7 +50,7 @@ Example: Given :math:`f(x, y) = 3x^2 + 9xy + 9y^2`, the partial derivative with 
 
 	\frac{{\partial}f(x, y)}{{\partial}y} = 3x^2 + 9x + 18y
 
-Thus, a partial differential equation is an equation made up of partial derivaative expressions. Conversely, if a differential equation does not contain any partial derivatives, we call it an ordinary differential equation. The distinction between both types are important in terms of how they can be solved, but we will leave it to you to go into that detail on your own. 
+Thus, a partial differential equation is an equation made up of partial derivative expressions. Conversely, if a differential equation does not contain any partial derivatives, we call it an ordinary differential equation. The distinction between both types are important in terms of how they can be solved, but we will leave it to you to go into that detail on your own. 
 
 .. [X]Talk about PDEs being a large part of natural phenomena, represents anything with interdependencies
 .. [X]Talk about how we solve them due to complexity: numerical integration (remember last week's class?)
