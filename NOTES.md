@@ -34,7 +34,15 @@ Given that github.io renders all pages in `docs/`, none of the generated pages a
 
 ## Repo branches
 
-Each week is developed in its own branch, e.g. `week6` branch for Week 6 content. 
+Each week is developed in its own branch, e.g. `week6` branch for Week 6 content. A new branch for each week needs to be created from existing branches or from an existing remote branch, as so:
+
+```
+# Create branch from master
+git checkout -b week6 master
+
+# Create branch from remote
+git checkout -b week6 origin/test
+```
 
 When the content is ready to be shown on Github Pages, each branch is merged to master:
 ```
