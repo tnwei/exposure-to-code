@@ -15,7 +15,8 @@
     <script src="_static/language_data.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Week 9 : Randomness and Generative art" href="09_random_generative.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -23,6 +24,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="09_random_generative.html" title="Week 9 : Randomness and Generative art"
+             accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Exposure to Code 1.0 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Week 9: Class Exercise solutions</a></li> 
       </ul>
@@ -43,10 +47,6 @@
 
 <span class="n">t</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="p">()</span>
 <span class="n">screen</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Screen</span><span class="p">()</span>
-
-<span class="c1"># Draw faster</span>
-<span class="n">screen</span><span class="o">.</span><span class="n">delay</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">t</span><span class="o">.</span><span class="n">speed</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 
 <span class="n">t</span><span class="o">.</span><span class="n">penup</span><span class="p">()</span>
 <span class="n">t</span><span class="o">.</span><span class="n">setposition</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1"># Set to East</span>
@@ -398,9 +398,9 @@
 
 <span class="k">while</span> <span class="n">calc_packing_efficiency</span><span class="p">(</span><span class="n">circles</span><span class="p">,</span> <span class="n">FRAMEAREA</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mf">0.8</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">rejectcounter</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">circles</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">MAXITER</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Max iterations reached at </span><span class="si">{</span><span class="n">MAXITER</span><span class="si">}</span><span class="s2">!&quot;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Final packing efficiency is </span><span class="si">{</span><span class="n">calc_packing_efficiency</span><span class="p">(</span><span class="n">circles</span><span class="p">,</span> <span class="n">FRAMEAREA</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-            <span class="k">break</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Max iterations reached at </span><span class="si">{</span><span class="n">MAXITER</span><span class="si">}</span><span class="s2">!&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Final packing efficiency is </span><span class="si">{</span><span class="n">calc_packing_efficiency</span><span class="p">(</span><span class="n">circles</span><span class="p">,</span> <span class="n">FRAMEAREA</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">break</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">low</span><span class="o">=-</span><span class="n">FRAMERADIUS</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="n">FRAMERADIUS</span><span class="p">)</span>
         <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">low</span><span class="o">=-</span><span class="n">FRAMERADIUS</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="n">FRAMERADIUS</span><span class="p">)</span>
@@ -473,6 +473,9 @@
 </li>
 </ul>
 
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="09_random_generative.html"
+                        title="previous chapter">Week 9 : Randomness and Generative art</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -500,6 +503,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="09_random_generative.html" title="Week 9 : Randomness and Generative art"
+             >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Exposure to Code 1.0 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Week 9: Class Exercise solutions</a></li> 
       </ul>

@@ -46,7 +46,7 @@ Contents
    08_pde_populations_EX.rst
    08_pde_populations_sols.rst
    09_random_generative.rst
-   .. 09_random_generative_sols.rst
+   09_random_generative_sols.rst
    .. 10_capstone.rst
 
 .. Indices and tables

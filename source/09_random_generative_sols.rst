@@ -365,7 +365,7 @@ Part 5
         if rejectcounter + len(circles) >= MAXITER:
             print(f"Max iterations reached at {MAXITER}!")
             print(f"Final packing efficiency is {calc_packing_efficiency(circles, FRAMEAREA):.3f}")
-                break
+            break
         while True:
             x = np.random.uniform(low=-FRAMERADIUS, high=FRAMERADIUS)
             y = np.random.uniform(low=-FRAMERADIUS, high=FRAMERADIUS)

@@ -154,7 +154,7 @@ The following is how you initialize a `turtle` drawing:
 From the code above, we now have a turtle sprite assigned to variable `t`. The variable `screen` contains the screen object that we will barely touch, except to tweak some settings.
 
 The sprite, `t` can do quite a few things.
-    * `t.penup()` and `t.pendown()` tells the sprite to lift / lower its pen. If the pen is lowered, the sprite will leave a line behind its path as it moves.
+    * `t.penup()` and `t.pendown()` tells the sprite to lift / lower its pen. If the pen is lowered, the sprite will leave a line behind its path as it moves. Note that the pen is lowered by default.
     * `t.forward(40)` and `t.backward(20)` will move the sprite 40 units forward, and 20 units backward respectively.
     * `t.left(90)` and `t.right(180)` will rotate the sprite left by 90 degrees and right by 180 degrees respectively. The sprite cannot side step, only rotate.
     * What this means is that the sprite has an orientation! `t.setheading(45)` will directly set the sprite to look at the 45 degree direction. `turtle` uses East as 0, and increases anti-clockwise, which is the same convention used in mathematics.
@@ -173,7 +173,7 @@ In this exercise, we will harness randomness to make generative art, by packing 
 .. figure:: images/week9-sol5.jpg
    :alt: sol5.py output
 
-Logically, the steps are quite simple to. First, a large circle needs to be drawn as the frame. Next, a small randomly generated circle is drawn within the frame. If the circle is both (i) within the frame, and (ii) does not overlap with any other existing circles, the circle is kept. Else, the circle is regenerated. More circles are generated following these rules until sufficient.
+Logically, the steps are quite simple. First, a large circle needs to be drawn as the frame. Next, a small randomly generated circle is drawn within the frame. If the circle is both (i) within the frame, and (ii) does not overlap with any other existing circles, the circle is kept. Else, the circle is regenerated. More circles are generated following these rules until sufficient.
 
 At this point in time, we can tell that the steps we need to do are:
     1. Write a function to draw circles.
@@ -216,14 +216,14 @@ Part 2
 ^^^^^^
 In this part, we will focus on generating random circles. Circles that fit within the frame's boundaries will be drawn.
 
-1. Write the function, `check_circle_within_frame`, which takes `x`, `y`, `r` and `fr` as input. `x` and `y` are the location of the circle, `r` is the radius of the circle, and `fr` is the radius of the frame.
-
 A circle is within the boundaries of the frame if the distance between origin and the farthest point on the circle from origin, is less than the distance between origin and the radius of the frame. In simple words, refer to the diagram below:
 
 .. figure:: images/week9-fig1.jpg
    :alt: Figure 1: How to determine if a circle is within the frame
 
 We can construct line to the farthest point using the two known points: origin itself and the center of the circle. Extending this line by `r`, radius of the circle will give us the location of the farthest point. Then, we just need to compare this line against the radius of the frame to find out if it is within the frame or not.
+
+1. Write the function, `check_circle_within_frame`, which takes `x`, `y`, `r` and `fr` as input. `x` and `y` are the location of the circle, `r` is the radius of the circle, and `fr` is the radius of the frame.
 
     * Create a vector, (x, y) using `numpy`.
     * Obtain the vector's direction by calculating the unit vector. This can be done by dividing it by the vector's norm (i.e. length), which can be calculated using `np.linalg.norm()`
@@ -252,12 +252,12 @@ Part 3
 ^^^^^^
 After having a rudimentary circle generator, we will focus on checking for overlapping circles.
 
-1. Write the function, `two_circles_overlap`. It should receive `x`, `y` and radius of two circles as input.
-
 Any point of a circle is equidistant from its center. Thus, if the distance between the centre of two circles are greater than the sum of their radius, then both circles do not overlap with each other.
 
 .. figure:: images/week9-fig2.jpg
    :alt: Figure 2: How to determine if two circles overlap
+
+1. Write the function, `two_circles_overlap`. It should receive `x`, `y` and radius of two circles as input.
 
     * Find the distance between the center of both circles. Use `np.linalg.norm()` like before.
     * If the distance is less than or equal to the sum of both circle's radii, return True to indicate no overlap. Else, return False.
@@ -314,6 +314,9 @@ Part 5
 Thus far, we have the code configured to generate a certain number of circles. To max out the number of circles in the frame, we can of course specify an arbitrarily high number, increase max iterations and let it run. In this section, we will do better and be more precise, by quantifying the white space occupied in the frame, and generate circles until enough white space is occupied.
 
 1. Write the function `calc_packing_efficiency`, that takes `circles` and `framearea` as input. `circles` is the list of circles as before, while `framearea` is the area of the circular frame.
+
+.. note ::
+    The :math:`\pi` constant is available in `numpy`! Use `np.pi * r ** 2` to calculate area for a circle with radius `r`.
 
     * In the function, calculate and sum the area for all circles in `circles`. Divide it by the area of the frame to obtain packing efficiency.
     * Since area of frame is constant, calculate it once in the `## Init` block, and pass the constant to the function.

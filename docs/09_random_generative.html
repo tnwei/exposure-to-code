@@ -16,6 +16,7 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Week 9: Class Exercise solutions" href="09_random_generative_sols.html" />
     <link rel="prev" title="Week 8: Class Exercise solutions" href="08_pde_populations_sols.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
@@ -24,6 +25,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="09_random_generative_sols.html" title="Week 9: Class Exercise solutions"
+             accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="08_pde_populations_sols.html" title="Week 8: Class Exercise solutions"
              accesskey="P">previous</a> |</li>
@@ -139,7 +143,7 @@
 <p>From the code above, we now have a turtle sprite assigned to variable <cite>t</cite>. The variable <cite>screen</cite> contains the screen object that we will barely touch, except to tweak some settings.</p>
 <dl class="simple">
 <dt>The sprite, <cite>t</cite> can do quite a few things.</dt><dd><ul class="simple">
-<li><p><cite>t.penup()</cite> and <cite>t.pendown()</cite> tells the sprite to lift / lower its pen. If the pen is lowered, the sprite will leave a line behind its path as it moves.</p></li>
+<li><p><cite>t.penup()</cite> and <cite>t.pendown()</cite> tells the sprite to lift / lower its pen. If the pen is lowered, the sprite will leave a line behind its path as it moves. Note that the pen is lowered by default.</p></li>
 <li><p><cite>t.forward(40)</cite> and <cite>t.backward(20)</cite> will move the sprite 40 units forward, and 20 units backward respectively.</p></li>
 <li><p><cite>t.left(90)</cite> and <cite>t.right(180)</cite> will rotate the sprite left by 90 degrees and right by 180 degrees respectively. The sprite cannot side step, only rotate.</p></li>
 <li><p>What this means is that the sprite has an orientation! <cite>t.setheading(45)</cite> will directly set the sprite to look at the 45 degree direction. <cite>turtle</cite> uses East as 0, and increases anti-clockwise, which is the same convention used in mathematics.</p></li>
@@ -155,7 +159,7 @@
 <div class="figure align-default">
 <img alt="sol5.py output" src="_images/week9-sol5.jpg" />
 </div>
-<p>Logically, the steps are quite simple to. First, a large circle needs to be drawn as the frame. Next, a small randomly generated circle is drawn within the frame. If the circle is both (i) within the frame, and (ii) does not overlap with any other existing circles, the circle is kept. Else, the circle is regenerated. More circles are generated following these rules until sufficient.</p>
+<p>Logically, the steps are quite simple. First, a large circle needs to be drawn as the frame. Next, a small randomly generated circle is drawn within the frame. If the circle is both (i) within the frame, and (ii) does not overlap with any other existing circles, the circle is kept. Else, the circle is regenerated. More circles are generated following these rules until sufficient.</p>
 <dl class="simple">
 <dt>At this point in time, we can tell that the steps we need to do are:</dt><dd><ol class="arabic simple">
 <li><p>Write a function to draw circles.</p></li>
@@ -201,14 +205,13 @@
 <div class="section" id="part-2">
 <h3>Part 2<a class="headerlink" href="#part-2" title="Permalink to this headline">¶</a></h3>
 <p>In this part, we will focus on generating random circles. Circles that fit within the frame’s boundaries will be drawn.</p>
-<ol class="arabic simple">
-<li><p>Write the function, <cite>check_circle_within_frame</cite>, which takes <cite>x</cite>, <cite>y</cite>, <cite>r</cite> and <cite>fr</cite> as input. <cite>x</cite> and <cite>y</cite> are the location of the circle, <cite>r</cite> is the radius of the circle, and <cite>fr</cite> is the radius of the frame.</p></li>
-</ol>
 <p>A circle is within the boundaries of the frame if the distance between origin and the farthest point on the circle from origin, is less than the distance between origin and the radius of the frame. In simple words, refer to the diagram below:</p>
 <div class="figure align-default">
 <img alt="Figure 1: How to determine if a circle is within the frame" src="_images/week9-fig1.jpg" />
 </div>
 <p>We can construct line to the farthest point using the two known points: origin itself and the center of the circle. Extending this line by <cite>r</cite>, radius of the circle will give us the location of the farthest point. Then, we just need to compare this line against the radius of the frame to find out if it is within the frame or not.</p>
+<ol class="arabic">
+<li><p>Write the function, <cite>check_circle_within_frame</cite>, which takes <cite>x</cite>, <cite>y</cite>, <cite>r</cite> and <cite>fr</cite> as input. <cite>x</cite> and <cite>y</cite> are the location of the circle, <cite>r</cite> is the radius of the circle, and <cite>fr</cite> is the radius of the frame.</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>Create a vector, (x, y) using <cite>numpy</cite>.</p></li>
@@ -217,7 +220,7 @@
 <li><p>If the vector is greater than the frame radius, return False. Else, return True.</p></li>
 </ul>
 </div></blockquote>
-<ol class="arabic" start="2">
+</li>
 <li><p>With <cite>check_circle_within_frame</cite> in place, we can start implementing the logic to draw circles.</p>
 <blockquote>
 <div><ul class="simple">
@@ -246,14 +249,19 @@
 <div class="section" id="part-3">
 <h3>Part 3<a class="headerlink" href="#part-3" title="Permalink to this headline">¶</a></h3>
 <p>After having a rudimentary circle generator, we will focus on checking for overlapping circles.</p>
-<ol class="arabic simple">
-<li><p>Write the function, <cite>two_circles_overlap</cite>. It should receive <cite>x</cite>, <cite>y</cite> and radius of two circles as input.</p></li>
-</ol>
 <p>Any point of a circle is equidistant from its center. Thus, if the distance between the centre of two circles are greater than the sum of their radius, then both circles do not overlap with each other.</p>
 <div class="figure align-default">
 <img alt="Figure 2: How to determine if two circles overlap" src="_images/week9-fig2.jpg" />
 </div>
-<ol class="arabic" start="2">
+<ol class="arabic">
+<li><p>Write the function, <cite>two_circles_overlap</cite>. It should receive <cite>x</cite>, <cite>y</cite> and radius of two circles as input.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Find the distance between the center of both circles. Use <cite>np.linalg.norm()</cite> like before.</p></li>
+<li><p>If the distance is less than or equal to the sum of both circle’s radii, return True to indicate no overlap. Else, return False.</p></li>
+</ul>
+</div></blockquote>
+</li>
 <li><p>After writing a function to compare two circles, write another function to compare one circle to all other circles in a list.</p>
 <blockquote>
 <div><ul class="simple">
@@ -315,16 +323,19 @@
 <div class="section" id="part-5">
 <h3>Part 5<a class="headerlink" href="#part-5" title="Permalink to this headline">¶</a></h3>
 <p>Thus far, we have the code configured to generate a certain number of circles. To max out the number of circles in the frame, we can of course specify an arbitrarily high number, increase max iterations and let it run. In this section, we will do better and be more precise, by quantifying the white space occupied in the frame, and generate circles until enough white space is occupied.</p>
-<ol class="arabic">
-<li><p>Write the function <cite>calc_packing_efficiency</cite>, that takes <cite>circles</cite> and <cite>framearea</cite> as input. <cite>circles</cite> is the list of circles as before, while <cite>framearea</cite> is the area of the circular frame.</p>
-<blockquote>
-<div><ul class="simple">
+<ol class="arabic simple">
+<li><p>Write the function <cite>calc_packing_efficiency</cite>, that takes <cite>circles</cite> and <cite>framearea</cite> as input. <cite>circles</cite> is the list of circles as before, while <cite>framearea</cite> is the area of the circular frame.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <span class="math notranslate nohighlight">\(\pi\)</span> constant is available in <cite>numpy</cite>! Use <cite>np.pi * r ** 2</cite> to calculate area for a circle with radius <cite>r</cite>.</p>
+<ul class="simple">
 <li><p>In the function, calculate and sum the area for all circles in <cite>circles</cite>. Divide it by the area of the frame to obtain packing efficiency.</p></li>
 <li><p>Since area of frame is constant, calculate it once in the <cite>## Init</cite> block, and pass the constant to the function.</p></li>
 <li><p>Before returning, have the function print the sum of area of all circles, the area of the frame, as well as the packing efficiency. This will give a good indication of progress in the terminal.</p></li>
 </ul>
-</div></blockquote>
-</li>
+</div>
+<ol class="arabic" start="2">
 <li><p>Modify the logic to use packing efficiency as the loop condition.</p>
 <blockquote>
 <div><ul class="simple">
@@ -412,6 +423,9 @@
   <h4>Previous topic</h4>
   <p class="topless"><a href="08_pde_populations_sols.html"
                         title="previous chapter">Week 8: Class Exercise solutions</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="09_random_generative_sols.html"
+                        title="next chapter">Week 9: Class Exercise solutions</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -439,6 +453,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="09_random_generative_sols.html" title="Week 9: Class Exercise solutions"
+             >next</a> |</li>
         <li class="right" >
           <a href="08_pde_populations_sols.html" title="Week 8: Class Exercise solutions"
              >previous</a> |</li>
