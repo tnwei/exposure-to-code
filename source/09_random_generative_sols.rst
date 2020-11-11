@@ -12,10 +12,6 @@ Part 1
     t = turtle.Turtle()
     screen = turtle.Screen()
 
-    # Draw faster
-    screen.delay(1)
-    t.speed(10)
-
     t.penup()
     t.setposition(300, 0) # Set to East
     t.setheading(90) # Set to North
@@ -367,8 +363,8 @@ Part 5
 
     while calc_packing_efficiency(circles, FRAMEAREA) <= 0.8:
         if rejectcounter + len(circles) >= MAXITER:
-                print(f"Max iterations reached at {MAXITER}!")
-                print(f"Final packing efficiency is {calc_packing_efficiency(circles, FRAMEAREA):.3f}")
+            print(f"Max iterations reached at {MAXITER}!")
+            print(f"Final packing efficiency is {calc_packing_efficiency(circles, FRAMEAREA):.3f}")
                 break
         while True:
             x = np.random.uniform(low=-FRAMERADIUS, high=FRAMERADIUS)
