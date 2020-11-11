@@ -188,7 +188,6 @@ Take some time to understand the printed output. What is the optimal price, and 
 Part B
 ^^^^^^
 You have found a new location to sell ice cream that is closer to the city centre.
-
 * People are more willing to pay for expensive ice cream. The number of customers as a function of price is now :math:`f(x) = 4000-1000x`.
 * However, you need to increase the cost of each ice cream cone to RM2.00 to match their tastes!
 * You need to pay RM20.00 in fuel per day to travel to and from the new location.
