@@ -62,6 +62,9 @@ git checkout master
 # Tag as "archive/week6"
 git tag archive/week6 week6
 
+# Push the tag to github
+git push origin archive/week9
+
 # Delete locally and also on origin
 git branch -d week6
 git push -d origin week6
