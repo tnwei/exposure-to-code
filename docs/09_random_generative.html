@@ -205,7 +205,9 @@
 <li><p>Write the function, <cite>check_circle_within_frame</cite>, which takes <cite>x</cite>, <cite>y</cite>, <cite>r</cite> and <cite>fr</cite> as input. <cite>x</cite> and <cite>y</cite> are the location of the circle, <cite>r</cite> is the radius of the circle, and <cite>fr</cite> is the radius of the frame.</p></li>
 </ol>
 <p>A circle is within the boundaries of the frame if the distance between origin and the farthest point on the circle from origin, is less than the distance between origin and the radius of the frame. In simple words, refer to the diagram below:</p>
-<p>TODO:Insert diagram</p>
+<div class="figure align-default">
+<img alt="Figure 1: How to determine if a circle is within the frame" src="_images/week9-fig1.jpg" />
+</div>
 <p>We can construct line to the farthest point using the two known points: origin itself and the center of the circle. Extending this line by <cite>r</cite>, radius of the circle will give us the location of the farthest point. Then, we just need to compare this line against the radius of the frame to find out if it is within the frame or not.</p>
 <blockquote>
 <div><ul class="simple">
@@ -247,14 +249,10 @@
 <ol class="arabic simple">
 <li><p>Write the function, <cite>two_circles_overlap</cite>. It should receive <cite>x</cite>, <cite>y</cite> and radius of two circles as input.</p></li>
 </ol>
-<p>Any point of a circle is equidistant from its center. Thus, if the distance between two circles are greater than the sum of their radius, then both circles are not overlapped with each other.</p>
-<p>TODO: Insert diagram.</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>Find the distance between the center of both circles. Use <cite>np.linalg.norm()</cite> like before.</p></li>
-<li><p>If the distance is less than or equal to the sum of both circle’s radii, return True to indicate no overlap. Else, return False.</p></li>
-</ul>
-</div></blockquote>
+<p>Any point of a circle is equidistant from its center. Thus, if the distance between the centre of two circles are greater than the sum of their radius, then both circles do not overlap with each other.</p>
+<div class="figure align-default">
+<img alt="Figure 2: How to determine if two circles overlap" src="_images/week9-fig2.jpg" />
+</div>
 <ol class="arabic" start="2">
 <li><p>After writing a function to compare two circles, write another function to compare one circle to all other circles in a list.</p>
 <blockquote>

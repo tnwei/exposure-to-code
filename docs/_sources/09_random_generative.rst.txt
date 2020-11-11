@@ -220,7 +220,8 @@ In this part, we will focus on generating random circles. Circles that fit withi
 
 A circle is within the boundaries of the frame if the distance between origin and the farthest point on the circle from origin, is less than the distance between origin and the radius of the frame. In simple words, refer to the diagram below:
 
-TODO:Insert diagram
+.. figure:: images/week9-fig1.jpg
+   :alt: Figure 1: How to determine if a circle is within the frame
 
 We can construct line to the farthest point using the two known points: origin itself and the center of the circle. Extending this line by `r`, radius of the circle will give us the location of the farthest point. Then, we just need to compare this line against the radius of the frame to find out if it is within the frame or not.
 
@@ -253,9 +254,10 @@ After having a rudimentary circle generator, we will focus on checking for overl
 
 1. Write the function, `two_circles_overlap`. It should receive `x`, `y` and radius of two circles as input.
 
-Any point of a circle is equidistant from its center. Thus, if the distance between two circles are greater than the sum of their radius, then both circles are not overlapped with each other.
+Any point of a circle is equidistant from its center. Thus, if the distance between the centre of two circles are greater than the sum of their radius, then both circles do not overlap with each other.
 
-TODO: Insert diagram.
+.. figure:: images/week9-fig2.jpg
+   :alt: Figure 2: How to determine if two circles overlap
 
     * Find the distance between the center of both circles. Use `np.linalg.norm()` like before.
     * If the distance is less than or equal to the sum of both circle's radii, return True to indicate no overlap. Else, return False.
