@@ -36,23 +36,107 @@
   <div class="section" id="week-7-numerical-methods">
 <h1>Week 7 : Numerical methods<a class="headerlink" href="#week-7-numerical-methods" title="Permalink to this headline">¶</a></h1>
 <p>Outcome: Students will be shown how code can be use to solve engineering problems via numerical methods.</p>
-<dl class="simple">
-<dt>What we will do:</dt><dd><ul class="simple">
+<p>What we will do:
+.. TODO: Fill in brief contents here when done</p>
+<div class="section" id="setup-check-intro-to-numerical-methods">
+<h2>Setup check + Intro to numerical methods<a class="headerlink" href="#setup-check-intro-to-numerical-methods" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="setup-check">
+<h3>Setup check<a class="headerlink" href="#setup-check" title="Permalink to this headline">¶</a></h3>
+<p>If you can run the following code chunk without errors, you are good to go for today!</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scipy</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="what-are-numerical-methods">
+<h3>What are numerical methods?<a class="headerlink" href="#what-are-numerical-methods" title="Permalink to this headline">¶</a></h3>
+<p>Numerical methods are algorithms that approximate mathematical calculations, often for practical purposes. Do you recall how we calculated the values for the Lorenz equation last week, given the formulas for the rates of change? We would have had to jump through hoops to perform some non-trivial mathematical integration, but by utilizing numerical methods, we were able to solve it simply with code.</p>
+<p>In short, numerical methods are techniques / algorithms that we can use to obtain approximate answers to mathematical questions.</p>
+</div>
+</div>
+<div class="section" id="why-do-we-need-numerical-methods">
+<h2>Why do we need numerical methods?<a class="headerlink" href="#why-do-we-need-numerical-methods" title="Permalink to this headline">¶</a></h2>
+<p>Mathematics has proved very useful in describing the world around us. Many phenomena and processes in the world can be described using mathematical equations! However, these equations are not always practical to solve due to complexity. Thus, instead of solving them and obtaining the mathematically correct answer (i.e. obtaining the analytical solution), we do the next best thing instead: arrive at an answer that is close enough. We use algorithms that require far less time to arrive at the approximated solution instead of performing rigorous mathematical evaluation. Oftenly the results are well enough within established tolerances, that we can trust and use them as if we have properly solved the equation.</p>
+<p>Thanks to the advent of computers and coding, numerical methods perform better and better in getting us close enough to the answer. So much so, that it plays foundational roles in the world around us. Let’s take a look at a few example applications.</p>
+</div>
+<div class="section" id="applications-of-numerical-methods">
+<h2>Applications of numerical methods<a class="headerlink" href="#applications-of-numerical-methods" title="Permalink to this headline">¶</a></h2>
+<p>Numerical methods has had numerous applications in our highly integrated society! For example, it helps solves specific scientific and engineering problems such as prediction of oil production, fluid dynamics, multidimensional root finding, weather prediction, and so much more!
+For example in one 1989 paper by N Z Sun entitled, “Applications of numerical methods to simulate the movement of contaminants in groundwater”, the author used numerical methods to stimulate movement of contaminants through the subsurface which helped the author in producing a high quality solution without needing to know the complete picture or to take account of every single variable.
+These specific problems if done via an analytical method would take far too much time for a problem as complex as this.</p>
+<p>On a very large scale, numerical methods is used especially since many variables need to introduced (velocity, pressure, temprerature, time, position, carbon dioxide, humidity and so on). Many difficult differential equations are needed to solve this to make a mathematical weather model. In recent times however, a plethora of numerical analysis methods are used in atmospheric modeling such as fluid mechanics and numerical solution of differential equations. Localized data is implemented in certain models that are run by parallel supercomputers to aid in this process.</p>
+<p>Optimazation is also a type of numerical method that particularly helps in allocating resources most efficiently. Businesses uses optimization methods for investment strategies, inventory control among others.</p>
+<p>Numerical methods help a lot whenever we want to calculate something quickly and can accept a tolerable amount of error. Most popular programming languages use numerical methods to achieve certain calculations and models. In fact, Python’s libraries such as NumPy and matplotlib uses them too! We will be learning a new library called SciPy that also uses numerical methods.</p>
+</div>
+<div class="section" id="exercise-solving-roots-using-newton-raphson-s-method">
+<h2>Exercise: Solving roots using Newton-Raphson’s method<a class="headerlink" href="#exercise-solving-roots-using-newton-raphson-s-method" title="Permalink to this headline">¶</a></h2>
+<p>In a previous exercise, we have asked you to implement the root solving formula for quadratic equations. There is a reason this was taught to you in the K12 syllabus, the concept strikes a balance between widely applied in STEM, and is simple enough to solve. If we want to solve more complex equations however, the mathematics becomes messy and complicated very quickly.</p>
+<p>We might not be familiar with solving roots for more complex polynomials, but computers can help us with that through numerical methods. We just need to give the proper instructions through code. In this exercise, we will be coding the Newton-Raphson’s method for solving roots.</p>
+<p>Below is the formula for the Newton-Raphson’s method:</p>
+<div class="math notranslate nohighlight">
+\[x_{n+1} = x_{n} - \frac{f(x_{n})}{f'(x_{n})}\]</div>
+<p><span class="math notranslate nohighlight">\(f(x)\)</span> represents the polynomial, and the standalone <span class="math notranslate nohighlight">\(x\)</span> stands for the estimated value for the root. The Newton-Raphson’s method solves for one root at a time by iterating over this formula above. <span class="math notranslate nohighlight">\(n\)</span> basically stands for number of iterations. When <span class="math notranslate nohighlight">\(n = 0\)</span>, there is no <span class="math notranslate nohighlight">\(x_{n=-1}\)</span> before that, and thus the iteration starts at <span class="math notranslate nohighlight">\(x_{0}\)</span>, which needs to be provided as an initial guess.</p>
+<p>In short, what you need to do to solve a polynomial specified by <span class="math notranslate nohighlight">\(f(x)\)</span>:
+1. Specify its derivative, <span class="math notranslate nohighlight">\(f'(x)\)</span>
+2. Pick the initial estimate for one root, <span class="math notranslate nohighlight">\(x_0\)</span>
+3. Iterate using Newton-Raphsons’ method until sufficient. Keep track of the relative error, i.e. the difference between the previous estimate and the current estimate. If the absolute value of the relative error falls below 1e-7, consider that the root has been found.</p>
+<p>Go ahead and find the roots of the fourth power polynomial <span class="math notranslate nohighlight">\(f(x)=x^4-4x^3-2x^2+12x-3\)</span>. Run this four times to find all four roots, near points -2, 0, 2, 4.</p>
+</div>
+<div class="section" id="exercise-solving-optimization-problems-with-scipy">
+<h2>Exercise: Solving optimization problems with <cite>scipy</cite><a class="headerlink" href="#exercise-solving-optimization-problems-with-scipy" title="Permalink to this headline">¶</a></h2>
+<p>In this exercise, we will see how we can use coding to make optimal decisions for selling ice cream.</p>
+<p>..TODO: Brief description of <cite>scipy</cite>
+.. We will be making use of the <cite>scipy</cite> library
+.. library of more specific algorithms built on numpy
+.. Today will be using the optimization part</p>
+<p>SciPy can be said as an extension to NumPy. SciPy contains modules for optimization, integration, image and signal processing, interpolation and a few other modules that are common in the scientific and engineering field. Today, we will be using the optimization part of SciPy.</p>
+<p>Optimization is defined as “the action of making the best or most effective use of a situation or resource.”(Oxford Languages). Via optimization, we aim to achieve the best design of a given thing given certain criteria or constraints while maximizing certain factors.</p>
+<p>An optimization problem on the other hand is the problem of finding the best solution from a set of all possible solutions. Realistically, maybe our human mind can come up with something that may seem to be the best solution, however for computers and in mathematics, obtaining the BEST solution is often not an easy task. There are two types of optimization problems. One is discrete optimization problems and another is continuous optimization problems. Continuous optimization problems tend to be easier to solve as the smoothness of the functions (continuous variables) means we can deduce information easier. On the contrary, discrete optimization problems are tougher to deduce but this is where numerical methods come in to save the day!</p>
+<p>In optimization problems, in figuring out what is the best solution, we typically look into maximizing our objective function. Our objective function being our goal, is what the optimization has to consider when generating a solution. Most times, there is only one objective function i.e. reducing cost of electricity in office, building a stronger roof for a house, but sometimes there are cases where optimization problems have 0 or even more than 1 objective functions. For example, let’s say you have a problem in getting the most fuel efficiency while driving, but at the same time you want to drive fast. Another example would be to build a car that’s lighter but make it more structurally solid. These two conflicting objectives should be be kept in view when developing an optimization.</p>
+<p>There are numerous different ways to solve optimization problems. In Python, we simply pass all the hard work to libraries such as SciPy or Google’s OR-Tools. In solving an optimization problem, it is important to set up the required variables, constraints, and objective functions to pass into a solver. Without any of these, you might not get an accurate result or your error margin might be too high.</p>
+<div class="section" id="part-a">
+<h3>Part A<a class="headerlink" href="#part-a" title="Permalink to this headline">¶</a></h3>
+<p>You sell icecream by the road. Each cone of ice cream costs 50 cents to make. You have noticed that the higher the selling price of your ice cream, the less people will buy them in a day. You estimate that the number of customers per day as a function of price is <span class="math notranslate nohighlight">\(f(x) = 2000-1000x\)</span>. Find the best selling price to maximize your profit in a day.</p>
+<p>Use <cite>minimize_scalar</cite> from <cite>scipy.optimize</cite> to solve this optimization problem. For that, we will require an objective function to optimize, such that we find the point where its value becomes as small as possible.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>TODO Elaborate on minimize_scalar - optimization is phrased as minimization, and historical context is cost, thus algos seek to minimize instead of maximize. Easy to accomplish by switching signs.</p>
+<p>Anyway there are a few functions in scipy to conduct minimization, but minimize_scalar is for the simple cases where we only want to minimize one number.</p>
+<p>More solvers out there like Gurobi</p>
+</div>
+<ol class="arabic simple">
 <li><dl class="simple">
-<dt>Introduction to numerical methods</dt><dd><ul>
-<li><p>Exercise: Solving roots using Newton-Raphson’s method</p></li>
-<li><p>Exercise: Explicit integration scheme for movement of a spring</p></li>
-<li><p>(Adv Exercise: Verlet integration scheme, show that energy conservation of the spring is obeyed)</p></li>
-</ul>
+<dt>Create a function <cite>calc_profit</cite> that takes the argument <cite>price</cite>. Calculate profit from ice cream sales following the steps below:</dt><dd><ol class="loweralpha simple">
+<li><p>Calculate number of customers at the given price</p></li>
+<li><p>Calculate the total cost: customers times cost of one ice cream cone</p></li>
+<li><p>Calculate the total revenue: customers times selling price</p></li>
+<li><p>Return profit, which is revenue - cost</p></li>
+</ol>
 </dd>
 </dl>
 </li>
-</ul>
-</dd>
-</dl>
+<li><p>Create another function called <cite>obj_fun</cite> which takes <cite>price</cite> as an argument. Return the negative of <cite>calc_profit(price)</cite>. This is to be passed to <cite>minimize_scalar</cite>.</p></li>
+</ol>
+<p>3. Import <cite>minimize_scalar</cite> from <cite>scipy.optimize</cite>, and run the following code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">minimize_scalar</span><span class="p">(</span><span class="n">fun</span><span class="o">=</span><span class="n">obj_fun</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="part-b">
+<h3>Part B<a class="headerlink" href="#part-b" title="Permalink to this headline">¶</a></h3>
+<p>You have found a new location to sell ice cream that is closer to the city centre.
+* People are more willing to pay for expensive ice cream. The number of customers as a function of price is now <span class="math notranslate nohighlight">\(f(x) = 4000-1000x\)</span>.
+* However, you need to increase the cost of each ice cream cone to RM2.00 to match their tastes!
+* You need to pay RM20.00 in fuel per day to travel to and from the new location.</p>
+<p>Given this information, is it worth it to start selling ice cream at the new location? Or will you make more profit by staying at your current location?</p>
+</div>
+</div>
 <div class="section" id="conclusion">
 <h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
-<p>Message of the day: xxxxxxxxxxxxxxxx</p>
 </div>
 <div class="section" id="further-reading">
 <h2>Further reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">¶</a></h2>
@@ -62,6 +146,8 @@
 </ul>
 </dd>
 </dl>
+<p><a class="reference external" href="https://www.britannica.com/science/numerical-analysis">Numerical Analysis</a>
+<a class="reference external" href="https://neos-guide.org/optimization-tree#:~:text=Continuous%20optimization%20problems%20tend%20to,in%20a%20neighborhood%20of%20x.">Types of Optimization Problems</a></p>
 </div>
 </div>
 
@@ -75,6 +161,19 @@
   <h3><a href="index.html">Table of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Week 7 : Numerical methods</a><ul>
+<li><a class="reference internal" href="#setup-check-intro-to-numerical-methods">Setup check + Intro to numerical methods</a><ul>
+<li><a class="reference internal" href="#setup-check">Setup check</a></li>
+<li><a class="reference internal" href="#what-are-numerical-methods">What are numerical methods?</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#why-do-we-need-numerical-methods">Why do we need numerical methods?</a></li>
+<li><a class="reference internal" href="#applications-of-numerical-methods">Applications of numerical methods</a></li>
+<li><a class="reference internal" href="#exercise-solving-roots-using-newton-raphson-s-method">Exercise: Solving roots using Newton-Raphson’s method</a></li>
+<li><a class="reference internal" href="#exercise-solving-optimization-problems-with-scipy">Exercise: Solving optimization problems with <cite>scipy</cite></a><ul>
+<li><a class="reference internal" href="#part-a">Part A</a></li>
+<li><a class="reference internal" href="#part-b">Part B</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#conclusion">Conclusion</a></li>
 <li><a class="reference internal" href="#further-reading">Further reading</a></li>
 </ul>
