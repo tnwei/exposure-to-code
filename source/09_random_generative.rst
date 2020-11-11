@@ -28,13 +28,13 @@ If you can run the following code chunk, you are good to go!
 
 Intro to randomness
 ^^^^^^^^^^^^^^^^^^^
-.. [ ]What it is
+.. [X]What it is
 Randomness could be said as a series of events taking place without any meaning or independent of any possible rule. It has neither cause nor meaning. (`What is Randomness <https://sci-highs.com/what-is-randomness/>`_). However randomness is hard to define. In a way it can be said that the very definition of randomness is a paradox as what we perceive as randomness is simply our unawareness of of the rules/laws that has caused that randomness. In other words, we cannot at this time with all our theories and formulas make out the pattern of a random thing.
 
-Randomness is used in a lot of fields particularly with those that are related to Mathematics. For instance in Statistics, a random sample is important to ensure that a certain study is conducted effectively and without any bias. It is also used in describing the motion of microscopic particles suspended in a fluid all the way to solving deterministic models in nuclear physics.
+Randomness is used in a lot of fields particularly with those that are related to mathematics. In these cases, randomness represents what we explicitly don't know! For instance in statistics, a random sample is important to ensure that a certain study is conducted effectively and without any bias. It is also used in describing the motion of microscopic particles suspended in a fluid all the way to solving deterministic models in nuclear physics.
 
 
-Given that randomness is very important, it is important to be able to generate a random number that as random as random gets. However, it is hard to generate a number or a sequence that is truly random. For instance a computer cannot truly random numbers. A computer after all follows a set of instructions and won't stray from those instructions. However it is possible to generate a number that is based of observing mouse data, fan noise, CPU load and etc., then inputting it to an algorithm to generate a seemingly random number that may work for most cases that do use random numbers.
+Given that randomness is very important, it is important to be able to generate a random number that as random as random gets. However, it is hard to generate a number or a sequence that is truly random. For instance a computer cannot truly generate random numbers. A computer after all follows a set of instructions and won't stray from those instructions. However, it is possible to use pseudo-random number generators to generate a sequence of numbers that are close to being random. Furthermore, it is possible to generate random numbers from observing truly random information, e.g. mouse movement data, fan noise, CPU load etc. then inputting it to the pseudo-random number generator to obtain a sequence of random numbers that may work for most cases.
 
 Why do we need randomness in computing?
 ---------------------------------------
@@ -42,25 +42,72 @@ Why do we need randomness in computing?
 .. Estimated time: 10 mins
 .. Instructor notes:
 
-.. [ ]Randomness for cryptographic security
-.. [ ]Randomness as part of statistical computing
+.. [X]Randomness for cryptographic security
+.. [X]Randomness as part of statistical computing
+
+Cryptographic security
+^^^^^^^^^^^^^^^^^^^^^^
 
 Another field in which randomness is deeply involved is computing. This ranges from computer security, statistical computing, to test whether a number is prime, to stimulate complex systems among others.
 
 Cryptographic security is a field in computing that is very widely used. Think of everything you can do via a computer that involves any sense of security, and cryptographic security is there. This ranges from your everyday Whatsapp messages, your occasional email sending and receiving to logging into your Facebook. All of these use a specific cryptographic method to mask your details so your details do not get exposed to any unintended recipients. Cryptography does this by including a random number or sequence that is included whenever a transaction happens.
 
+Statistical computing
+^^^^^^^^^^^^^^^^^^^^^
+
 In the field of statistical computing, randomness is an important especially in a selection of random sample from a set of a population of interest. However, according to statistical theory, the most unexpected experimental results—equally probable or not—can be (approximately) reduced to some sort of statistical regularity. This suggests that there is some sort of order even in the most random of events, whether science ever discovers it (Encyclopedia.com).
 
 As said before, it is hard to generate a truly random number because computers follows fixed instructions. Due of this and the wide use of randomness in our day to day life, the quality of randomness is important. If a website uses an old encryption method that uses low quality randomness, hackers can easily exploit the log on details in this website as these seemingly random alphanumeric characters are not random enough.
 
-Randomness using `numpy.random`
--------------------------------
+Sampling random numbers with `numpy.random`
+-------------------------------------------
 .. Section objective:
 .. Estimated time: 15 mins
 .. Instructor notes:
 
 .. [ ]Explain np.random.uniform, np.random.normal
 .. [ ]Little exercise to program your own pair of dice
+
+Random sampling also goes hand-in-hand with working with probability distributions. A probability distribution is a function that models the probability certain values will occur. We can have probability distributions fo anything: the chance it will rain, the chance that all students in a class will pass with flying colours, the chance that a place will be struck by lightning twice etc. As long as we want to work with probabilistic events, we specify them with probability distributions.
+
+To actually make use of the probability distribution however, we need to select data generated from the distribution, i.e. sample from the distribution. Here is how we will approach these few situations below, using `numpy.random`.
+
+Sampling discrete distributions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+A dice can generate the numbers 1 to 6 with equal probability. Since we have 6 discrete outcomes, the probability of each outcome is 1/6. 
+
+We can run the following code to simulate a dice roll:
+::
+
+    np.random.choice([1, 2, 3, 4, 5, 6])
+
+`np.random.choice` takes a list of possible outcomes as input, and returns the output of random sampling.
+
+It is possible to have `numpy` repeat random sampling and generate an array of desired shape, by filling in the `size` argument like below:
+::
+
+    np.random.choice([1, 2, 3, 4, 5, 6], size=(10, ))
+
+which will return results from 10 dice rolls in an array with `shape=(10, )`.
+
+Sampling from uniform and normal distributions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Two of the most common distributions relevant to our daily lives are the uniform distribution, and normal distribution.
+
+A uniform distribution basically means that any number between the specified low and high range has an equal probability of being sampled. For example, when asked to guess the age of a cat, you might estimate it to be somewhere between 3 to 5 years. If you are not more confident on any number within this range, then your estimate for the cat's age can be represented as a uniform distribution. You can sample estimates for the aforementioned cat's age like so:
+::
+
+    np.random.uniform(low=3, high=5)
+
+Notice that the `low` and `high` parameters need to be specified. Same as `np.random.choice`, this function supports `size` as an argument to generate array output.
+
+A normal distribution is a distribution that occurs naturally in multiple situations. Population IQ, population height, average grades etc follow a normal distribution. Basically, if there isn't a driving reason for data to exhibit a specific distribution, most likely it will be a normal distribution. For example, if we collected rainfall data from a meteorology station, and calculated the mean to be 1000 mm, and the standard deviation to be 100mm, we can approximate it as a normal distribution with exactly these parameters. Estimates for rainfall data can thus be sampled with the code below:
+::
+
+    np.random.normal(loc=1000, scale=100)
+
+For normal distributions, we specify the mean and std deviation instead of high and low bounds like in the previous example. Like before, this function also takes the `size` argument.
+
 
 Generative art with code
 ------------------------
@@ -74,7 +121,7 @@ Generative art with code
 
 Generative art is the art that has been created via an autonomous system. This is usually done by creating rules for a system to follow and then executing those rules to produce art! Generative art can be done in music, paintings, architecture and literature. Generative art can produce thousands of ideas in milliseconds by leveraging on the processing power of the computer to invent a new form of art.
 
-Generative art which has been popularized in the 1960s is more and more relevant now with the advent of technologies such as Machine Learning and Artificial Intelligence. Via Machine Learning, we can feed data into a system that can learn from the dataset to produce a form of art that is synonymous with what had been provided to the system. For instance, if we were to provide a dataset of classical music to a system, this system can produce a classical music that would sound similar to all the other songs while still being different enough to be a new song.
+Generative art which has been popularized in the 1960s is more and more relevant now with the advent of technologies such as machine learning and artificial intelligence. Via machine learning, we can feed data into a system that can learn from the dataset to produce a form of art that is synonymous with what had been provided to the system. For instance, if we were to provide a dataset of classical music to a system, this system can produce a classical music that would sound similar to all the other songs while still being different enough to be a new song.
 
 Brian Eno who popularized the Generative Music term describes Generative Music as music that is ever different and changing and that is created by a system. The fugues of J.S. Bach could be considered generative, in that there is a strict underlying process that is followed by the composer.
 
