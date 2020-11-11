@@ -1,4 +1,9 @@
 Week 7: Advanced Content
+========================
+Advanced content are designed for advanced learners that are ready to take on extra challenges. These content are made accessible to all after the class. Note that these content typically require more knowledge than what was presented in class. Typically this section is presented as additional exercises, but for this week we are only going to refer to educational Youtube videos as recommended learning. 
+
+Adv Content: Verlet integration
+-------------------------------
 .. Intro
 .. Need to decide on topic
 .. Solar system simulator? Way easier than doing cloth simulator
