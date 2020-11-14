@@ -15,7 +15,9 @@
     <script src="_static/language_data.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Week 9: Class Exercise solutions" href="09_random_generative_sols.html" />
+    <link rel="prev" title="Week 8: Class Exercise solutions" href="08_pde_populations_sols.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -23,6 +25,12 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="09_random_generative_sols.html" title="Week 9: Class Exercise solutions"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="08_pde_populations_sols.html" title="Week 8: Class Exercise solutions"
+             accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Exposure to Code 1.0 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Week 9 : Randomness and Generative art</a></li> 
       </ul>
@@ -35,22 +43,339 @@
             
   <div class="section" id="week-9-randomness-and-generative-art">
 <h1>Week 9 : Randomness and Generative art<a class="headerlink" href="#week-9-randomness-and-generative-art" title="Permalink to this headline">¶</a></h1>
-<p>Outcome: Students will learn abput random numbers in computing, and learn about its relationship with a rather niche application of coding,  generative art.</p>
-<p>What we will do:</p>
+<p>Outcome: Students will learn about random numbers in computing, and learn about its relationship with a rather niche application of coding, generative art.</p>
+<dl class="simple">
+<dt>What we will do:</dt><dd><ul class="simple">
+<li><p>Setup check + intro to randomness</p></li>
+<li><p>Why do we need randomness in computing?</p></li>
+<li><p>Randomness using <cite>numpy.random</cite></p></li>
+<li><p>Generative art with code</p></li>
+<li><p>Primer on <cite>turtle</cite> graphics library</p></li>
+<li><p>Exercise: Circle packing generative art</p></li>
+</ul>
+</dd>
+</dl>
+<div class="section" id="setup-check-intro-to-randomness">
+<h2>Setup check + intro to randomness<a class="headerlink" href="#setup-check-intro-to-randomness" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="setup-check">
+<h3>Setup check<a class="headerlink" href="#setup-check" title="Permalink to this headline">¶</a></h3>
+<p>If you can run the following code chunk, you are good to go!</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">import</span> <span class="nn">turtle</span>
+<span class="kn">import</span> <span class="nn">PIL</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="intro-to-randomness">
+<h3>Intro to randomness<a class="headerlink" href="#intro-to-randomness" title="Permalink to this headline">¶</a></h3>
+<p>Randomness could be said as a series of events taking place without any meaning or independent of any possible rule. It has neither cause nor meaning. (<a class="reference external" href="https://sci-highs.com/what-is-randomness/">What is Randomness</a>). However randomness is hard to define. In a way it can be said that the very definition of randomness is a paradox as what we perceive as randomness is simply our unawareness of of the rules/laws that has caused that randomness. In other words, we cannot at this time with all our theories and formulas make out the pattern of a random thing.</p>
+<p>Randomness is used in a lot of fields particularly with those that are related to mathematics. In these cases, randomness represents what we explicitly don’t know! For instance in statistics, a random sample is important to ensure that a certain study is conducted effectively and without any bias. It is also used in describing the motion of microscopic particles suspended in a fluid all the way to solving deterministic models in nuclear physics.</p>
+<p>Given that randomness is very important, it is important to be able to generate a random number that as random as random gets. However, it is hard to generate a number or a sequence that is truly random. For instance a computer cannot truly generate random numbers. A computer after all follows a set of instructions and won’t stray from those instructions. However, it is possible to use pseudo-random number generators to generate a sequence of numbers that are close to being random. Furthermore, it is possible to generate random numbers from observing truly random information, e.g. mouse movement data, fan noise, CPU load etc. then inputting it to the pseudo-random number generator to obtain a sequence of random numbers that may work for most cases.</p>
+</div>
+</div>
+<div class="section" id="why-do-we-need-randomness-in-computing">
+<h2>Why do we need randomness in computing?<a class="headerlink" href="#why-do-we-need-randomness-in-computing" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="cryptographic-security">
+<h3>Cryptographic security<a class="headerlink" href="#cryptographic-security" title="Permalink to this headline">¶</a></h3>
+<p>Another field in which randomness is deeply involved is computing. This ranges from computer security, statistical computing, to test whether a number is prime, to stimulate complex systems among others.</p>
+<p>Cryptographic security is a field in computing that is very widely used. Think of everything you can do via a computer that involves any sense of security, and cryptographic security is there. This ranges from your everyday Whatsapp messages, your occasional email sending and receiving to logging into your Facebook. All of these use a specific cryptographic method to mask your details so your details do not get exposed to any unintended recipients. Cryptography does this by including a random number or sequence that is included whenever a transaction happens.</p>
+</div>
+<div class="section" id="statistical-computing">
+<h3>Statistical computing<a class="headerlink" href="#statistical-computing" title="Permalink to this headline">¶</a></h3>
+<p>In the field of statistical computing, randomness is an important especially in a selection of random sample from a set of a population of interest. However, according to statistical theory, the most unexpected experimental results—equally probable or not—can be (approximately) reduced to some sort of statistical regularity. This suggests that there is some sort of order even in the most random of events, whether science ever discovers it (Encyclopedia.com).</p>
+<p>As said before, it is hard to generate a truly random number because computers follows fixed instructions. Due of this and the wide use of randomness in our day to day life, the quality of randomness is important. If a website uses an old encryption method that uses low quality randomness, hackers can easily exploit the log on details in this website as these seemingly random alphanumeric characters are not random enough.</p>
+</div>
+</div>
+<div class="section" id="sampling-random-numbers-with-numpy-random">
+<h2>Sampling random numbers with <cite>numpy.random</cite><a class="headerlink" href="#sampling-random-numbers-with-numpy-random" title="Permalink to this headline">¶</a></h2>
+<p>Random sampling also goes hand-in-hand with working with probability distributions. A probability distribution is a function that models the probability certain values will occur. We can have probability distributions fo anything: the chance it will rain, the chance that all students in a class will pass with flying colours, the chance that a place will be struck by lightning twice etc. As long as we want to work with probabilistic events, we specify them with probability distributions.</p>
+<p>To actually make use of the probability distribution however, we need to select data generated from the distribution, i.e. sample from the distribution. Here is how we will approach these few situations below, using <cite>numpy.random</cite>.</p>
+<div class="section" id="sampling-discrete-distributions">
+<h3>Sampling discrete distributions<a class="headerlink" href="#sampling-discrete-distributions" title="Permalink to this headline">¶</a></h3>
+<p>A dice can generate the numbers 1 to 6 with equal probability. Since we have 6 discrete outcomes, the probability of each outcome is 1/6.</p>
+<p>We can run the following code to simulate a dice roll:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+</pre></div>
+</div>
+<p><cite>np.random.choice</cite> takes a list of possible outcomes as input, and returns the output of random sampling.</p>
+<p>It is possible to have <cite>numpy</cite> repeat random sampling and generate an array of desired shape, by filling in the <cite>size</cite> argument like below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="p">))</span>
+</pre></div>
+</div>
+<p>which will return results from 10 dice rolls in an array with <cite>shape=(10, )</cite>.</p>
+</div>
+<div class="section" id="sampling-from-uniform-and-normal-distributions">
+<h3>Sampling from uniform and normal distributions<a class="headerlink" href="#sampling-from-uniform-and-normal-distributions" title="Permalink to this headline">¶</a></h3>
+<p>Two of the most common distributions relevant to our daily lives are the uniform distribution, and normal distribution.</p>
+<p>A uniform distribution basically means that any number between the specified low and high range has an equal probability of being sampled. For example, when asked to guess the age of a cat, you might estimate it to be somewhere between 3 to 5 years. If you are not more confident on any number within this range, then your estimate for the cat’s age can be represented as a uniform distribution. You can sample estimates for the aforementioned cat’s age like so:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Notice that the <cite>low</cite> and <cite>high</cite> parameters need to be specified. Same as <cite>np.random.choice</cite>, this function supports <cite>size</cite> as an argument to generate array output.</p>
+<p>A normal distribution is a distribution that occurs naturally in multiple situations. Population IQ, population height, average grades etc follow a normal distribution. Basically, if there isn’t a driving reason for data to exhibit a specific distribution, most likely it will be a normal distribution. For example, if we collected rainfall data from a meteorology station, and calculated the mean to be 1000 mm, and the standard deviation to be 100mm, we can approximate it as a normal distribution with exactly these parameters. Estimates for rainfall data can thus be sampled with the code below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For normal distributions, we specify the mean and std deviation instead of high and low bounds like in the previous example. Like before, this function also takes the <cite>size</cite> argument.</p>
+</div>
+</div>
+<div class="section" id="generative-art-with-code">
+<h2>Generative art with code<a class="headerlink" href="#generative-art-with-code" title="Permalink to this headline">¶</a></h2>
+<p>Generative art is the art that has been created via an autonomous system. This is usually done by creating rules for a system to follow and then executing those rules to produce art! Generative art can be done in music, paintings, architecture and literature. Generative art can produce thousands of ideas in milliseconds by leveraging on the processing power of the computer to invent a new form of art.</p>
+<p>Generative art which has been popularized in the 1960s is more and more relevant now with the advent of technologies such as machine learning and artificial intelligence. Via machine learning, we can feed data into a system that can learn from the dataset to produce a form of art that is synonymous with what had been provided to the system. For instance, if we were to provide a dataset of classical music to a system, this system can produce a classical music that would sound similar to all the other songs while still being different enough to be a new song.</p>
+<p>Brian Eno who popularized the Generative Music term describes Generative Music as music that is ever different and changing and that is created by a system. The fugues of J.S. Bach could be considered generative, in that there is a strict underlying process that is followed by the composer.</p>
+<p>Here’s a link to one of Brian Eno’s song titled Prophecy Theme that will feature in the movie “Dune”.
+<a class="reference external" href="https://www.youtube.com/watch?v=b6Sv8qF3Wb0">Toto, Brian Eno - Prophecy Theme (From “Dune” Soundtrack)</a></p>
+<p>As mentioned earlier, Generative Art is not only limited to music but also some visual art. Here are a few examples:</p>
+<p><a class="reference external" href="https://aiartists.org/generative-art-design">Generative Art Design</a></p>
+</div>
+<div class="section" id="primer-on-turtle-graphics-library">
+<h2>Primer on <cite>turtle</cite> graphics library<a class="headerlink" href="#primer-on-turtle-graphics-library" title="Permalink to this headline">¶</a></h2>
+<p><cite>matplotlib</cite> has served us well in the past, but for today’s exercise, we will need to pick up a new library, <cite>turtle</cite>. <cite>turtle</cite> existed back in the 1980’s when it was part of the Logo programming language. In it, we control a turtle sprite (literally) and use code to move it around the screen. By giving the correct commands, we can get the sprite to help us draw lines using the pen it is carrying.</p>
+<p>In modern times, the Logo programming language has faded into obscurity. The Python language has preserved <cite>turtle</cite> however by incorporating it as part of the Python standard library.</p>
+<p>We will be briefly going through the basic commands, you are more than welcome to test them out in an interactive Python prompt to see what the effects of each command.</p>
+<p>The following is how you initialize a <cite>turtle</cite> drawing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">turtle</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="p">()</span>
+<span class="n">screen</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Screen</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>From the code above, we now have a turtle sprite assigned to variable <cite>t</cite>. The variable <cite>screen</cite> contains the screen object that we will barely touch, except to tweak some settings.</p>
+<dl class="simple">
+<dt>The sprite, <cite>t</cite> can do quite a few things.</dt><dd><ul class="simple">
+<li><p><cite>t.penup()</cite> and <cite>t.pendown()</cite> tells the sprite to lift / lower its pen. If the pen is lowered, the sprite will leave a line behind its path as it moves. Note that the pen is lowered by default.</p></li>
+<li><p><cite>t.forward(40)</cite> and <cite>t.backward(20)</cite> will move the sprite 40 units forward, and 20 units backward respectively.</p></li>
+<li><p><cite>t.left(90)</cite> and <cite>t.right(180)</cite> will rotate the sprite left by 90 degrees and right by 180 degrees respectively. The sprite cannot side step, only rotate.</p></li>
+<li><p>What this means is that the sprite has an orientation! <cite>t.setheading(45)</cite> will directly set the sprite to look at the 45 degree direction. <cite>turtle</cite> uses East as 0, and increases anti-clockwise, which is the same convention used in mathematics.</p></li>
+<li><p><cite>t.setposition(x, y)</cite> will directly move the sprite to the coordinates specified at <cite>(x, y)</cite>. This command is typically used to reposition the sprite instead of drawing.</p></li>
+<li><p><cite>t.circle(r)</cite> tells the sprite to draw a circle with radius <cite>r</cite>.</p></li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="exercise-circle-packing-generative-art">
+<h2>Exercise: Circle packing generative art<a class="headerlink" href="#exercise-circle-packing-generative-art" title="Permalink to this headline">¶</a></h2>
+<p>In this exercise, we will harness randomness to make generative art, by packing non-overlapping circles in a circular frame. The eventual output should look something like below:</p>
+<div class="figure align-default">
+<img alt="sol5.py output" src="_images/week9-sol5.jpg" />
+</div>
+<p>Logically, the steps are quite simple. First, a large circle needs to be drawn as the frame. Next, a small randomly generated circle is drawn within the frame. If the circle is both (i) within the frame, and (ii) does not overlap with any other existing circles, the circle is kept. Else, the circle is regenerated. More circles are generated following these rules until sufficient.</p>
+<dl class="simple">
+<dt>At this point in time, we can tell that the steps we need to do are:</dt><dd><ol class="arabic simple">
+<li><p>Write a function to draw circles.</p></li>
+<li><p>Write a function to check if the circle is in frame.</p></li>
+<li><p>Write a function to check if the circle is intersecting with other circles.</p></li>
+<li><p>Combine all components to generate circles.</p></li>
+</ol>
+</dd>
+</dl>
+<p>We will tackle these individual components in subsequent parts.</p>
+<div class="section" id="part-1">
+<h3>Part 1<a class="headerlink" href="#part-1" title="Permalink to this headline">¶</a></h3>
+<p>1. Set up your code as below. With this, we initialize the turtle sprite, and also the screen object the turtle will be working on. As we move ahead, make sure that <cite>turtle.done()</cite> is the last line of code.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">turtle</span>
+
+<span class="c1">## Init block</span>
+<span class="kn">import</span> <span class="nn">turtle</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="p">()</span>
+<span class="n">screen</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Screen</span><span class="p">()</span>
+
+<span class="c1">## Functions block</span>
+
+<span class="c1">## Main block</span>
+
+
+<span class="n">turtle</span><span class="o">.</span><span class="n">done</span><span class="p">()</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><dl class="simple">
+<dt>Under <cite>## Main block</cite>, draw the circular frame centered at (0, 0) with radius 300, using the commands learnt just before.</dt><dd><ul class="simple">
+<li><p>Place the sprite at the right location and orientation. Have the sprite face upwards, while sitting on the rightmost point of the circle at (300, 0).</p></li>
+<li><p>Ensure that the pen is down, and draw a circle with radius 300. When done, lift the pen.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Package this code into a function under <cite>## Functions block</cite> to be re-used, and replace previous code with a single function call.</p></li>
+</ol>
+<p>When done, you should be able to see a turtle sprite slowly drawing a big circle on the screen.</p>
+</div>
+<div class="section" id="part-2">
+<h3>Part 2<a class="headerlink" href="#part-2" title="Permalink to this headline">¶</a></h3>
+<p>In this part, we will focus on generating random circles. Circles that fit within the frame’s boundaries will be drawn.</p>
+<p>A circle is within the boundaries of the frame if the distance between origin and the farthest point on the circle from origin, is less than the distance between origin and the radius of the frame. In simple words, refer to the diagram below:</p>
+<div class="figure align-default">
+<img alt="Figure 1: How to determine if a circle is within the frame" src="_images/week9-fig1.jpg" />
+</div>
+<p>We can construct line to the farthest point using the two known points: origin itself and the center of the circle. Extending this line by <cite>r</cite>, radius of the circle will give us the location of the farthest point. Then, we just need to compare this line against the radius of the frame to find out if it is within the frame or not.</p>
+<ol class="arabic">
+<li><p>Write the function, <cite>check_circle_within_frame</cite>, which takes <cite>x</cite>, <cite>y</cite>, <cite>r</cite> and <cite>fr</cite> as input. <cite>x</cite> and <cite>y</cite> are the location of the circle, <cite>r</cite> is the radius of the circle, and <cite>fr</cite> is the radius of the frame.</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>Exercise: L-systems fractal tree mixed in w/ randomness</p></li>
+<li><p>Create a vector, (x, y) using <cite>numpy</cite>.</p></li>
+<li><p>Obtain the vector’s direction by calculating the unit vector. This can be done by dividing it by the vector’s norm (i.e. length), which can be calculated using <cite>np.linalg.norm()</cite></p></li>
+<li><p>Multiply the unit vector with <cite>r</cite> and add it to the vector.</p></li>
+<li><p>If the vector is greater than the frame radius, return False. Else, return True.</p></li>
 </ul>
 </div></blockquote>
+</li>
+<li><p>With <cite>check_circle_within_frame</cite> in place, we can start implementing the logic to draw circles.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Create a for-loop to loop 10 times. For every iteration, randomly sample values for <cite>x</cite>, <cite>y</cite> and <cite>r</cite>. Both <cite>x</cite> and <cite>y</cite> are allowed to vary as much as the frame’s <cite>x</cite> and <cite>y</cite> dimensions. <cite>r</cite> is allowed to vary from 0 to the frame radius.</p></li>
+<li><p>Wrap the random sample process in a while loop with no stop condition (<cite>while True:</cite>). Run <cite>check_circle)within_frame</cite> at the end of the while loop, <cite>break</cite> the loop if True.</p></li>
+<li><p>After the while loop, run <cite>draw_circle</cite> with the generated circle parameters.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Quality of life improvements:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Create a variable <cite>FRAMERADIUS</cite> at the top to house the radius of the frame.</p></li>
+<li><p>Add the following code at the bottom of the <cite>## Init</cite> block to draw things faster:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Draw faster</span>
+<span class="n">screen</span><span class="o">.</span><span class="n">delay</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">t</span><span class="o">.</span><span class="n">speed</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ol>
+<p>At the end of this section, our code should be able to generate random circles that are within the boundaries of the frame.</p>
+</div>
+<div class="section" id="part-3">
+<h3>Part 3<a class="headerlink" href="#part-3" title="Permalink to this headline">¶</a></h3>
+<p>After having a rudimentary circle generator, we will focus on checking for overlapping circles.</p>
+<p>Any point of a circle is equidistant from its center. Thus, if the distance between the centre of two circles are greater than the sum of their radius, then both circles do not overlap with each other.</p>
+<div class="figure align-default">
+<img alt="Figure 2: How to determine if two circles overlap" src="_images/week9-fig2.jpg" />
+</div>
+<ol class="arabic">
+<li><p>Write the function, <cite>two_circles_overlap</cite>. It should receive <cite>x</cite>, <cite>y</cite> and radius of two circles as input.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Find the distance between the center of both circles. Use <cite>np.linalg.norm()</cite> like before.</p></li>
+<li><p>If the distance is less than or equal to the sum of both circle’s radii, return True to indicate no overlap. Else, return False.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>After writing a function to compare two circles, write another function to compare one circle to all other circles in a list.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Write <cite>check_circle_no_overlap</cite> that takes <cite>x</cite>, <cite>y</cite>, <cite>r</cite> and <cite>circles</cite> as input. <cite>x</cite>, <cite>y</cite>, and <cite>r</cite> are similar to above, while <cite>circles</cite> is a list of circles, with each circle being a list of <cite>[x, y, r]</cite>.</p></li>
+<li><p>In this function, iterate over each circle in <cite>circles</cite>, and compare them to the specified circle. If <cite>two_circles_overlap</cite> give True, return False. Outside the for-loop, return True.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Incorporate overlap checking with the existing drawing logic.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>We now need to store all circles instead of drawing them as they come by. Add <cite>circles = []</cite> before the for-loop for drawing circles to initialize the variable.</p></li>
+<li><p>Replace <cite>draw_circle(x, y, r)</cite> with <cite>circles.append([x, y, r])</cite>. At the end of the for-loop, add another for-loop that runs <cite>draw_circle</cite> for each stored circle.</p></li>
+<li><p>Modify the <cite>if</cite> statement that checks if the circle is within frame. Nest another <cite>if `statement under it, to verify that the generated circle does not overlap previous circles in `circles</cite>. Move the <cite>break</cite> statement to sit under this second <cite>if</cite>.</p></li>
+<li><p>Now we will start to see long wait times, thus we need some printout in the terminal so we know that the code is running. Add <cite>print(“X”)</cite> before the <cite>break</cite> statement, and <cite>print(“O”, end=””)</cite> after the if blocks to signify rejected circles. This will print a line of “O“‘s for rejected circles. Generated circles that are accepted will end the line with an “X”.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+<p>Experiment with increasing the number of circles that need to be drawn. As you get bored waiting for the animation to finish, paste the following code chunk at the end of the <cite>## Init block</cite> to remove animation altogether:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="o">.</span><span class="n">hideturtle</span><span class="p">()</span>
+<span class="n">screen</span><span class="o">.</span><span class="n">tracer</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="part-4">
+<h3>Part 4<a class="headerlink" href="#part-4" title="Permalink to this headline">¶</a></h3>
+<p>The core logic is complete. You can already make some nifty images by increasing the number of circles to generate! However, this process still has some room for improvement, to make it more efficient:</p>
+<ol class="arabic">
+<li><p>Notice the long bars of <cite>O</cite>’s while waiting for the code to complete? As the picture gets filled up, more and more circles are getting rejected due to overlap. We can spend less time creating circles that will get rejected by adjusting the range of radii accordingly.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Initialize <cite>rlim = 0</cite>, and use it as the new upper limit for circle radii in the random sampling code chunk.</p></li>
+<li><p>Initialize <cite>avgrejects = 0</cite>, <cite>pastrejectcounter = 0</cite> and <cite>rejectcounter = 0</cite>.</p></li>
+<li><p>Above the line where we print <cite>O</cite>’s for rejected circles, increment <cite>rejectcounter</cite> by 1.</p></li>
+<li><p>Before appending newly accepted circles to the list, add code to adjust <cite>rlim</cite>. Use the following code:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">avgrejects</span> <span class="o">=</span> <span class="n">avgrejects</span> <span class="o">*</span> <span class="mf">0.8</span> <span class="o">+</span> <span class="mf">0.2</span> <span class="o">*</span> <span class="p">(</span><span class="n">rejectcounter</span> <span class="o">-</span> <span class="n">pastrejectcounter</span><span class="p">)</span>
+<span class="n">pastrejectcounter</span> <span class="o">=</span> <span class="n">rejectcounter</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exponentially weighted average reject rate is&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">avgrejects</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>The above code takes an exponentially weighted average of the number of circles rejected on average for every generated circle that is accepted. Exponential weightage is used to store past results represented using just a single number, as well as smooth out instances where more / less circles than average are rejected before a circle is accepted.</p>
+<p>The average number of rejects between accepted circles tells us if we should make the generated circles smaller to increase the acceptance rate.</p>
+<p>If the average rejects goes above 10, set the new <cite>rlim</cite> to be multiplied by 0.9. If the average rejects drop below 5, multiply <cite>rlim</cite> by 1.1 instead. Print a message indicating the changes made so that they are visible in terminal.</p>
+</div></blockquote>
+</li>
+<li><dl class="simple">
+<dt>The code will take a long time if a high number of circles is required. Depending on the randomness, this can either take a short time, or a long time. We can specify a max iteration limit so that the code will time out at a approximately constant duration.</dt><dd><ul class="simple">
+<li><p>Specify MAXITER as 500, and <cite>itercount = 0</cite> in the <cite>## Init</cite> block. Change the <cite>while True:</cite> code to <cite>while rejectcounter + len(circles) &lt;= MAXITER</cite> to use itercount &lt;= MAXITER. Thus, always have constant runtime.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Before <cite>turtle.done()</cite>, add code to print the number of circles generated as well as number of iterations run. Given that the program can now terminate due to creating all the circles required or hitting the max iteration limit, this information will be useful for us.</p></li>
+</ol>
+<p>With these changes implemented, more iterations will go towards generating accepted circles, we now have a method to ensure code execution time is capped at a maximum duration, and the terminal printouts are much more useful.</p>
+</div>
+<div class="section" id="part-5">
+<h3>Part 5<a class="headerlink" href="#part-5" title="Permalink to this headline">¶</a></h3>
+<p>Thus far, we have the code configured to generate a certain number of circles. To max out the number of circles in the frame, we can of course specify an arbitrarily high number, increase max iterations and let it run. In this section, we will do better and be more precise, by quantifying the white space occupied in the frame, and generate circles until enough white space is occupied.</p>
+<ol class="arabic simple">
+<li><p>Write the function <cite>calc_packing_efficiency</cite>, that takes <cite>circles</cite> and <cite>framearea</cite> as input. <cite>circles</cite> is the list of circles as before, while <cite>framearea</cite> is the area of the circular frame.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <span class="math notranslate nohighlight">\(\pi\)</span> constant is available in <cite>numpy</cite>! Use <cite>np.pi * r ** 2</cite> to calculate area for a circle with radius <cite>r</cite>.</p>
+<ul class="simple">
+<li><p>In the function, calculate and sum the area for all circles in <cite>circles</cite>. Divide it by the area of the frame to obtain packing efficiency.</p></li>
+<li><p>Since area of frame is constant, calculate it once in the <cite>## Init</cite> block, and pass the constant to the function.</p></li>
+<li><p>Before returning, have the function print the sum of area of all circles, the area of the frame, as well as the packing efficiency. This will give a good indication of progress in the terminal.</p></li>
+</ul>
+</div>
+<ol class="arabic" start="2">
+<li><p>Modify the logic to use packing efficiency as the loop condition.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Modify the for-loop specifying number of circles to generate. Replace it with a <cite>while</cite> loop that continues to run as long as the packing efficiency is below target. Use 0.8 for this target.</p></li>
+<li><p>Under the new <cite>while</cite> block, add an <cite>if</cite> statement to <cite>break</cite> the loop when <cite>MAXITER</cite> is exceeded.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+<p>3. To save your images, add the following code chunk before <cite>turtle.done()</cite>, specifying the filename as required:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Added code chunk to save images</span>
+<span class="kn">import</span> <span class="nn">io</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="n">cv</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">getcanvas</span><span class="p">()</span>
+<span class="n">ps</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">postscript</span><span class="p">()</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">ps</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)))</span>
+<span class="n">im</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;week9-circle-packing.jpg&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Increase MAXITER and let the code run. Note that there is a lot of room for further customization in this code, e.g. adding colour, controlling the size evolution of the circles, using other shapes for the frame etc.</p>
+</div>
+</div>
 <div class="section" id="conclusion">
 <h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
-<p>Message of the day: xxxxxxxxxxxxxxxx</p>
+<dl class="simple">
+<dt>In this class we learnt about:</dt><dd><ul class="simple">
+<li><p>randomness in computing, its applications, and how to use it in Python</p></li>
+<li><p>how code can be used to generate art</p></li>
+<li><p>making some generative art of our own!</p></li>
+</ul>
+</dd>
+</dl>
 </div>
 <div class="section" id="further-reading">
 <h2>Further reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">¶</a></h2>
 <ol class="upperalpha simple" start="16">
 <li><p>Prusinkiewicz and Aristid Lindenmayer. 1990. The algorithmic beauty of plants. Springer-Verlag, Berlin, Heidelberg.</p></li>
 </ol>
+<p><a class="reference external" href="https://www.encyclopedia.com/science-and-technology/mathematics/mathematics/randomness#B">Randomness Encyclopedia</a></p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Generative_art#:~:text=Generative%20art%20refers%20to%20art,made%20directly%20by%20the%20artist.">Generative Music</a></p>
 </div>
 </div>
 
@@ -64,12 +389,43 @@
   <h3><a href="index.html">Table of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Week 9 : Randomness and Generative art</a><ul>
+<li><a class="reference internal" href="#setup-check-intro-to-randomness">Setup check + intro to randomness</a><ul>
+<li><a class="reference internal" href="#setup-check">Setup check</a></li>
+<li><a class="reference internal" href="#intro-to-randomness">Intro to randomness</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#why-do-we-need-randomness-in-computing">Why do we need randomness in computing?</a><ul>
+<li><a class="reference internal" href="#cryptographic-security">Cryptographic security</a></li>
+<li><a class="reference internal" href="#statistical-computing">Statistical computing</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#sampling-random-numbers-with-numpy-random">Sampling random numbers with <cite>numpy.random</cite></a><ul>
+<li><a class="reference internal" href="#sampling-discrete-distributions">Sampling discrete distributions</a></li>
+<li><a class="reference internal" href="#sampling-from-uniform-and-normal-distributions">Sampling from uniform and normal distributions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#generative-art-with-code">Generative art with code</a></li>
+<li><a class="reference internal" href="#primer-on-turtle-graphics-library">Primer on <cite>turtle</cite> graphics library</a></li>
+<li><a class="reference internal" href="#exercise-circle-packing-generative-art">Exercise: Circle packing generative art</a><ul>
+<li><a class="reference internal" href="#part-1">Part 1</a></li>
+<li><a class="reference internal" href="#part-2">Part 2</a></li>
+<li><a class="reference internal" href="#part-3">Part 3</a></li>
+<li><a class="reference internal" href="#part-4">Part 4</a></li>
+<li><a class="reference internal" href="#part-5">Part 5</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#conclusion">Conclusion</a></li>
 <li><a class="reference internal" href="#further-reading">Further reading</a></li>
 </ul>
 </li>
 </ul>
 
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="08_pde_populations_sols.html"
+                        title="previous chapter">Week 8: Class Exercise solutions</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="09_random_generative_sols.html"
+                        title="next chapter">Week 9: Class Exercise solutions</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -97,6 +453,12 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="09_random_generative_sols.html" title="Week 9: Class Exercise solutions"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="08_pde_populations_sols.html" title="Week 8: Class Exercise solutions"
+             >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Exposure to Code 1.0 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Week 9 : Randomness and Generative art</a></li> 
       </ul>

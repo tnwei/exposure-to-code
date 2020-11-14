@@ -1,0 +1,518 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Week 9: Class Exercise solutions &#8212; Exposure to Code 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Week 9 : Randomness and Generative art" href="09_random_generative.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="09_random_generative.html" title="Week 9 : Randomness and Generative art"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Exposure to Code 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Week 9: Class Exercise solutions</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="week-9-class-exercise-solutions">
+<h1>Week 9: Class Exercise solutions<a class="headerlink" href="#week-9-class-exercise-solutions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="circle-packing-generative-art">
+<h2>Circle packing generative art<a class="headerlink" href="#circle-packing-generative-art" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="part-1">
+<h3>Part 1<a class="headerlink" href="#part-1" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">turtle</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="p">()</span>
+<span class="n">screen</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Screen</span><span class="p">()</span>
+
+<span class="n">t</span><span class="o">.</span><span class="n">penup</span><span class="p">()</span>
+<span class="n">t</span><span class="o">.</span><span class="n">setposition</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1"># Set to East</span>
+<span class="n">t</span><span class="o">.</span><span class="n">setheading</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span> <span class="c1"># Set to North</span>
+<span class="n">t</span><span class="o">.</span><span class="n">pendown</span><span class="p">()</span>
+<span class="n">t</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">t</span><span class="o">.</span><span class="n">penup</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">draw_circle</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
+    <span class="c1"># Draws a circle at (x, y) with radius r.</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">penup</span><span class="p">()</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">setposition</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">r</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="c1"># Set to East</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">setheading</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span> <span class="c1"># Set to North</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">pendown</span><span class="p">()</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">penup</span><span class="p">()</span>
+
+<span class="n">draw_circle</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+
+<span class="n">turtle</span><span class="o">.</span><span class="n">done</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="sol1.py output" src="_images/week9-sol1.jpg" />
+</div>
+</div>
+<div class="section" id="part-2">
+<h3>Part 2<a class="headerlink" href="#part-2" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">turtle</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="p">()</span>
+<span class="n">screen</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Screen</span><span class="p">()</span>
+
+<span class="c1"># Draw faster</span>
+<span class="n">screen</span><span class="o">.</span><span class="n">delay</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">t</span><span class="o">.</span><span class="n">speed</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">draw_circle</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
+    <span class="c1"># Draws a circle at (x, y) with radius r.</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">penup</span><span class="p">()</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">setposition</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">r</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="c1"># Set to East</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">setheading</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span> <span class="c1"># Set to North</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">pendown</span><span class="p">()</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">penup</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">check_circle_within_frame</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">fr</span><span class="p">):</span>
+    <span class="c1"># Angle of a line from origin to the circle&#39;s center</span>
+    <span class="n">vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">])</span>
+    <span class="n">uvec</span> <span class="o">=</span> <span class="n">vec</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span>
+    <span class="n">vec</span> <span class="o">=</span> <span class="n">vec</span> <span class="o">+</span> <span class="n">uvec</span> <span class="o">*</span> <span class="n">r</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">dist</span> <span class="o">&gt;</span> <span class="n">fr</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+<span class="c1">## Main block</span>
+<span class="n">FRAMERADIUS</span> <span class="o">=</span> <span class="mi">300</span>
+<span class="n">draw_circle</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">FRAMERADIUS</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">low</span><span class="o">=-</span><span class="n">FRAMERADIUS</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="n">FRAMERADIUS</span><span class="p">)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">low</span><span class="o">=-</span><span class="n">FRAMERADIUS</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="n">FRAMERADIUS</span><span class="p">)</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="n">FRAMERADIUS</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">check_circle_within_frame</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">FRAMERADIUS</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="k">break</span>
+
+    <span class="n">draw_circle</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+
+<span class="n">turtle</span><span class="o">.</span><span class="n">done</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="sol2.py output" src="_images/week9-sol2.jpg" />
+</div>
+</div>
+<div class="section" id="part-3">
+<h3>Part 3<a class="headerlink" href="#part-3" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">turtle</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="p">()</span>
+<span class="n">screen</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Screen</span><span class="p">()</span>
+
+<span class="c1"># Draw faster</span>
+<span class="n">screen</span><span class="o">.</span><span class="n">delay</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">t</span><span class="o">.</span><span class="n">speed</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Draw even faster!</span>
+<span class="n">t</span><span class="o">.</span><span class="n">hideturtle</span><span class="p">()</span>
+<span class="n">screen</span><span class="o">.</span><span class="n">tracer</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">draw_circle</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
+    <span class="c1"># Draws a circle at (x, y) with radius r.</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">penup</span><span class="p">()</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">setposition</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">r</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="c1"># Set to East</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">setheading</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span> <span class="c1"># Set to North</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">pendown</span><span class="p">()</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">penup</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">check_circle_within_frame</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">fr</span><span class="p">):</span>
+    <span class="c1"># Angle of a line from origin to the circle&#39;s center</span>
+    <span class="n">vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">])</span>
+    <span class="n">uvec</span> <span class="o">=</span> <span class="n">vec</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span>
+    <span class="n">vec</span> <span class="o">=</span> <span class="n">vec</span> <span class="o">+</span> <span class="n">uvec</span> <span class="o">*</span> <span class="n">r</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">dist</span> <span class="o">&gt;</span> <span class="n">fr</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+<span class="k">def</span> <span class="nf">two_circles_overlap</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">r1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">r2</span><span class="p">):</span>
+    <span class="c1"># Returns True if both circles overlap each other</span>
+    <span class="n">center1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">])</span>
+    <span class="n">center2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">])</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">center2</span> <span class="o">-</span> <span class="n">center1</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">dist</span> <span class="o">&lt;=</span> <span class="n">r1</span> <span class="o">+</span> <span class="n">r2</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+
+<span class="k">def</span> <span class="nf">check_circle_no_overlap</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">circles</span><span class="p">):</span>
+    <span class="c1"># Returns True if specified circle does not overlap with any existing circle</span>
+    <span class="k">for</span> <span class="n">prevcircle</span> <span class="ow">in</span> <span class="n">circles</span><span class="p">:</span>
+        <span class="n">prevx</span><span class="p">,</span> <span class="n">prevy</span><span class="p">,</span> <span class="n">prevr</span> <span class="o">=</span> <span class="n">prevcircle</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">prevcircle</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">prevcircle</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">two_circles_overlap</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">prevx</span><span class="p">,</span> <span class="n">prevy</span><span class="p">,</span> <span class="n">prevr</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="kc">True</span>
+
+<span class="c1">## Main block</span>
+<span class="n">FRAMERADIUS</span> <span class="o">=</span> <span class="mi">300</span>
+<span class="n">draw_circle</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">FRAMERADIUS</span><span class="p">)</span>
+<span class="n">circles</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">200</span><span class="p">):</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">low</span><span class="o">=-</span><span class="n">FRAMERADIUS</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="n">FRAMERADIUS</span><span class="p">)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">low</span><span class="o">=-</span><span class="n">FRAMERADIUS</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="n">FRAMERADIUS</span><span class="p">)</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="n">FRAMERADIUS</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">check_circle_within_frame</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">FRAMERADIUS</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">check_circle_no_overlap</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">circles</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;X&quot;</span><span class="p">)</span>
+                <span class="k">break</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;O&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+    <span class="n">circles</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">])</span>
+
+<span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="ow">in</span> <span class="n">circles</span><span class="p">:</span>
+    <span class="n">draw_circle</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+
+<span class="n">turtle</span><span class="o">.</span><span class="n">done</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="sol3.py output" src="_images/week9-sol3.jpg" />
+</div>
+</div>
+<div class="section" id="part-4">
+<h3>Part 4<a class="headerlink" href="#part-4" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">turtle</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="p">()</span>
+<span class="n">screen</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Screen</span><span class="p">()</span>
+
+<span class="c1"># Draw faster</span>
+<span class="n">screen</span><span class="o">.</span><span class="n">delay</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">t</span><span class="o">.</span><span class="n">speed</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Draw even faster!</span>
+<span class="n">t</span><span class="o">.</span><span class="n">hideturtle</span><span class="p">()</span>
+<span class="n">screen</span><span class="o">.</span><span class="n">tracer</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">draw_circle</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
+    <span class="c1"># Draws a circle at (x, y) with radius r.</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">penup</span><span class="p">()</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">setposition</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">r</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="c1"># Set to East</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">setheading</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span> <span class="c1"># Set to North</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">pendown</span><span class="p">()</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">penup</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">check_circle_within_frame</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">fr</span><span class="p">):</span>
+    <span class="c1"># Angle of a line from origin to the circle&#39;s center</span>
+    <span class="n">vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">])</span>
+    <span class="n">uvec</span> <span class="o">=</span> <span class="n">vec</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span>
+    <span class="n">vec</span> <span class="o">=</span> <span class="n">vec</span> <span class="o">+</span> <span class="n">uvec</span> <span class="o">*</span> <span class="n">r</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">dist</span> <span class="o">&gt;</span> <span class="n">fr</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+<span class="k">def</span> <span class="nf">two_circles_overlap</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">r1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">r2</span><span class="p">):</span>
+    <span class="c1"># Returns True if both circles overlap each other</span>
+    <span class="n">center1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">])</span>
+    <span class="n">center2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">])</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">center2</span> <span class="o">-</span> <span class="n">center1</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">dist</span> <span class="o">&lt;=</span> <span class="n">r1</span> <span class="o">+</span> <span class="n">r2</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+
+<span class="k">def</span> <span class="nf">check_circle_no_overlap</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">circles</span><span class="p">):</span>
+    <span class="c1"># Returns True if specified circle does not overlap with any existing circle</span>
+    <span class="k">for</span> <span class="n">prevcircle</span> <span class="ow">in</span> <span class="n">circles</span><span class="p">:</span>
+        <span class="n">prevx</span><span class="p">,</span> <span class="n">prevy</span><span class="p">,</span> <span class="n">prevr</span> <span class="o">=</span> <span class="n">prevcircle</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">prevcircle</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">prevcircle</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">two_circles_overlap</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">prevx</span><span class="p">,</span> <span class="n">prevy</span><span class="p">,</span> <span class="n">prevr</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="kc">True</span>
+
+<span class="c1">## Main block</span>
+<span class="n">FRAMERADIUS</span> <span class="o">=</span> <span class="mi">300</span>
+<span class="n">MAXITER</span> <span class="o">=</span> <span class="mi">3000</span>
+<span class="n">draw_circle</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">FRAMERADIUS</span><span class="p">)</span>
+
+<span class="n">circles</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">rlim</span> <span class="o">=</span> <span class="n">FRAMERADIUS</span>
+<span class="n">avgrejects</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">pastrejectcounter</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">rejectcounter</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">200</span><span class="p">):</span>
+    <span class="k">while</span> <span class="n">rejectcounter</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">circles</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">MAXITER</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">low</span><span class="o">=-</span><span class="n">FRAMERADIUS</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="n">FRAMERADIUS</span><span class="p">)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">low</span><span class="o">=-</span><span class="n">FRAMERADIUS</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="n">FRAMERADIUS</span><span class="p">)</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="n">rlim</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">check_circle_within_frame</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">FRAMERADIUS</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">check_circle_no_overlap</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">circles</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;X&quot;</span><span class="p">)</span>
+                <span class="k">break</span>
+
+        <span class="n">rejectcounter</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;O&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+    <span class="n">avgrejects</span> <span class="o">=</span> <span class="n">avgrejects</span> <span class="o">*</span> <span class="mf">0.8</span> <span class="o">+</span> <span class="mf">0.2</span> <span class="o">*</span> <span class="p">(</span><span class="n">rejectcounter</span> <span class="o">-</span> <span class="n">pastrejectcounter</span><span class="p">)</span>
+    <span class="n">pastrejectcounter</span> <span class="o">=</span> <span class="n">rejectcounter</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exponentially weighted average reject rate is&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">avgrejects</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">avgrejects</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="n">rlim</span> <span class="o">=</span> <span class="n">rlim</span> <span class="o">*</span> <span class="mf">0.9</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;New decreased rlim:&quot;</span><span class="p">,</span> <span class="n">rlim</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">avgrejects</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">:</span>
+        <span class="n">rlim</span> <span class="o">=</span> <span class="n">rlim</span> <span class="o">*</span> <span class="mf">1.1</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;New increased rlim:&quot;</span><span class="p">,</span> <span class="n">rlim</span><span class="p">)</span>
+
+
+    <span class="n">circles</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">])</span>
+
+<span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="ow">in</span> <span class="n">circles</span><span class="p">:</span>
+    <span class="n">draw_circle</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Itercount is&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">rejectcounter</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">circles</span><span class="p">)),</span> <span class="s2">&quot;num circles is:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">circles</span><span class="p">))</span>
+<span class="n">turtle</span><span class="o">.</span><span class="n">done</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="sol4.py output" src="_images/week9-sol4.jpg" />
+</div>
+</div>
+<div class="section" id="part-5">
+<h3>Part 5<a class="headerlink" href="#part-5" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">turtle</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="p">()</span>
+<span class="n">screen</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Screen</span><span class="p">()</span>
+
+<span class="c1"># Draw faster</span>
+<span class="n">screen</span><span class="o">.</span><span class="n">delay</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">t</span><span class="o">.</span><span class="n">speed</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Draw even faster!</span>
+<span class="n">t</span><span class="o">.</span><span class="n">hideturtle</span><span class="p">()</span>
+<span class="n">screen</span><span class="o">.</span><span class="n">tracer</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">draw_circle</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
+    <span class="c1"># Draws a circle at (x, y) with radius r.</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">penup</span><span class="p">()</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">setposition</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">r</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="c1"># Set to East</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">setheading</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span> <span class="c1"># Set to North</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">pendown</span><span class="p">()</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">penup</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">check_circle_within_frame</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">fr</span><span class="p">):</span>
+    <span class="c1"># Angle of a line from origin to the circle&#39;s center</span>
+    <span class="n">vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">])</span>
+    <span class="n">uvec</span> <span class="o">=</span> <span class="n">vec</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span>
+    <span class="n">vec</span> <span class="o">=</span> <span class="n">vec</span> <span class="o">+</span> <span class="n">uvec</span> <span class="o">*</span> <span class="n">r</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">dist</span> <span class="o">&gt;</span> <span class="n">fr</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+<span class="k">def</span> <span class="nf">two_circles_overlap</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">r1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">r2</span><span class="p">):</span>
+    <span class="c1"># Returns True if both circles overlap each other</span>
+    <span class="n">center1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">])</span>
+    <span class="n">center2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">])</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">center2</span> <span class="o">-</span> <span class="n">center1</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">dist</span> <span class="o">&lt;=</span> <span class="n">r1</span> <span class="o">+</span> <span class="n">r2</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+
+<span class="k">def</span> <span class="nf">check_circle_no_overlap</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">circles</span><span class="p">):</span>
+    <span class="c1"># Returns True if specified circle does not overlap with any existing circle</span>
+    <span class="k">for</span> <span class="n">prevcircle</span> <span class="ow">in</span> <span class="n">circles</span><span class="p">:</span>
+        <span class="n">prevx</span><span class="p">,</span> <span class="n">prevy</span><span class="p">,</span> <span class="n">prevr</span> <span class="o">=</span> <span class="n">prevcircle</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">prevcircle</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">prevcircle</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">two_circles_overlap</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">prevx</span><span class="p">,</span> <span class="n">prevy</span><span class="p">,</span> <span class="n">prevr</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="kc">True</span>
+
+<span class="k">def</span> <span class="nf">calc_packing_efficiency</span><span class="p">(</span><span class="n">circles</span><span class="p">,</span> <span class="n">framearea</span><span class="p">):</span>
+    <span class="c1"># Returns the packing efficiency of drawn circles</span>
+    <span class="n">packed_area</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">circle</span> <span class="ow">in</span> <span class="n">circles</span><span class="p">:</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">circle</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="n">packed_area</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">r</span> <span class="o">**</span> <span class="mi">2</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Packed area / total area: </span><span class="si">%.2f</span><span class="s2">/</span><span class="si">%.2f</span><span class="s2"> = </span><span class="si">%.3f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">packed_area</span><span class="p">,</span> <span class="n">framearea</span><span class="p">,</span> <span class="n">packed_area</span><span class="o">/</span><span class="n">framearea</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">packed_area</span> <span class="o">/</span> <span class="n">framearea</span>
+
+<span class="c1">## Main block</span>
+<span class="n">FRAMERADIUS</span> <span class="o">=</span> <span class="mi">300</span>
+<span class="n">FRAMEAREA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">FRAMERADIUS</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="n">MAXITER</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">draw_circle</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">FRAMERADIUS</span><span class="p">)</span>
+
+<span class="n">circles</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">rlim</span> <span class="o">=</span> <span class="n">FRAMERADIUS</span>
+<span class="n">avgrejects</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">pastrejectcounter</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">rejectcounter</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">while</span> <span class="n">calc_packing_efficiency</span><span class="p">(</span><span class="n">circles</span><span class="p">,</span> <span class="n">FRAMEAREA</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mf">0.8</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">rejectcounter</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">circles</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">MAXITER</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Max iterations reached at </span><span class="si">{</span><span class="n">MAXITER</span><span class="si">}</span><span class="s2">!&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Final packing efficiency is </span><span class="si">{</span><span class="n">calc_packing_efficiency</span><span class="p">(</span><span class="n">circles</span><span class="p">,</span> <span class="n">FRAMEAREA</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">break</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">low</span><span class="o">=-</span><span class="n">FRAMERADIUS</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="n">FRAMERADIUS</span><span class="p">)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">low</span><span class="o">=-</span><span class="n">FRAMERADIUS</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="n">FRAMERADIUS</span><span class="p">)</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="n">rlim</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">check_circle_within_frame</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">FRAMERADIUS</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">check_circle_no_overlap</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">circles</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;X&quot;</span><span class="p">)</span>
+                <span class="k">break</span>
+
+        <span class="n">rejectcounter</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;O&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+    <span class="n">avgrejects</span> <span class="o">=</span> <span class="n">avgrejects</span> <span class="o">*</span> <span class="mf">0.8</span> <span class="o">+</span> <span class="mf">0.2</span> <span class="o">*</span> <span class="p">(</span><span class="n">rejectcounter</span> <span class="o">-</span> <span class="n">pastrejectcounter</span><span class="p">)</span>
+    <span class="n">pastrejectcounter</span> <span class="o">=</span> <span class="n">rejectcounter</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exponentially weighted average reject rate is&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">avgrejects</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">avgrejects</span> <span class="o">&gt;=</span> <span class="mi">8</span><span class="p">:</span>
+        <span class="n">rlim</span> <span class="o">=</span> <span class="n">rlim</span> <span class="o">*</span> <span class="mf">0.9</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;New decreased rlim:&quot;</span><span class="p">,</span> <span class="n">rlim</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">avgrejects</span> <span class="o">&lt;=</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="n">rlim</span> <span class="o">=</span> <span class="n">rlim</span> <span class="o">*</span> <span class="mf">1.1</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;New increased rlim:&quot;</span><span class="p">,</span> <span class="n">rlim</span><span class="p">)</span>
+
+
+    <span class="n">circles</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">])</span>
+
+<span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="ow">in</span> <span class="n">circles</span><span class="p">:</span>
+    <span class="n">draw_circle</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Itercount is&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">rejectcounter</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">circles</span><span class="p">)),</span> <span class="s2">&quot;num circles is:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">circles</span><span class="p">))</span>
+<span class="n">turtle</span><span class="o">.</span><span class="n">done</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>To save your images, add the following code chunk before <cite>turtle.done()</cite>, specifying the filename as required:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Added code chunk to save images</span>
+<span class="kn">import</span> <span class="nn">io</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="n">cv</span> <span class="o">=</span> <span class="n">screen</span><span class="o">.</span><span class="n">getcanvas</span><span class="p">()</span>
+<span class="n">ps</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">postscript</span><span class="p">()</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">ps</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)))</span>
+<span class="n">im</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;week9-sol1.jpg&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="sol5.py output" src="_images/week9-sol5.jpg" />
+</div>
+</div>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Week 9: Class Exercise solutions</a><ul>
+<li><a class="reference internal" href="#circle-packing-generative-art">Circle packing generative art</a><ul>
+<li><a class="reference internal" href="#part-1">Part 1</a></li>
+<li><a class="reference internal" href="#part-2">Part 2</a></li>
+<li><a class="reference internal" href="#part-3">Part 3</a></li>
+<li><a class="reference internal" href="#part-4">Part 4</a></li>
+<li><a class="reference internal" href="#part-5">Part 5</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="09_random_generative.html"
+                        title="previous chapter">Week 9 : Randomness and Generative art</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/09_random_generative_sols.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="09_random_generative.html" title="Week 9 : Randomness and Generative art"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Exposure to Code 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Week 9: Class Exercise solutions</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright PERMATA STEM Talent, 2020.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+    </div>
+  </body>
+</html>
