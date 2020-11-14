@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Week 10 : Problem solving capstone &#8212; Exposure to Code 1.0 documentation</title>
+    <title>Week 10 : Problem solving mini-capstone &#8212; Exposure to Code 1.0 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -15,7 +15,8 @@
     <script src="_static/language_data.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Week 9: Class Exercise solutions" href="09_random_generative_sols.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -23,8 +24,11 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="09_random_generative_sols.html" title="Week 9: Class Exercise solutions"
+             accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Exposure to Code 1.0 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Week 10 : Problem solving capstone</a></li> 
+        <li class="nav-item nav-item-this"><a href="">Week 10 : Problem solving mini-capstone</a></li> 
       </ul>
     </div>  
 
@@ -33,30 +37,142 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="week-10-problem-solving-capstone">
-<h1>Week 10 : Problem solving capstone<a class="headerlink" href="#week-10-problem-solving-capstone" title="Permalink to this headline">¶</a></h1>
-<p>Outcome: Students will leverage upon the skills and knowledge picked up in this course to accomplish a capstone project, focused on the process of solving problems with code.</p>
+  <div class="section" id="week-10-problem-solving-mini-capstone">
+<h1>Week 10 : Problem solving mini-capstone<a class="headerlink" href="#week-10-problem-solving-mini-capstone" title="Permalink to this headline">¶</a></h1>
+<p>Outcome: Students will leverage upon the skills and knowledge picked up in this course to accomplish a mini-capstone project, focused on the process of solving problems with code.</p>
+<div class="section" id="intro">
+<h2>Intro<a class="headerlink" href="#intro" title="Permalink to this headline">¶</a></h2>
+<p>Welcome to the end of this course! In many STEM degree programmes, students are required to do a capstone project in their last semester where they apply the concepts they’ve learnt. The terminology “capstone” refers to the the last block you put on a building in ancient times, symbolizing the final piece of the learning experience.</p>
 <dl class="simple">
-<dt>What we will do:</dt><dd><ul class="simple">
-<li><p>Build a ballistics simulator</p></li>
+<dt>This week, we will be doing something similar, except instead of having ten weeks to do a capstone, we will be do a mini-capstone. Choose one of the topics below to work on; we will have a brief show-and-tell at the end of the class. You are more than welcome to work on this material in advance of the class itself.</dt><dd><ul class="simple">
+<li><p>Mini-capstone 1: n-body simulation (physics)</p></li>
+<li><p>Mini-capstone 2: 1D fluid simulation (cellular automata)</p></li>
 </ul>
 </dd>
 </dl>
-<div class="section" id="conclusion">
-<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
-<p>Message of the day: xxxxxxxxxxxxxxxx</p>
-<ul class="simple">
-<li><p>Adv Exercise: solar system simulator</p></li>
+</div>
+<div class="section" id="mini-capstone-1-n-body-simulation-physics">
+<h2>Mini-capstone 1: n-body simulation (physics)<a class="headerlink" href="#mini-capstone-1-n-body-simulation-physics" title="Permalink to this headline">¶</a></h2>
+<p>Newton’s law of gravitation tells us that planets exerts gravitational force on each other, proportional to their mass, and inversely proportional to the square of distance between them.</p>
+<div class="math notranslate nohighlight">
+\[F = G\frac{m_{1}m_{2}}{r^2}\]</div>
+<dl class="simple">
+<dt>where:</dt><dd><ul class="simple">
+<li><p>m1, m2 is the mass of planet 1 and planet 2</p></li>
+<li><p>r is the distance between planet 1 and planet 2</p></li>
+<li><p>G is the gravitational constant, 6.674e-11</p></li>
+<li><p>F is the force between the planets.</p></li>
 </ul>
+</dd>
+</dl>
+<p>The acceleration that is felt by planet 1 from planet 2 is thus <span class="math notranslate nohighlight">\(F/m_{1}\)</span>, as math:<cite>F = ma</cite>.</p>
+<p>It is not difficult to describe a system with two planetary bodies, but systems with three bodies and above exhibit chaotic behaviour and are always solved by computers. We know this as the n-body problem. Note that acceleration (a), velocity (v) and position (r) are related by the following differential equations:</p>
+<div class="math notranslate nohighlight">
+\[a = \frac{dv}{dt}
+    v = \frac{dr}{dt}\]</div>
+<dl class="simple">
+<dt>Write a simple n-body simulation to calculate the trajectories of the following toy system:</dt><dd><ul class="simple">
+<li><dl class="simple">
+<dt>Planet A</dt><dd><ul>
+<li><p>Mass: 10</p></li>
+<li><p>Initial position (x, y): (0, 3)</p></li>
+<li><p>Initial velocity (x, y): (0.5, 0)</p></li>
+<li><p>Initial acceleration (x, y): (0, 0)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Planet B</dt><dd><ul>
+<li><p>Mass: 5</p></li>
+<li><p>Initial position (x, y): (0, -3)</p></li>
+<li><p>Initial velocity (x, y): (-0.5, 0)</p></li>
+<li><p>Initial acceleration (x, y): (0, 0)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>G = 1</p></li>
+<li><p>dt = 0.01</p></li>
+<li><p>timesteps = 3000</p></li>
+</ul>
+</dd>
+<dt>You might find the steps below to be useful:</dt><dd><ol class="arabic simple">
+<li><p>Set up the simulation. Initial conditions, number of timesteps, timestep size.</p></li>
+<li><p>Write the function to calculate the force from Newton’s law of gravitation, taking as input masses and positions of two planets, returning acceleration. Note that positions and acceleration should be vectors, to represent both (x, y) components.</p></li>
+<li><p>Setup a for-loop to run the simulation using Euler’s method for numerical integration. First find the new acceleration, then update velocity, then update position.</p></li>
+<li><p>Write code to visualize the results of the simulation. Template visualization code will be provided for modifications.</p></li>
+</ol>
+</dd>
+</dl>
 </div>
-<div class="section" id="id1">
-<h2>Conclusion<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p>Message of the day: xxxxxxxxxxxxxxxx</p>
+<div class="section" id="mini-capstone-2-1d-fluid-simulation-cellular-automata">
+<h2>Mini-capstone 2: 1D fluid simulation (cellular automata)<a class="headerlink" href="#mini-capstone-2-1d-fluid-simulation-cellular-automata" title="Permalink to this headline">¶</a></h2>
+<p>It is possible to model a tank of fluid by dividing the width of the tank into multiple fluid columns. By describing how fluid columns pass excess fluid to their neighbors, we can build a somewhat realistic 1D fluid simulation.</p>
+<dl class="simple">
+<dt>We know that the following forces are in play:</dt><dd><ul class="simple">
+<li><p>Gravity: If a column is taller than its neighbor, gravity will cause the fluid to move from the higher column to the lower column.</p></li>
+<li><p>Momentum: A wave moving across the columns will continue to move across the tank from its momentum, which dissipates slowly over time.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Notice that both forces interact (i.e. can be summed), and can either amplify fluid movement or cancel each other out depending on the circumstances. We term the net force as fluid pressure.</p>
+<p>At each timestep, each column is compared against its left neighbor. If the aforementioned column exerts more fluid pressure on its left neighbor, fluid will flow to the left neighbor in the next timestep, proportional to the difference in fluid pressure. This step is then repeated for the right neighbor. Amount of fluid flow between columns are recorded to represent momentum in the next timestep.</p>
+<p>Write a 1D fluid simulator that will allow us to model the movement of fluid in a tank with the following fluid columns:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">water</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">])</span>
+</pre></div>
 </div>
+<p>You might find the following steps to be useful:</p>
+<ol class="arabic simple">
+<li><p>Setup the simulation. Notice that for each column, you need to store: column height (<cite>water</cite>), momentum from left, and momentum from right.</p></li>
+<li><dl class="simple">
+<dt>Write the core loop to calculate flow for any column with its left and right neighbors.</dt><dd><ul class="simple">
+<li><p>Difference in fluid pressure due to gravity can be written as the difference between column height multiplied by a gravitational modifier.</p></li>
+<li><p>Difference in fluid pressure due to momentum can be written as the difference between momentum from left, and momentum from right.</p></li>
+<li><p>Notice that the left-most and right-most columns need to be handled separately as they do not have both neighbors.</p></li>
+<li><p>At every iteration, the variables that should be updated for the next timestep are column height, momentum from left, and momentum from right.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Write code to visualize the results of the simulation. Template visualization code will be provided for modifications.</p></li>
+</ol>
 </div>
 <div class="section" id="where-to-from-here">
-<h1>Where to from here?<a class="headerlink" href="#where-to-from-here" title="Permalink to this headline">¶</a></h1>
-<p>Ending, recommend more avenues to learn properly</p>
+<h2>Where to from here?<a class="headerlink" href="#where-to-from-here" title="Permalink to this headline">¶</a></h2>
+<p>The best way to improve with coding is to work on your own project consistently.</p>
+<p>The second best way to improve is to learn from the resources out there on the internet. Regardless what you want to do with coding / how much time you want to spend on coding, good coders are those that spend time improving on their own.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Improving at algorithms:</dt><dd><ul>
+<li><p><a class="reference external" href="https://leetcode.com/">Leetcode, algorithmic coding challenges</a></p></li>
+<li><p><a class="reference external" href="https://www.hackerrank.com/">Hackerrank, algorithmic coding challenges</a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Learning bioinformatics:</dt><dd><ul>
+<li><p><a class="reference external" href="http://rosalind.info/problems/locations/">Rosalind, learn bioinformatics online through coding challenges</a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Learn machine learning:</dt><dd><ul>
+<li><p><a class="reference external" href="https://www.coursera.org/learn/machine-learning">Andrew Ng’s Machine Learning course on Coursera, no need to pay for the cert, just audit the course</a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<dl class="simple">
+<dt>If this is your thing, build your way up to tackle coding challenges:</dt><dd><ul class="simple">
+<li><p>Google Kick Start: Online algorithmic coding competition</p></li>
+</ul>
+</dd>
+</dl>
+</div>
 </div>
 
 
@@ -68,14 +184,18 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Week 10 : Problem solving capstone</a><ul>
-<li><a class="reference internal" href="#conclusion">Conclusion</a></li>
-<li><a class="reference internal" href="#id1">Conclusion</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#">Week 10 : Problem solving mini-capstone</a><ul>
+<li><a class="reference internal" href="#intro">Intro</a></li>
+<li><a class="reference internal" href="#mini-capstone-1-n-body-simulation-physics">Mini-capstone 1: n-body simulation (physics)</a></li>
+<li><a class="reference internal" href="#mini-capstone-2-1d-fluid-simulation-cellular-automata">Mini-capstone 2: 1D fluid simulation (cellular automata)</a></li>
 <li><a class="reference internal" href="#where-to-from-here">Where to from here?</a></li>
 </ul>
+</li>
+</ul>
 
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="09_random_generative_sols.html"
+                        title="previous chapter">Week 9: Class Exercise solutions</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -103,8 +223,11 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="09_random_generative_sols.html" title="Week 9: Class Exercise solutions"
+             >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Exposure to Code 1.0 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Week 10 : Problem solving capstone</a></li> 
+        <li class="nav-item nav-item-this"><a href="">Week 10 : Problem solving mini-capstone</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
