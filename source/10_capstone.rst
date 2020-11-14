@@ -10,7 +10,7 @@ Welcome to the end of this course! In many STEM degree programmes, students are 
 This week, we will be doing something similar, except instead of having ten weeks to do a capstone, we will be do a mini-capstone. Choose one of the topics below to work on; we will have a brief show-and-tell at the end of the class. You are more than welcome to work on this material in advance of the class itself.
 	* Mini-capstone 1: n-body simulation (physics)
 	* Mini-capstone 2: 1D fluid simulation (cellular automata)
-	* Mini-capstone 3: Ecosphere equilibrium (biology + optimization)
+	.. * Mini-capstone 3: Ecosphere equilibrium (biology + optimization)
 
 Mini-capstone 1: n-body simulation (physics)
 --------------------------------------------
@@ -85,6 +85,12 @@ You might find the following steps to be useful:
 	* Notice that the left-most and right-most columns need to be handled separately as they do not have both neighbors.
 	* At every iteration, the variables that should be updated for the next timestep are column height, momentum from left, and momentum from right.
 3. Write code to visualize the results of the simulation. Template visualization code will be provided for modifications.
+
+.. Mini-capstone 3: Ecosphere equilibrium (biology + optimization)
+.. ---------------------------------------------------------------
+.. A billionaire found an underground lake under his estate. After purifying the water in the lake, he decides to populate the lake with fish and shrimp. His science advisor points out that the lake is an ecosphere, as the organisms that live in it has no means of interaction with the outside world. The billionaire, learning this idea for the first time, becomes intrigued. He then asks the science advisor to add the right number of fish and shrimp to the lake, such that both populations will still exist after a hundred years.
+
+.. Receiving this new task, the science advisor set to work and discovered the following facts:
 
 
 Where to from here?
