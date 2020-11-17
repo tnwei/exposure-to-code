@@ -10,7 +10,7 @@ Welcome to the end of this course! In many STEM degree programmes, students are 
 This week, we will be doing something similar, except instead of having ten weeks to do a capstone, we will be do a mini-capstone. Choose one of the topics below to work on; we will have a brief show-and-tell at the end of the class. You are more than welcome to work on this material in advance of the class itself.
 	* Mini-capstone 1: n-body simulation (physics)
 	* Mini-capstone 2: 1D fluid simulation (cellular automata)
-	.. * Mini-capstone 3: Ecosphere equilibrium (biology + optimization)
+	* Mini-capstone 3: Ecosphere equilibrium (biology + optimization)
 
 Mini-capstone 1: n-body simulation (physics)
 --------------------------------------------
@@ -86,12 +86,37 @@ You might find the following steps to be useful:
 	* At every iteration, the variables that should be updated for the next timestep are column height, momentum from left, and momentum from right.
 3. Write code to visualize the results of the simulation. Template visualization code will be provided for modifications.
 
-.. Mini-capstone 3: Ecosphere equilibrium (biology + optimization)
-.. ---------------------------------------------------------------
-.. A billionaire found an underground lake under his estate. After purifying the water in the lake, he decides to populate the lake with fish and shrimp. His science advisor points out that the lake is an ecosphere, as the organisms that live in it has no means of interaction with the outside world. The billionaire, learning this idea for the first time, becomes intrigued. He then asks the science advisor to add the right number of fish and shrimp to the lake, such that both populations will still exist after a hundred years.
+Mini-capstone 3: Ecosphere equilibrium (biology + optimization)
+---------------------------------------------------------------
+You are the science advisor for a billionaire who has set up a research lab to revive dinosaurs. You have just presented a population simulation where you plan to introduce a large number of herbivores mixed with a small population of carnivores, to have a healthy prey-predator equilibrium. However, the billionaire is only interested in seeing carnivorous dinosaurs, and wants you to replace all the herbivores with carnivores!
 
-.. Receiving this new task, the science advisor set to work and discovered the following facts:
+After convincing your sponsor that you cannot have a healthy ecosystem without a lot of herbivores to serve as food for the carnivores, the billionaire agreed to not remove the herbivores. As you further explained that the number of dinosaurs will change over time, the billionaire decided that he wants to see the number of carnivores to be as stable as possible. It is thus left up to you to find the optimal initial conditions of the simulation, so you can allocate the right proportion of eggs in the incubation farm to herbivores or carnivores.
 
+The prey-predator simulation obeys the following equations:
+
+.. math::
+
+    \frac{dx}{dt} = ax - bxy
+	\frac{dy}{dt} = cxy - dy
+
+where:
+	* :math:`x` and :math:`y` represnt the populations of herbivores and carnivores,
+	* :math:`a` and :math:`b` are growth and death rate constants for herbivores, 
+	* :math:`c` and :math:`d` are growth and death rate constants for carnivores.
+
+Your initial simulation uses :math:`a=1.2`, :math:`b=0.4`, :math:`c=0.2`, and :math:`d=0.1`. You used Euler's integration scheme, running on timestep size :math:`dt=1e-3`, for :math:`niter=100000` times. Without knowing the incubation capacity, you only initialized the simulation with 10 herbivores and 10 carnivores. 
+
+You plan to use code to explore how to best allocate the eggs. You thought about using `scipy` optimize to find the best way to allocate the eggs, but alas! You believe the chaotic behaviour of this coupled system of differential equations will cause `scipy.optimize.minimize_scalar` to return inconclusive results (of which you are correct). Instead, you decided that any method would work, be it visual methods (comparison by graph), or by exhaustive testing.
+
+.. note ::
+	Trying all possible combinations is known algorithmically as the brute-force method.
+
+
+You might find the following instructions useful:
+
+1. Implement the prey-predator relationship described above. You might find it useful to refer to the exercise solutions for Week 8.
+2. Once implemented, wrap your code in a function. The function outputs a timesteps array, an array for herbivore count, and an array for carnivore count. Set up the input of the function to modify the initial condition of the simulation. 
+3. Find out which configuration would let the billionaire see the most stable number of carnivores possible.
 
 Where to from here?
 -------------------
