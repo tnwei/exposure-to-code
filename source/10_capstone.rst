@@ -33,6 +33,7 @@ It is not difficult to describe a system with two planetary bodies, but systems 
 .. math::
 
     a = \frac{dv}{dt}
+	
 	v = \frac{dr}{dt}
 
 
@@ -97,10 +98,11 @@ The prey-predator simulation obeys the following equations:
 .. math::
 
     \frac{dx}{dt} = ax - bxy
+
 	\frac{dy}{dt} = cxy - dy
 
 where:
-	* :math:`x` and :math:`y` represnt the populations of herbivores and carnivores,
+	* :math:`x` and :math:`y` represent the populations of herbivores and carnivores,
 	* :math:`a` and :math:`b` are growth and death rate constants for herbivores, 
 	* :math:`c` and :math:`d` are growth and death rate constants for carnivores.
 

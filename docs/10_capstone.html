@@ -69,8 +69,7 @@
 <p>The acceleration that is felt by planet 1 from planet 2 is thus <span class="math notranslate nohighlight">\(F/m_{1}\)</span>, as math:<cite>F = ma</cite>.</p>
 <p>It is not difficult to describe a system with two planetary bodies, but systems with three bodies and above exhibit chaotic behaviour and are always solved by computers. We know this as the n-body problem. Note that acceleration (a), velocity (v) and position (r) are related by the following differential equations:</p>
 <div class="math notranslate nohighlight">
-\[a = \frac{dv}{dt}
-    v = \frac{dr}{dt}\]</div>
+\[ \begin{align}\begin{aligned}a = \frac{dv}{dt}\\    v = \frac{dr}{dt}\end{aligned}\end{align} \]</div>
 <dl class="simple">
 <dt>Write a simple n-body simulation to calculate the trajectories of the following toy system:</dt><dd><ul class="simple">
 <li><dl class="simple">
@@ -145,11 +144,10 @@
 <p>After convincing your sponsor that you cannot have a healthy ecosystem without a lot of herbivores to serve as food for the carnivores, the billionaire agreed to not remove the herbivores. As you further explained that the number of dinosaurs will change over time, the billionaire decided that he wants to see the number of carnivores to be as stable as possible. It is thus left up to you to find the optimal initial conditions of the simulation, so you can allocate the right proportion of eggs in the incubation farm to herbivores or carnivores.</p>
 <p>The prey-predator simulation obeys the following equations:</p>
 <div class="math notranslate nohighlight">
-\[\frac{dx}{dt} = ax - bxy
-    \frac{dy}{dt} = cxy - dy\]</div>
+\[ \begin{align}\begin{aligned}\frac{dx}{dt} = ax - bxy\\    \frac{dy}{dt} = cxy - dy\end{aligned}\end{align} \]</div>
 <dl class="simple">
 <dt>where:</dt><dd><ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> represnt the populations of herbivores and carnivores,</p></li>
+<li><p><span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> represent the populations of herbivores and carnivores,</p></li>
 <li><p><span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are growth and death rate constants for herbivores,</p></li>
 <li><p><span class="math notranslate nohighlight">\(c\)</span> and <span class="math notranslate nohighlight">\(d\)</span> are growth and death rate constants for carnivores.</p></li>
 </ul>
