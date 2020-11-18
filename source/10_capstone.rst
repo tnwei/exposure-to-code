@@ -33,7 +33,7 @@ It is not difficult to describe a system with two planetary bodies, but systems 
 .. math::
 
     a = \frac{dv}{dt}
-	
+
 	v = \frac{dr}{dt}
 
 
@@ -83,6 +83,7 @@ You might find the following steps to be useful:
 2. Write the core loop to calculate flow for any column with its left and right neighbors.
 	* Difference in fluid pressure due to gravity can be written as the difference between column height multiplied by a gravitational modifier. 
 	* Difference in fluid pressure due to momentum can be written as the difference between momentum from left, and momentum from right.
+	* Momentum from left can be represented by flow from left to the current column in the last timestep. Same goes for momentum from right. 
 	* Notice that the left-most and right-most columns need to be handled separately as they do not have both neighbors.
 	* At every iteration, the variables that should be updated for the next timestep are column height, momentum from left, and momentum from right.
 3. Write code to visualize the results of the simulation. Template visualization code will be provided for modifications.
