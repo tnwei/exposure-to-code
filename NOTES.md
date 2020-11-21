@@ -21,8 +21,9 @@ Given that github.io renders all pages in `docs/`, none of the generated pages a
 ## Requirements
 
 + To run code in the course contents, refer to `environment.yml`. 
-+ To build docs: `conda install sphinx=3.2.1`, and use the Makefile in this repo.
++ To build docs: `conda install sphinx=3.2.1`, as well as run `pip install git+https://github.com/sphinx-contrib/video`. Use the Makefile in this repo to generate docs in the `docs/` folder.
 + To lint RestructuredText: `conda install restructuredtext_lint`, and use the `rst-lint` CLI utility.
+
 
 ## RST syntax quirks
 + Use "::" right after another line, then open a newline and indent one tab to insert a code chunk. The code chunk must be preceded by a blank line, then followed by a blank line. 

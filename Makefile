@@ -29,5 +29,7 @@ html : Makefile clean
 .PHONY : docs
 docs : html
 	rm -rf docs
+	# Videos aren't copied in build so need to do this manually
+	cp -r source/videos build/html/_videos
 	cp -r build/html docs
 	touch docs/.nojekyll

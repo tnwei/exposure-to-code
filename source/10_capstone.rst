@@ -134,10 +134,14 @@ The second best way to improve is to learn from the resources out there on the i
 * Improving at algorithms:
 	* `Leetcode, algorithmic coding challenges <https://leetcode.com/>`_
 	* `Hackerrank, algorithmic coding challenges <https://www.hackerrank.com/>`_
-* Learning bioinformatics:
+* Learn bioinformatics:
 	* `Rosalind, learn bioinformatics online through coding challenges <http://rosalind.info/problems/locations/>`_
 * Learn machine learning:
 	* `Andrew Ng's Machine Learning course on Coursera, no need to pay for the cert, just audit the course <https://www.coursera.org/learn/machine-learning>`_
+* Learn cybersecurity:
+	* Hacker101 `Capture the Flag <https://ctf.hacker101.com/about>`_, where the goal is to enter a system and retrieve the stored "flag"
+* Solve mathematical problems with code:
+	* `Project Euler <https://projecteuler.net/>`_
 
-If this is your thing, build your way up to tackle coding challenges:	
-	* Google Kick Start: Online algorithmic coding competition
+If this is your thing, build your way up to tackle coding competitions:	
+	* `Google Kick Start <https://codingcompetitions.withgoogle.com/kickstart>`_: Online algorithmic coding competition
