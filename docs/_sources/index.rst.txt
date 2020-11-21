@@ -48,6 +48,7 @@ Contents
    09_random_generative.rst
    09_random_generative_sols.rst
    10_capstone.rst
+   10_capstone_sols.rst
 
 .. Indices and tables
    ==================
