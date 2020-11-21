@@ -7,4 +7,5 @@ dependencies:
   - matplotlib
   - numpy
   - pandas
+  - scipy
 prefix: /home/tnwei/miniconda3/envs/e2c
